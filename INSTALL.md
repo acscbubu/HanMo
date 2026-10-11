@@ -1,6 +1,6 @@
 # X4 Pro 更新與備份
 
-適用版本：`1.5.8-hanmo-bold-status-20261010`。本次僅提供 UPDATE，沒有首次安裝用 FULL。
+適用版本：`1.5.8-hanmo-bold-status-20261010`。同版本另已提供首次安裝用FULL，會清除裝置設定，請讀 [FULL安裝說明](FULL-INSTALL.md)。以下步驟僅適用保留既有設定的UPDATE。
 
 1. 備份記憶卡的書籍、AirNote、AirPhoto及學習進度；另保存現有可用韌體及裝置備份。
 2. 確認機型為 XTEINK X4 Pro，既有分區配置與本版相容。若從原廠首次安裝或不確定分區，先停在這一步；不要把 UPDATE 當作完整安裝檔。

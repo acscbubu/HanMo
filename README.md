@@ -2,7 +2,7 @@
 
 HanMo 是 XTEINK X4 Pro 的非官方客製韌體，在 CrossMux／CrossPoint 基礎上，加入 **AirNote 筆記、AirPhoto 相片整理、個人化首頁與繁體中文日文學習**。
 
-這份來源是 `1.5.8-hanmo-bold-status-20261010` 的公開來源。2026-10-11 使用者回報已刷入，開機、閱讀、AirNote／AirPhoto 與 Wi-Fi 均正常；這是使用者基本實機驗證，不等同全部功能或長時間測試。已改用 mbedTLS 1.2/1.3，移除 wolfSSL／wolfCrypt 依賴；HTTPS 預設檢查網站名稱、信任鏈及有效日期。使用前請先設定正確時間。詳 [TLS 變更](TLS.md) 與 [來源與 SDK 對應](SOURCE-COVERAGE.md)。
+這份來源是 `1.5.8-hanmo-bold-status-20261010` 的公開來源。2026-10-11 使用者回報已刷入，開機、閱讀、AirNote／AirPhoto 與 Wi-Fi 均正常；這是使用者基本實機驗證，不等同全部功能或長時間測試。已改用 mbedTLS 3.6.5（TLS 1.2/1.3），移除 wolfSSL／wolfCrypt 依賴；HTTPS 預設檢查網站名稱、信任鏈及有效日期。使用前請先設定正確時間。詳 [TLS 變更](TLS.md) 與 [來源與 SDK 對應](SOURCE-COVERAGE.md)。
 
 網站：[翰墨 HanMo](https://www.smartnavigator.com.au/hanmo/zh.html)。請核對下載檔的完整版本名稱及 SHA256。
 
@@ -41,7 +41,7 @@ HanMo 是 XTEINK X4 Pro 的非官方客製韌體，在 CrossMux／CrossPoint 基
 | HanMo 更新檔 | `HanMo-X4Pro-<version>-UPDATE.bin`；僅應用程式，須確認既有分區與實際啟動槽 |
 | XTEINK 官方 | 從 [XTEINK 官方](https://www.xteink.com/) 取得，保留官方版本及命名；本專案不附原廠裝置備份 |
 
-更新BIN、完整SOURCE及文件補件見 [GitHub Releases](https://github.com/acscbubu/HanMo/releases/tag/1.5.8-hanmo-bold-status-20261010)。不可把 UPDATE 改名成 FULL。自動化工作未刷寫裝置；使用者已自行刷入並回報上述基本功能正常。
+完整FULL、更新UPDATE、對應SOURCE及文件補件見 [GitHub Releases](https://github.com/acscbubu/HanMo/releases/tag/1.5.8-hanmo-bold-status-20261010)。FULL供首次安裝／重裝，會清除Wi-Fi與裝置設定；日常升級請用UPDATE。[FULL使用說明與驗證範圍](FULL-INSTALL.md)。不可把 UPDATE 改名成 FULL。自動化工作未刷寫裝置；使用者已自行刷入並回報上述基本功能正常。
 
 安裝請先讀 [更新與備份說明](INSTALL.md)；版本改動見 [發布說明](RELEASE-NOTES.md)，問題回報見 [支援與回報](SUPPORT.md)。驗證細節見 [驗證範圍](VALIDATION.md)。
 

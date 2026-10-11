@@ -8,5 +8,7 @@
     "bytes": 263092770,
     "sha256": "9aedac04f101989a48912af3adc698981165ae8c92724b3c74d582f86a0be85b"
   },
-  "scope": "2026-10-11 publication documentation merged with unchanged 2026-10-10 firmware sources. SOURCE-MANIFEST.json regenerated for this Git tree; BUILD-VERIFICATION.json retains build-time evidence. Sealed original SOURCE and DOCS assets remain unchanged."
+  "scope": "2026-10-11 publication documentation merged with unchanged 2026-10-10 firmware sources. SOURCE-MANIFEST.json regenerated for this Git tree; BUILD-VERIFICATION.json retains build-time evidence. Sealed original SOURCE and DOCS assets remain unchanged.",
+  "fullPackagingRevision": "20261011",
+  "fullPackagingScope": "Adds full-install materials and documentation. Firmware application inputs and original release tag/assets remain unchanged. SOURCE-MANIFEST regenerated."
 }

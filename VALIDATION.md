@@ -26,4 +26,4 @@ gzip含時間戳，不宣稱跨環境完全位元重現。
 SDK／依賴lock及297個上游密鑰測試fixture SHA維持一致；保留前版LGPL驗證材料。
 
 2026-10-10 建置工作未刷機。2026-10-11 使用者另回報已自行刷入，開機、閱讀、AirNote／AirPhoto及Wi-Fi正常。屬使用者回報，未取得裝置讀回SHA或逐項測試日誌；未涵蓋全部遊戲／日文教材、長時間穩定性、OTA、全部TLS端點或SD故障情境。正式發布與下載記錄見本倉庫Releases；本文件保留測試發生時的範圍。
-本版僅提供UPDATE，不含FULL。網站pin須與實際公開版本及雜湊一致。
+後續已新增同程式版本的FULL封裝；見FULL-INSTALL.md及full-install/FULL-MANIFEST.json。FULL首次安裝未經實機驗收。網站pin須與實際公開版本及雜湊一致。

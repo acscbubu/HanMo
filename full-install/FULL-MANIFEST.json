@@ -1,0 +1,61 @@
+{
+  "version": "1.5.8-hanmo-bold-status-20261010",
+  "assembledDate": "2026-10-11",
+  "totalBytes": 16777216,
+  "bootloader": {
+    "origin": "Arduino ESP32 SDK 5.5.0+sha.87912cd291 / esp32s3/bin/bootloader_dio_80m.elf",
+    "elf": "bootloader_dio_80m.elf",
+    "elfToImageByteIdentical": true,
+    "rebuiltFromCSource": false,
+    "flashMode": "dio",
+    "flashFrequency": "80m",
+    "flashSize": "16MB",
+    "esptoolPackageVersion": "5.1.2",
+    "idfSourceCommit": "87912cd291",
+    "license": "Apache-2.0; ESP-IDF bootloader, retain component notices"
+  },
+  "partitionGeneratedByteIdentical": true,
+  "application": {
+    "name": "HanMo-X4Pro-1.5.8-hanmo-bold-status-20261010-UPDATE.bin",
+    "bytes": 7419824,
+    "sha256": "9baa09af3fae76dda4e71d847a7369389650a9337a979b3dca3ca2aa432e2e4a"
+  },
+  "offsets": {
+    "bootloader.bin": 0,
+    "partitions.bin": 32768,
+    "boot_app0.bin": 57344,
+    "application": 65536
+  },
+  "files": {
+    "Arduino-LICENSE.md": {
+      "bytes": 26335,
+      "sha256": "62e54861b30e953735dc187f036917c588665dbe3c5dd88449e34317608bbf5e"
+    },
+    "bootloader.bin": {
+      "bytes": 18736,
+      "sha256": "09c6a477ac9b33721e9ea455fda1e29dc5b2f35c85d0b858b693defcab6f19fb"
+    },
+    "bootloader_dio_80m.elf": {
+      "bytes": 591580,
+      "sha256": "b3dba6e671dfe028775a6030e5b68f736adf2da62456e3991615bb38358e3530"
+    },
+    "boot_app0.bin": {
+      "bytes": 8192,
+      "sha256": "f94c5d786a7a8fab06ac5d10e33bf37711a6697636dc037559ea19cc410a17f0"
+    },
+    "ESP-IDF-LICENSE.txt": {
+      "bytes": 11358,
+      "sha256": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30"
+    },
+    "partitions.bin": {
+      "bytes": 3072,
+      "sha256": "183185576d32d19053c27c52ecad326f7a9358e43a6cf4c0f3d7447f81d7db2a"
+    },
+    "partitions.csv": {
+      "bytes": 783,
+      "sha256": "2ecf5ddd0d9e7b537ed448e2074a8098e08c942fd767764d6d2c726769abf891"
+    }
+  },
+  "deviceFlashed": false,
+  "fullInstallHardwareValidated": false
+}

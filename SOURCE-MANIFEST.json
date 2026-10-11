@@ -1,6 +1,6 @@
 {
   "version": "1.5.8-hanmo-bold-status-20261010",
-  "documentationRevision": "20261011",
+  "documentationRevision": "20261011-full",
   "files": [
     {
       "path": ".github/FUNDING.yml",
@@ -39,8 +39,13 @@
     },
     {
       "path": "DOCUMENTATION-REVISION.json",
-      "bytes": 621,
-      "sha256": "68801406f832007b4da4f4916227c72bce4f2597a2fdc37a8a0509095e7bd970"
+      "bytes": 841,
+      "sha256": "53ece1d67568b70ad888884eeaf599d40d21b8c85aa206835f6e04e268a89181"
+    },
+    {
+      "path": "FULL-INSTALL.md",
+      "bytes": 636,
+      "sha256": "f1d8bb57b07818be5ebe50ebd564f0956f5ca95c68b02c692b40906430ced087"
     },
     {
       "path": "HARDWARE-REPORT.json",
@@ -49,8 +54,8 @@
     },
     {
       "path": "INSTALL.md",
-      "bytes": 1495,
-      "sha256": "fe4bce2d90a73e4ebdefd835084b09168ee5e3a1b223223f85dee47ad00019a7"
+      "bytes": 1589,
+      "sha256": "aa74f4a25c278d3d4d301dbd17e93a7aeafab4ac77a8471ce2a00c6f330a098e"
     },
     {
       "path": "LGPL-RELINK-VERIFICATION.json",
@@ -144,13 +149,13 @@
     },
     {
       "path": "README.md",
-      "bytes": 5908,
-      "sha256": "07fb4ca744e0d85d710b628c3b1f59e1769963b7fab85b4e15ea330799068d96"
+      "bytes": 6082,
+      "sha256": "f8e1d9083c3ccfd296be88008f18e7ffbd1b44bbfc1910de429c27588d2caa52"
     },
     {
       "path": "RELEASE-NOTES.md",
-      "bytes": 1860,
-      "sha256": "feb0f11eb154212dc8a6593bac8d8cad216345d570990b7962aa47933a00f3ef"
+      "bytes": 2043,
+      "sha256": "1be4b5a52e8a7e6fa998071b2e9f8cd7ad7613d06200e509a1ed94aa0bb0e172"
     },
     {
       "path": "SOURCE-COVERAGE.md",
@@ -179,8 +184,8 @@
     },
     {
       "path": "VALIDATION.md",
-      "bytes": 2316,
-      "sha256": "c920ca3387720026195bfcae6655104f880616c55840be1c9135501e5c2213c3"
+      "bytes": 2417,
+      "sha256": "34da64db654870ec9a33e3d9d90c3502e9185110d828405fcc8d2f40129dbdd4"
     },
     {
       "path": "VERSION",
@@ -17691,6 +17696,61 @@
       "path": "dependency-patches/jpegdec/0002-guard-dc-writes-on-mcu-skip.patch",
       "bytes": 1707,
       "sha256": "1473c0b769c8f0c3e70b3e385670225b38b0e3f292e5ca3e4c38290363dccadb"
+    },
+    {
+      "path": "full-install/Arduino-LICENSE.md",
+      "bytes": 26335,
+      "sha256": "62e54861b30e953735dc187f036917c588665dbe3c5dd88449e34317608bbf5e"
+    },
+    {
+      "path": "full-install/ESP-IDF-LICENSE.txt",
+      "bytes": 11358,
+      "sha256": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30"
+    },
+    {
+      "path": "full-install/FULL-MANIFEST.json",
+      "bytes": 1978,
+      "sha256": "36c2f1d6bf17fdf23a88347bbbe34895e6c9ea2bcfdb4edf02dc2d94f27b9ed5"
+    },
+    {
+      "path": "full-install/MIT-LICENSE.txt",
+      "bytes": 1307,
+      "sha256": "3747d86af0bca4ed15f9eda1eede67a7b50e2121b981d4b6692fbeb0c090b837"
+    },
+    {
+      "path": "full-install/README.md",
+      "bytes": 3105,
+      "sha256": "d592c224cedad364d1bdbd19a277388bc54b40354e25f16a5c0933effca8d621"
+    },
+    {
+      "path": "full-install/boot_app0.bin",
+      "bytes": 8192,
+      "sha256": "f94c5d786a7a8fab06ac5d10e33bf37711a6697636dc037559ea19cc410a17f0"
+    },
+    {
+      "path": "full-install/bootloader.bin",
+      "bytes": 18736,
+      "sha256": "09c6a477ac9b33721e9ea455fda1e29dc5b2f35c85d0b858b693defcab6f19fb"
+    },
+    {
+      "path": "full-install/bootloader_dio_80m.elf",
+      "bytes": 591580,
+      "sha256": "b3dba6e671dfe028775a6030e5b68f736adf2da62456e3991615bb38358e3530"
+    },
+    {
+      "path": "full-install/build-full.py",
+      "bytes": 2835,
+      "sha256": "7a4e28283d6f57231273d976c5bac9f61384d00c5d87c2a07dedef158afc748b"
+    },
+    {
+      "path": "full-install/partitions.bin",
+      "bytes": 3072,
+      "sha256": "183185576d32d19053c27c52ecad326f7a9358e43a6cf4c0f3d7447f81d7db2a"
+    },
+    {
+      "path": "full-install/partitions.csv",
+      "bytes": 783,
+      "sha256": "2ecf5ddd0d9e7b537ed448e2074a8098e08c942fd767764d6d2c726769abf891"
     },
     {
       "path": "hanmo/.clang-format",
@@ -50788,462 +50848,462 @@
       "sha256": "632867006d2ce33d283b39e226c6262846cb007148a912e522739be70c37cc74"
     },
     {
-      "path": "hanmo/third_party/kanjivg/hiragana/あ.svg",
+      "path": "hanmo/third_party/kanjivg/hiragana/\u3042.svg",
       "bytes": 2348,
       "sha256": "3553cd24cba506dffe12e1214f231fc129c2535f719c1bdc86a9fb651aa9ec9b"
     },
     {
-      "path": "hanmo/third_party/kanjivg/hiragana/い.svg",
+      "path": "hanmo/third_party/kanjivg/hiragana/\u3044.svg",
       "bytes": 2010,
       "sha256": "af6b59de47a27d48f952092182fe9f222b0a6c7c6aacf67386b0eeaf8c35b86e"
     },
     {
-      "path": "hanmo/third_party/kanjivg/hiragana/う.svg",
+      "path": "hanmo/third_party/kanjivg/hiragana/\u3046.svg",
       "bytes": 2037,
       "sha256": "57039965dc929d72ef3bdb9d12187099e99bcf99504e1b0d3ce5eff0552237f0"
     },
     {
-      "path": "hanmo/third_party/kanjivg/hiragana/え.svg",
+      "path": "hanmo/third_party/kanjivg/hiragana/\u3048.svg",
       "bytes": 2173,
       "sha256": "e97c7c98b19b06d004b2addeab5f69f9262265bebf06e83dad7e77d217be5b16"
     },
     {
-      "path": "hanmo/third_party/kanjivg/hiragana/お.svg",
+      "path": "hanmo/third_party/kanjivg/hiragana/\u304a.svg",
       "bytes": 2319,
       "sha256": "2211aa7b4825d5aed8d30b05df5c939a903599f13827531828aeb019efbf1414"
     },
     {
-      "path": "hanmo/third_party/kanjivg/hiragana/か.svg",
+      "path": "hanmo/third_party/kanjivg/hiragana/\u304b.svg",
       "bytes": 2217,
       "sha256": "3b3bcd50c1bd4fcde1cfefd2e552ae9f1f1dacb618a3b5a0a96b9dcd719aa439"
     },
     {
-      "path": "hanmo/third_party/kanjivg/hiragana/き.svg",
+      "path": "hanmo/third_party/kanjivg/hiragana/\u304d.svg",
       "bytes": 2355,
       "sha256": "8f4376853a758ce9710d8b312d93deef512a36a9626bad2f180b46655d23e76a"
     },
     {
-      "path": "hanmo/third_party/kanjivg/hiragana/く.svg",
+      "path": "hanmo/third_party/kanjivg/hiragana/\u304f.svg",
       "bytes": 1923,
       "sha256": "8ab7bbab9a6c8dc911b5e67b4b6b54fa133e3dc6a2d57eeb353084ece5e26f40"
     },
     {
-      "path": "hanmo/third_party/kanjivg/hiragana/け.svg",
+      "path": "hanmo/third_party/kanjivg/hiragana/\u3051.svg",
       "bytes": 2248,
       "sha256": "cbc38d14ca6ad327a93c2e4b338bac47eeaeb66ba7ecca3e4afcd8ac4d9a9d32"
     },
     {
-      "path": "hanmo/third_party/kanjivg/hiragana/こ.svg",
+      "path": "hanmo/third_party/kanjivg/hiragana/\u3053.svg",
       "bytes": 2020,
       "sha256": "b2ad2786cc3ef74f5c339e0cd7093e17a3c4d13c11dfb6eed4e6ee6b3e702782"
     },
     {
-      "path": "hanmo/third_party/kanjivg/hiragana/さ.svg",
+      "path": "hanmo/third_party/kanjivg/hiragana/\u3055.svg",
       "bytes": 2177,
       "sha256": "bf9a7786a305903c11bd0e30848a093f614d9653ba498093a3472e78211ea5db"
     },
     {
-      "path": "hanmo/third_party/kanjivg/hiragana/し.svg",
+      "path": "hanmo/third_party/kanjivg/hiragana/\u3057.svg",
       "bytes": 1870,
       "sha256": "f5aae137cbd752963535a0724ad9675d15895940b3960eb730dec1f78274bfca"
     },
     {
-      "path": "hanmo/third_party/kanjivg/hiragana/す.svg",
+      "path": "hanmo/third_party/kanjivg/hiragana/\u3059.svg",
       "bytes": 2101,
       "sha256": "ed087b4ac03607fc999eada898b3c87df455036cbb8a73ccfade6da8fdbcbb71"
     },
     {
-      "path": "hanmo/third_party/kanjivg/hiragana/せ.svg",
+      "path": "hanmo/third_party/kanjivg/hiragana/\u305b.svg",
       "bytes": 2254,
       "sha256": "f32432196b6c07bcee9b426d766f7826966aa980cbf9bce9553e34665dca0c47"
     },
     {
-      "path": "hanmo/third_party/kanjivg/hiragana/そ.svg",
+      "path": "hanmo/third_party/kanjivg/hiragana/\u305d.svg",
       "bytes": 2060,
       "sha256": "10a406c3bd00a4c49974bf00a9dc773c7e7dfa6579063c516bc39fd5a6467338"
     },
     {
-      "path": "hanmo/third_party/kanjivg/hiragana/た.svg",
+      "path": "hanmo/third_party/kanjivg/hiragana/\u305f.svg",
       "bytes": 2351,
       "sha256": "cacec2bd4118f3f6c3ae2978d895b081efdc6c9196fa91beab546ecebc2315fb"
     },
     {
-      "path": "hanmo/third_party/kanjivg/hiragana/ち.svg",
+      "path": "hanmo/third_party/kanjivg/hiragana/\u3061.svg",
       "bytes": 2144,
       "sha256": "2b5557a06674bce0cc8140930a945c4d17a840ef97354627c6daa1d13475d4b6"
     },
     {
-      "path": "hanmo/third_party/kanjivg/hiragana/つ.svg",
+      "path": "hanmo/third_party/kanjivg/hiragana/\u3064.svg",
       "bytes": 1911,
       "sha256": "5df14db33d17141d8a0bed6711ae2172fefeea5cf59d19815bbee3c7c640147d"
     },
     {
-      "path": "hanmo/third_party/kanjivg/hiragana/て.svg",
+      "path": "hanmo/third_party/kanjivg/hiragana/\u3066.svg",
       "bytes": 1934,
       "sha256": "8c82e43f10b7479ffa6d38ea6dbde76652ef1fbc91aa5ed2883a1c230424b07b"
     },
     {
-      "path": "hanmo/third_party/kanjivg/hiragana/と.svg",
+      "path": "hanmo/third_party/kanjivg/hiragana/\u3068.svg",
       "bytes": 2097,
       "sha256": "7a300dedb5bcdad7b54a248c4ca7eca6ca4e027a744b2083e560dc07b76f5b85"
     },
     {
-      "path": "hanmo/third_party/kanjivg/hiragana/な.svg",
+      "path": "hanmo/third_party/kanjivg/hiragana/\u306a.svg",
       "bytes": 2462,
       "sha256": "1d86f569ce1627e27231db0537cf1ebe1c4a6d0a359add442d0ec141cf26dbad"
     },
     {
-      "path": "hanmo/third_party/kanjivg/hiragana/に.svg",
+      "path": "hanmo/third_party/kanjivg/hiragana/\u306b.svg",
       "bytes": 2211,
       "sha256": "c7582cd0309b80826201eea391abd426d8fa44f2d35b2d5e649a1d4fbdfcbaae"
     },
     {
-      "path": "hanmo/third_party/kanjivg/hiragana/ぬ.svg",
+      "path": "hanmo/third_party/kanjivg/hiragana/\u306c.svg",
       "bytes": 2219,
       "sha256": "6156f4b03d21fd26ba1d9b5c07135b5e5c1badb0f58714054e3e5928997b780e"
     },
     {
-      "path": "hanmo/third_party/kanjivg/hiragana/ね.svg",
+      "path": "hanmo/third_party/kanjivg/hiragana/\u306d.svg",
       "bytes": 2277,
       "sha256": "9e02a0fe50febb753c7e9c0880f07c9f61384c0057fb2dc814c96cb760379a6a"
     },
     {
-      "path": "hanmo/third_party/kanjivg/hiragana/の.svg",
+      "path": "hanmo/third_party/kanjivg/hiragana/\u306e.svg",
       "bytes": 1940,
       "sha256": "85a190a35b6b8e4f79de6b313b468de8cdb8d1e3e13d404838f462f7888ad2c0"
     },
     {
-      "path": "hanmo/third_party/kanjivg/hiragana/は.svg",
+      "path": "hanmo/third_party/kanjivg/hiragana/\u306f.svg",
       "bytes": 2289,
       "sha256": "e4866a56b1e47a46e544acb7c18d5c21fc56405e8e037668be8b299c6e1e763d"
     },
     {
-      "path": "hanmo/third_party/kanjivg/hiragana/ひ.svg",
+      "path": "hanmo/third_party/kanjivg/hiragana/\u3072.svg",
       "bytes": 1999,
       "sha256": "971ad9d36adae9db86899cddeec4295cea33f9993e58d561e5532fe31f4d608c"
     },
     {
-      "path": "hanmo/third_party/kanjivg/hiragana/ふ.svg",
+      "path": "hanmo/third_party/kanjivg/hiragana/\u3075.svg",
       "bytes": 2319,
       "sha256": "060ce3d8e43475ca60ef3919cf401e75a4cd69654ec98b42088e759cba0365f9"
     },
     {
-      "path": "hanmo/third_party/kanjivg/hiragana/へ.svg",
+      "path": "hanmo/third_party/kanjivg/hiragana/\u3078.svg",
       "bytes": 1934,
       "sha256": "97e2ad2dfdf65715fcef590d7b6240519987b0056037bc27e0fe65d34c8e10ee"
     },
     {
-      "path": "hanmo/third_party/kanjivg/hiragana/ほ.svg",
+      "path": "hanmo/third_party/kanjivg/hiragana/\u307b.svg",
       "bytes": 2471,
       "sha256": "409d28469fcbef7d1884af3764a4a7b6822813ea11e233f16e4f008a57d4324c"
     },
     {
-      "path": "hanmo/third_party/kanjivg/hiragana/ま.svg",
+      "path": "hanmo/third_party/kanjivg/hiragana/\u307e.svg",
       "bytes": 2309,
       "sha256": "67a26b7a63eb72511999012cb54eaf82ab8295e50dc010eba00f7ad30ef5e912"
     },
     {
-      "path": "hanmo/third_party/kanjivg/hiragana/み.svg",
+      "path": "hanmo/third_party/kanjivg/hiragana/\u307f.svg",
       "bytes": 2148,
       "sha256": "be6a88aa3983f5d1a4d2cd93d0d2c06506dcf09d5d183967a020b39a09841c19"
     },
     {
-      "path": "hanmo/third_party/kanjivg/hiragana/む.svg",
+      "path": "hanmo/third_party/kanjivg/hiragana/\u3080.svg",
       "bytes": 2375,
       "sha256": "d8dbf8e3e4b0e6483f23f1686a3f97c06fa751d04cc5c01e53e377ca82540d96"
     },
     {
-      "path": "hanmo/third_party/kanjivg/hiragana/め.svg",
+      "path": "hanmo/third_party/kanjivg/hiragana/\u3081.svg",
       "bytes": 2127,
       "sha256": "c4d6568ee1f0f7429a2c35a85ab39d392f3d87f87f27158446e4859ad1d60008"
     },
     {
-      "path": "hanmo/third_party/kanjivg/hiragana/も.svg",
+      "path": "hanmo/third_party/kanjivg/hiragana/\u3082.svg",
       "bytes": 2260,
       "sha256": "e5a99b12fff1496715f11eb2a275a7721ec176089035cb0055e42074abfdc4e2"
     },
     {
-      "path": "hanmo/third_party/kanjivg/hiragana/や.svg",
+      "path": "hanmo/third_party/kanjivg/hiragana/\u3084.svg",
       "bytes": 2249,
       "sha256": "36a404baafe4832bf065cac4174b32fcd7e2e03dc1cad4f8356b86d8974885e8"
     },
     {
-      "path": "hanmo/third_party/kanjivg/hiragana/ゆ.svg",
+      "path": "hanmo/third_party/kanjivg/hiragana/\u3086.svg",
       "bytes": 2143,
       "sha256": "ef191769f548cf2027254d4b9d8875de2f577395f3404dad87fee1da0022c6f8"
     },
     {
-      "path": "hanmo/third_party/kanjivg/hiragana/よ.svg",
+      "path": "hanmo/third_party/kanjivg/hiragana/\u3088.svg",
       "bytes": 2090,
       "sha256": "63d40e3870cfc3a45df727bd91a0701c038b1439ccb7893a9dd016ee668b7286"
     },
     {
-      "path": "hanmo/third_party/kanjivg/hiragana/ら.svg",
+      "path": "hanmo/third_party/kanjivg/hiragana/\u3089.svg",
       "bytes": 2130,
       "sha256": "b6a9627a57e2f93d41fa00f5b90a471db986102d1d4630186ff9745d2f13c719"
     },
     {
-      "path": "hanmo/third_party/kanjivg/hiragana/り.svg",
+      "path": "hanmo/third_party/kanjivg/hiragana/\u308a.svg",
       "bytes": 2046,
       "sha256": "4884e6b9eb7b49c58b421741803ea1fa2186b5e3025068073f881d401791e633"
     },
     {
-      "path": "hanmo/third_party/kanjivg/hiragana/る.svg",
+      "path": "hanmo/third_party/kanjivg/hiragana/\u308b.svg",
       "bytes": 2017,
       "sha256": "3b0208d49dc36f45b9666c46205795087730dfa68a7af6e03d724e4e368eebad"
     },
     {
-      "path": "hanmo/third_party/kanjivg/hiragana/れ.svg",
+      "path": "hanmo/third_party/kanjivg/hiragana/\u308c.svg",
       "bytes": 2234,
       "sha256": "a93be82abb8ef41403273fb631bdb2711b37b07658c6f2bbe9a4c4b3cc30f12f"
     },
     {
-      "path": "hanmo/third_party/kanjivg/hiragana/ろ.svg",
+      "path": "hanmo/third_party/kanjivg/hiragana/\u308d.svg",
       "bytes": 1989,
       "sha256": "64a5727daa97a371852e28096ad5e07125a4a00e4459ef43a989563f15bc7736"
     },
     {
-      "path": "hanmo/third_party/kanjivg/hiragana/わ.svg",
+      "path": "hanmo/third_party/kanjivg/hiragana/\u308f.svg",
       "bytes": 2168,
       "sha256": "090f523c36076c0b819b3897dec5cdf5967a6569a9a76bd591d1ee0ad67c9d40"
     },
     {
-      "path": "hanmo/third_party/kanjivg/hiragana/を.svg",
+      "path": "hanmo/third_party/kanjivg/hiragana/\u3092.svg",
       "bytes": 2313,
       "sha256": "fe468e6b465a4531276bf16ef579f5921f3b31d8dc74f145c797a1bc37521d1b"
     },
     {
-      "path": "hanmo/third_party/kanjivg/hiragana/ん.svg",
+      "path": "hanmo/third_party/kanjivg/hiragana/\u3093.svg",
       "bytes": 1924,
       "sha256": "f38abbba5be2567e8cb36c0417727f1fd368ac3c90764471c09856b0057a66c3"
     },
     {
-      "path": "hanmo/third_party/kanjivg/katakana/ア.svg",
+      "path": "hanmo/third_party/kanjivg/katakana/\u30a2.svg",
       "bytes": 2064,
       "sha256": "f7dfe4a6af4c4622b611b5b1e92005fe3356c808dbb44ea0e877e02e46f6ee73"
     },
     {
-      "path": "hanmo/third_party/kanjivg/katakana/イ.svg",
+      "path": "hanmo/third_party/kanjivg/katakana/\u30a4.svg",
       "bytes": 2024,
       "sha256": "4b4f6d1b99e37559893e291713eccf05f7a3cbb2daa3273a856de29b839042e6"
     },
     {
-      "path": "hanmo/third_party/kanjivg/katakana/ウ.svg",
+      "path": "hanmo/third_party/kanjivg/katakana/\u30a6.svg",
       "bytes": 2194,
       "sha256": "3e166f9fe86da6edd06aead4bd8c0f43a33f8195f83047c9aa2182eb9f05feb3"
     },
     {
-      "path": "hanmo/third_party/kanjivg/katakana/エ.svg",
+      "path": "hanmo/third_party/kanjivg/katakana/\u30a8.svg",
       "bytes": 2249,
       "sha256": "639c0194da2e36e82ef30409f367d52433a1ed4692936ec9dbd4d9b7f3aed4c9"
     },
     {
-      "path": "hanmo/third_party/kanjivg/katakana/オ.svg",
+      "path": "hanmo/third_party/kanjivg/katakana/\u30aa.svg",
       "bytes": 2209,
       "sha256": "6a26eb24121f4d6ff6192067925a40c842360949a6a72ae6bc3dd876cd802f1e"
     },
     {
-      "path": "hanmo/third_party/kanjivg/katakana/カ.svg",
+      "path": "hanmo/third_party/kanjivg/katakana/\u30ab.svg",
       "bytes": 2106,
       "sha256": "179d16fc65b0db69f691f5efb5da26c641449277d0d67e4ddd08dbb84b1afce6"
     },
     {
-      "path": "hanmo/third_party/kanjivg/katakana/キ.svg",
+      "path": "hanmo/third_party/kanjivg/katakana/\u30ad.svg",
       "bytes": 2241,
       "sha256": "bc7956fc043fa06b1fa2eb7312896c8441d600bc724e709362faf7b67705c2b7"
     },
     {
-      "path": "hanmo/third_party/kanjivg/katakana/ク.svg",
+      "path": "hanmo/third_party/kanjivg/katakana/\u30af.svg",
       "bytes": 2062,
       "sha256": "b4a0abdf5423b32d642c286ed33cb8f91e1ca788e0695913814e80765d058d52"
     },
     {
-      "path": "hanmo/third_party/kanjivg/katakana/ケ.svg",
+      "path": "hanmo/third_party/kanjivg/katakana/\u30b1.svg",
       "bytes": 2192,
       "sha256": "43334e1e96016c2aa045cfe468c1fe6e720330b23b837c7f786c23b2b455a1a8"
     },
     {
-      "path": "hanmo/third_party/kanjivg/katakana/コ.svg",
+      "path": "hanmo/third_party/kanjivg/katakana/\u30b3.svg",
       "bytes": 2070,
       "sha256": "0f366054dfa2bdaa80defb0418f0e3def2a7c286e7279904e6a5a3578e76a7fc"
     },
     {
-      "path": "hanmo/third_party/kanjivg/katakana/サ.svg",
+      "path": "hanmo/third_party/kanjivg/katakana/\u30b5.svg",
       "bytes": 2235,
       "sha256": "6849ccaa3f91530f5d8bb33e994511a3851b584ca1d94df770051533ba328be1"
     },
     {
-      "path": "hanmo/third_party/kanjivg/katakana/シ.svg",
+      "path": "hanmo/third_party/kanjivg/katakana/\u30b7.svg",
       "bytes": 2099,
       "sha256": "777a0eef4d858337a43e30a78ee09f265080cb3f33975b6e23148849027b1769"
     },
     {
-      "path": "hanmo/third_party/kanjivg/katakana/ス.svg",
+      "path": "hanmo/third_party/kanjivg/katakana/\u30b9.svg",
       "bytes": 2027,
       "sha256": "2facf6236f57fb23d13b8e58591eef9b3f5a87bc91a5b46f7b2a4148f041445b"
     },
     {
-      "path": "hanmo/third_party/kanjivg/katakana/セ.svg",
+      "path": "hanmo/third_party/kanjivg/katakana/\u30bb.svg",
       "bytes": 2110,
       "sha256": "bd54af254ca5b1f85df58fd7bd054bcb52dd77a50a08e80db75a5c01b4aef4f1"
     },
     {
-      "path": "hanmo/third_party/kanjivg/katakana/ソ.svg",
+      "path": "hanmo/third_party/kanjivg/katakana/\u30bd.svg",
       "bytes": 1968,
       "sha256": "f225b489929dc7483b07b7cc8f6138c02d41afda88f693ece9119b8ccb84c13e"
     },
     {
-      "path": "hanmo/third_party/kanjivg/katakana/タ.svg",
+      "path": "hanmo/third_party/kanjivg/katakana/\u30bf.svg",
       "bytes": 2192,
       "sha256": "be5768ceb910a36dda67906f7380c861d94395ad4738bbafe5ac2b6e381319d1"
     },
     {
-      "path": "hanmo/third_party/kanjivg/katakana/チ.svg",
+      "path": "hanmo/third_party/kanjivg/katakana/\u30c1.svg",
       "bytes": 2225,
       "sha256": "dffb0a69dd17e7492698fee6c0efafb7f6a910f3f94ed27764a6c5e2c588ee30"
     },
     {
-      "path": "hanmo/third_party/kanjivg/katakana/ツ.svg",
+      "path": "hanmo/third_party/kanjivg/katakana/\u30c4.svg",
       "bytes": 2094,
       "sha256": "161c7a7be52dc62a9db1d99002a827e4c71a2ff9272c969ecb60995c1044a9fc"
     },
     {
-      "path": "hanmo/third_party/kanjivg/katakana/テ.svg",
+      "path": "hanmo/third_party/kanjivg/katakana/\u30c6.svg",
       "bytes": 2211,
       "sha256": "539a4cbd57ad96d14090234e2d7a22086784cc21a54492f41bf7821f5ca95022"
     },
     {
-      "path": "hanmo/third_party/kanjivg/katakana/ト.svg",
+      "path": "hanmo/third_party/kanjivg/katakana/\u30c8.svg",
       "bytes": 1987,
       "sha256": "390feff352209925ca9df574561e7867855bdb2256677030b845dd609c9c4f93"
     },
     {
-      "path": "hanmo/third_party/kanjivg/katakana/ナ.svg",
+      "path": "hanmo/third_party/kanjivg/katakana/\u30ca.svg",
       "bytes": 2041,
       "sha256": "842bc219e8bd86d3fcce2596cbb229fc3f9b4c45fd0f22260efc32ca26105e72"
     },
     {
-      "path": "hanmo/third_party/kanjivg/katakana/ニ.svg",
+      "path": "hanmo/third_party/kanjivg/katakana/\u30cb.svg",
       "bytes": 2050,
       "sha256": "150810f2c90970b7e432d4b75da4bb1cc83bce08dd20e02bf1a534da00af605a"
     },
     {
-      "path": "hanmo/third_party/kanjivg/katakana/ヌ.svg",
+      "path": "hanmo/third_party/kanjivg/katakana/\u30cc.svg",
       "bytes": 2034,
       "sha256": "15cb49d3112264fa744549e51afa45537f9782ab4c980adba5593e544de4ecf0"
     },
     {
-      "path": "hanmo/third_party/kanjivg/katakana/ネ.svg",
+      "path": "hanmo/third_party/kanjivg/katakana/\u30cd.svg",
       "bytes": 2330,
       "sha256": "3607ca36dea181a59100d0d9b2591f5539b7d75b1acb84364843d5c6e9f11ebd"
     },
     {
-      "path": "hanmo/third_party/kanjivg/katakana/ノ.svg",
+      "path": "hanmo/third_party/kanjivg/katakana/\u30ce.svg",
       "bytes": 1842,
       "sha256": "ae39d6040adfbbeb5db4f822dde0cc11b7e66c150282f8abbeb940b5dbf6a03b"
     },
     {
-      "path": "hanmo/third_party/kanjivg/katakana/ハ.svg",
+      "path": "hanmo/third_party/kanjivg/katakana/\u30cf.svg",
       "bytes": 1974,
       "sha256": "816e69c07fb4d5a2d0cc66758c2c9c59d4c27c3a13c96057cd417bb9840e119a"
     },
     {
-      "path": "hanmo/third_party/kanjivg/katakana/ヒ.svg",
+      "path": "hanmo/third_party/kanjivg/katakana/\u30d2.svg",
       "bytes": 2100,
       "sha256": "58b7eddec372f7ae621ff65a2fa0075857f658e084d6d95b8a261c6a88ec0bd8"
     },
     {
-      "path": "hanmo/third_party/kanjivg/katakana/フ.svg",
+      "path": "hanmo/third_party/kanjivg/katakana/\u30d5.svg",
       "bytes": 1901,
       "sha256": "1aa669f5ba4c3a795d62ce1ec41444d06206bd29f61bf5be70e7ddaa80dd930a"
     },
     {
-      "path": "hanmo/third_party/kanjivg/katakana/ヘ.svg",
+      "path": "hanmo/third_party/kanjivg/katakana/\u30d8.svg",
       "bytes": 1936,
       "sha256": "baab8c06699c0aa4774f1b90bc971f7f6034ec460437596c5a6e496ade458e46"
     },
     {
-      "path": "hanmo/third_party/kanjivg/katakana/ホ.svg",
+      "path": "hanmo/third_party/kanjivg/katakana/\u30db.svg",
       "bytes": 2326,
       "sha256": "7e1e9e1073b81cf5ad9c10cad0f10b465d5e608c8294ebc25e9dd11d4eed6a96"
     },
     {
-      "path": "hanmo/third_party/kanjivg/katakana/マ.svg",
+      "path": "hanmo/third_party/kanjivg/katakana/\u30de.svg",
       "bytes": 2062,
       "sha256": "a32affa8337fc8315588ee800603a6594c325f9080dbde7887d47ee5d4cf34a4"
     },
     {
-      "path": "hanmo/third_party/kanjivg/katakana/ミ.svg",
+      "path": "hanmo/third_party/kanjivg/katakana/\u30df.svg",
       "bytes": 2065,
       "sha256": "358cdedf0fb052b35c22d35bdde8f004cadbd9b4e230b48143bc811b53056397"
     },
     {
-      "path": "hanmo/third_party/kanjivg/katakana/ム.svg",
+      "path": "hanmo/third_party/kanjivg/katakana/\u30e0.svg",
       "bytes": 2036,
       "sha256": "7aa8ecfcb8c309f8ea867787825979974fb810ea5ce5271dd0374455d7ad2f79"
     },
     {
-      "path": "hanmo/third_party/kanjivg/katakana/メ.svg",
+      "path": "hanmo/third_party/kanjivg/katakana/\u30e1.svg",
       "bytes": 1973,
       "sha256": "c2e0dd96e95b558a5c6004163c43f75023ea07f8b6f6263d068bb30ef860f166"
     },
     {
-      "path": "hanmo/third_party/kanjivg/katakana/モ.svg",
+      "path": "hanmo/third_party/kanjivg/katakana/\u30e2.svg",
       "bytes": 2312,
       "sha256": "550500b1e204fe6d625e73799b3ef3f16a4014126f33d70d947fcb9c78eeeaf4"
     },
     {
-      "path": "hanmo/third_party/kanjivg/katakana/ヤ.svg",
+      "path": "hanmo/third_party/kanjivg/katakana/\u30e4.svg",
       "bytes": 2064,
       "sha256": "d843888e471d9312d8e396943475d5ff7c235a16f488f83820be9024122491d4"
     },
     {
-      "path": "hanmo/third_party/kanjivg/katakana/ユ.svg",
+      "path": "hanmo/third_party/kanjivg/katakana/\u30e6.svg",
       "bytes": 2080,
       "sha256": "4cb44f6fdc053e0847d6148c5fd43c0fa32358c60081631313c0f0753d17a3a4"
     },
     {
-      "path": "hanmo/third_party/kanjivg/katakana/ヨ.svg",
+      "path": "hanmo/third_party/kanjivg/katakana/\u30e8.svg",
       "bytes": 2262,
       "sha256": "5b82d555778c5b0d3d4eda5a453c09f7f1c0be687986003b49ab3e33d8fb4b88"
     },
     {
-      "path": "hanmo/third_party/kanjivg/katakana/ラ.svg",
+      "path": "hanmo/third_party/kanjivg/katakana/\u30e9.svg",
       "bytes": 2086,
       "sha256": "ee11d9622dee5ed32bd8d6c4ca1ba4dd77852475f694c3cb9e5d7ec0d72298f4"
     },
     {
-      "path": "hanmo/third_party/kanjivg/katakana/リ.svg",
+      "path": "hanmo/third_party/kanjivg/katakana/\u30ea.svg",
       "bytes": 2022,
       "sha256": "2958cc8c5ee1cd5289ee82cfb33b1b6842c2d2a7afb4e54158dc269ad6d52138"
     },
     {
-      "path": "hanmo/third_party/kanjivg/katakana/ル.svg",
+      "path": "hanmo/third_party/kanjivg/katakana/\u30eb.svg",
       "bytes": 2056,
       "sha256": "bd5b120af6debd4feaa0a0d4fe46955f1f1f94dd7e3d64fe3b69c13fc4bdca3a"
     },
     {
-      "path": "hanmo/third_party/kanjivg/katakana/レ.svg",
+      "path": "hanmo/third_party/kanjivg/katakana/\u30ec.svg",
       "bytes": 1903,
       "sha256": "8a61e26d9b462aa669a058d15640dd72aa19ceafc9bcb7fc56e4f4e52e6baec0"
     },
     {
-      "path": "hanmo/third_party/kanjivg/katakana/ロ.svg",
+      "path": "hanmo/third_party/kanjivg/katakana/\u30ed.svg",
       "bytes": 2209,
       "sha256": "8eeeeed120e9f7d816353eff6af991e04162f6cb38106b855d4454cd640a772a"
     },
     {
-      "path": "hanmo/third_party/kanjivg/katakana/ワ.svg",
+      "path": "hanmo/third_party/kanjivg/katakana/\u30ef.svg",
       "bytes": 2098,
       "sha256": "2f41b88f39b92d0959a3c96ebc7093c6254ff27e96890e8c7de7adf9766556ab"
     },
     {
-      "path": "hanmo/third_party/kanjivg/katakana/ヲ.svg",
+      "path": "hanmo/third_party/kanjivg/katakana/\u30f2.svg",
       "bytes": 2209,
       "sha256": "14f0310c562007fc04e13a655cc9267698904273754c5ecff3cb81eeeee9dbd2"
     },
     {
-      "path": "hanmo/third_party/kanjivg/katakana/ン.svg",
+      "path": "hanmo/third_party/kanjivg/katakana/\u30f3.svg",
       "bytes": 1976,
       "sha256": "0e6ea9722247514cc5068ac2b409882c6e47ccc12530e69da680246f72884229"
     },
@@ -226538,5 +226598,5 @@
       "target": "run-esp32.sh"
     }
   ],
-  "scope": "Published source tree excluding this manifest and .git; firmware program inputs unchanged from sealed source."
+  "scope": "Source tree and FULL packaging supplement; original firmware application inputs unchanged."
 }
