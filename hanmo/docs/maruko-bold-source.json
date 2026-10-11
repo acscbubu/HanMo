@@ -1,0 +1,9 @@
+{
+  "font": "lib/EpdFont/builtinFonts/source/HanMoKana/MarukoGothicCJKjp-Bold.ttf",
+  "upstreamCommit": "97e9dd4a2fdde58084dde8d022de253f8d8415e9",
+  "url": "https://raw.githubusercontent.com/max32002/maruko-gothic/97e9dd4a2fdde58084dde8d022de253f8d8415e9/CJK%20JP/MarukoGothicCJKjp-Bold.ttf",
+  "sha256": "1659498746f95020b85331ee614d0aa79947d6829d755d1d84bbc9df1d1a06ca",
+  "bytes": 24115836,
+  "licenseUrl": "https://raw.githubusercontent.com/max32002/maruko-gothic/97e9dd4a2fdde58084dde8d022de253f8d8415e9/SIL_Open_Font_License_1.1.txt",
+  "licenseSha256": "e564f06d018e7b95bc3594c96a17f1d41865af4038c375e7aa974dd69df38602"
+}

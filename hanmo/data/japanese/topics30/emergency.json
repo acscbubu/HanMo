@@ -1,0 +1,506 @@
+[
+  {
+    "id": "emergency-07",
+    "category": 8,
+    "a": {
+      "japanese": "きゅうきゅうしゃをよんでください。",
+      "kanaReading": "きゅうきゅうしゃをよんでください。",
+      "romaji": "kyūkyūsha o yonde kudasai.",
+      "meaning": "請幫我叫救護車。"
+    },
+    "b": {
+      "japanese": "はい、すぐにれんらくします。",
+      "kanaReading": "はい、すぐにれんらくします。",
+      "romaji": "hai, sugu ni renraku shimasu.",
+      "meaning": "好的，我馬上聯絡。"
+    },
+    "grammarNotes": [
+      "きゅうきゅうしゃ表示救護車。",
+      "てください用來請求協助。"
+    ],
+    "vocabularyCardId": -1
+  },
+  {
+    "id": "emergency-08",
+    "category": 8,
+    "a": {
+      "japanese": "けがをしました。",
+      "kanaReading": "けがをしました。",
+      "romaji": "kega o shimashita.",
+      "meaning": "我受傷了。"
+    },
+    "b": {
+      "japanese": "きゅうきゅうしゃをよびます。",
+      "kanaReading": "きゅうきゅうしゃをよびます。",
+      "romaji": "kyūkyūsha o yobimasu.",
+      "meaning": "我幫您叫救護車。"
+    },
+    "grammarNotes": [
+      "けがをする表示受傷。",
+      "ました表示已發生的事情。"
+    ],
+    "vocabularyCardId": -1
+  },
+  {
+    "id": "emergency-09",
+    "category": 8,
+    "a": {
+      "japanese": "けむりがでています。",
+      "kanaReading": "けむりがでています。",
+      "romaji": "kemuri ga dete imasu.",
+      "meaning": "有煙冒出來。"
+    },
+    "b": {
+      "japanese": "すぐにかかりのひとをよびます。",
+      "kanaReading": "すぐにかかりのひとをよびます。",
+      "romaji": "sugu ni kakari no hito o yobimasu.",
+      "meaning": "我馬上叫工作人員來。"
+    },
+    "grammarNotes": [
+      "けむり表示煙。",
+      "ています表示正在發生。"
+    ],
+    "vocabularyCardId": -1
+  },
+  {
+    "id": "emergency-10",
+    "category": 8,
+    "a": {
+      "japanese": "かじです。ひとをよんでください。",
+      "kanaReading": "かじです。ひとをよんでください。",
+      "romaji": "kaji desu. hito o yonde kudasai.",
+      "meaning": "失火了，請叫人來。"
+    },
+    "b": {
+      "japanese": "はい、しょうぼうにれんらくします。",
+      "kanaReading": "はい、しょうぼうにれんらくします。",
+      "romaji": "hai, shōbō ni renraku shimasu.",
+      "meaning": "好的，我聯絡消防單位。"
+    },
+    "grammarNotes": [
+      "かじ表示火災。",
+      "に標示聯絡的對象。"
+    ],
+    "vocabularyCardId": -1
+  },
+  {
+    "id": "emergency-11",
+    "category": 8,
+    "a": {
+      "japanese": "じしんです。どこへいきますか。",
+      "kanaReading": "じしんです。どこへいきますか。",
+      "romaji": "jishin desu. doko e ikimasu ka?",
+      "meaning": "地震了，要去哪裡？"
+    },
+    "b": {
+      "japanese": "かかりのひとにききましょう。",
+      "kanaReading": "かかりのひとにききましょう。",
+      "romaji": "kakari no hito ni kikimashō.",
+      "meaning": "我們詢問工作人員吧。"
+    },
+    "grammarNotes": [
+      "じしん表示地震。",
+      "へ表示方向，此時讀 e。"
+    ],
+    "vocabularyCardId": -1
+  },
+  {
+    "id": "emergency-12",
+    "category": 8,
+    "a": {
+      "japanese": "ひなんするばしょはどこですか。",
+      "kanaReading": "ひなんするばしょはどこですか。",
+      "romaji": "hinan suru basho wa doko desu ka?",
+      "meaning": "避難的地方在哪裡？"
+    },
+    "b": {
+      "japanese": "こうえんにあつまってください。",
+      "kanaReading": "こうえんにあつまってください。",
+      "romaji": "kōen ni atsumatte kudasai.",
+      "meaning": "請到公園集合。"
+    },
+    "grammarNotes": [
+      "ひなんする表示避難。",
+      "あつまってください表示請集合。"
+    ],
+    "vocabularyCardId": -1
+  },
+  {
+    "id": "emergency-13",
+    "category": 8,
+    "a": {
+      "japanese": "かかりのひとはいますか。",
+      "kanaReading": "かかりのひとはいますか。",
+      "romaji": "kakari no hito wa imasu ka?",
+      "meaning": "有工作人員在嗎？"
+    },
+    "b": {
+      "japanese": "はい、あちらにいます。",
+      "kanaReading": "はい、あちらにいます。",
+      "romaji": "hai, achira ni imasu.",
+      "meaning": "有，在那邊。"
+    },
+    "grammarNotes": [
+      "います用來表示有人在。",
+      "かかりのひと表示工作人員。"
+    ],
+    "vocabularyCardId": -1
+  },
+  {
+    "id": "emergency-14",
+    "category": 8,
+    "a": {
+      "japanese": "でんわをかしていただけますか。",
+      "kanaReading": "でんわをかしていただけますか。",
+      "romaji": "denwa o kashite itadakemasu ka?",
+      "meaning": "可以借我電話嗎？"
+    },
+    "b": {
+      "japanese": "はい、こちらをどうぞ。",
+      "kanaReading": "はい、こちらをどうぞ。",
+      "romaji": "hai, kochira o dōzo.",
+      "meaning": "可以，請用這支。"
+    },
+    "grammarNotes": [
+      "かして表示借給對方。",
+      "ていただけますか是客氣請求。"
+    ],
+    "vocabularyCardId": -1
+  },
+  {
+    "id": "emergency-15",
+    "category": 8,
+    "a": {
+      "japanese": "かばんをぬすまれました。",
+      "kanaReading": "かばんをぬすまれました。",
+      "romaji": "kaban o nusumaremashita.",
+      "meaning": "我的包包被偷了。"
+    },
+    "b": {
+      "japanese": "けいさつにれんらくしましょう。",
+      "kanaReading": "けいさつにれんらくしましょう。",
+      "romaji": "keisatsu ni renraku shimashō.",
+      "meaning": "我們聯絡警察吧。"
+    },
+    "grammarNotes": [
+      "ぬすまれました表示被偷。",
+      "ましょう表示一起採取行動。"
+    ],
+    "vocabularyCardId": -1
+  },
+  {
+    "id": "emergency-16",
+    "category": 8,
+    "a": {
+      "japanese": "パスポートがみつかりません。",
+      "kanaReading": "パスポートがみつかりません。",
+      "romaji": "pasupōto ga mitsukarimasen.",
+      "meaning": "我找不到護照。"
+    },
+    "b": {
+      "japanese": "りょうじかんにれんらくしましょう。",
+      "kanaReading": "りょうじかんにれんらくしましょう。",
+      "romaji": "ryōjikan ni renraku shimashō.",
+      "meaning": "我們聯絡領事館吧。"
+    },
+    "grammarNotes": [
+      "みつかりません表示找不到。",
+      "りょうじかん表示領事館。"
+    ],
+    "vocabularyCardId": -1
+  },
+  {
+    "id": "emergency-17",
+    "category": 8,
+    "a": {
+      "japanese": "こどもがみつかりません。",
+      "kanaReading": "こどもがみつかりません。",
+      "romaji": "kodomo ga mitsukarimasen.",
+      "meaning": "我找不到孩子。"
+    },
+    "b": {
+      "japanese": "かかりのひとにれんらくします。",
+      "kanaReading": "かかりのひとにれんらくします。",
+      "romaji": "kakari no hito ni renraku shimasu.",
+      "meaning": "我聯絡工作人員。"
+    },
+    "grammarNotes": [
+      "が標示找不到的人。",
+      "れんらくします表示聯絡。"
+    ],
+    "vocabularyCardId": -1
+  },
+  {
+    "id": "emergency-18",
+    "category": 8,
+    "a": {
+      "japanese": "つうやくをおねがいします。",
+      "kanaReading": "つうやくをおねがいします。",
+      "romaji": "tsūyaku o onegai shimasu.",
+      "meaning": "麻煩安排口譯。"
+    },
+    "b": {
+      "japanese": "どのことばですか。",
+      "kanaReading": "どのことばですか。",
+      "romaji": "dono kotoba desu ka?",
+      "meaning": "請問是哪種語言？"
+    },
+    "grammarNotes": [
+      "つうやく表示口譯。",
+      "どのことば詢問哪種語言。"
+    ],
+    "vocabularyCardId": -1
+  },
+  {
+    "id": "emergency-19",
+    "category": 8,
+    "a": {
+      "japanese": "ここのじゅうしょをおしえてください。",
+      "kanaReading": "ここのじゅうしょをおしえてください。",
+      "romaji": "koko no jūsho o oshiete kudasai.",
+      "meaning": "請告訴我這裡的地址。"
+    },
+    "b": {
+      "japanese": "このかみにかいてあります。",
+      "kanaReading": "このかみにかいてあります。",
+      "romaji": "kono kami ni kaite arimasu.",
+      "meaning": "寫在這張紙上。"
+    },
+    "grammarNotes": [
+      "ここの表示這個地方的。",
+      "おしえてください表示請告知。"
+    ],
+    "vocabularyCardId": -1
+  },
+  {
+    "id": "emergency-20",
+    "category": 8,
+    "a": {
+      "japanese": "きんきゅうのばんごうはなんですか。",
+      "kanaReading": "きんきゅうのばんごうはなんですか。",
+      "romaji": "kinkyū no bangō wa nan desu ka?",
+      "meaning": "緊急聯絡電話是幾號？"
+    },
+    "b": {
+      "japanese": "かかりのひとにかくにんします。",
+      "kanaReading": "かかりのひとにかくにんします。",
+      "romaji": "kakari no hito ni kakunin shimasu.",
+      "meaning": "我向工作人員確認。"
+    },
+    "grammarNotes": [
+      "きんきゅう表示緊急。",
+      "ばんごう表示號碼。"
+    ],
+    "vocabularyCardId": -1
+  },
+  {
+    "id": "emergency-21",
+    "category": 8,
+    "a": {
+      "japanese": "かぞくにれんらくしたいです。",
+      "kanaReading": "かぞくにれんらくしたいです。",
+      "romaji": "kazoku ni renraku shitai desu.",
+      "meaning": "我想聯絡家人。"
+    },
+    "b": {
+      "japanese": "このでんわをつかってください。",
+      "kanaReading": "このでんわをつかってください。",
+      "romaji": "kono denwa o tsukatte kudasai.",
+      "meaning": "請用這支電話。"
+    },
+    "grammarNotes": [
+      "たいです表示想做某事。",
+      "に標示聯絡的對象。"
+    ],
+    "vocabularyCardId": -1
+  },
+  {
+    "id": "emergency-22",
+    "category": 8,
+    "a": {
+      "japanese": "ガスのにおいがします。",
+      "kanaReading": "ガスのにおいがします。",
+      "romaji": "gasu no nioi ga shimasu.",
+      "meaning": "我聞到瓦斯味。"
+    },
+    "b": {
+      "japanese": "すぐにかかりのひとをよびます。",
+      "kanaReading": "すぐにかかりのひとをよびます。",
+      "romaji": "sugu ni kakari no hito o yobimasu.",
+      "meaning": "我馬上叫工作人員來。"
+    },
+    "grammarNotes": [
+      "においがする表示聞到氣味。",
+      "ガス在此指瓦斯。"
+    ],
+    "vocabularyCardId": -1
+  },
+  {
+    "id": "emergency-23",
+    "category": 8,
+    "a": {
+      "japanese": "エレベーターにとじこめられました。",
+      "kanaReading": "エレベーターにとじこめられました。",
+      "romaji": "erebētā ni tojikomeraremashita.",
+      "meaning": "我被困在電梯裡了。"
+    },
+    "b": {
+      "japanese": "かんりのひとにれんらくします。",
+      "kanaReading": "かんりのひとにれんらくします。",
+      "romaji": "kanri no hito ni renraku shimasu.",
+      "meaning": "我聯絡管理人員。"
+    },
+    "grammarNotes": [
+      "に表示被困住的地方。",
+      "かんりのひと表示管理人員。"
+    ],
+    "vocabularyCardId": -1
+  },
+  {
+    "id": "emergency-24",
+    "category": 8,
+    "a": {
+      "japanese": "ここでじこがありました。",
+      "kanaReading": "ここでじこがありました。",
+      "romaji": "koko de jiko ga arimashita.",
+      "meaning": "這裡發生事故了。"
+    },
+    "b": {
+      "japanese": "けいさつにれんらくします。",
+      "kanaReading": "けいさつにれんらくします。",
+      "romaji": "keisatsu ni renraku shimasu.",
+      "meaning": "我聯絡警察。"
+    },
+    "grammarNotes": [
+      "で標示發生事情的地點。",
+      "ありました表示曾發生。"
+    ],
+    "vocabularyCardId": -1
+  },
+  {
+    "id": "emergency-25",
+    "category": 8,
+    "a": {
+      "japanese": "ひとりであるけません。",
+      "kanaReading": "ひとりであるけません。",
+      "romaji": "hitori de arukemasen.",
+      "meaning": "我沒辦法自己走。"
+    },
+    "b": {
+      "japanese": "たすけをよびます。",
+      "kanaReading": "たすけをよびます。",
+      "romaji": "tasuke o yobimasu.",
+      "meaning": "我叫人來幫忙。"
+    },
+    "grammarNotes": [
+      "ひとりで表示獨自。",
+      "あるけません表示無法行走。"
+    ],
+    "vocabularyCardId": -1
+  },
+  {
+    "id": "emergency-26",
+    "category": 8,
+    "a": {
+      "japanese": "こわいので、いっしょにいてください。",
+      "kanaReading": "こわいので、いっしょにいてください。",
+      "romaji": "kowai node, issho ni ite kudasai.",
+      "meaning": "我很害怕，請陪著我。"
+    },
+    "b": {
+      "japanese": "はい、ここにいます。",
+      "kanaReading": "はい、ここにいます。",
+      "romaji": "hai, koko ni imasu.",
+      "meaning": "好，我會在這裡。"
+    },
+    "grammarNotes": [
+      "ので表示原因。",
+      "いてください表示請留在這裡。"
+    ],
+    "vocabularyCardId": -1
+  },
+  {
+    "id": "emergency-27",
+    "category": 8,
+    "a": {
+      "japanese": "けいたいをぬすまれました。",
+      "kanaReading": "けいたいをぬすまれました。",
+      "romaji": "keitai o nusumaremashita.",
+      "meaning": "我的手機被偷了。"
+    },
+    "b": {
+      "japanese": "けいさつにそうだんしましょう。",
+      "kanaReading": "けいさつにそうだんしましょう。",
+      "romaji": "keisatsu ni sōdan shimashō.",
+      "meaning": "我們向警察求助吧。"
+    },
+    "grammarNotes": [
+      "けいたい在此指手機。",
+      "そうだんする表示商量或求助。"
+    ],
+    "vocabularyCardId": -1
+  },
+  {
+    "id": "emergency-28",
+    "category": 8,
+    "a": {
+      "japanese": "ひなんじょにペットをつれていけますか。",
+      "kanaReading": "ひなんじょにペットをつれていけますか。",
+      "romaji": "hinanjo ni petto o tsurete ikemasu ka?",
+      "meaning": "可以帶寵物去避難所嗎？"
+    },
+    "b": {
+      "japanese": "かかりのひとにききましょう。",
+      "kanaReading": "かかりのひとにききましょう。",
+      "romaji": "kakari no hito ni kikimashō.",
+      "meaning": "我們詢問工作人員吧。"
+    },
+    "grammarNotes": [
+      "ひなんじょ表示避難所。",
+      "つれていけます表示可以帶去。"
+    ],
+    "vocabularyCardId": -1
+  },
+  {
+    "id": "emergency-29",
+    "category": 8,
+    "a": {
+      "japanese": "みずをもらえるばしょはどこですか。",
+      "kanaReading": "みずをもらえるばしょはどこですか。",
+      "romaji": "mizu o moraeru basho wa doko desu ka?",
+      "meaning": "哪裡可以領水？"
+    },
+    "b": {
+      "japanese": "ひなんじょでかくにんしましょう。",
+      "kanaReading": "ひなんじょでかくにんしましょう。",
+      "romaji": "hinanjo de kakunin shimashō.",
+      "meaning": "我們到避難所確認吧。"
+    },
+    "grammarNotes": [
+      "もらえる表示可以領取。",
+      "ばしょ表示地點。"
+    ],
+    "vocabularyCardId": -1
+  },
+  {
+    "id": "emergency-30",
+    "category": 8,
+    "a": {
+      "japanese": "みちがみずにつかっています。",
+      "kanaReading": "みちがみずにつかっています。",
+      "romaji": "michi ga mizu ni tsukatte imasu.",
+      "meaning": "道路淹水了。"
+    },
+    "b": {
+      "japanese": "べつのみちをかくにんします。",
+      "kanaReading": "べつのみちをかくにんします。",
+      "romaji": "betsu no michi o kakunin shimasu.",
+      "meaning": "我確認其他路線。"
+    },
+    "grammarNotes": [
+      "つかっています表示浸在水中。",
+      "べつの表示其他的。"
+    ],
+    "vocabularyCardId": -1
+  }
+]

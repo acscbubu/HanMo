@@ -1,0 +1,25 @@
+{
+  "name": "ContentProtection",
+  "version": "0.1.0",
+  "description": "Optional content-protection interfaces; this HanMo candidate does not provide or enable a cryptographic backend.",
+  "keywords": "epub, ebook, decrypt, rights, protected, lcp",
+  "authors": [
+    {
+      "name": "FreeInk SDK Contributors"
+    }
+  ],
+  "dependencies": {},
+  "platforms": "*",
+  "frameworks": "*",
+  "build": {
+    "flags": [
+      "-I third_party/miniz"
+    ]
+  },
+  "export": {
+    "exclude": [
+      "test"
+    ]
+  },
+  "notes": "Inflate provider: define CONTENT_EXTERNAL_MINIZ to bind to the host application's already-linked miniz (no second copy in the image); omit it to compile the vendored content_-prefixed copy for standalone host tests."
+}

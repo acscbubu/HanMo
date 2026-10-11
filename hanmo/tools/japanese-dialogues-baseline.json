@@ -1,0 +1,9 @@
+{
+  "src/activities/apps/japanese/JapaneseReview.h": "85d6f3651a961a48b800a6446b6cc00e5a0d546b0896841b374240bbc00c6812",
+  "src/activities/apps/japanese/JapaneseReviewStore.h": "a27cc0d0f0e684b14d987f62780be7b390bb538db671d250d0ae59531bf3872f",
+  "src/activities/apps/japanese/JapaneseReviewActivity.cpp": "db4c6e1b248601c4763f2942a2b378e9822b4cd17becaa1abea449e594f832d1",
+  "src/activities/apps/japanese/JapaneseReviewActivity.h": "9dee88ec738614e148ebafba29173aa709885cd8d87635ad81743aae8ae37820",
+  "data/japanese/sentences-basic.json": "4bb174f6ccb804fff814be7d8b71b4472fe061ba7e2db4d60a823f10e7b943bd",
+  "scripts/generate_japanese_sentences.py": "603d052aff0e846318f360279610f2bef2fcea9489745008b625e691bc388b92",
+  "src/activities/apps/japanese/JapaneseSentences.generated.h": "392dee573c05d618c1bf47373e60b916365657befed02f98c6f954711cc1305b"
+}

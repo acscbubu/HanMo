@@ -1,0 +1,99 @@
+# Independently written expected literals; never extracted from production JSON.
+# id|a Japanese|a Hepburn|a Taiwan meaning|b Japanese|b Hepburn|b Taiwan meaning|note1|note2
+# Readings are explicitly required to equal the corresponding kana-only Japanese.
+daily-07|もうおきましたか。|mō okimashita ka?|您已經起床了嗎？|はい、いまおきました。|hai, ima okimashita.|是的，剛起床。|もう表示已經。|ました表示過去的動作。
+daily-08|あさごはんをたべますか。|asagohan o tabemasu ka?|您要吃早餐嗎？|はい、パンをたべます。|hai, pan o tabemasu.|要，我吃麵包。|を標示吃的東西，讀 o。|ますか客氣地詢問動作。
+daily-09|いってきます。|itte kimasu.|我出門了。|いってらっしゃい。|itterasshai.|路上小心。|いってきます是出門時的招呼。|いってらっしゃい回應出門的人。
+daily-10|ただいま。|tadaima.|我回來了。|おかえりなさい。|okaerinasai.|歡迎回來。|ただいま是回家時的招呼。|おかえりなさい回應回家的人。
+daily-11|かさをもっていきますか。|kasa o motte ikimasu ka?|您要帶傘出門嗎？|はい、あめがふりそうです。|hai, ame ga furisō desu.|要，好像快下雨了。|もっていきます表示帶去。|動詞接そうです表示看來快要。
+daily-12|でんきをけしましょうか。|denki o keshimashō ka?|要我關燈嗎？|はい、おねがいします。|hai, onegai shimasu.|好，麻煩您。|ましょうか用來主動提供協助。|けします表示關掉電源或燈。
+daily-13|エアコンはさむくないですか。|eakon wa samukunai desu ka?|冷氣會不會太冷？|すこしさむいです。|sukoshi samui desu.|有一點冷。|さむくない是さむい的否定形。|すこし表示程度不多。
+daily-14|ぎゅうにゅうはどこですか。|gyūnyū wa doko desu ka?|牛奶在哪裡？|れいぞうこにあります。|reizōko ni arimasu.|在冰箱裡。|に標示東西所在的地方。|あります用於沒有生命的物品。
+daily-15|おふろはわいていますか。|ofuro wa waite imasu ka?|洗澡水已經熱了嗎？|はい、もうはいれます。|hai, mō hairemasu.|是的，已經可以洗了。|わいています表示水已熱好。|はいれます表示可以進入。
+daily-16|かぎをみませんでしたか。|kagi o mimasen deshita ka?|您有看到鑰匙嗎？|テーブルのうえにあります。|tēburu no ue ni arimasu.|在桌上。|ませんでした是否定過去式。|のうえ表示在某物上面。
+daily-17|ここでじゅうでんできますか。|koko de jūden dekimasu ka?|可以在這裡充電嗎？|はい、コンセントはそこです。|hai, konsento wa soko desu.|可以，插座在那裡。|で標示做事情的地點。|できます表示能夠做到。
+daily-18|ワイファイはつかえますか。|waifai wa tsukaemasu ka?|可以使用無線網路嗎？|はい、パスワードはこちらです。|hai, pasuwādo wa kochira desu.|可以，密碼在這裡。|つかえます表示可以使用。|こちら是這邊的客氣說法。
+daily-19|にもつはとどきましたか。|nimotsu wa todokimashita ka?|包裹送到了嗎？|はい、けさとどきました。|hai, kesa todokimashita.|是的，今天早上送到了。|とどきます表示送達。|けさ表示今天早上。
+daily-20|ドアのかぎをかけましたか。|doa no kagi o kakemashita ka?|您鎖門了嗎？|はい、かけました。|hai, kakemashita.|是的，鎖了。|かぎをかける表示上鎖。|の用來連接有關聯的名詞。
+daily-21|もうすこししずかにしてください。|mō sukoshi shizuka ni shite kudasai.|請再安靜一點。|すみません、きをつけます。|sumimasen, ki o tsukemasu.|不好意思，我會注意。|しずかにする表示保持安靜。|きをつけます表示會留意。
+daily-22|おさらをあらいましょうか。|osara o araimashō ka?|要我洗碗盤嗎？|ありがとうございます。|arigatō gozaimasu.|謝謝您。|あらいます表示清洗。|ましょうか用來主動提議。
+daily-23|このびんはどうしますか。|kono bin wa dō shimasu ka?|這個玻璃瓶要怎麼處理？|あのはこにいれてください。|ano hako ni irete kudasai.|請放進那個箱子。|どうしますか詢問處理方式。|いれてください表示請放入。
+daily-24|なにをかってきましょうか。|nani o katte kimashō ka?|要我買什麼回來？|たまごとやさいをおねがいします。|tamago to yasai o onegai shimasu.|麻煩買蛋和蔬菜。|かってきます表示買了帶回來。|と用來並列名詞。
+daily-25|びょういんはよやくしましたか。|byōin wa yoyaku shimashita ka?|您預約看診了嗎？|はい、あしたのごごです。|hai, ashita no gogo desu.|是的，是明天下午。|よやくします表示預約。|ごご表示下午。
+daily-26|くすりはいつのみますか。|kusuri wa itsu nomimasu ka?|藥要什麼時候吃？|しょくごにのんでください。|shokugo ni nonde kudasai.|請在飯後服用。|いつ用來問時間。|しょくご表示吃飯之後。
+daily-27|かみをきりたいです。|kami o kiritai desu.|我想剪頭髮。|どのくらいきりますか。|dono kurai kirimasu ka?|您要剪多短？|動詞接たいです表示想做。|どのくらい用來問程度。
+daily-28|きってをください。|kitte o kudasai.|請給我郵票。|なんまいですか。|nanmai desu ka?|請問要幾張？|きって的促音要讀成 kitte。|まい用來數薄片物品。
+daily-29|いま、べんきょうしていますか。|ima, benkyō shite imasu ka?|您現在正在讀書嗎？|はい、にほんごをべんきょうしています。|hai, nihongo o benkyō shite imasu.|是的，我在學日語。|ています表示正在進行。|を標示學習的內容。
+daily-30|そろそろねますか。|sorosoro nemasu ka?|差不多要睡了嗎？|はい、おやすみなさい。|hai, oyasuminasai.|是的，晚安。|そろそろ表示差不多該做了。|おやすみなさい是睡前的招呼。
+restaurant-07|せきはあいていますか。|seki wa aite imasu ka?|有空位嗎？|すこしおまちください。|sukoshi omachi kudasai.|請稍等一下。|あいています表示位子空著。|おまちください是客氣的請稍等。
+restaurant-08|よやくはひつようですか。|yoyaku wa hitsuyō desu ka?|需要預約嗎？|いいえ、ひつようはありません。|iie, hitsuyō wa arimasen.|不，不需要。|ひつようです表示有必要。|ありません表示沒有。
+restaurant-09|カウンターでもいいですか。|kauntā de mo ii desu ka?|坐吧檯也可以嗎？|はい、こちらへどうぞ。|hai, kochira e dōzo.|可以，請往這邊。|でもいい表示這樣也可以。|へ標示方向，讀 e。
+restaurant-10|ここはきんえんですか。|koko wa kin'en desu ka?|這裡禁菸嗎？|はい、きんえんです。|hai, kin'en desu.|是的，禁菸。|きんえん表示禁止吸菸。|n 後接母音用撇號分開。
+restaurant-11|ちゅうもんしてもいいですか。|chūmon shite mo ii desu ka?|可以點餐了嗎？|はい、おきまりですか。|hai, okimari desu ka?|可以，您決定好了嗎？|してもいいですか用來徵求同意。|おきまりですか客氣地問決定了沒。
+restaurant-12|たまごははいっていますか。|tamago wa haitte imasu ka?|裡面有蛋嗎？|はい、たまごをつかっています。|hai, tamago o tsukatte imasu.|有，這道菜用了蛋。|はいっています表示含有。|を標示使用的食材，讀 o。
+restaurant-13|にくなしでおねがいします。|niku nashi de onegai shimasu.|麻煩不要放肉。|はい、やさいだけにします。|hai, yasai dake ni shimasu.|好，只放蔬菜。|なし表示沒有或不加。|だけ表示只有。
+restaurant-14|あまりからくしないでください。|amari karaku shinai de kudasai.|請不要做得太辣。|はい、からさをおさえます。|hai, karasa o osaemasu.|好，會降低辣度。|あまり接否定表示不太。|ないでください表示請不要做。
+restaurant-15|ごはんをすくなめにしてください。|gohan o sukuname ni shite kudasai.|飯請少一點。|はい、すくなめにします。|hai, sukuname ni shimasu.|好，飯量會少一點。|すくなめ表示偏少的份量。|にしてください用來要求調整。
+restaurant-16|ごはんのおかわりはできますか。|gohan no okawari wa dekimasu ka?|可以續飯嗎？|はい、むりょうです。|hai, muryō desu.|可以，是免費的。|おかわり表示再來一份。|むりょう表示免費。
+restaurant-17|こおりなしでおねがいします。|kōri nashi de onegai shimasu.|麻煩不要加冰塊。|はい、こおりはぬきます。|hai, kōri wa nukimasu.|好，不加冰塊。|なしで表示不附加某物。|ぬきます表示去掉或不放。
+restaurant-18|あたたかいおちゃはありますか。|atatakai ocha wa arimasu ka?|有熱茶嗎？|はい、ほうじちゃがあります。|hai, hōjicha ga arimasu.|有，有焙茶。|あたたかい直接修飾名詞。|が標示有什麼東西。
+restaurant-19|はしをもういちぜんください。|hashi o mō ichizen kudasai.|請再給我一雙筷子。|はい、どうぞ。|hai, dōzo.|好，請用。|ぜん用來數成雙的筷子。|もう表示再追加。
+restaurant-20|こどものおさらはありますか。|kodomo no osara wa arimasu ka?|有兒童用的盤子嗎？|はい、すぐおもちします。|hai, sugu omochi shimasu.|有，我馬上拿來。|の可標示使用者或用途。|すぐ表示馬上。
+restaurant-21|とりざらをふたつください。|torizara o futatsu kudasai.|請給我兩個分菜盤。|はい、こちらをどうぞ。|hai, kochira o dōzo.|好，這些給您。|とりざら是分菜用的小盤。|ふたつ是通用的兩個。
+restaurant-22|これはちゅうもんとちがいます。|kore wa chūmon to chigaimasu.|這跟我點的不一樣。|すみません、とりかえます。|sumimasen, torikaemasu.|不好意思，我會換一份。|とちがいます表示與某物不同。|とりかえます表示更換。
+restaurant-23|あとどのくらいかかりますか。|ato dono kurai kakarimasu ka?|還要等多久？|あとごふんほどです。|ato gofun hodo desu.|還要大約五分鐘。|あと表示還剩下。|ほど表示大約的數量。
+restaurant-24|とてもおいしかったです。|totemo oishikatta desu.|非常好吃。|ありがとうございます。|arigatō gozaimasu.|謝謝您。|かったです是い形容詞過去式。|とても表示程度很高。
+restaurant-25|スープがまだあついですね。|sūpu ga mada atsui desu ne.|湯還很燙呢。|ゆっくりおめしあがりください。|yukkuri omeshiagari kudasai.|請慢慢享用。|まだ表示狀態尚未改變。|おめしあがりください是客氣請用。
+restaurant-26|もちかえりにできますか。|mochikaeri ni dekimasu ka?|可以改成外帶嗎？|はい、つつみます。|hai, tsutsumimasu.|可以，我幫您包起來。|もちかえり表示外帶。|にできますか問能否改成某形式。
+restaurant-27|のこりをつつんでください。|nokori o tsutsunde kudasai.|請把剩下的餐點包起來。|はい、ようきをおもちします。|hai, yōki o omochi shimasu.|好，我拿容器來。|のこり表示剩下的部分。|つつんで是つつむ的て形。
+restaurant-28|べつべつにはらえますか。|betsubetsu ni haraemasu ka?|可以分開付錢嗎？|はい、おひとりずつどうぞ。|hai, ohitori zutsu dōzo.|可以，請一位一位結帳。|べつべつに表示分開。|ずつ表示每次相同的數量。
+restaurant-29|りょうしゅうしょをください。|ryōshūsho o kudasai.|請給我收據。|おなまえはどうしますか。|onamae wa dō shimasu ka?|收據抬頭要寫什麼？|りょうしゅうしょ是收據。|どうしますか詢問安排方式。
+restaurant-30|なんじまでやっていますか。|nanji made yatte imasu ka?|營業到幾點？|よるくじまでです。|yoru kuji made desu.|到晚上九點。|まで表示時間的終點。|やっています在此表示營業中。
+shopping-07|しちゃくしてもいいですか。|shichaku shite mo ii desu ka?|可以試穿嗎？|はい、こちらでどうぞ。|hai, kochira de dōzo.|可以，請在這裡試穿。|しちゃくします表示試穿。|てもいいですか用來徵求同意。
+shopping-08|かがみはありますか。|kagami wa arimasu ka?|有鏡子嗎？|はい、うしろにあります。|hai, ushiro ni arimasu.|有，在後面。|かがみ是鏡子。|うしろ表示後方。
+shopping-09|このくつはすこしきついです。|kono kutsu wa sukoshi kitsui desu.|這雙鞋有一點緊。|べつのサイズをおもちします。|betsu no saizu o omochi shimasu.|我拿別的尺寸來。|きつい表示穿戴時偏緊。|べつの表示另外的。
+shopping-10|げんきんでもはらえますか。|genkin de mo haraemasu ka?|也可以付現金嗎？|はい、げんきんもつかえます。|hai, genkin mo tsukaemasu.|可以，也能用現金。|で標示付款方式。|はらえます表示可以付款。
+shopping-11|めんぜいにできますか。|menzei ni dekimasu ka?|可以辦理免稅嗎？|パスポートをみせてください。|pasupōto o misete kudasai.|請出示護照。|めんぜい表示免稅。|みせてください表示請出示。
+shopping-12|パスポートのコピーでもいいですか。|pasupōto no kopī de mo ii desu ka?|護照影本也可以嗎？|いいえ、げんぽんがひつようです。|iie, genpon ga hitsuyō desu.|不，需要正本。|でもいいですか問替代物可不可以。|げんぽん表示正本。
+shopping-13|プレゼントようにつつめますか。|purezento yō ni tsutsumemasu ka?|可以包裝成禮物嗎？|はい、リボンもつけます。|hai, ribon mo tsukemasu.|可以，也會附上緞帶。|よう表示某種用途。|つつめます表示可以包裝。
+shopping-14|ホテルにおくれますか。|hoteru ni okuremasu ka?|可以寄到飯店嗎？|はい、ごじゅうしょをどうぞ。|hai, gojūsho o dōzo.|可以，請提供地址。|に標示寄送的目的地。|おくれます表示可以寄送。
+shopping-15|サイズをこうかんできますか。|saizu o kōkan dekimasu ka?|可以換尺寸嗎？|レシートをみせてください。|reshīto o misete kudasai.|請出示購物明細。|こうかんします表示交換。|できますか詢問可不可以。
+shopping-16|へんぴんはできますか。|henpin wa dekimasu ka?|可以退貨嗎？|みしようならできます。|mishiyō nara dekimasu.|如果未使用就可以。|へんぴん表示退貨。|なら表示以某條件為前提。
+shopping-17|ざいこはありますか。|zaiko wa arimasu ka?|有庫存嗎？|いま、かくにんします。|ima, kakunin shimasu.|我現在確認一下。|ざいこ表示庫存。|かくにんします表示確認。
+shopping-18|いつにゅうかしますか。|itsu nyūka shimasu ka?|什麼時候會到貨？|らいしゅうのよていです。|raishū no yotei desu.|預計下週。|にゅうかします表示商品到貨。|よてい表示預定的安排。
+shopping-19|いつまでたべられますか。|itsu made taberaremasu ka?|這個可以吃到哪一天？|あさってまでです。|asatte made desu.|到後天。|たべられます是たべる的可能形。|あさって表示後天。
+shopping-20|でんちはついていますか。|denchi wa tsuite imasu ka?|有附電池嗎？|いいえ、べつうりです。|iie, betsūri desu.|沒有，要另外買。|ついています表示有附上。|べつうり表示分開販售。
+shopping-21|ためしてもいいですか。|tameshite mo ii desu ka?|可以試用嗎？|はい、ボタンをおしてください。|hai, botan o oshite kudasai.|可以，請按按鈕。|ためします表示試用。|おしてください表示請按下。
+shopping-22|セールはいつまでですか。|sēru wa itsu made desu ka?|特賣到什麼時候？|にちようびまでです。|nichiyōbi made desu.|到星期日。|いつまで詢問截止時間。|にちようび是星期日。
+shopping-23|ぜいきんはふくまれていますか。|zeikin wa fukumarete imasu ka?|價格已經含稅了嗎？|はい、ぜいこみです。|hai, zeikomi desu.|是的，是含稅價。|ふくまれています表示已包含。|ぜいこみ表示含稅。
+shopping-24|ひとりなんこまでかえますか。|hitori nanko made kaemasu ka?|每人最多可以買幾個？|おひとりふたつまでです。|ohitori futatsu made desu.|每人最多兩個。|なんこ用來問幾個。|まで可表示數量的上限。
+shopping-25|おつりがすくないです。|otsuri ga sukunai desu.|找的錢少了。|すみません、かぞえなおします。|sumimasen, kazoe naoshimasu.|不好意思，我重新數一次。|おつり表示找回的零錢。|動詞接なおす表示重新做。
+shopping-26|こまかいおかねでもいいですか。|komakai okane de mo ii desu ka?|用零錢付也可以嗎？|はい、だいじょうぶです。|hai, daijōbu desu.|可以，沒問題。|こまかいおかね表示零錢。|だいじょうぶ表示沒有問題。
+shopping-27|かごをかりてもいいですか。|kago o karite mo ii desu ka?|可以借購物籃嗎？|はい、いりぐちにあります。|hai, iriguchi ni arimasu.|可以，入口有。|かります表示借入。|いりぐち表示入口。
+shopping-28|とりおきできますか。|torioki dekimasu ka?|可以幫我保留商品嗎？|はい、あしたまでです。|hai, ashita made desu.|可以，保留到明天。|とりおき表示替客人保留商品。|まで標示保留期限。
+shopping-29|あしたもあいていますか。|ashita mo aite imasu ka?|明天也有營業嗎？|いいえ、ていきゅうびです。|iie, teikyūbi desu.|沒有，明天是公休日。|あいています在此表示店有開。|ていきゅうび表示固定休息日。
+shopping-30|ほしょうはどのくらいですか。|hoshō wa dono kurai desu ka?|保固有多久？|いちねんかんです。|ichinenkan desu.|一年。|ほしょう在此表示商品保固。|ねんかん表示以年計的期間。
+transport-07|なんばんせんですか。|nanbansen desu ka?|請問在第幾月台？|さんばんせんです。|sanbansen desu.|第三月台。|なんばんせん詢問月台編號。|ばんせん接在月台數字後。
+transport-08|このでんしゃはきゅうこうですか。|kono densha wa kyūkō desu ka?|這班電車是急行嗎？|いいえ、かくえきていしゃです。|iie, kakueki teisha desu.|不是，是每站都停的車。|きゅうこう是停站較少的車種。|かくえきていしゃ表示每站停靠。
+transport-09|どこでのりかえますか。|doko de norikaemasu ka?|要在哪裡轉車？|しんじゅくでのりかえてください。|shinjuku de norikaete kudasai.|請在新宿轉車。|のりかえます表示轉乘。|で標示轉乘的地點。
+transport-10|おおさかまでどのくらいですか。|ōsaka made dono kurai desu ka?|到大阪大約要多久？|にじかんはんくらいです。|nijikan han kurai desu.|大約兩個半小時。|じかん用來表示小時數。|はん表示一半。
+transport-11|うんちんはいくらですか。|unchin wa ikura desu ka?|車資是多少？|さんびゃくえんです。|sanbyakuen desu.|三百日圓。|うんちん表示交通費用。|三百讀作さんびゃく。
+transport-12|かたみちのきっぷをください。|katamichi no kippu o kudasai.|請給我單程票。|はい、どこまでですか。|hai, doko made desu ka?|好，請問要到哪裡？|かたみち表示單程。|どこまで詢問目的地。
+transport-13|おうふくでおねがいします。|ōfuku de onegai shimasu.|麻煩買來回票。|おかえりはいつですか。|okaeri wa itsu desu ka?|請問您什麼時候回程？|おうふく表示往返。|おかえり是回程的客氣說法。
+transport-14|していせきはありますか。|shiteiseki wa arimasu ka?|有指定席嗎？|はい、まどがわがあいています。|hai, madogawa ga aite imasu.|有，靠窗座位有空位。|していせき是預先指定的座位。|まどがわ表示靠窗的一側。
+transport-15|じゆうせきはなんごうしゃですか。|jiyūseki wa nangōsha desu ka?|自由席在第幾車廂？|いちごうしゃです。|ichigōsha desu.|第一節車廂。|じゆうせき是未指定座位的席次。|ごうしゃ用來表示車廂編號。
+transport-16|カードにチャージできますか。|kādo ni chāji dekimasu ka?|可以幫交通卡儲值嗎？|はい、あのきかいでどうぞ。|hai, ano kikai de dōzo.|可以，請用那台機器。|に標示儲值的對象。|チャージ表示加值。
+transport-17|かいさつをとおれません。|kaisatsu o tōremasen.|我無法通過驗票閘門。|きっぷをみせてください。|kippu o misete kudasai.|請出示車票。|とおれません表示不能通過。|を在此標示經過的地方。
+transport-18|でんしゃはおくれていますか。|densha wa okurete imasu ka?|電車有誤點嗎？|はい、じゅっぷんおくれています。|hai, juppun okurete imasu.|有，誤點十分鐘。|おくれています表示正在延誤。|十分鐘可讀じゅっぷん。
+transport-19|このでんしゃはうんきゅうですか。|kono densha wa unkyū desu ka?|這班電車停駛了嗎？|はい、つぎのでんしゃをおまちください。|hai, tsugi no densha o omachi kudasai.|是的，請等下一班電車。|うんきゅう表示取消運行。|つぎのでんしゃ表示下一班電車。
+transport-20|しゅうでんはなんじですか。|shūden wa nanji desu ka?|末班電車是幾點？|じゅうにじです。|jūniji desu.|十二點。|しゅうでん表示末班電車。|十二點讀作じゅうにじ。
+transport-21|おりるときはどうしますか。|oriru toki wa dō shimasu ka?|下公車時要怎麼做？|ボタンをおしてください。|botan o oshite kudasai.|請按下車鈴。|動詞原形接とき表示做某事時。|おしてください表示請按下。
+transport-22|バスだいはいつはらいますか。|basudai wa itsu haraimasu ka?|公車車資什麼時候付？|おりるときにはらってください。|oriru toki ni haratte kudasai.|請在下車時付錢。|バスだい表示公車車資。|ときに標示動作的時機。
+transport-23|このパスでのれますか。|kono pasu de noremasu ka?|用這張乘車券可以搭嗎？|はい、きょうはなんどでものれます。|hai, kyō wa nando de mo noremasu.|可以，今天可不限次數搭乘。|のれます表示可以搭乘。|なんどでも表示不限次數。
+transport-24|ここがしゅうてんですか。|koko ga shūten desu ka?|這裡是終點站嗎？|はい、みなさんおりてください。|hai, minasan orite kudasai.|是的，請大家下車。|しゅうてん表示路線終點。|みなさん是大家的客氣說法。
+transport-25|タクシーのりばはどこですか。|takushī noriba wa doko desu ka?|計程車乘車處在哪裡？|にしぐちにあります。|nishiguchi ni arimasu.|在西出口。|のりば表示上車的地點。|にしぐち表示西側出口。
+transport-26|トランクにいれてもいいですか。|toranku ni irete mo ii desu ka?|可以放進後車廂嗎？|はい、こちらでおあずかりします。|hai, kochira de oazukari shimasu.|可以，交給我處理。|に標示放入的地方。|おあずかりします表示客氣地代管。
+transport-27|シートベルトはこれですか。|shīto beruto wa kore desu ka?|這個是安全帶嗎？|はい、しめてください。|hai, shimete kudasai.|是的，請繫上。|シートベルト表示安全帶。|しめてください表示請繫好。
+transport-28|じてんしゃをかりたいです。|jitensha o karitai desu.|我想租腳踏車。|なんじまでつかいますか。|nanji made tsukaimasu ka?|您要用到幾點？|かりたいです表示想借用。|まで標示使用的截止時間。
+transport-29|ここにくるまをとめられますか。|koko ni kuruma o tomeraremasu ka?|可以把車停在這裡嗎？|いいえ、ちゅうしゃきんしです。|iie, chūsha kinshi desu.|不，這裡禁止停車。|とめられます表示可以停放。|きんし表示禁止。
+transport-30|えきまでむかえにきてもらえますか。|eki made mukae ni kite moraemasu ka?|可以來車站接我嗎？|はい、すぐいきます。|hai, sugu ikimasu.|可以，我馬上過去。|むかえにくる表示來接人。|てもらえますか客氣地請人幫忙。

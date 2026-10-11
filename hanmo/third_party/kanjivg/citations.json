@@ -1,0 +1,31 @@
+{
+  "source": {
+    "repository": "https://github.com/KanjiVG/kanjivg",
+    "commit": "70a0b7ae0c18ceb5cb358274b029cce0234a43bc",
+    "license": "CC BY-SA 3.0",
+    "license_url": "https://creativecommons.org/licenses/by-sa/3.0/",
+    "upstream_license_url": "https://raw.githubusercontent.com/KanjiVG/kanjivg/70a0b7ae0c18ceb5cb358274b029cce0234a43bc/COPYING",
+    "format_reference": "https://kanjivg.tagaini.net/svg-format.html"
+  },
+  "import": {
+    "scope": "46 basic hiragana and 46 basic katakana cards from data/japanese/kana-basic.json",
+    "asset_path": "kanji/{unicode-codepoint-lowercase}.svg",
+    "stroke_markers": "kvg:{code}-s1 ... kvg:{code}-sN",
+    "viewbox": "0 0 109 109",
+    "generator": "scripts/generate_kana_strokes.py",
+    "generated_header": "src/activities/apps/japanese/KanaStroke.generated.h",
+    "runtime_note": "The firmware renders sampled centerline polylines from individual upstream stroke paths; it does not infer writing order from a font outline."
+  },
+  "verified_assets": {
+    "シ": "https://raw.githubusercontent.com/KanjiVG/kanjivg/70a0b7ae0c18ceb5cb358274b029cce0234a43bc/kanji/030b7.svg",
+    "ツ": "https://raw.githubusercontent.com/KanjiVG/kanjivg/70a0b7ae0c18ceb5cb358274b029cce0234a43bc/kanji/030c4.svg",
+    "ソ": "https://raw.githubusercontent.com/KanjiVG/kanjivg/70a0b7ae0c18ceb5cb358274b029cce0234a43bc/kanji/030bd.svg",
+    "ン": "https://raw.githubusercontent.com/KanjiVG/kanjivg/70a0b7ae0c18ceb5cb358274b029cce0234a43bc/kanji/030f3.svg"
+  },
+  "teaching_references": [
+    "https://www.tofugu.com/japanese/learn-katakana",
+    "https://guidetojapanese.org/learn/grammar/katakana",
+    "https://www.japanesepod101.com/lesson/video-s2-17-kantan-kana-17",
+    "https://www.jpf.go.jp/j/urawa/j_rsorcs/methods/dl/moji_U2P2_text.pdf"
+  ]
+}

@@ -1,0 +1,2664 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>設定 - 翰墨</title>
+  <style>
+    :root {
+      --font-color: #333;
+      --bg: #f5f5f5;
+      --title-color: #2c3e50;
+      --card-bg: #FFF;
+      --label-color: #7f8c8d;
+      --border-color: #eee;
+      --accent-color: rgb(110, 154, 130);
+      --accent-hover-color: #5a8c73;
+      --toggle-bg: #ccc;
+    }
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --font-color: #f5f5f5;
+        --bg: #333;
+        --title-color: #ecf0f1;
+        --card-bg: #444;
+        --label-color: #bdc3c7;
+        --border-color: #555;
+        --toggle-bg: #666;
+        color-scheme: dark;
+      }
+    }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+        Oxygen, Ubuntu, sans-serif;
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 20px;
+      background-color: var(--bg);
+      color: var(--font-color);
+    }
+        h1 {
+          color: var(--title-color);
+          border-bottom: 2px solid var(--accent-color);
+          padding-bottom: 10px;
+        }
+        /* The name sits in the middle and is the user's to change; nav.js fetches
+           it and hangs the rename control off it. */
+        h1.brand { display: flex; align-items: center; justify-content: center; gap: 10px; }
+    h2 {
+      color: var(--title-color);
+      margin-top: 0;
+    }
+    .card {
+      background: var(--card-bg);
+      border-radius: 8px;
+      padding: 20px;
+      margin: 15px 0;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+    .nav-links {
+      margin: 20px 0;
+      display: flex;
+      gap: 10px;
+    }
+
+      /* Sidebar shell: the nav is a column on the left, the page is the
+         column beside it. min-width:0 on the content matters -- the file
+         manager has wide rows and a flex child will not shrink below its
+         content without it. */
+      .shell {
+        display: flex;
+        gap: 20px;
+        align-items: flex-start;
+      }
+      .shell > .nav-links {
+        flex: 0 0 170px;
+        flex-direction: column;
+        position: sticky;
+        top: 20px;
+        margin: 0;
+        /* The category list grows with the firmware's settings, so the column
+           scrolls on its own instead of running off the bottom. */
+        max-height: calc(100vh - 40px);
+        overflow-y: auto;
+      }
+      .shell > .content {
+        flex: 1;
+        min-width: 0;
+      }
+      .shell > .content > *:first-child {
+        margin-top: 0;
+      }
+
+      /* The settings page has four independent panes; the sidebar picks one
+         rather than stacking all of them into one long scroll. */
+      .nav-group {
+        margin-top: 18px;
+        padding-top: 12px;
+        border-top: 1px solid var(--border-color);
+        font-size: 0.78rem;
+        letter-spacing: 0;
+        text-transform: uppercase;
+        color: var(--label-color);
+      }
+      /* The setting categories only exist once /api/settings answers, so their
+         links are injected into .nav-sub by installSettingsPanes(). */
+      .nav-sub {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+      }
+      .pane[hidden] { display: none; }
+      /* A 170px column on a phone leaves nothing for the page, so below this
+         the nav goes back to a row above the content. */
+      @media (max-width: 720px) {
+        .shell {
+          display: block;
+        }
+        .shell > .nav-links {
+          position: static;
+          flex-direction: row;
+          flex-wrap: wrap;
+          margin-bottom: 15px;
+          max-height: none;
+          overflow-y: visible;
+        }
+        .nav-group {
+          flex-basis: 100%;
+          margin-top: 10px;
+        }
+        .nav-sub {
+          flex-basis: 100%;
+          flex-direction: row;
+          flex-wrap: wrap;
+        }
+      }
+    .nav-links a {
+      padding: 10px 20px;
+      color: var(--font-color);
+      text-decoration: none;
+      border-radius: 4px;
+    }
+    .nav-links a.active {
+      background-color: var(--accent-color);
+      color: white;
+    }
+    .nav-links a:not(.active):hover {
+      background-color: var(--accent-hover-color);
+      color: white;
+    }
+    .setting-description { display: block; max-width: 32em; font-size: 12px; font-weight: normal; margin-top: 6px; }
+
+    .setting-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 10px 0;
+      border-bottom: 1px solid var(--border-color);
+    }
+    .setting-row:last-child {
+      border-bottom: none;
+    }
+    .setting-name {
+      font-weight: 500;
+      color: var(--label-color);
+      flex: 1;
+      min-width: 0;
+      padding-right: 12px;
+    }
+    .setting-control {
+      flex-shrink: 0;
+    }
+    .setting-control select,
+    .setting-control input[type="number"],
+    .setting-control input[type="text"],
+    .setting-control input[type="password"] {
+      padding: 6px 10px;
+      border: 1px solid #ddd;
+      border-radius: 4px;
+      font-size: 0.95em;
+      background: var(--card-bg);
+    }
+    .setting-control select {
+      min-width: 160px;
+    }
+    .setting-control input[type="text"],
+    .setting-control input[type="password"] {
+      width: 220px;
+    }
+    .setting-control input[type="number"] {
+      width: 80px;
+    }
+    /* Toggle switch */
+    .toggle-switch {
+      display: inline-block;
+      position: relative;
+      width: 48px;
+      height: 26px;
+    }
+    .toggle-switch input {
+      opacity: 0;
+      width: 0;
+      height: 0;
+    }
+    .toggle-slider {
+      position: absolute;
+      cursor: pointer;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background-color: var(--toggle-bg);
+      border-radius: 26px;
+      transition: 0.3s;
+    }
+    .toggle-slider:before {
+      position: absolute;
+      content: "";
+      height: 20px;
+      width: 20px;
+      left: 3px;
+      bottom: 3px;
+      background-color: white;
+      border-radius: 50%;
+      transition: 0.3s;
+    }
+    .toggle-switch input:checked + .toggle-slider {
+      background-color: var(--accent-color);
+    }
+    .toggle-switch input:checked + .toggle-slider:before {
+      transform: translateX(22px);
+    }
+    .save-container {
+      text-align: center;
+      margin: 20px 0;
+    }
+    .save-btn {
+      background-color: #27ae60;
+      color: white;
+      padding: 12px 40px;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      font-size: 1.1em;
+      font-weight: 600;
+    }
+    .save-btn:hover {
+      background-color: #219a52;
+    }
+    .save-btn:disabled {
+      background-color: #95a5a6;
+      cursor: not-allowed;
+    }
+    .message {
+      padding: 12px;
+      border-radius: 4px;
+      margin: 15px 0;
+      text-align: center;
+      display: none;
+    }
+    .message.success {
+      background-color: #d4edda;
+      color: #155724;
+      border: 1px solid #c3e6cb;
+    }
+    .message.error {
+      background-color: #f8d7da;
+      color: #721c24;
+      border: 1px solid #f5c6cb;
+    }
+    .loader-container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin: 20px 0;
+    }
+    .loader {
+      width: 48px;
+      height: 48px;
+      border: 5px solid #AAA;
+      border-bottom-color: transparent;
+      border-radius: 50%;
+      display: inline-block;
+      box-sizing: border-box;
+      animation: rotation 1s linear infinite;
+    }
+    @keyframes rotation {
+      from { transform: rotate(0deg); }
+      to { transform: rotate(360deg); }
+    }
+    .opds-server {
+      border: 1px solid var(--border-color);
+      border-radius: 6px;
+      padding: 12px;
+      margin: 10px 0;
+    }
+    .opds-server .setting-row:last-child {
+      border-bottom: none;
+    }
+    .opds-actions {
+      display: flex;
+      gap: 8px;
+      margin-top: 8px;
+    }
+    .btn-small {
+      padding: 6px 14px;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      font-size: 0.9em;
+    }
+    .btn-add {
+      background-color: var(--accent-color);
+      color: white;
+    }
+    .btn-add:hover {
+      background-color: var(--accent-hover-color);
+    }
+    .btn-delete {
+      background-color: #e74c3c;
+      color: white;
+    }
+    .btn-delete:hover {
+      background-color: #c0392b;
+    }
+    .btn-save-server {
+      background-color: #27ae60;
+      color: white;
+    }
+    .btn-save-server:hover {
+      background-color: #219a52;
+    }
+    @media (max-width: 600px) {
+      body {
+        padding: 10px;
+        font-size: 14px;
+      }
+      .card {
+        padding: 12px;
+        margin: 10px 0;
+      }
+      h1 {
+        font-size: 1.3em;
+      }
+      .nav-links a {
+        padding: 8px 12px;
+        font-size: 0.9em;
+      }
+      .setting-row {
+        flex-wrap: wrap;
+        gap: 6px;
+      }
+      .setting-control select,
+      .setting-control input[type="text"],
+      .setting-control input[type="password"] {
+        min-width: 0;
+        width: unset;
+      }
+    }
+    /* Sidebar links can be dragged into a different order; nav.js keeps it. */
+    [data-nav-group] [data-nav-key] { cursor: grab; touch-action: none; }
+    [data-nav-group].nav-reordering [data-nav-key] { cursor: grabbing; }
+    [data-nav-key].nav-dragging { opacity: 0.5; pointer-events: none; }
+    /* AirPage rows are built around the thumbnail: one wallpaper looks much
+       like another in a list of dates, and 3:5 matches the 480x800 panel. */
+    .airpage-row {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 10px 0;
+      border-bottom: 1px solid var(--border-color);
+    }
+    .airpage-pick { flex: 0 0 18px; width: 18px; height: 18px; margin: 0; }
+    .airpage-thumb {
+      flex: 0 0 54px;
+      width: 54px;
+      height: 90px;
+      object-fit: contain;
+      background: var(--border-color);
+      border-radius: 4px;
+    }
+    .airpage-fields { flex: 1; min-width: 0; display: flex; flex-direction: column; gap: 6px; }
+    .airpage-fields input[type="text"] { width: 100%; }
+    .airpage-note { color: var(--label-color); font-size: 0.85em; }
+    .airpage-bulk { display: flex; align-items: center; gap: 14px; padding: 6px 0 12px; }
+    .airpage-bulk label { display: flex; align-items: center; gap: 6px; cursor: pointer; }
+    .airnote-field { display: block; width: 100%; box-sizing: border-box; padding: 10px; margin: 8px 0 14px;
+      border: 1px solid var(--border-color); border-radius: 4px; background: var(--card-bg); color: var(--font-color); }
+    .airnote-body { min-height: 240px; resize: vertical; font: inherit; line-height: 1.5; }
+  .airnote-actions { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 8px; }
+#airnote-list { max-width: 100%; list-style: none; padding: 6px; display: flex; flex-direction: column; gap: 6px; }
+.airnote-item { display: flex; align-items: center; gap: 8px; padding: 4px 6px; border: 1px solid var(--border-color); border-radius: 6px; background: var(--card-bg); cursor: grab; touch-action: pan-y; }
+.airnote-item[aria-current="true"] { border-color: #a94f2c; box-shadow: inset 0 0 0 1px #a94f2c; }
+.airnote-item.dragging { opacity: .5; cursor: grabbing; }
+.airnote-item.dragover { border-top: 3px solid #a94f2c; }
+.airnote-handle { flex: none; color: var(--label-color); padding: 0 2px; }
+#airnote-container .airnote-pick { flex: 1 1 auto; min-width: 0; text-align: left; overflow-wrap: anywhere; background: transparent; border: none; }
+#airnote-container .airnote-order { flex: none; min-width: 44px; padding: 8px 10px; }
+#airnote-container .airnote-bulk-check { flex: none; width: 24px; height: 24px; margin: 10px; accent-color: #a94f2c; cursor: pointer; }
+#airnote-preview .airnote-item-select { flex: none; width: 24px; height: 24px; margin: 0 4px 0 0; accent-color: #a94f2c; cursor: pointer; }
+#airnote-container #airnote-item-delete { margin: 0 0 12px; }
+#airnote-container #airnote-bulk-target,
+#airnote-container #airnote-bulk-dest { flex: 1 1 180px; min-width: 0; max-width: 100%; min-height: 40px; box-sizing: border-box; padding: 8px; border: 1px solid var(--border-color); border-radius: 6px; background: var(--card-bg); color: var(--font-color); }
+#airnote-container .airnote-actions label { align-self: center; }
+#airnote-container button { font: inherit; min-height: 40px; padding: 8px 14px; border: 1px solid #d8cfc3; border-radius: 7px; background: #fffdfa; color: #4b382c; cursor: pointer; }
+#airnote-container button:hover { background: #f0e7dc; }
+#airnote-container button:disabled { opacity: .55; cursor: default; }
+#airnote-container #airnote-save { background: #a94f2c; color: white; border-color: #a94f2c; }
+#airnote-container button:focus-visible { outline: 2px solid #a94f2c; outline-offset: 2px; }
+    /* AirPhoto keeps the AirPage row shape: one row per picked photo, with the
+       photo's own name on it, so a failure says which photo failed. */
+    .airphoto-row {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 10px 0;
+      border-bottom: 1px solid var(--border-color);
+    }
+    .airphoto-fields { flex: 1; min-width: 0; display: flex; flex-direction: column; gap: 6px; }
+    .airphoto-name { overflow-wrap: anywhere; }
+    .airphoto-note { color: var(--label-color); font-size: 0.85em; }
+    .airphoto-row.done .airphoto-note { color: #2e7d32; }
+    .airphoto-row.failed .airphoto-note { color: #c0392b; }
+    .airphoto-bar { height: 6px; border-radius: 3px; background: var(--border-color); overflow: hidden; }
+    .airphoto-bar > span { display: block; height: 100%; width: 0; background: #a94f2c; }
+    .airphoto-gallery { display: flex; flex-wrap: wrap; gap: 12px; margin: 8px 0 4px; }
+    .airphoto-tile { width: 120px; display: flex; flex-direction: column; gap: 4px; align-items: center;
+      padding: 8px; border: 1px solid var(--border-color); border-radius: 6px; background: var(--card-bg); }
+    .airphoto-tile canvas { width: 100%; height: auto; image-rendering: pixelated; background: #fff; }
+    .airphoto-tile-name { font-size: 0.8em; overflow-wrap: anywhere; text-align: center; }
+    .airphoto-tile-note { font-size: 0.8em; color: var(--label-color); text-align: center; }
+    .airphoto-field { display: block; width: 100%; box-sizing: border-box; padding: 10px; margin: 8px 0 14px;
+      border: 1px solid var(--border-color); border-radius: 4px; background: var(--card-bg); color: var(--font-color); }
+    .airphoto-actions { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 8px; }
+    #airphoto-container button { font: inherit; min-height: 40px; padding: 8px 14px; border: 1px solid #d8cfc3; border-radius: 7px; background: #fffdfa; color: #4b382c; cursor: pointer; }
+    #airphoto-container button:hover { background: #f0e7dc; }
+    #airphoto-container button:disabled { opacity: .55; cursor: default; }
+    #airphoto-container #airphoto-send { background: #a94f2c; color: white; border-color: #a94f2c; }
+    #airphoto-container button:focus-visible { outline: 2px solid #a94f2c; outline-offset: 2px; }
+    @media (max-width: 720px) {
+      .shell > .nav-links > #settings-nav, .shell > .nav-links > #device-nav {
+        grid-column: 1 / -1; min-width: 0;
+      }
+    }
+</style>
+  <script src="/js/nav.js" defer></script>
+</head>
+<body>
+  <h1 class="brand"><span aria-hidden="true">📚</span><span data-brand="title">翰墨</span></h1>
+
+  <div class="shell">
+<nav class="nav-links" aria-label="主導覽">
+<div class="nav-sub" id="nav-pages" data-nav-group="pages">
+    <a href="/" data-nav-key="home">首頁</a>
+    <a href="/files" data-nav-key="files">檔案管理</a>
+    <a href="/device" data-nav-key="device">設備</a>
+    <a href="/fonts" data-nav-key="fonts">字型</a>
+    <a href="/settings" class="active" aria-current="page" data-nav-key="settings">設定</a>
+</div>
+  
+<div id="settings-nav"><div class="nav-group">設定</div>
+<div class="nav-sub" id="nav-cats" data-nav-group="cats"></div></div>
+<div id="device-nav" hidden><div class="nav-group">設備</div>
+<div class="nav-sub" id="nav-device" data-nav-group="device">
+<a href="#wifi" id="navpane-wifi" data-nav-key="wifi">Wi-Fi</a>
+<a href="#opds" id="navpane-opds" data-nav-key="opds">OPDS</a>
+<a href="#airpage" id="navpane-airpage" data-nav-key="airpage">AirPage</a>
+<a href="#airnote" id="navpane-airnote" data-nav-key="airnote">AirNote</a>
+<a href="#airphoto" id="navpane-airphoto" data-nav-key="airphoto">AirPhoto</a>
+</div></div>
+</nav>
+<div class="content">
+
+  <div id="message" class="message"></div>
+
+  <div id="settings-panes">
+    <div class="pane" id="pane-loading">
+      <div class="loader-container">
+        <span class="loader"></span>
+      </div>
+    </div>
+  </div>
+
+  <div class="save-container" id="save-container" style="display:none;">
+    <button class="save-btn" id="saveBtn" onclick="saveSettings()">儲存設定</button>
+  </div>
+
+  <div class="pane" id="pane-wifi" hidden><div id="wifi-container"></div></div>
+  <div class="pane" id="pane-opds" hidden><div id="opds-container"></div></div>
+  <div class="pane" id="pane-airpage" hidden><div id="airpage-container"></div></div>
+
+  <div class="pane" id="pane-airnote" hidden lang="zh-Hant">
+    <div class="card" id="airnote-container">
+      <h2>AirNote</h2>
+      <p>在這裡輸入文字並儲存，然後在 X4 Pro 的「應用 → AirNote」像書一樣閱讀。</p>
+      <div class="airnote-actions">
+        <button id="airnote-refresh" onclick="loadAirnotes()">重新整理</button>
+        <button id="airnote-more" onclick="loadAirnotes(true)" hidden>載入更多</button>
+        <button id="airnote-load" onclick="openAirnote()">載入編輯</button>
+        <button id="airnote-new" onclick="newAirnote()">新增筆記</button>
+      </div>
+      <div class="airnote-actions">
+        <button id="airnote-bulk-select-visible" onclick="selectVisibleAirnotes()">勾選已載入（最多 32 則）</button>
+        <button id="airnote-bulk-clear" onclick="clearSelectedAirnotes()">清除勾選</button>
+      </div>
+      <label id="airnote-list-label">已儲存筆記</label>
+      <ul class="airnote-field" id="airnote-list" aria-labelledby="airnote-list-label" aria-describedby="airnote-list-status"></ul>
+      <div class="airnote-actions">
+        <label for="airnote-bulk-target">將勾選筆記移到</label>
+        <select id="airnote-bulk-target" aria-label="移到已載入筆記之前或末尾"><option value="">筆記末尾</option></select>
+        <button id="airnote-bulk-order" onclick="moveSelectedAirnotesInOrder()">套用批次排序</button>
+      </div>
+      <div class="airnote-actions">
+        <label for="airnote-bulk-dest">現有 SD 資料夾</label>
+        <input id="airnote-bulk-dest" type="text" placeholder="/Read/Archive" autocomplete="off">
+        <button id="airnote-bulk-move" onclick="moveSelectedAirnotesToFolder()">移動勾選筆記到資料夾</button>
+      </div>
+      <div class="airnote-actions">
+        <button id="airnote-bulk-delete" onclick="deleteSelectedAirnotes()">刪除勾選筆記…</button>
+      </div>
+      <p class="hint" id="airnote-bulk-status" aria-live="polite"></p>
+      <p class="hint" id="airnote-list-status" aria-live="polite"></p>
+      <p id="airnote-mode" aria-live="polite"></p>
+      <label for="airnote-type">筆記類型</label>
+      <select class="airnote-field" id="airnote-type" onchange="airnotePreview()"><option value="text">一般筆記</option><option value="todo">待辦清單</option></select>
+      <label for="airnote-title">標題</label>
+      <input class="airnote-field" id="airnote-title" type="text" maxlength="80" placeholder="筆記標題">
+      <label for="airnote-text">內容</label>
+      <textarea class="airnote-field airnote-body" id="airnote-text" placeholder="輸入筆記內容…"></textarea>
+      <p class="hint" id="airnote-todo-help" hidden>每行一項，最多 64 項，每項最多 240 位元組。可在下方勾選或直接選擇事項的目標位置，再按儲存；也能在 X4 Pro 直接勾選，長按事項後點選目標位置。[x] 表示已完成，[ ] 表示未完成。</p>
+      <div id="airnote-preview" hidden aria-label="待辦清單預覽"></div>
+      <button id="airnote-item-delete" onclick="deleteSelectedAirnoteItems()" hidden>刪除勾選事項…</button>
+      <button id="airnote-save" onclick="uploadAirnote()">儲存到 X4 Pro</button>
+      <p class="hint">筆記會以 UTF-8 TXT 存在 SD 卡的 /AirNote，每則最多 16 KiB。裝置本機網頁沒有登入保護；請勿在不可信網路存放私密資料。</p>
+    </div>
+  </div>
+
+  <div class="pane" id="pane-airphoto" hidden lang="zh-Hant">
+    <div class="card" id="airphoto-container">
+      <h2>AirPhoto</h2>
+      <p>從這台電腦或手機挑選照片。系統會在你的瀏覽器裡轉換成 X4 Pro 能繪製的點陣圖格式，再透過與檔案管理相同的上傳連線傳到裝置。</p>
+      <label for="airphoto-file">照片</label>
+      <input class="airphoto-field" id="airphoto-file" type="file" accept="image/jpeg,image/png,image/bmp" multiple onchange="airphotoPicked()">
+      <label for="airphoto-crop">尺寸</label>
+      <select class="airphoto-field" id="airphoto-crop" onchange="airphotoOptionChanged()">
+        <option value="cover" selected>裁切填滿 480x800</option>
+        <option value="fit">完整照片（留白邊）</option>
+      </select>
+      <p class="hint">裁切填滿會把照片裁成面板的比例，每張傳上去的大小都一樣；完整照片不裁切，形狀不合時四周留白。</p>
+      <label for="airphoto-dither">抖動</label>
+      <select class="airphoto-field" id="airphoto-dither" onchange="airphotoOptionChanged()">
+        <option value="floyd" selected>Floyd-Steinberg</option>
+        <option value="none">無</option>
+      </select>
+      <p class="hint">Floyd-Steinberg 適合照片；無 適合純文字或線條圖。</p>
+      <label for="airphoto-brightness">亮度 <span id="airphoto-brightness-value">100</span></label>
+      <input class="airphoto-field" id="airphoto-brightness" type="range" min="0" max="200" step="5" value="100" oninput="airphotoOptionChanged()">
+      <label for="airphoto-contrast">對比度 <span id="airphoto-contrast-value">100</span></label>
+      <input class="airphoto-field" id="airphoto-contrast" type="range" min="0" max="200" step="5" value="100" oninput="airphotoOptionChanged()">
+      <p class="hint">亮度與對比度都是 100 時等於不調整。四階灰階的餘裕有限，建議先用 100 傳一張看看再微調。</p>
+      <div class="airphoto-actions">
+        <button id="airphoto-send" onclick="sendAirphotos()">傳送到 X4 Pro</button>
+        <button id="airphoto-clear" onclick="clearAirphotos()">清除清單</button>
+      </div>
+      <p class="hint" id="airphoto-status" aria-live="polite"></p>
+      <div id="airphoto-list" aria-live="polite"></div>
+      <h3 id="airphoto-gallery-label">X4 Pro 上的照片</h3>
+      <div class="airphoto-actions">
+        <button id="airphoto-gallery-refresh" onclick="loadAirphotoGallery()">重新整理照片</button>
+      </div>
+      <p class="hint" id="airphoto-gallery-status" aria-live="polite"></p>
+      <div class="airphoto-gallery" id="airphoto-gallery" aria-labelledby="airphoto-gallery-label"></div>
+      <p class="hint">每張照片都會傳送四份：原始檔案存入 /AirPhoto、直式顯示點陣圖及橫式顯示點陣圖存入 /AirPhoto/.view、可容納於 120x160 的縮圖存入 /AirPhoto/.thumb。這些點陣圖都是 4 階灰階並採用 Floyd-Steinberg 誤差擴散，這正是電子紙面板能顯示的層次。照片會逐張傳送；請保持此頁開啟，直到清單顯示每張照片都已完成。</p>
+      <p class="hint">JPEG／PNG 原始照片若寬度超過 2048 像素或高度超過 3072 像素，即使瀏覽器能產生預覽並完成上傳，X4 Pro 也無法解碼原圖來設為待機封面；以此尺寸直接複製到 SD 卡的照片，也無法由裝置建立預覽快取。若要使用這些功能，請先縮小照片再傳送。</p>
+    </div>
+  </div>
+
+  <div class="card">
+    <p style="text-align: center; color: #95a5a6; margin: 0;">
+      CrossPoint 電子閱讀器 • 開放原始碼
+    </p>
+  </div>
+
+</div>
+</div>
+<script>
+
+
+  let allSettings = [];
+  let originalValues = {};
+  // Pane bookkeeping. The setting categories are not known until /api/settings
+  // answers, so PANES is filled in by installSettingsPanes().
+  const IS_DEVICE_PAGE = /^\/device\/?$/.test(location.pathname);
+  const DEVICE_PANES = ['wifi', 'opds', 'airpage', 'airnote', 'airphoto'];
+  let settingsPanes = [];
+  let PANES = IS_DEVICE_PAGE ? DEVICE_PANES.slice() : [];
+  const legacyDeviceLink = !IS_DEVICE_PAGE && DEVICE_PANES.includes(location.hash.slice(1));
+  if (legacyDeviceLink) location.replace('/device' + location.search + location.hash);
+  document.getElementById('settings-nav').hidden = IS_DEVICE_PAGE;
+  document.getElementById('device-nav').hidden = !IS_DEVICE_PAGE;
+  document.querySelectorAll('#nav-pages [data-nav-key]').forEach(link => {
+    const active = link.dataset.navKey === (IS_DEVICE_PAGE ? 'device' : 'settings');
+    link.classList.toggle('active', active);
+    if (active) link.setAttribute('aria-current', 'page');
+    else link.removeAttribute('aria-current');
+  });
+  if (IS_DEVICE_PAGE) document.title = "設備 - 翰墨";
+  let settingsReady = false;
+  let preserveQuickResumeTimeoutOn = false;
+  let quickResumeTimeoutAutoEnabled = false;
+  const SLEEP_SCREEN_MODE = {
+    QUICK_RESUME: 6
+  };
+
+  function escapeHtml(unsafe) {
+    return unsafe
+      .replaceAll("&", "&amp;")
+      .replaceAll("<", "&lt;")
+      .replaceAll(">", "&gt;")
+      .replaceAll('"', "&quot;")
+      .replaceAll("'", "&#039;");
+  }
+
+  function showMessage(text, isError) {
+    const msg = document.getElementById('message');
+    msg.textContent = text;
+    msg.className = 'message ' + (isError ? 'error' : 'success');
+    msg.style.display = 'block';
+    setTimeout(function() { msg.style.display = 'none'; }, 4000);
+  }
+
+  function renderControl(setting) {
+    const id = 'setting-' + setting.key;
+
+    if (setting.type === 'toggle') {
+      const checked = setting.value ? 'checked' : '';
+      return '<label class="toggle-switch">' +
+        '<input type="checkbox" id="' + id + '" aria-label="' + escapeHtml(setting.name) + '" ' + checked + ' onchange="handleSettingChanged(\'' + setting.key + '\')">' +
+        '<span class="toggle-slider"></span></label>';
+    }
+
+    if (setting.type === 'enum') {
+      let html = '<select id="' + id + '" aria-label="' + escapeHtml(setting.name) + '" onchange="handleSettingChanged(\'' + setting.key + '\')">';
+      setting.options.forEach(function(opt, idx) {
+        // Saved action 10 is retired. Keep its disabled placeholder only when
+        // already selected so saving unrelated settings never rewrites that ID.
+        if (/^homeShortcut[1-6]$/.test(setting.key) && idx === 10 && setting.value !== 10) return;
+        const selected = idx === setting.value ? ' selected' : '';
+        const disabled = /^homeShortcut[1-6]$/.test(setting.key) && idx === 10 ? ' disabled' : '';
+        html += '<option value="' + idx + '"' + selected + disabled + '>' + escapeHtml(opt) + '</option>';
+      });
+      html += '</select>';
+      return html;
+    }
+
+    if (setting.type === 'value') {
+      return '<input type="number" id="' + id + '" value="' + setting.value + '"' +
+        ' min="' + setting.min + '" max="' + setting.max + '" step="' + setting.step + '"' +
+        ' onchange="handleSettingChanged(\'' + setting.key + '\')">';
+    }
+
+    if (setting.type === 'string') {
+      const inputType = /password|passwd|secret/i.test(setting.key) || (setting.name.includes('密碼') || setting.name.includes('密码')) ? 'password' : 'text';
+      const val = setting.value || '';
+      return '<input type="' + inputType + '" id="' + id + '" value="' + escapeHtml(val) + '"' +
+        ' oninput="handleSettingChanged(\'' + setting.key + '\')">';
+    }
+
+    return '';
+  }
+
+  function getValue(setting) {
+    const el = document.getElementById('setting-' + setting.key);
+    if (!el) return undefined;
+
+    if (setting.type === 'toggle') {
+      return el.checked ? 1 : 0;
+    }
+    if (setting.type === 'enum') {
+      return parseInt(el.value, 10);
+    }
+    if (setting.type === 'value') {
+      return parseInt(el.value, 10);
+    }
+    if (setting.type === 'string') {
+      return el.value;
+    }
+    return undefined;
+  }
+
+  function markChanged() {
+    document.getElementById('saveBtn').disabled = false;
+  }
+
+  function findSetting(key) {
+    return allSettings.find(function(s) { return s.key === key; });
+  }
+
+  function getControl(key) {
+    return document.getElementById('setting-' + key);
+  }
+
+  function getControlValue(key) {
+    const setting = findSetting(key);
+    const el = getControl(key);
+    if (!setting || !el) return undefined;
+
+    if (setting.type === 'toggle') {
+      return el.checked ? 1 : 0;
+    }
+    if (setting.type === 'enum' || setting.type === 'value') {
+      return parseInt(el.value, 10);
+    }
+    return el.value;
+  }
+
+  function setControlValue(key, value) {
+    const setting = findSetting(key);
+    const el = getControl(key);
+    if (!setting || !el) return false;
+
+    if (setting.type === 'toggle') {
+      const checked = !!value;
+      if (el.checked === checked) return false;
+      el.checked = checked;
+      return true;
+    }
+
+    const nextValue = String(value);
+    if (el.value === nextValue) return false;
+    el.value = nextValue;
+    return true;
+  }
+
+  function isQuickResumeSleepScreenSelected() {
+    const sleepScreen = findSetting('sleepScreen');
+    const sleepScreenValue = getControlValue('sleepScreen');
+    if (!sleepScreen || sleepScreenValue === undefined || !Number.isFinite(sleepScreenValue)) return false;
+
+    let selectedValue = sleepScreenValue;
+    if (Array.isArray(sleepScreen.values)) {
+      selectedValue = Number(sleepScreen.values[sleepScreenValue]);
+    } else if (Array.isArray(sleepScreen.options)) {
+      const selectedOption = sleepScreen.options[sleepScreenValue];
+      if (selectedOption && typeof selectedOption === 'object' && 'value' in selectedOption) {
+        selectedValue = Number(selectedOption.value);
+      }
+    }
+
+    return selectedValue === SLEEP_SCREEN_MODE.QUICK_RESUME;
+  }
+
+  function syncQuickResumeTimeoutForSleepScreen(sleepScreenChanged, quickResumeTimeoutChanged) {
+    const timeoutValue = getControlValue('quickResumeSleepScreen');
+    if (timeoutValue === undefined) return false;
+
+    let changed = false;
+    if (quickResumeTimeoutChanged) {
+      preserveQuickResumeTimeoutOn = timeoutValue === 1;
+      quickResumeTimeoutAutoEnabled = false;
+    }
+
+    if (isQuickResumeSleepScreenSelected()) {
+      if (timeoutValue !== 1) {
+        changed = setControlValue('quickResumeSleepScreen', 1);
+        quickResumeTimeoutAutoEnabled = !preserveQuickResumeTimeoutOn;
+      } else if (sleepScreenChanged && !preserveQuickResumeTimeoutOn) {
+        quickResumeTimeoutAutoEnabled = true;
+      }
+      return changed;
+    }
+
+    if (sleepScreenChanged && quickResumeTimeoutAutoEnabled && !preserveQuickResumeTimeoutOn) {
+      changed = setControlValue('quickResumeSleepScreen', 0);
+      quickResumeTimeoutAutoEnabled = false;
+    }
+    return changed;
+  }
+
+  function updateSettingsVisibility() {
+    const shortPwrBtnVal = getControlValue('shortPwrBtn');
+    const pwrBtnFootnoteBackRow = document.getElementById('row-setting-pwrBtnFootnoteBack');
+    if (pwrBtnFootnoteBackRow) {
+      if (shortPwrBtnVal === 4) {
+        pwrBtnFootnoteBackRow.style.display = '';
+      } else {
+        pwrBtnFootnoteBackRow.style.display = 'none';
+      }
+    }
+  }
+
+  function handleSettingChanged(key) {
+    syncQuickResumeTimeoutForSleepScreen(key === 'sleepScreen', key === 'quickResumeSleepScreen');
+    if (key === 'shortPwrBtn') {
+      updateSettingsVisibility();
+    }
+    markChanged();
+  }
+
+  async function loadSettings() {
+    try {
+      // An explicit browser choice applies to API labels too, without changing
+      // the device language. An absent/unknown choice keeps legacy API behavior.
+      const ui = new URLSearchParams(location.search).get('ui');
+      const endpoint = ui === 'en' || ui === 'zh-CN' || ui === 'zh-Hant'
+        ? '/api/settings?ui=' + encodeURIComponent(ui) : '/api/settings';
+      const response = await fetch(endpoint);
+      if (!response.ok) {
+        throw new Error('讀取設定失敗：' + response.status);
+      }
+      allSettings = await response.json();
+
+      // Store original values
+      originalValues = {};
+      allSettings.forEach(function(s) {
+        originalValues[s.key] = s.value;
+      });
+
+      // Group by category, preserving the order the firmware sent them in.
+      const groups = {};
+      const categories = [];
+      allSettings.forEach(function(s) {
+        if (!groups[s.category]) {
+          groups[s.category] = [];
+          categories.push(s.category);
+        }
+        groups[s.category].push(s);
+      });
+
+      installSettingsPanes(categories.map(function(category, index) {
+        let html = '<div class="card"><h2>' + escapeHtml(category) + '</h2>';
+        function renderSetting(s) {
+          return '<div class="setting-row" id="row-setting-' + s.key + '">' +
+            '<span class="setting-name">' + escapeHtml(s.name) +
+            (s.description ? '<small class="setting-description">' + escapeHtml(s.description) + '</small>' : '') + '</span>' +
+            '<span class="setting-control">' + renderControl(s) + '</span>' +
+            '</div>';
+        }
+        const rows = groups[category];
+        const panels = ['quickPanel1', 'quickPanel2', 'quickPanel3', 'quickPanel4', 'quickPanel5', 'quickPanel6'];
+        const taps = ['cornerTapTopLeft', 'cornerTapMiddleLeft', 'cornerTapBottomLeft',
+                      'cornerTapTopRight', 'cornerTapMiddleRight', 'cornerTapBottomRight'];
+        const homeSlots = ['homeShortcut1', 'homeShortcut2', 'homeShortcut3', 'homeShortcut4', 'homeShortcut5', 'homeShortcut6'];
+        const homeText = ['homeLabel', 'homeLabelPos', 'homeBatteryPos', 'homeClockPos'];
+        const gestures=['gestureNextPage','gesturePreviousPage','gesturePinchFont','gestureRotation','gestureStatusBar','gestureSwipeUp','gestureSwipeDown','gestureSwipeLeft','gestureSwipeRight'];
+        rows.filter(s => !panels.includes(s.key) && !taps.includes(s.key) &&
+                         !homeSlots.includes(s.key) && !homeText.includes(s.key) && !gestures.includes(s.key)).forEach(s => { html += renderSetting(s); });
+        [[homeSlots, '首頁捷徑選單'], [homeText, '首頁文字選單']].forEach(function(group) {
+          if (!rows.some(s => group[0].includes(s.key))) return;
+          html += '<details class="home-customization"><summary>' + group[1] + '</summary>';
+          group[0].forEach(function(key) {
+            const setting = rows.find(s => s.key === key);
+            if (setting) html += renderSetting(setting);
+          });
+          html += '</details>';
+        });
+        if(rows.some(s=>gestures.includes(s.key))) {
+          html+='<details class="reader-gestures"><summary>輕觸與手勢</summary>';
+          gestures.forEach(key=>{const setting=rows.find(s=>s.key===key);if(setting)html+=renderSetting(setting);});
+          html+='<p>新手勢預設關閉，需啟用閱讀觸控。縮放、旋轉和狀態列輕觸適用於 EPUB／TXT；章節操作適用於 EPUB。縮放需要已安裝多種字級。再次輕觸原狀態列位置即可顯示。</p></details>';
+        }
+        if (rows.some(s => panels.includes(s.key) || taps.includes(s.key))) {
+          html += '<details class="screen-shortcuts"><summary>畫面快捷列</summary>';
+          [[panels, '下拉快捷列'], [taps, '螢幕輕觸區域']].forEach(function(group) {
+            html += '<h3>' + group[1] + '</h3>';
+            group[0].forEach(function(key) {
+              const setting = rows.find(s => s.key === key);
+              if (setting) html += renderSetting(setting);
+            });
+          });
+          html += '<p>輕觸區域適用於 EPUB 閱讀；停用時保留原本翻頁操作。</p></details>';
+        }
+        html += '</div>';
+        return {id: 'cat-' + index, label: category, html: html};
+      }));
+
+      settingsReady = true;
+      updateSettingsVisibility();
+      document.getElementById('saveBtn').disabled = true;
+      preserveQuickResumeTimeoutOn = getControlValue('quickResumeSleepScreen') === 1;
+      quickResumeTimeoutAutoEnabled = false;
+      if (syncQuickResumeTimeoutForSleepScreen(true, false)) {
+        markChanged();
+      }
+    } catch (e) {
+      console.error(e);
+      installSettingsPanes([{
+        id: 'cat-0',
+        label: '設定',
+        html: '<div class="card"><p style="text-align:center;color:#e74c3c;">無法讀取設定</p></div>'
+      }]);
+    }
+  }
+
+  async function saveSettings() {
+    const btn = document.getElementById('saveBtn');
+    btn.disabled = true;
+    btn.textContent = '正在儲存…';
+
+    // Collect only changed values
+    const changes = {};
+    allSettings.forEach(function(s) {
+      const current = getValue(s);
+      if (current !== undefined && current !== originalValues[s.key]) {
+        changes[s.key] = current;
+      }
+    });
+
+    if (Object.keys(changes).length === 0) {
+      showMessage('沒有需要儲存的變更。', false);
+      btn.textContent = '儲存設定';
+      return;
+    }
+
+    try {
+      for (const key of ['hotspotName', 'versionDisplayName', 'homeLabel']) {
+        if (!Object.prototype.hasOwnProperty.call(changes, key)) continue;
+        const name = changes[key];
+        const setting = findSetting(key);
+        if (name !== '' && (new TextEncoder().encode(name).length > setting.maxBytes ||
+            /^[ ]+$/.test(name) || /[\u0000-\u001f\u007f-\u009f]/.test(name))) {
+          throw new Error(setting.validationError);
+        }
+      }
+      // Keep errors in this browser's chosen language; only changed values
+      // enter the JSON body, never a device-language setting.
+      const ui = new URLSearchParams(location.search).get('ui');
+      const endpoint = ui === 'en' || ui === 'zh-CN' || ui === 'zh-Hant'
+        ? '/api/settings?ui=' + encodeURIComponent(ui) : '/api/settings';
+      const response = await fetch(endpoint, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(changes)
+      });
+
+      if (!response.ok) {
+        const text = await response.text();
+        throw new Error(text || '儲存失敗');
+      }
+
+      if (changes.hotspotName === '') {
+        changes.hotspotName = findSetting('hotspotName').defaultValue;
+        setControlValue('hotspotName', changes.hotspotName);
+      }
+
+      // Update original values to new values
+      for (const key in changes) {
+        originalValues[key] = changes[key];
+      }
+
+      showMessage('設定已儲存。', false);
+    } catch (e) {
+      console.error(e);
+      showMessage('錯誤：' + e.message, true);
+      btn.disabled = false;
+    }
+
+    btn.textContent = '儲存設定';
+  }
+
+  // --- Wi-Fi Network Management ---
+  // Renders an editable list of saved Wi-Fi networks using /api/wifi endpoints.
+  // Password fields are never pre-filled; when left blank during edit, existing
+  // passwords remain unchanged server-side.
+  let wifiNetworks = [];
+
+  function renderWifiNetwork(net, idx) {
+    const isNew = idx === -1;
+    const id = isNew ? 'new' : idx;
+    const lastConnected = net.isLastConnected
+      ? '<div style="margin-top:8px;color:var(--label-color);font-size:0.9em;">最近連線的網路</div>'
+      : '';
+
+    return '<div class="opds-server" id="wifi-' + id + '">' +
+      '<div class="setting-row">' +
+        '<span class="setting-name">SSID</span>' +
+        '<span class="setting-control"><input type="text" id="wifi-ssid-' + id + '" value="' + escapeHtml(net.ssid || '') + '"></span>' +
+      '</div>' +
+      '<div class="setting-row">' +
+        '<span class="setting-name">密碼</span>' +
+        '<span class="setting-control"><input type="password" id="wifi-pass-' + id + '" placeholder="' + (net.hasPassword ? '（保持不變）' : '') + '"></span>' +
+      '</div>' +
+      lastConnected +
+      '<div class="opds-actions">' +
+        '<button class="btn-small btn-save-server" onclick="saveWifiNetwork(' + idx + ')">儲存</button>' +
+        (isNew ? '' : '<button class="btn-small btn-delete" onclick="deleteWifiNetwork(' + idx + ')">刪除</button>') +
+      '</div>' +
+    '</div>';
+  }
+
+  function renderWifiSection() {
+    const container = document.getElementById('wifi-container');
+    let html = '<div class="card"><h2>Wi-Fi 網路</h2>';
+
+    if (wifiNetworks.length === 0) {
+      html += '<p style="color:var(--label-color);text-align:center;">尚未儲存 Wi-Fi 網路</p>';
+    } else {
+      wifiNetworks.forEach(function(net, idx) {
+        html += renderWifiNetwork(net, idx);
+      });
+    }
+
+    html += '<div style="margin-top:12px;text-align:center;">' +
+      '<button class="btn-small btn-add" onclick="addWifiNetwork()">+ 新增網路</button>' +
+    '</div></div>';
+    container.innerHTML = html;
+  }
+
+  async function loadWifiNetworks() {
+    try {
+      const resp = await fetch('/api/wifi');
+      if (!resp.ok) throw new Error('讀取失敗');
+      wifiNetworks = await resp.json();
+      renderWifiSection();
+    } catch (e) {
+      console.error('Wi-Fi load error:', e);
+    }
+  }
+
+  function addWifiNetwork() {
+    const container = document.getElementById('wifi-container');
+    const card = container.querySelector('.card');
+    const addBtn = card.querySelector('.btn-add').parentElement;
+    // Prevent multiple unsaved new-network forms at once (idx -1 -> id "new")
+    if (document.getElementById('wifi-new')) return;
+    addBtn.insertAdjacentHTML('beforebegin', renderWifiNetwork({ssid:'',hasPassword:false,isLastConnected:false}, -1));
+  }
+
+  async function saveWifiNetwork(idx) {
+    const id = idx === -1 ? 'new' : idx;
+    const ssid = document.getElementById('wifi-ssid-' + id).value.trim();
+    if (!ssid) {
+      showMessage('請輸入 SSID。', true);
+      return;
+    }
+
+    const data = { ssid: ssid };
+    // Only include password when the user actually typed something; omitting it
+    // tells the server to preserve an existing password.
+    const pass = document.getElementById('wifi-pass-' + id).value;
+    if (pass) data.password = pass;
+    if (idx >= 0) data.index = idx;
+
+    try {
+      const resp = await fetch('/api/wifi', {
+        method: 'POST',
+        headers: {'Content-Type': 'application/json'},
+        body: JSON.stringify(data)
+      });
+      if (!resp.ok) throw new Error(await resp.text());
+      showMessage('Wi-Fi 網路已儲存。', false);
+      await loadWifiNetworks();
+    } catch (e) {
+      showMessage('錯誤：' + e.message, true);
+    }
+  }
+
+  async function deleteWifiNetwork(idx) {
+    if (!confirm('確定刪除這個 Wi-Fi 網路嗎？')) return;
+    try {
+      const resp = await fetch('/api/wifi/delete', {
+        method: 'POST',
+        headers: {'Content-Type': 'application/json'},
+        body: JSON.stringify({index: idx})
+      });
+      if (!resp.ok) throw new Error(await resp.text());
+      showMessage('Wi-Fi 網路已刪除。', false);
+      await loadWifiNetworks();
+    } catch (e) {
+      showMessage('錯誤：' + e.message, true);
+    }
+  }
+
+  // --- OPDS Server Management ---
+  // Dynamically renders an editable list of OPDS servers, communicating with the
+  // /api/opds REST endpoints. Password fields are never pre-filled for security;
+  // the "(unchanged)" placeholder indicates an existing password is preserved on save.
+  let opdsServers = [];
+
+  function renderOpdsServer(srv, idx) {
+    const isNew = idx === -1;
+    const id = isNew ? 'new' : idx;
+    return '<div class="opds-server" id="opds-' + id + '">' +
+      '<div class="setting-row">' +
+        '<span class="setting-name">伺服器名稱</span>' +
+        '<span class="setting-control"><input type="text" id="opds-name-' + id + '" value="' + escapeHtml(srv.name || '') + '"></span>' +
+      '</div>' +
+      '<div class="setting-row">' +
+        '<span class="setting-name">URL</span>' +
+        '<span class="setting-control"><input type="text" id="opds-url-' + id + '" value="' + escapeHtml(srv.url || '') + '"></span>' +
+      '</div>' +
+      '<div class="setting-row">' +
+        '<span class="setting-name">使用者名稱</span>' +
+        '<span class="setting-control"><input type="text" id="opds-user-' + id + '" value="' + escapeHtml(srv.username || '') + '"></span>' +
+      '</div>' +
+      '<div class="setting-row">' +
+        '<span class="setting-name">密碼</span>' +
+        '<span class="setting-control"><input type="password" id="opds-pass-' + id + '" placeholder="' + (srv.hasPassword ? '（保持不變）' : '') + '"></span>' +
+      '</div>' +
+      '<div class="opds-actions">' +
+        '<button class="btn-small btn-save-server" onclick="saveOpdsServer(' + idx + ')">儲存</button>' +
+        (isNew ? '' : '<button class="btn-small btn-delete" onclick="deleteOpdsServer(' + idx + ')">刪除</button>') +
+      '</div>' +
+    '</div>';
+  }
+
+  function renderOpdsSection() {
+    const container = document.getElementById('opds-container');
+    let html = '<div class="card"><h2>OPDS 伺服器</h2>';
+
+    if (opdsServers.length === 0) {
+      html += '<p style="color:var(--label-color);text-align:center;">尚未設定 OPDS 伺服器</p>';
+    } else {
+      opdsServers.forEach(function(srv, idx) {
+        html += renderOpdsServer(srv, idx);
+      });
+    }
+
+    html += '<div style="margin-top:12px;text-align:center;">' +
+      '<button class="btn-small btn-add" onclick="addOpdsServer()">+ 新增伺服器</button>' +
+    '</div></div>';
+    container.innerHTML = html;
+  }
+
+  async function loadOpdsServers() {
+    try {
+      const resp = await fetch('/api/opds');
+      if (!resp.ok) throw new Error('讀取失敗');
+      opdsServers = await resp.json();
+      renderOpdsSection();
+    } catch (e) {
+      console.error('OPDS load error:', e);
+    }
+  }
+
+  function addOpdsServer() {
+    const container = document.getElementById('opds-container');
+    const card = container.querySelector('.card');
+    const addBtn = card.querySelector('.btn-add').parentElement;
+    // Prevent multiple unsaved new-server forms at once (idx -1 → id "new")
+    if (document.getElementById('opds-new')) return;
+    addBtn.insertAdjacentHTML('beforebegin', renderOpdsServer({name:'',url:'',username:'',hasPassword:false}, -1));
+  }
+
+  async function saveOpdsServer(idx) {
+    const id = idx === -1 ? 'new' : idx;
+    const data = {
+      name: document.getElementById('opds-name-' + id).value,
+      url: document.getElementById('opds-url-' + id).value,
+      username: document.getElementById('opds-user-' + id).value,
+    };
+    // Only include password in payload when the user actually typed something;
+    // omitting it tells the server to keep the existing password.
+    const pass = document.getElementById('opds-pass-' + id).value;
+    if (pass) data.password = pass;
+    if (idx >= 0) data.index = idx;
+
+    try {
+      const resp = await fetch('/api/opds', {
+        method: 'POST',
+        headers: {'Content-Type': 'application/json'},
+        body: JSON.stringify(data)
+      });
+      if (!resp.ok) throw new Error(await resp.text());
+      showMessage('OPDS 伺服器已儲存。', false);
+      await loadOpdsServers();
+    } catch (e) {
+      showMessage('錯誤：' + e.message, true);
+    }
+  }
+
+  async function deleteOpdsServer(idx) {
+    if (!confirm('確定刪除這個 OPDS 伺服器嗎？')) return;
+    try {
+      const resp = await fetch('/api/opds/delete', {
+        method: 'POST',
+        headers: {'Content-Type': 'application/json'},
+        body: JSON.stringify({index: idx})
+      });
+      if (!resp.ok) throw new Error(await resp.text());
+      showMessage('OPDS 伺服器已刪除。', false);
+      await loadOpdsServers();
+    } catch (e) {
+      showMessage('錯誤：' + e.message, true);
+    }
+  }
+
+  // Sequential, not concurrent: the device's web server handles one client
+  // connection at a time, and three simultaneous fetches on page load can
+  // stall long enough inside a single response to trip the firmware watchdog.
+  (async () => {
+    if (legacyDeviceLink) return;
+    if (IS_DEVICE_PAGE) {
+      await loadWifiNetworks();
+      await loadOpdsServers();
+      await loadAirpage();
+      document.getElementById('settings-panes').hidden = true;
+    } else {
+      await loadSettings();
+    }
+    showPane(location.hash.slice(1));
+  })();
+
+// ---- AirPage images -------------------------------------------------------
+// The id is the identity: it is what the history FILENAME encodes and what a
+// name is keyed to. Never renames a file -- see AirPageImageNames.
+let airpageImages = [];
+// Bumped by every render so a thumbnail pass knows it has been superseded.
+let airpageThumbRun = 0;
+
+function airpageRow(img) {
+  const id = escapeHtml(img.id);
+  const dims = escapeHtml(img.format + ' \u00b7 ' + img.width + '\u00d7' + img.height);
+  // The live image has no archive id yet, so there is nothing stable to hang a
+  // name on and nothing to delete: it is what the panel is showing.
+  const fields = img.current
+    ? '<span>目前圖片</span><span class="airpage-note">' + dims + '</span>'
+    : '<input type="text" id="airpage-name-' + id + '" value="' + escapeHtml(img.name || '') +
+      '" placeholder="未命名">' +
+      '<span class="airpage-note">' + dims + '</span>';
+  return '<div class="airpage-row" id="airpage-' + id + '">' +
+    (img.current
+      ? '<span class="airpage-pick"></span>'
+      : '<input type="checkbox" class="airpage-pick" value="' + id + '" onchange="updateAirpageSelection()">') +
+    '<img class="airpage-thumb" alt="' + escapeHtml(img.name || dims) +
+    '" data-src="/api/airpage/image?id=' + id + '">' +
+    '<div class="airpage-fields">' + fields + '</div>' +
+    (img.current ? '' : '<button class="btn-small" onclick="saveAirpageName(\'' + id + '\')">重新命名</button>') +
+    '</div>';
+}
+
+function renderAirpage() {
+  let html = '<div class="card"><h2>AirPage 圖片</h2>';
+  if (airpageImages.some(function (img) { return !img.current; })) {
+    html += '<div class="airpage-bulk">' +
+      '<label><input type="checkbox" id="airpage-all" onchange="toggleAirpageAll()">全選</label>' +
+      '<button class="btn-small btn-delete" id="airpage-delete" disabled ' +
+      'onclick="deleteAirpageSelected()">刪除所選</button></div>';
+  }
+  html += airpageImages.map(airpageRow).join('');
+  html += '<div class="setting-row"><span class="setting-label">上傳照片作為桌布</span>' +
+          '<span class="setting-control"><input type="file" id="airpage-file" accept="image/*">' +
+          '<button onclick="uploadAirpage()">上傳</button></span></div>';
+  html += '<p class="hint">上傳後會取代目前的 AirPage 圖片。</p>';
+  html += '</div>';
+  document.getElementById('airpage-container').innerHTML = html;
+  updateAirpageSelection();
+  loadAirpageThumbs();
+}
+
+// The device answers one connection at a time, so the thumbnails are asked for
+// one after another. A newer render abandons whatever this pass had left.
+async function loadAirpageThumbs() {
+  const run = ++airpageThumbRun;
+  const pending = Array.prototype.slice.call(document.querySelectorAll('.airpage-thumb[data-src]'));
+  for (const thumb of pending) {
+    if (run !== airpageThumbRun) return;
+    const src = thumb.getAttribute('data-src');
+    thumb.removeAttribute('data-src');
+    await new Promise(function (resolve) {
+      thumb.addEventListener('load', resolve, {once: true});
+      thumb.addEventListener('error', resolve, {once: true});
+      thumb.src = src;
+    });
+  }
+}
+
+function airpagePicks() {
+  return document.querySelectorAll('.airpage-pick[type="checkbox"]');
+}
+
+function updateAirpageSelection() {
+  const chosen = document.querySelectorAll('.airpage-pick[type="checkbox"]:checked');
+  const button = document.getElementById('airpage-delete');
+  if (button) {
+    button.disabled = chosen.length === 0;
+    button.textContent = chosen.length ? '刪除所選（' + chosen.length + '）' : '刪除所選';
+  }
+  const all = document.getElementById('airpage-all');
+  if (all) {
+    const total = airpagePicks().length;
+    all.checked = total > 0 && chosen.length === total;
+    all.indeterminate = chosen.length > 0 && chosen.length < total;
+  }
+}
+
+function toggleAirpageAll() {
+  const all = document.getElementById('airpage-all');
+  Array.prototype.forEach.call(airpagePicks(), function (box) { box.checked = all.checked; });
+  updateAirpageSelection();
+}
+
+async function deleteAirpageSelected() {
+  const ids = Array.prototype.map.call(
+    document.querySelectorAll('.airpage-pick[type="checkbox"]:checked'),
+    function (box) { return box.value; });
+  if (!ids.length) return;
+  if (!confirm('確定刪除所選的 ' + ids.length + ' 張圖片嗎？')) return;
+  try {
+    const resp = await fetch('/api/airpage/delete', {
+      method: 'POST',
+      headers: {'Content-Type': 'application/json'},
+      body: JSON.stringify({ids: ids})
+    });
+    if (!resp.ok) throw new Error(await resp.text());
+    showMessage('已刪除', false);
+    await loadAirpage();
+  } catch (e) {
+    showMessage('錯誤：' + e.message, true);
+  }
+}
+
+async function loadAirpage() {
+  try {
+    const resp = await fetch('/api/airpage');
+    if (!resp.ok) return;
+    airpageImages = await resp.json();
+    renderAirpage();
+  } catch (e) { /* the screen may have left the transfer page */ }
+}
+
+async function saveAirpageName(id) {
+  const input = document.getElementById('airpage-name-' + id);
+  if (!input) return;
+  const resp = await fetch('/api/airpage/name', {
+    method: 'POST', headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ id: id, name: input.value })
+  });
+  showMessage(resp.ok ? '已儲存' : '失敗', !resp.ok);
+  // Only the sidecar changed. Re-listing would re-render every row, which
+  // re-sets every thumbnail src -- and the live image is sent no-store, so a
+  // rename would pull a full-size BMP back down the one connection the device
+  // has. Update what we already hold instead.
+  if (!resp.ok) return;
+  const entry = airpageImages.find(function (img) { return img.id === id; });
+  if (entry) entry.name = input.value.trim();
+}
+
+async function uploadAirpage() {
+  const picker = document.getElementById('airpage-file');
+  if (!picker || !picker.files.length) return;
+  const form = new FormData();
+  form.append('file', picker.files[0]);
+  showMessage('上傳中…', false);
+  const resp = await fetch('/api/airpage/wallpaper', { method: 'POST', body: form });
+  showMessage(resp.ok ? '已儲存' : '失敗', !resp.ok);
+  if (resp.ok) loadAirpage();
+}
+
+
+// ---- AirPhoto photos -------------------------------------------------------
+// The panel is 480x800 with four gray levels, and the ESP32 has neither the RAM
+// nor the seconds to rescale a phone photo, so the conversion happens here in
+// the browser. Each photo becomes three uploads -- the original to keep, a
+// display bitmap and a thumbnail -- pushed over the same WebSocket upload
+// protocol the file manager uses.
+const AIRPHOTO_DIR = '/AirPhoto';
+const AIRPHOTO_VIEW_DIR = '/AirPhoto/.view';
+const AIRPHOTO_THUMB_DIR = '/AirPhoto/.thumb';
+const AIRPHOTO_VIEW = {width: 480, height: 800};   // the panel itself
+const AIRPHOTO_LAND_VIEW = {width: 800, height: 480}; // the same panel turned
+const AIRPHOTO_THUMB = {width: 120, height: 160};  // the on-device picker grid
+const AIRPHOTO_WS_PORT = 81;   // HTTP is 80, the upload socket sits next to it
+const AIRPHOTO_WS_OPEN = 1;    // WebSocket.OPEN
+const AIRPHOTO_CHUNK = 4096;   // 4 KiB is what the device keeps up with
+const AIRPHOTO_MAX_BYTES = 12 * 1024 * 1024;
+// The only four levels the panel shows. Bitmap.cpp reads palette entries as
+// B,G,R,reserved, and 2bpp is treated as a native palette: no device dithering.
+const AIRPHOTO_PALETTE = [0, 85, 170, 255];
+// Crop to the panel by default: a letterboxed photo arrives at a different
+// size for every source shape, which is what made the gallery look ragged.
+const AIRPHOTO_DEFAULTS = {crop: 'cover', dither: 'floyd', brightness: 100, contrast: 100};
+const AIRPHOTO_STORE = 'airphoto.options.v1';
+const airphotoWords = {"help": "請挑選一張或多張照片。系統會在此瀏覽器轉換，然後逐張傳送。", "picked": "已準備 %d 張照片，可以開始傳送。", "waiting": "等待中", "working": "正在瀏覽器裡轉換\u2026", "stepOriginal": "正在傳送原始檔案\u2026", "stepView": "正在傳送顯示點陣圖\u2026", "stepLandscape": "傳送橫向顯示圖\u2026", "stepThumb": "正在傳送縮圖\u2026", "done": "已完成", "exists": "X4 Pro 上已經有這張照片，無需再傳。", "failedWith": "失敗：", "summary": "已傳送 %d 張照片，%f 張失敗。", "nothing": "請先挑選至少一張照片。", "decode": "這個檔案不是此瀏覽器能讀取的圖片。", "size": "圖片尺寸不正確。", "tooBig": "這個檔案太大，瀏覽器無法轉換。請挑選較小的照片。", "network": "無法連線到 X4 Pro。請檢查網路連線後再試一次。", "dropped": "傳送過程中與 X4 Pro 的連線中斷，請再試一次。", "storage": "無法寫入 SD 卡。請檢查記憶卡與剩餘空間後再試一次。", "busyDevice": "X4 Pro 正在處理另一個上傳，請等它完成後再試。", "collision": "所選照片清理檔名後發生相同名稱，請移除其中一張再試。", "unsupported": "只支援 JPEG、PNG 與 BMP 照片。", "cacheExists": "已有同名舊預覽快取，為免顯示錯誤照片，這次沒有覆蓋；請先備份照片並清理舊項目後再試。", "failed": "上傳失敗，請稍後再試。", "galleryLoading": "正在讀取 X4 Pro 上的照片\u2026", "galleryCount": "X4 Pro 上有 %d 張照片。", "galleryEmpty": "X4 Pro 上還沒有照片。", "galleryNoThumb": "卡片上沒有預覽", "galleryFailed": "無法讀取照片清單，請檢查連線後重新整理。"};
+let airphotoFiles = [];
+let airphotoBusy = false;
+let airphotoReady = false;
+const airphotoField = id => document.getElementById('airphoto-' + id);
+function airphotoError(key) {
+  const error = new Error(airphotoWords[key]);
+  error.airphotoLocalized = true;
+  return error;
+}
+// The device answers in its own English, so its text is mapped into this page's
+// language rather than shown raw.
+function airphotoErrorText(error) {
+  if (!error) return airphotoWords.failed;
+  if (error.airphotoLocalized) return error.message;
+  if (error instanceof TypeError) return airphotoWords.network;
+  const message = String(error.message || '');
+  if (/already exists/i.test(message)) return airphotoWords.exists;
+  if (/in progress/i.test(message)) return airphotoWords.busyDevice;
+  if (/create file|no space|sd card/i.test(message)) return airphotoWords.storage;
+  return airphotoWords.failed;
+}
+
+// ---- conversion: no DOM and no network in here, so it is unit tested directly
+
+// Largest size that fits inside the box with the aspect ratio kept -- letterbox,
+// never crop. Never enlarges the source either: upscaling a small photo to the
+// panel only spends bytes on blur.
+function airphotoFit(srcWidth, srcHeight, boxWidth, boxHeight) {
+  if (!(srcWidth > 0) || !(srcHeight > 0)) throw airphotoError('decode');
+  const scale = Math.min(boxWidth / srcWidth, boxHeight / srcHeight, 1);
+  return {
+    width: Math.max(1, Math.min(boxWidth, Math.round(srcWidth * scale))),
+    height: Math.max(1, Math.min(boxHeight, Math.round(srcHeight * scale)))
+  };
+}
+
+// Fills the box completely instead of letterboxing: the photo is scaled to
+// cover the box and the overflow is trimmed off centre, so every bitmap the
+// device receives is exactly the panel's size whatever shape the photo is.
+// Unlike airphotoFit this DOES upscale -- a small photo has to grow to fill.
+function airphotoCover(srcWidth, srcHeight, boxWidth, boxHeight) {
+  if (!(srcWidth > 0) || !(srcHeight > 0)) throw airphotoError('decode');
+  let sWidth = srcWidth, sHeight = srcHeight;
+  if (srcWidth * boxHeight > srcHeight * boxWidth) {
+    sWidth = Math.min(srcWidth, Math.max(1, Math.round(srcHeight * boxWidth / boxHeight)));
+  } else {
+    sHeight = Math.min(srcHeight, Math.max(1, Math.round(srcWidth * boxHeight / boxWidth)));
+  }
+  return {width: boxWidth, height: boxHeight, sWidth: sWidth, sHeight: sHeight,
+          sx: Math.floor((srcWidth - sWidth) / 2), sy: Math.floor((srcHeight - sHeight) / 2)};
+}
+
+// One shape for both modes (source rectangle plus destination size), so the
+// upload path never branches on the user's choice.
+function airphotoGeometry(srcWidth, srcHeight, box, mode) {
+  if (mode === 'fit') {
+    const fit = airphotoFit(srcWidth, srcHeight, box.width, box.height);
+    return {width: fit.width, height: fit.height, sx: 0, sy: 0, sWidth: srcWidth, sHeight: srcHeight};
+  }
+  return airphotoCover(srcWidth, srcHeight, box.width, box.height);
+}
+
+// Brightness and contrast pivoted on mid-gray. 100/100 is exactly identity, so
+// untouched sliders reproduce the previous output byte for byte.
+function airphotoTone(gray, brightness, contrast) {
+  const level = Number.isFinite(Number(brightness)) ? Number(brightness) : 100;
+  const gain = Number.isFinite(Number(contrast)) ? Number(contrast) : 100;
+  const factor = gain / 100;
+  const offset = (level - 100) * 1.28;
+  if (factor === 1 && offset === 0) return gray;
+  const out = new Uint8Array(gray.length);
+  for (let i = 0; i < gray.length; i++) {
+    const value = Math.round((gray[i] - 128) * factor + 128 + offset);
+    out[i] = value < 0 ? 0 : value > 255 ? 255 : value;
+  }
+  return out;
+}
+
+// "No dither": nearest of the four levels. The palette is evenly spaced
+// (0, 85, 170, 255), so rounding g*3/255 IS the nearest level. Error diffusion
+// is what makes a photo readable, but it smears flat text and line art.
+function airphotoQuantise(gray, width, height) {
+  const levels = new Uint8Array(width * height);
+  for (let i = 0; i < levels.length; i++) {
+    const value = Math.round((gray[i] || 0) * 3 / 255);
+    levels[i] = value < 0 ? 0 : value > 3 ? 3 : value;
+  }
+  return levels;
+}
+
+// Tone first, then either error diffusion or the plain nearest-level mapping.
+function airphotoLevels(gray, width, height, options) {
+  const settings = options || AIRPHOTO_DEFAULTS;
+  const toned = airphotoTone(gray, settings.brightness, settings.contrast);
+  return settings.dither === 'none' ? airphotoQuantise(toned, width, height)
+                                    : airphotoDither(toned, width, height);
+}
+
+// ---- the user's conversion choices, remembered per browser
+
+function airphotoOptions() {
+  const raw = id => {
+    const field = airphotoField(id);
+    return field && field.value !== '' && field.value !== undefined && field.value !== null ? field.value : null;
+  };
+  const number = (id, fallback) => {
+    const value = Number(raw(id));
+    return raw(id) !== null && Number.isFinite(value) ? value : fallback;
+  };
+  return {
+    crop: raw('crop') === 'fit' ? 'fit' : 'cover',
+    dither: raw('dither') === 'none' ? 'none' : 'floyd',
+    brightness: number('brightness', AIRPHOTO_DEFAULTS.brightness),
+    contrast: number('contrast', AIRPHOTO_DEFAULTS.contrast)
+  };
+}
+
+// The sliders show their own numbers, and the choices survive a reload: a user
+// who dialled a photo in once should not have to do it again.
+function airphotoOptionChanged() {
+  const options = airphotoOptions();
+  const show = (id, value) => {
+    const label = airphotoField(id + '-value');
+    if (label) label.textContent = String(value);
+  };
+  show('brightness', options.brightness);
+  show('contrast', options.contrast);
+  try { localStorage.setItem(AIRPHOTO_STORE, JSON.stringify(options)); } catch (error) { /* private mode */ }
+  return options;
+}
+
+function airphotoRestoreOptions() {
+  let saved = null;
+  try { saved = JSON.parse(localStorage.getItem(AIRPHOTO_STORE) || 'null'); } catch (error) { saved = null; }
+  if (saved) {
+    const put = (id, value) => {
+      const field = airphotoField(id);
+      if (field && value !== undefined && value !== null) field.value = String(value);
+    };
+    put('crop', saved.crop);
+    put('dither', saved.dither);
+    put('brightness', saved.brightness);
+    put('contrast', saved.contrast);
+  }
+  return airphotoOptionChanged();
+}
+
+// Luminance with the device's own weights (Bitmap.cpp), so a photo converted
+// here and one converted on the device agree on what a gray level means.
+function airphotoLuminance(rgba, count) {
+  const gray = new Uint8Array(count);
+  for (let i = 0; i < count; i++) {
+    gray[i] = (77 * rgba[i * 4] + 150 * rgba[i * 4 + 1] + 29 * rgba[i * 4 + 2]) >> 8;
+  }
+  return gray;
+}
+
+// Floyd-Steinberg error diffusion down to the four panel levels. Plain
+// thresholding turns a face into mud on e-ink; spreading the quantisation error
+// into the neighbours is what keeps a gradient looking like a gradient.
+//        X    7/16
+//  3/16 5/16  1/16
+function airphotoDither(gray, width, height) {
+  const levels = new Uint8Array(width * height);
+  const span = width + 2;               // one spare column at each edge
+  let carry = new Float32Array(span);   // error owed to the row being drawn
+  let spill = new Float32Array(span);   // error owed to the row below
+  for (let y = 0; y < height; y++) {
+    for (let x = 0; x < width; x++) {
+      const wanted = gray[y * width + x] + carry[x + 1];
+      const clamped = wanted < 0 ? 0 : wanted > 255 ? 255 : wanted;
+      const level = Math.round(clamped / 85);
+      levels[y * width + x] = level;
+      const error = clamped - level * 85;
+      carry[x + 2] += error * 7 / 16;
+      spill[x] += error * 3 / 16;
+      spill[x + 1] += error * 5 / 16;
+      spill[x + 2] += error * 1 / 16;
+    }
+    const reuse = carry;
+    carry = spill;
+    spill = reuse;
+    spill.fill(0);
+  }
+  return levels;
+}
+
+// Row stride exactly as Bitmap.cpp computes it: rowBytes = ((width * bpp + 31)
+// / 32) * 4, which for 2bpp is a 4-byte boundary, so most widths need padding.
+function airphotoRowBytes(width) {
+  return ((width * 2 + 31) >> 5) << 2;
+}
+
+// A 2-bits-per-pixel grayscale BMP in the layout lib/GfxRenderer/Bitmap.cpp
+// parses: 14-byte file header, 40-byte info header, biHeight negative for
+// top-down rows (which is the order canvas hands pixels over), four BGRx
+// palette entries for the panel's gray levels, and four pixels per byte, most
+// significant bits first. Takes an ImageData (or any {data: RGBA}), a bare RGBA
+// array, or a ready array of 0-3 level indices, and returns the file bytes.
+function encodeDeviceBmp(imageData, width, height, options) {
+  if (!Number.isInteger(width) || !Number.isInteger(height) || width < 1 || height < 1 ||
+      width > 2048 || height > 3072) throw airphotoError('size');
+  const pixels = imageData && imageData.data ? imageData.data : imageData;
+  if (!pixels || pixels.length === undefined) throw airphotoError('size');
+  const rgba = (imageData && imageData.data) || pixels.length === width * height * 4;
+  const levels = rgba ? airphotoLevels(airphotoLuminance(pixels, width * height), width, height, options)
+                      : pixels;
+  if (levels.length < width * height) throw airphotoError('size');
+  const rowBytes = airphotoRowBytes(width);
+  const offBits = 14 + 40 + 4 * 4;                        // headers + 4-entry palette
+  const bytes = new Uint8Array(offBits + rowBytes * height);
+  const head = new DataView(bytes.buffer);
+  bytes[0] = 0x42; bytes[1] = 0x4d;                       // 'BM'
+  head.setUint32(2, bytes.length, true);                  // bfSize
+  head.setUint16(6, 0, true);                             // bfReserved1: 0, not the overlay marker
+  head.setUint16(8, 0, true);                             // bfReserved2: same
+  head.setUint32(10, offBits, true);                      // bfOffBits
+  head.setUint32(14, 40, true);                           // biSize
+  head.setInt32(18, width, true);                         // biWidth
+  head.setInt32(22, -height, true);                       // biHeight, negative = top-down
+  head.setUint16(26, 1, true);                            // biPlanes
+  head.setUint16(28, 2, true);                            // biBitCount
+  head.setUint32(30, 0, true);                            // biCompression: BI_RGB
+  head.setUint32(34, rowBytes * height, true);            // biSizeImage
+  head.setInt32(38, 0, true);                             // biXPelsPerMeter
+  head.setInt32(42, 0, true);                             // biYPelsPerMeter
+  head.setUint32(46, 4, true);                            // biClrUsed
+  head.setUint32(50, 0, true);                            // biClrImportant
+  for (let i = 0; i < 4; i++) {
+    const level = AIRPHOTO_PALETTE[i];
+    bytes[54 + i * 4] = level;                            // blue
+    bytes[55 + i * 4] = level;                            // green
+    bytes[56 + i * 4] = level;                            // red
+    bytes[57 + i * 4] = 0;                                // reserved
+  }
+  for (let y = 0; y < height; y++) {
+    const row = offBits + y * rowBytes;
+    for (let x = 0; x < width; x++) {
+      bytes[row + (x >> 2)] |= (levels[y * width + x] & 3) << (6 - ((x & 3) * 2));
+    }
+  }
+  return bytes;
+}
+
+// ---- decoding and drawing
+
+async function airphotoDecode(file) {
+  if (typeof createImageBitmap === 'function') {
+    try { return await createImageBitmap(file); } catch (error) { /* fall back to <img> */ }
+  }
+  const url = URL.createObjectURL(file);
+  try {
+    const image = document.createElement('img');
+    await new Promise((resolve, reject) => {
+      image.addEventListener('load', resolve, {once: true});
+      image.addEventListener('error', () => reject(airphotoError('decode')), {once: true});
+      image.src = url;
+    });
+    return image;
+  } finally { URL.revokeObjectURL(url); }
+}
+
+function airphotoSourceSize(source) {
+  return {width: source.width || source.naturalWidth || 0, height: source.height || source.naturalHeight || 0};
+}
+
+// White behind the photo, so a transparent PNG lands on paper rather than black.
+function airphotoRender(source, geometry) {
+  const canvas = document.createElement('canvas');
+  canvas.width = geometry.width;
+  canvas.height = geometry.height;
+  const paint = canvas.getContext('2d', {willReadFrequently: true});
+  paint.fillStyle = '#ffffff';
+  paint.fillRect(0, 0, geometry.width, geometry.height);
+  // Nine arguments: the crop rectangle out of the photo, stretched over the
+  // whole canvas. In "fit" mode the rectangle is the entire photo.
+  paint.drawImage(source, geometry.sx, geometry.sy, geometry.sWidth, geometry.sHeight,
+                  0, 0, geometry.width, geometry.height);
+  return paint.getImageData(0, 0, geometry.width, geometry.height);
+}
+
+// ---- names
+
+// FAT rejects some characters, and the START frame is split on ':', so neither
+// can survive in a name the device is asked to create.
+function airphotoSafeName(name) {
+  const cleaned = String(name === undefined || name === null ? '' : name)
+    .replace(/[\x00-\x1f\x7f\\/:*?"<>|]/g, '_')
+    .normalize('NFC').replace(/^[. ]+/, '').replace(/[. ]+$/, '');
+  // Leave room for the supported extension, even when shortening a long name.
+  // FAT names are byte-limited; iterating code points avoids broken UTF-8.
+  const extension = /\.(?:jpe?g|png|bmp)$/i.exec(cleaned)?.[0] || '';
+  const stem = extension ? cleaned.slice(0, -extension.length) : cleaned;
+  const encoder = new TextEncoder();
+  const available = 64 - encoder.encode(extension).length;
+  let shortened = '';
+  for (const character of stem) {
+    if (encoder.encode(shortened + character).length > available) break;
+    shortened += character;
+  }
+  return (shortened.replace(/[. ]+$/, '') + extension) || 'photo';
+}
+function airphotoOriginalName(name) {
+  const cleaned = airphotoSafeName(name);
+  if (!/^.+\.(?:jpe?g|png|bmp)$/i.test(cleaned)) throw airphotoError('unsupported');
+  return cleaned;
+}
+
+// ---- upload
+
+function airphotoWsUrl() {
+  return 'ws://' + window.location.hostname + ':' + AIRPHOTO_WS_PORT + '/';
+}
+
+// The same protocol as FilesPage's uploadFileWebSocket: a START text frame,
+// then binary chunks throttled on bufferedAmount, then DONE or ERROR back.
+function airphotoUpload(blob, name, directory, onProgress) {
+  return new Promise((resolve, reject) => {
+    let socket;
+    try { socket = new WebSocket(airphotoWsUrl()); }
+    catch (error) { reject(airphotoError('network')); return; }
+    socket.binaryType = 'arraybuffer';
+    const total = blob.size;
+    let started = false;
+    let settled = false;
+    const finish = (error) => {
+      if (settled) return;
+      settled = true;
+      try { socket.close(); } catch (ignored) { /* already gone */ }
+      if (error) reject(error); else resolve();
+    };
+    socket.onopen = () => { socket.send('START:' + name + ':' + total + ':' + directory); };
+    socket.onmessage = async (event) => {
+      const message = String(event.data);
+      if (message === 'READY') {
+        started = true;
+        try {
+          let offset = 0;
+          while (offset < total && socket.readyState === AIRPHOTO_WS_OPEN) {
+            const buffer = await blob.slice(offset, offset + AIRPHOTO_CHUNK).arrayBuffer();
+            while (socket.bufferedAmount > AIRPHOTO_CHUNK * 2 && socket.readyState === AIRPHOTO_WS_OPEN) {
+              await new Promise(wait => setTimeout(wait, 5));
+            }
+            if (socket.readyState !== AIRPHOTO_WS_OPEN) throw airphotoError('dropped');
+            socket.send(buffer);
+            offset += buffer.byteLength;
+            if (onProgress) onProgress(offset, total);
+          }
+        } catch (error) { finish(error); }
+      } else if (message === 'DONE') {
+        if (onProgress) onProgress(total, total);
+        finish(null);
+      } else if (message.startsWith('ERROR:')) {
+        finish(new Error(message.slice(6)));
+      }
+    };
+    socket.onerror = () => finish(started ? airphotoError('dropped') : airphotoError('network'));
+    socket.onclose = () => finish(airphotoError('dropped'));
+  });
+}
+
+// The device will not invent a missing directory for an upload, and /mkdir is
+// happy to be told twice, so ask once per send and let it answer "exists".
+async function airphotoEnsureDir(directory) {
+  const cut = directory.lastIndexOf('/');
+  const body = new URLSearchParams();
+  body.set('name', directory.slice(cut + 1));
+  body.set('path', directory.slice(0, cut) || '/');
+  try { await fetch('/mkdir', {method: 'POST', body: body}); }
+  catch (error) { /* a real problem shows up again on the upload */ }
+}
+
+// ---- the pane
+
+function airphotoRow(entry, index) {
+  const row = document.createElement('div');
+  row.className = 'airphoto-row';
+  row.setAttribute('data-airphoto-row', String(index));
+  const fields = document.createElement('div');
+  fields.className = 'airphoto-fields';
+  const name = document.createElement('span');
+  name.className = 'airphoto-name';
+  name.textContent = entry.name;
+  const note = document.createElement('span');
+  note.className = 'airphoto-note';
+  note.textContent = airphotoWords.waiting;
+  const bar = document.createElement('div');
+  bar.className = 'airphoto-bar';
+  const fill = document.createElement('span');
+  bar.appendChild(fill);
+  fields.appendChild(name);
+  fields.appendChild(note);
+  fields.appendChild(bar);
+  row.appendChild(fields);
+  entry.row = row;
+  entry.note = note;
+  entry.fill = fill;
+  return row;
+}
+
+function airphotoRenderList() {
+  const list = airphotoField('list');
+  if (!list) return;
+  list.replaceChildren();
+  airphotoFiles.forEach((entry, index) => list.appendChild(airphotoRow(entry, index)));
+}
+
+function airphotoProgress(entry, text, ratio, state) {
+  if (entry.note) entry.note.textContent = text;
+  if (entry.fill) entry.fill.style.width = Math.round(Math.max(0, Math.min(1, ratio)) * 100) + '%';
+  if (entry.row) {
+    entry.row.classList.remove('done');
+    entry.row.classList.remove('failed');
+    if (state) entry.row.classList.add(state);
+  }
+}
+
+function airphotoLock(busy) {
+  airphotoBusy = busy;
+  ['file', 'send', 'clear'].forEach(id => {
+    const element = airphotoField(id);
+    if (element) element.disabled = busy;
+  });
+  const send = airphotoField('send');
+  if (send && !busy) send.disabled = airphotoFiles.length === 0;
+}
+
+function airphotoPicked() {
+  if (airphotoBusy) return;
+  const picker = airphotoField('file');
+  airphotoFiles = Array.prototype.slice.call((picker && picker.files) || [])
+    .map(file => ({file: file, name: file.name}));
+  const status = airphotoField('status');
+  if (status) {
+    status.textContent = airphotoFiles.length
+      ? airphotoWords.picked.replace('%d', String(airphotoFiles.length)) : airphotoWords.help;
+  }
+  airphotoRenderList();
+  airphotoLock(false);
+}
+
+function clearAirphotos() {
+  if (airphotoBusy) return;
+  const picker = airphotoField('file');
+  if (picker) picker.value = '';
+  airphotoFiles = [];
+  const status = airphotoField('status');
+  if (status) status.textContent = airphotoWords.help;
+  airphotoRenderList();
+  airphotoLock(false);
+}
+
+// One photo: original, upright view, turned view, and thumbnail. Every
+// step is awaited, so the device is never asked for two uploads at once -- it
+// answers one and rejects the rest. Returns how many were already there.
+async function airphotoSendOne(entry) {
+  const file = entry.file;
+  const originalName = airphotoOriginalName(file.name);
+  if (file.size > AIRPHOTO_MAX_BYTES) throw airphotoError('tooBig');
+  const source = await airphotoDecode(file);
+  const size = airphotoSourceSize(source);
+  if (!size.width || !size.height) throw airphotoError('decode');
+  const options = airphotoOptions();
+  const view = airphotoGeometry(size.width, size.height, AIRPHOTO_VIEW, options.crop);
+  const landscapeView = airphotoGeometry(size.width, size.height, AIRPHOTO_LAND_VIEW, options.crop);
+  const thumb = airphotoGeometry(size.width, size.height, AIRPHOTO_THUMB, options.crop);
+  const viewBmp = encodeDeviceBmp(airphotoRender(source, view), view.width, view.height, options);
+  const landscapeBmp = encodeDeviceBmp(airphotoRender(source, landscapeView),
+                                        landscapeView.width, landscapeView.height, options);
+  const thumbBmp = encodeDeviceBmp(airphotoRender(source, thumb), thumb.width, thumb.height, options);
+  if (typeof source.close === 'function') source.close();
+  const bitmapName = originalName + '.bmp';
+  const jobs = [
+    {blob: file, name: originalName, dir: AIRPHOTO_DIR, label: airphotoWords.stepOriginal},
+    {blob: new Blob([viewBmp], {type: 'image/bmp'}), name: bitmapName, dir: AIRPHOTO_VIEW_DIR, label: airphotoWords.stepView},
+    {blob: new Blob([landscapeBmp], {type: 'image/bmp'}), name: originalName + '.land.bmp',
+     dir: AIRPHOTO_VIEW_DIR, label: airphotoWords.stepLandscape},
+    {blob: new Blob([thumbBmp], {type: 'image/bmp'}), name: bitmapName, dir: AIRPHOTO_THUMB_DIR, label: airphotoWords.stepThumb}
+  ];
+  let already = 0;
+  for (let step = 0; step < jobs.length; step++) {
+    const job = jobs[step];
+    airphotoProgress(entry, job.label, step / jobs.length, null);
+    try {
+      await airphotoUpload(job.blob, job.name, job.dir, (sent, total) => {
+        airphotoProgress(entry, job.label, (step + (total ? sent / total : 1)) / jobs.length, null);
+      });
+    } catch (error) {
+      // The existing original may be a different image with this same name.
+      // Never attach freshly generated previews to it. A conflicting derived
+      // file may likewise show a stale image, so fail rather than claim success.
+      if (!error.airphotoLocalized && /already exists/i.test(String(error.message || ''))) {
+        if (step === 0) return jobs.length;
+        throw airphotoError('cacheExists');
+      }
+      throw error;
+    }
+  }
+  return already;
+}
+
+async function sendAirphotos() {
+  if (airphotoBusy) return;
+  if (!airphotoFiles.length) { showMessage('AirPhoto: ' + airphotoWords.nothing, true); return; }
+  airphotoLock(true);
+  // Preflight the whole selection before making directories or sending files:
+  // FAT compares names without case and sanitation/truncation can merge sources.
+  const names = new Set();
+  try {
+    for (const entry of airphotoFiles) {
+      const normalized = airphotoOriginalName(entry.name).toLowerCase();
+      if (names.has(normalized)) throw airphotoError('collision');
+      names.add(normalized);
+    }
+  } catch (error) {
+    const message = airphotoErrorText(error);
+    for (const entry of airphotoFiles) airphotoProgress(entry, airphotoWords.failedWith + message, 1, 'failed');
+    const status = airphotoField('status');
+    if (status) status.textContent = message;
+    showMessage('AirPhoto: ' + message, true);
+    airphotoLock(false);
+    return;
+  }
+  let sent = 0;
+  let failed = 0;
+  try {
+    await airphotoEnsureDir(AIRPHOTO_DIR);
+    await airphotoEnsureDir(AIRPHOTO_VIEW_DIR);
+    await airphotoEnsureDir(AIRPHOTO_THUMB_DIR);
+    for (const entry of airphotoFiles) {
+      airphotoProgress(entry, airphotoWords.working, 0, null);
+      try {
+        const already = await airphotoSendOne(entry);
+        sent++;
+        airphotoProgress(entry, already === 4 ? airphotoWords.exists : airphotoWords.done, 1, 'done');
+      } catch (error) {
+        failed++;
+        airphotoProgress(entry, airphotoWords.failedWith + airphotoErrorText(error), 1, 'failed');
+      }
+    }
+  } finally {
+    const summary = airphotoWords.summary.replace('%d', String(sent)).replace('%f', String(failed));
+    const status = airphotoField('status');
+    if (status) status.textContent = summary;
+    showMessage('AirPhoto: ' + summary, failed > 0);
+    airphotoLock(false);
+    // Refresh only what the user is already looking at, so a send never
+    // surprises the page with a scan it did not ask for.
+    if (sent > 0 && airphotoGalleryShown) await loadAirphotoGallery();
+  }
+}
+
+// ---- what is already on the device ----------------------------------------
+// Uploading is blind without this: the pane can list /AirPhoto and paint each
+// photo's stored thumbnail, which is also exactly what the panel will show.
+const AIRPHOTO_GALLERY_LIMIT = 48;
+let airphotoGalleryRun = 0;      // bumped per scan so a stale one stops painting
+let airphotoGalleryShown = false;
+
+function airphotoIsPhotoName(name) {
+  return /\.(?:jpe?g|png|bmp)$/i.test(String(name || ''));
+}
+
+// The mirror of encodeDeviceBmp: 2 bits per pixel, four gray palette entries,
+// rows top-down when biHeight is negative. Anything else is left unpainted
+// rather than guessed at.
+function decodeDeviceBmp(buffer) {
+  const bytes = new Uint8Array(buffer);
+  if (bytes.length < 70 || bytes[0] !== 0x42 || bytes[1] !== 0x4d) return null;
+  const head = new DataView(bytes.buffer, bytes.byteOffset, bytes.byteLength);
+  const offBits = head.getUint32(10, true);
+  const width = head.getInt32(18, true);
+  const signedHeight = head.getInt32(22, true);
+  const height = Math.abs(signedHeight);
+  if (head.getUint16(28, true) !== 2 || head.getUint32(30, true) !== 0) return null;
+  if (width < 1 || height < 1 || width > 512 || height > 512) return null;
+  const stride = airphotoRowBytes(width);
+  if (offBits < 70 || offBits + stride * height > bytes.length) return null;
+  const palette = [];
+  for (let i = 0; i < 4; i++) palette.push(bytes[54 + i * 4 + 2]);   // gray: B=G=R
+  const levels = new Uint8Array(width * height);
+  for (let y = 0; y < height; y++) {
+    const row = offBits + (signedHeight < 0 ? y : height - 1 - y) * stride;
+    for (let x = 0; x < width; x++) {
+      levels[y * width + x] = (bytes[row + (x >> 2)] >> (6 - ((x & 3) * 2))) & 3;
+    }
+  }
+  return {width: width, height: height, levels: levels, palette: palette};
+}
+
+function airphotoPaint(canvas, picture) {
+  canvas.width = picture.width;
+  canvas.height = picture.height;
+  const context = canvas.getContext ? canvas.getContext('2d') : null;
+  if (!context || typeof context.createImageData !== 'function') return false;
+  const image = context.createImageData(picture.width, picture.height);
+  for (let i = 0; i < picture.width * picture.height; i++) {
+    const gray = picture.palette[picture.levels[i]];
+    image.data[i * 4] = gray;
+    image.data[i * 4 + 1] = gray;
+    image.data[i * 4 + 2] = gray;
+    image.data[i * 4 + 3] = 255;
+  }
+  context.putImageData(image, 0, 0);
+  return true;
+}
+
+function airphotoTile(name) {
+  const root = document.createElement('div');
+  root.className = 'airphoto-tile';
+  const canvas = document.createElement('canvas');
+  canvas.className = 'airphoto-tile-image';
+  const label = document.createElement('span');
+  label.className = 'airphoto-tile-name';
+  label.textContent = name;
+  const note = document.createElement('span');
+  note.className = 'airphoto-tile-note';
+  root.appendChild(label);
+  root.appendChild(note);
+  return {root: root, canvas: canvas, note: note};
+}
+
+async function airphotoThumbnail(name) {
+  const path = AIRPHOTO_THUMB_DIR + '/' + name + '.bmp';
+  const response = await fetch('/download?path=' + encodeURIComponent(path) + '&_=' + Date.now());
+  if (!response || !response.ok) return null;
+  return decodeDeviceBmp(await response.arrayBuffer());
+}
+
+async function loadAirphotoGallery() {
+  const grid = airphotoField('gallery');
+  if (!grid) return;
+  const status = airphotoField('gallery-status');
+  const run = ++airphotoGalleryRun;
+  airphotoGalleryShown = true;
+  if (status) status.textContent = airphotoWords.galleryLoading;
+  let listed;
+  try {
+    const response = await fetch('/api/files?path=' + encodeURIComponent(AIRPHOTO_DIR) + '&_=' + Date.now());
+    if (!response || !response.ok) throw new Error('list');
+    listed = await response.json();
+  } catch (error) {
+    if (run !== airphotoGalleryRun) return;
+    grid.replaceChildren();
+    if (status) status.textContent = airphotoWords.galleryFailed;
+    return;
+  }
+  if (run !== airphotoGalleryRun) return;
+  const photos = (Array.isArray(listed) ? listed : [])
+    .filter(entry => entry && !entry.isDirectory && airphotoIsPhotoName(entry.name))
+    .slice(0, AIRPHOTO_GALLERY_LIMIT);
+  grid.replaceChildren();
+  const tiles = photos.map(entry => {
+    const tile = airphotoTile(entry.name);
+    grid.appendChild(tile.root);
+    return tile;
+  });
+  if (status) {
+    status.textContent = photos.length
+      ? airphotoWords.galleryCount.replace('%d', String(photos.length))
+      : airphotoWords.galleryEmpty;
+  }
+  // One thumbnail at a time: the device serves a single request at a time, and
+  // a stale scan must stop as soon as a newer one starts.
+  for (let i = 0; i < tiles.length; i++) {
+    if (run !== airphotoGalleryRun) return;
+    let picture = null;
+    try { picture = await airphotoThumbnail(photos[i].name); } catch (error) { picture = null; }
+    if (run !== airphotoGalleryRun) return;
+    if (picture && airphotoPaint(tiles[i].canvas, picture)) {
+      tiles[i].root.insertBefore(tiles[i].canvas, tiles[i].root.children[0]);
+      tiles[i].note.textContent = '';
+    } else {
+      tiles[i].note.textContent = airphotoWords.galleryNoThumb;
+    }
+  }
+}
+
+function initAirphoto() {
+  airphotoRestoreOptions();
+  airphotoReady = true;
+  const status = airphotoField('status');
+  if (status) status.textContent = airphotoWords.help;
+  airphotoRenderList();
+  airphotoLock(false);
+  return loadAirphotoGallery();
+}
+
+// ---- AirNote text books ----------------------------------------------------
+let airnoteCurrent = null;
+let airnoteClean = '';
+let airnoteBusy = false;
+let airnoteNextOffset = null;
+let airnoteListed = false;
+let airnoteOrderRevision = null;
+let airnoteTotal = 0;
+let airnoteNames = [];
+let airnoteSelected = null;
+let airnoteBulkSelected = new Set();
+let airnoteItemSelected = new Set();
+let airnoteDragName = null;
+let airnoteFocusAfter = null;
+const airnoteWords = {"editing": "編輯中：", "newNote": "新增筆記", "saveChanges": "儲存修改", "saveNew": "儲存到 X4 Pro", "discard": "尚有未儲存的文字，要捨棄並繼續嗎？", "listHelp": "點選筆記後按「載入編輯」。修改標題不會改變原檔名。可直接拖曳調整順序，或使用每列的上移／下移按鈕；順序會立即保存，不影響未儲存的文字。", "empty": "還沒有筆記，先寫下第一則吧。", "loaded": "已載入筆記，可以開始編輯。", "invalid": "請輸入有效標題（80 位元組內，不含路徑符號）及內文（16 KiB 內）。", "conflict": "筆記已被修改，或同名筆記太多。你的文字仍保留；請先複製，再重新載入或另存新筆記。", "saved": "已儲存，可到「應用 → AirNote」閱讀：", "refreshFailed": "清單更新失敗，請按重新整理。", "network": "無法連線到 X4 Pro，請確認網路連線後重試。你的文字仍保留。", "failed": "操作失敗，請稍後重試。你的文字仍保留。", "missing": "找不到這則筆記，請重新整理清單。你的文字仍保留。", "storage": "無法讀寫 SD 卡，請確認卡片與剩餘空間後重試。你的文字仍保留。"};
+function airnoteResponseError(status) {
+  const key = status === 409 ? 'conflict' : status === 404 ? 'missing' :
+    status === 400 || status === 413 ? 'invalid' : status === 507 || status === 503 ? 'storage' : 'failed';
+  const error = new Error(airnoteWords[key]);
+  error.airnoteLocalized = true;
+  return error;
+}
+function airnoteErrorText(error) {
+  return error.airnoteLocalized ? error.message : error instanceof TypeError ? airnoteWords.network : airnoteWords.failed;
+}
+const airnoteBulkWords = {
+  selected: (count, loaded) => `已勾選 ${count}／${loaded} 則已載入筆記（最多 32 則）。`,
+  limit: '最多勾選 32 則已載入筆記。',
+  ordered: '已儲存勾選筆記的順序。',
+  stale: '筆記順序已變更；請重新整理後再移動。未儲存文字會保留。',
+  target: '請選擇未勾選的已載入筆記或末尾。',
+  refresh: '操作已接受，但清單需要重新整理。未儲存文字會保留。',
+  listRefresh: '清單重新整理失敗；請按重新整理。未儲存文字會保留。',
+  end: '筆記末尾',
+  dest: '請輸入 /AirNote 和受保護資料夾以外的 SD 絕對路徑。',
+  missingFolder: '目標不是已存在的 SD 資料夾。',
+  collision: names => '已取消移動：目標已有 ' + names.join('、') + '；尚未開始移動。',
+  moved: (count, total, dest) => `已確認移動 ${count}／${total} 則筆記到 ${dest}。`,
+  partial: (count, total, name) => `已確認移動 ${count}／${total} 則；在 ${name} 停止，其結果未能確認。重新整理清單後請先核對再重試。未儲存文字會保留。`,
+  deletePrompt: names => `確定從 SD 卡刪除 ${names.length} 則勾選筆記？\n${names.join('\n')}\n無法復原。按取消可保留。`,
+  dirtyDelete: '目前有未儲存的文字；即使其筆記被刪除，也會保留在編輯器。如需保存，請另存為新筆記。',
+  deleted: count => `已刪除 ${count} 則勾選筆記。`,
+  uncertain: '刪除結果未能確認：伺服器可能已刪除部分筆記。請重新整理並核對清單後再重試。未儲存文字會保留。'
+};
+const airnoteItemWords = {
+  select: label => '勾選事項以批次刪除：' + label,
+  button: count => `刪除勾選事項（${count}）…`,
+  prompt: labels => `要從這份待辦草稿刪除 ${labels.length} 個勾選事項嗎？\n${labels.join('\n')}\n其餘事項會保留；在按「儲存到 X4 Pro」之前不會傳送到裝置。按取消則全部保留。`,
+  removed: count => `已從草稿移除 ${count} 個勾選事項。請按「儲存到 X4 Pro」上傳變更。`,
+  keepOne: '請至少保留一項：X4 Pro 無法開啟空白待辦清單，未移除任何事項。'
+};
+const airnoteField = id => document.getElementById('airnote-' + id);
+function airnoteTodoItems(text) {
+  return text.split('\n').map(line => line.endsWith('\r') ? line.slice(0, -1) : line).filter(line => line.length).map(line => {
+    const prefixed = line.startsWith('[x] ') || line.startsWith('[ ] ');
+    return {done: line.startsWith('[x] '), label: prefixed ? line.slice(4) : line};
+  });
+}
+function airnotePreview() {
+  const todo = airnoteField('type').value === 'todo';
+  airnoteField('todo-help').hidden = !todo;
+  const preview = airnoteField('preview'); preview.hidden = !todo; preview.replaceChildren();
+  if (!todo) { airnoteItemSelected.clear(); airnoteItemButton(0); return; }
+  const items = airnoteTodoItems(airnoteField('text').value);
+  const progress = document.createElement('p');
+  progress.textContent = '已完成 ' + items.filter(item => item.done).length + ' / ' + items.length;
+  preview.appendChild(progress);
+  items.slice(0, 64).forEach((item, index) => {
+    const row = document.createElement('div'); row.style.cssText='display:flex;gap:8px;align-items:center;margin:8px 0;';
+    const choose = document.createElement('input'); choose.type = 'checkbox'; choose.className = 'airnote-item-select';
+    choose.checked = airnoteItemSelected.has(index); choose.disabled = airnoteBusy;
+    choose.setAttribute('aria-label', airnoteItemWords.select(item.label));
+    choose.addEventListener('change', () => {
+      if (airnoteBusy) return;
+      if (choose.checked) airnoteItemSelected.add(index); else airnoteItemSelected.delete(index);
+      airnoteItemButton(items.length);
+    });
+    row.appendChild(choose);
+    const label = document.createElement('label'); label.style.cssText = 'display:flex;gap:12px;align-items:center;min-height:44px;padding:6px 0;overflow-wrap:anywhere;flex:1;min-width:0;';
+    const box = document.createElement('input'); box.type = 'checkbox'; box.className = 'airnote-item-done'; box.checked = item.done; box.disabled = airnoteBusy;
+    box.style.cssText = 'width:20px;height:20px;flex-shrink:0;';
+    box.addEventListener('change', () => {
+      items[index].done = box.checked;
+      airnoteField('text').value = items.map(item => (item.done ? '[x] ' : '[ ] ') + item.label).join('\n');
+      airnotePreview();
+    });
+    const text = document.createElement('span'); text.textContent = item.label;
+    label.appendChild(box); label.appendChild(text); row.appendChild(label);
+    const destination=document.createElement('select');destination.style.cssText='max-width:145px;min-height:44px;';destination.setAttribute('aria-label','移動：'+item.label);
+    items.forEach((entry,i)=>destination.add(new Option((i+1)+'. '+entry.label,String(i))));destination.value=String(index);destination.disabled=airnoteBusy;
+    destination.addEventListener('change',()=>{const target=Number(destination.value);const order=items.map((entry,i)=>i);order.splice(target,0,order.splice(index,1)[0]);airnoteItemSelected=new Set(order.map((from,to)=>airnoteItemSelected.has(from)?to:-1).filter(to=>to>=0));const moved=items.splice(index,1)[0];items.splice(target,0,moved);airnoteField('text').value=items.map(entry=>(entry.done?'[x] ':'[ ] ')+entry.label).join('\n');airnotePreview();const selects=preview.querySelectorAll('select');if(selects[target])selects[target].focus();});
+    row.appendChild(destination);
+    preview.appendChild(row);
+  });
+  airnoteItemButton(items.length);
+}
+// 事項勾選框只會編輯草稿；仍由儲存按鈕負責上傳。
+function airnoteItemButton(count) {
+  const button = airnoteField('item-delete');
+  const chosen = [...airnoteItemSelected].filter(index => index < count).length;
+  button.hidden = airnoteField('type').value !== 'todo';
+  button.disabled = airnoteBusy || !chosen;
+  button.textContent = airnoteItemWords.button(chosen);
+}
+function deleteSelectedAirnoteItems() {
+  if (airnoteBusy || airnoteField('type').value !== 'todo') return;
+  const items = airnoteTodoItems(airnoteField('text').value);
+  const chosen = items.map((item, index) => index).filter(index => airnoteItemSelected.has(index));
+  if (!chosen.length) return;
+  if (chosen.length >= items.length) { showMessage(airnoteItemWords.keepOne, true); return; }
+  if (!window.confirm(airnoteItemWords.prompt(chosen.map(index => items[index].label)))) return;
+  airnoteField('text').value = items.filter((item, index) => !airnoteItemSelected.has(index))
+    .map(item => (item.done ? '[x] ' : '[ ] ') + item.label).join('\n');
+  airnoteItemSelected.clear();
+  airnotePreview();
+  showMessage(airnoteItemWords.removed(chosen.length), false);
+}
+const airnoteDraft = () => JSON.stringify([airnoteField('type').value, airnoteField('title').value, airnoteField('text').value]);
+function airnoteDirty() { return airnoteDraft() !== airnoteClean; }
+function airnoteLock(busy) {
+  airnoteBusy = busy;
+  ['save', 'new', 'refresh', 'load', 'type', 'title', 'text'].forEach(id => { airnoteField(id).disabled = busy; });
+  airnoteField('more').disabled = busy || airnoteNextOffset === null;
+  airnoteOrderButtons();
+  airnotePreview();
+}
+function airnoteMode() {
+  airnoteField('mode').textContent = airnoteCurrent ? airnoteWords.editing + airnoteCurrent.name : airnoteWords.newNote;
+  airnoteField('save').textContent = airnoteCurrent ? airnoteWords.saveChanges : airnoteWords.saveNew;
+}
+function newAirnote() {
+  if (airnoteBusy || (airnoteDirty() && !confirm(airnoteWords.discard))) return;
+  airnoteCurrent = null;
+  airnoteField('title').value = '';
+  airnoteField('text').value = '';
+  airnoteField('type').value = 'text';
+  airnoteItemSelected.clear();
+  airnotePreview();
+  airnoteClean = airnoteDraft();
+  airnoteMode();
+  airnoteField('title').focus();
+}
+async function fetchAirnotesPage(offset) {
+  const query=offset && airnoteOrderRevision ? '&orderRevision='+encodeURIComponent(airnoteOrderRevision) : '';
+  const response = await fetch('/api/airnote?offset=' + offset + query, {cache: 'no-store'});
+  if (!response.ok) throw airnoteResponseError(response.status);
+  const data = await response.json();
+  if(offset && airnoteOrderRevision && data.orderRevision!==airnoteOrderRevision)throw airnoteResponseError(409);
+  airnoteOrderRevision=data.orderRevision || null;
+  airnoteTotal=data.total === undefined ? data.notes.length : data.total;
+  if (offset === 0) { airnoteNames = []; airnoteBulkSelected.clear(); }
+  for (const name of data.notes) if (airnoteNames.indexOf(name) < 0) airnoteNames.push(name);
+  if (airnoteCurrent && airnoteNames.indexOf(airnoteCurrent.name) >= 0) airnoteSelected = airnoteCurrent.name;
+  if (airnoteNames.indexOf(airnoteSelected) < 0) airnoteSelected = airnoteNames.length ? airnoteNames[0] : null;
+  airnoteNextOffset = data.nextOffset;
+  airnoteListed = true;
+  airnoteRenderList();
+  airnoteField('list-status').textContent = airnoteNames.length ? airnoteWords.listHelp : airnoteWords.empty;
+  airnoteField('more').hidden = airnoteNextOffset === null;
+}
+// Build the reorderable list: HTML5 drag for pointer users, per-row move
+// buttons for keyboard and touch, which take the same moveAirnote() path.
+function airnoteRenderList() {
+  const list = airnoteField('list');
+  list.replaceChildren();
+  airnoteNames.forEach((name, index) => {
+    const item = document.createElement('li');
+    item.className = 'airnote-item';
+    item.dataset.name = name;
+    item.draggable = true;
+    item.setAttribute('aria-posinset', String(index + 1));
+    item.setAttribute('aria-setsize', String(Math.max(airnoteTotal, airnoteNames.length)));
+    item.addEventListener('dragstart', airnoteDragStart);
+    item.addEventListener('dragover', airnoteDragOver);
+    item.addEventListener('dragleave', airnoteDragLeave);
+    item.addEventListener('drop', airnoteDrop);
+    item.addEventListener('dragend', airnoteDragEnd);
+    const check = document.createElement('input');
+    check.type = 'checkbox'; check.className = 'airnote-bulk-check';
+    check.checked = airnoteBulkSelected.has(name);
+    check.setAttribute('aria-label', '勾選以批次操作：' + name);
+    check.addEventListener('change', () => {
+      if (airnoteBusy) return;
+      if (check.checked && !airnoteBulkSelected.has(name) && airnoteBulkSelected.size >= 32) {
+        check.checked = false; showMessage(airnoteBulkWords.limit, true); return;
+      }
+      if (check.checked) airnoteBulkSelected.add(name);
+      else airnoteBulkSelected.delete(name);
+      airnoteBulkUpdate();
+    });
+    const handle = document.createElement('span');
+    handle.className = 'airnote-handle';
+    handle.setAttribute('aria-hidden', 'true');
+    handle.textContent = '\u2630';
+    const pick = document.createElement('button');
+    pick.type = 'button';
+    pick.className = 'airnote-pick';
+    pick.textContent = (index + 1) + '. ' + name;
+    pick.addEventListener('click', () => airnoteSelect(name));
+    const up = document.createElement('button');
+    up.type = 'button';
+    up.className = 'airnote-order airnote-up';
+    up.textContent = '\u25b2';
+    up.setAttribute('aria-label', '上移：' + name);
+    up.addEventListener('click', () => { airnoteSelect(name); airnoteFocusAfter = '.airnote-up'; moveAirnote(-1); });
+    const down = document.createElement('button');
+    down.type = 'button';
+    down.className = 'airnote-order airnote-down';
+    down.textContent = '\u25bc';
+    down.setAttribute('aria-label', '下移：' + name);
+    down.addEventListener('click', () => { airnoteSelect(name); airnoteFocusAfter = '.airnote-down'; moveAirnote(1); });
+    item.appendChild(check); item.appendChild(handle); item.appendChild(pick); item.appendChild(up); item.appendChild(down);
+    list.appendChild(item);
+  });
+  airnoteOrderButtons();
+}
+function airnoteBulkUpdate() {
+  for (const row of airnoteField('list').children) {
+    const check = row.querySelector('.airnote-bulk-check');
+    check.checked = airnoteBulkSelected.has(row.dataset.name);
+    check.disabled = airnoteBusy;
+  }
+  airnoteField('bulk-select-visible').disabled = airnoteBusy || !airnoteNames.length;
+  airnoteField('bulk-clear').disabled = airnoteBusy || !airnoteBulkSelected.size;
+  const target = airnoteField('bulk-target'), previous = target.value;
+  target.replaceChildren();
+  target.add(new Option(airnoteBulkWords.end, ''));
+  for (const name of airnoteNames) if (!airnoteBulkSelected.has(name)) target.add(new Option(name, name));
+  target.value = airnoteNames.includes(previous) && !airnoteBulkSelected.has(previous) ? previous : '';
+  const ready = !airnoteBusy && airnoteBulkSelected.size > 0 && /^[a-f0-9]{32}$/i.test(airnoteOrderRevision || '');
+  target.disabled = !ready;
+  airnoteField('bulk-order').disabled = !ready;
+  airnoteField('bulk-move').disabled = airnoteBusy || !airnoteBulkSelected.size;
+  airnoteField('bulk-delete').disabled = airnoteBusy || !airnoteBulkSelected.size;
+  airnoteField('bulk-dest').disabled = airnoteBusy;
+  airnoteField('bulk-status').textContent = airnoteBulkWords.selected(airnoteBulkSelected.size, airnoteNames.length);
+}
+function selectVisibleAirnotes() {
+  if (airnoteBusy) return;
+  airnoteBulkSelected = new Set(airnoteNames.slice(0, 32));
+  airnoteBulkUpdate();
+  if (airnoteNames.length > 32) showMessage(airnoteBulkWords.limit, true);
+}
+function clearSelectedAirnotes() {
+  if (airnoteBusy) return;
+  airnoteBulkSelected.clear();
+  airnoteBulkUpdate();
+}
+async function airnoteReloadBulkList(loaded, possibleDeleted = []) {
+  airnoteBulkSelected.clear(); // A failed reload must not allow a stale selection to be retried.
+  airnoteOrderRevision = null; // Never reuse a token after a mutation, even if refreshing fails.
+  await fetchAirnotesPage(0);
+  while (airnoteNextOffset !== null && airnoteNames.length < loaded) await fetchAirnotesPage(airnoteNextOffset);
+  // A failed /delete response may still have removed the open note.
+  // Keep its unsaved text, but stop treating it as an existing saved file.
+  if (airnoteCurrent && possibleDeleted.includes(airnoteCurrent.name) && !airnoteNames.includes(airnoteCurrent.name)) {
+    airnoteCurrent = null;
+    airnoteMode();
+  }
+}
+async function moveSelectedAirnotesInOrder() {
+  const names = airnoteNames.filter(name => airnoteBulkSelected.has(name));
+  if (airnoteBusy || !names.length || !/^[a-f0-9]{32}$/i.test(airnoteOrderRevision || '')) return;
+  const before = airnoteField('bulk-target').value || null;
+  if (before !== null && (!airnoteNames.includes(before) || airnoteBulkSelected.has(before))) {
+    showMessage(airnoteBulkWords.target, true); return;
+  }
+  const loaded = airnoteNames.length;
+  airnoteLock(true);
+  try {
+    const response = await fetch('/api/airnote/order/bulk', {method: 'PUT', headers: {'Content-Type': 'application/json'},
+      body: JSON.stringify({names, before, orderRevision: airnoteOrderRevision})});
+    if (!response.ok) {
+      if (response.status === 409) {
+        airnoteOrderRevision = null;
+        showMessage(airnoteBulkWords.stale, true); return;
+      }
+      throw airnoteResponseError(response.status);
+    }
+    try {
+      await airnoteReloadBulkList(loaded);
+      showMessage(airnoteBulkWords.ordered, false);
+    } catch (error) {
+      airnoteOrderRevision = null;
+      showMessage(airnoteBulkWords.refresh, true);
+    }
+  } catch (error) { showMessage('AirNote: ' + airnoteErrorText(error), true); }
+  finally { airnoteLock(false); }
+}
+// /api/files returns [] even for a missing directory; verify the exact entry
+// in its parent before using its own listing for collision preflight.
+async function airnoteFileEntries(path) {
+  const response = await fetch('/api/files?path=' + encodeURIComponent(path), {cache: 'no-store'});
+  if (!response.ok) throw airnoteResponseError(response.status);
+  const entries = await response.json();
+  if (!Array.isArray(entries)) throw new Error('Invalid file listing');
+  return entries;
+}
+function airnoteBulkDestination(raw) {
+  const value = raw.trim(); // Do not normalize an empty box into the SD root.
+  if (!value.startsWith('/') || value.includes('\\') || /[\x00-\x1f\x7f?#]/.test(value)) return null;
+  const parts = value.slice(1).split('/');
+  if (parts[parts.length - 1] === '') parts.pop();
+  if (parts.some((part, index) => !part || part === '.' || part === '..' || part.startsWith('.') ||
+      /^(XTCache|System Volume Information)$/i.test(part) || (index === 0 && part.toLowerCase() === 'airnote'))) return null;
+  return '/' + parts.join('/');
+}
+async function moveSelectedAirnotesToFolder() {
+  const names = airnoteNames.filter(name => airnoteBulkSelected.has(name));
+  if (airnoteBusy || !names.length) return;
+  const dest = airnoteBulkDestination(airnoteField('bulk-dest').value);
+  if (!dest) { showMessage(airnoteBulkWords.dest, true); return; }
+  const leaf = dest.slice(dest.lastIndexOf('/') + 1);
+  const parent = dest.slice(0, dest.lastIndexOf('/')) || '/';
+  const loaded = airnoteNames.length;
+  airnoteLock(true);
+  try {
+    if (dest !== '/') {
+      const siblings = await airnoteFileEntries(parent);
+      if (!siblings.some(entry => entry.name === leaf && entry.isDirectory === true)) {
+        showMessage(airnoteBulkWords.missingFolder, true); return;
+      }
+    }
+    const existing = await airnoteFileEntries(dest);
+    const taken = new Set(existing.map(entry => String(entry.name).normalize('NFC').toLocaleLowerCase()));
+    const collisions = names.filter(name => taken.has(name.normalize('NFC').toLocaleLowerCase()));
+    if (collisions.length) { showMessage(airnoteBulkWords.collision(collisions), true); return; }
+    let confirmed = 0, stopped = null;
+    for (const name of names) {
+      try {
+        const response = await fetch('/move', {method: 'POST', headers: {'Content-Type': 'application/x-www-form-urlencoded'},
+          body: new URLSearchParams({path: '/AirNote/' + name, dest}).toString()});
+        if (!response.ok) { stopped = name; break; }
+        confirmed++;
+        if (airnoteCurrent && airnoteCurrent.name === name) {
+          airnoteCurrent = null;
+          airnoteMode(); // Keep the unsaved text, but save it as a new note.
+        }
+      } catch (error) { stopped = name; break; }
+    }
+    let refreshFailed = false;
+    try { await airnoteReloadBulkList(loaded, names); }
+    catch (error) { airnoteOrderRevision = null; refreshFailed = true; }
+    const report = stopped ? airnoteBulkWords.partial(confirmed, names.length, stopped) :
+      airnoteBulkWords.moved(confirmed, names.length, dest);
+    showMessage(report + (refreshFailed ? ' ' + airnoteBulkWords.listRefresh : ''), !!stopped || refreshFailed);
+  } catch (error) { showMessage('AirNote: ' + airnoteErrorText(error), true); }
+  finally { airnoteLock(false); }
+}
+async function deleteSelectedAirnotes() {
+  const names = airnoteNames.filter(name => airnoteBulkSelected.has(name));
+  if (airnoteBusy || !names.length) return;
+  const dirtyWarning = airnoteDirty() ? '\n\n' + airnoteBulkWords.dirtyDelete : '';
+  if (!window.confirm(airnoteBulkWords.deletePrompt(names) + dirtyWarning)) return;
+  const loaded = airnoteNames.length;
+  airnoteLock(true);
+  try {
+    const response = await fetch('/delete', {method: 'POST', headers: {'Content-Type': 'application/x-www-form-urlencoded'},
+      body: new URLSearchParams({paths: JSON.stringify(names.map(name => '/AirNote/' + name))}).toString()});
+    // /delete can remove some entries and still return 500. Never infer zero
+    // deletions from an error response; reload, then report uncertainty.
+    if (response.ok && airnoteCurrent && names.includes(airnoteCurrent.name)) {
+      airnoteCurrent = null;
+      airnoteMode(); // The draft text remains untouched, but saving now creates a new file.
+    }
+    let refreshFailed = false;
+    try { await airnoteReloadBulkList(loaded, names); }
+    catch (error) { airnoteOrderRevision = null; refreshFailed = true; }
+    showMessage((response.ok ? airnoteBulkWords.deleted(names.length) : airnoteBulkWords.uncertain) +
+      (refreshFailed ? ' ' + airnoteBulkWords.listRefresh : ''), !response.ok || refreshFailed);
+  } catch (error) {
+    // A lost response also has an unknown outcome; still attempt to reload.
+    let refreshFailed = false;
+    try { await airnoteReloadBulkList(loaded, names); }
+    catch (refreshError) { airnoteOrderRevision = null; refreshFailed = true; }
+    showMessage(airnoteBulkWords.uncertain + (refreshFailed ? ' ' + airnoteBulkWords.listRefresh : ''), true);
+  } finally { airnoteLock(false); }
+}
+function airnoteRow(name) {
+  return Array.from(airnoteField('list').children).find(item => item.dataset.name === name) || null;
+}
+function airnoteSelect(name) {
+  if (airnoteNames.indexOf(name) < 0) return;
+  airnoteSelected = name;
+  airnoteOrderButtons();
+}
+// Re-rendering drops the focused button, so put focus back where the user left it.
+function airnoteRestoreFocus() {
+  const selector = airnoteFocusAfter;
+  if (!selector) return;
+  airnoteFocusAfter = null;
+  const row = airnoteRow(airnoteSelected);
+  if (!row) return;
+  const wanted = row.querySelector(selector), pick = row.querySelector('.airnote-pick');
+  if (wanted && !wanted.disabled) wanted.focus();
+  else if (pick && !pick.disabled) pick.focus();
+}
+function airnoteDragStart(event) {
+  if (airnoteBusy || !airnoteOrderRevision) { event.preventDefault(); return; }
+  airnoteDragName = this.dataset.name;
+  airnoteSelect(airnoteDragName);
+  this.classList.add('dragging');
+  if (event.dataTransfer) { event.dataTransfer.effectAllowed = 'move'; event.dataTransfer.setData('text/plain', airnoteDragName); }
+}
+function airnoteDragOver(event) {
+  if (!airnoteDragName) return;
+  event.preventDefault();
+  if (event.dataTransfer) event.dataTransfer.dropEffect = 'move';
+  if (this.dataset.name !== airnoteDragName) this.classList.add('dragover');
+}
+function airnoteDragLeave() { this.classList.remove('dragover'); }
+function airnoteDragEnd() {
+  airnoteDragName = null;
+  Array.from(airnoteField('list').children).forEach(item => { item.classList.remove('dragging'); item.classList.remove('dragover'); });
+}
+function airnoteDrop(event) {
+  event.preventDefault();
+  const source = airnoteDragName, dropped = this.dataset.name;
+  airnoteDragEnd();
+  if (!source || source === dropped) return;
+  const target = airnoteNames.indexOf(dropped);
+  if (target < 0) return;
+  airnoteSelect(source);
+  airnoteFocusAfter = '.airnote-pick';
+  moveAirnote(undefined, target);
+}
+function airnoteOrderButtons() {
+  const list = airnoteField('list');
+  const items = Array.from(list.children);
+  const ready = !airnoteBusy && !!airnoteOrderRevision;
+  const last = Math.max(airnoteTotal, items.length) - 1;
+  list.setAttribute('aria-busy', airnoteBusy ? 'true' : 'false');
+  items.forEach((item, index) => {
+    const selected = item.dataset.name === airnoteSelected;
+    item.setAttribute('aria-current', selected ? 'true' : 'false');
+    item.draggable = ready;
+    const pick = item.querySelector('.airnote-pick');
+    if (pick) { pick.disabled = airnoteBusy; pick.setAttribute('aria-pressed', selected ? 'true' : 'false'); }
+    const up = item.querySelector('.airnote-up');
+    if (up) up.disabled = !ready || index === 0;
+    const down = item.querySelector('.airnote-down');
+    if (down) down.disabled = !ready || index >= last;
+  });
+  airnoteField('load').disabled = airnoteBusy || airnoteSelected === null;
+  airnoteBulkUpdate();
+  if (!airnoteBusy) airnoteRestoreFocus();
+}
+// direction (-1/1) comes from the row buttons; target (absolute index) from a drop.
+async function moveAirnote(direction, target) {
+  const name=airnoteSelected;
+  if(airnoteBusy || !name || !airnoteOrderRevision)return;
+  if(direction===undefined && (!Number.isInteger(target)||target<0||target>=airnoteTotal)){showMessage('無法移到該位置，請重新整理清單後再試。',true);return;}
+  const loaded=airnoteNames.length;
+  airnoteLock(true);
+  try {
+    const response=await fetch('/api/airnote/order',{method:'PUT',headers:{'Content-Type':'application/json'},
+      body:JSON.stringify({name,...(direction===undefined?{target}:{direction}),orderRevision:airnoteOrderRevision})});
+    if(!response.ok) {
+      if(response.status===409){airnoteOrderRevision=null;showMessage('筆記順序已變更，請重新整理清單後再排列。未儲存的文字仍保留。',true);return;}
+      throw airnoteResponseError(response.status);
+    }
+    airnoteOrderRevision=null; // A failed refresh must never reuse the old revision.
+    try {
+      await fetchAirnotesPage(0);
+      while(airnoteNextOffset!==null && (airnoteNames.length<loaded ||
+        airnoteNames.indexOf(name)<0))await fetchAirnotesPage(airnoteNextOffset);
+      airnoteSelect(name);
+      showMessage('已保存筆記順序；X4 Pro 重新開啟 AirNote 後會使用相同排列。',false);
+    } catch(error){airnoteOrderRevision=null;showMessage('順序已儲存，請重新整理清單。未儲存的文字仍保留。',true);}
+  } catch(error){showMessage('AirNote：'+airnoteErrorText(error),true);}
+  finally{airnoteLock(false);}
+}
+async function loadAirnotes(more = false) {
+  if (airnoteBusy || (more && airnoteNextOffset === null)) return;
+  airnoteLock(true);
+  try { await fetchAirnotesPage(more ? airnoteNextOffset : 0); }
+  catch (error) { showMessage('AirNote：' + airnoteErrorText(error), true); }
+  finally { airnoteLock(false); }
+}
+async function openAirnote() {
+  const name = airnoteSelected;
+  if (airnoteBusy || !name || (airnoteDirty() && !confirm(airnoteWords.discard))) return;
+  airnoteLock(true);
+  try {
+    const response = await fetch('/api/airnote?name=' + encodeURIComponent(name), {cache: 'no-store'});
+    if (!response.ok) throw airnoteResponseError(response.status);
+    const note = await response.json();
+    // Only replace the draft after a successful read. Failed requests keep it.
+    airnoteField('title').value = note.title;
+    airnoteField('text').value = note.text;
+    airnoteField('type').value = note.type === 'todo' ? 'todo' : 'text';
+    airnoteItemSelected.clear(); // 事項勾選屬於原本開啟的筆記。
+    airnotePreview();
+    airnoteCurrent = {name: note.name, revision: note.revision};
+    airnoteClean = airnoteDraft();
+    airnoteMode();
+    showMessage(airnoteWords.loaded, false);
+  } catch (error) { showMessage('AirNote：' + airnoteErrorText(error), true); }
+  finally { airnoteLock(false); }
+}
+async function uploadAirnote() {
+  if (airnoteBusy) return;
+  const title = airnoteField('title').value.trim();
+  let text = airnoteField('text').value;
+  const type = airnoteField('type').value;
+  if (type === 'todo') {
+    const items = airnoteTodoItems(text);
+    if (!items.length || items.length > 64 || items.some(item => !item.label.trim() || new TextEncoder().encode(item.label).length > 240 || /[\x00-\x1f\x7f]/.test(item.label))) {
+      showMessage('待辦清單需有 1 至 64 項，每項最多 240 位元組，且不可空白。', true); return;
+    }
+    text = items.map(item => (item.done ? '[x] ' : '[ ] ') + item.label).join('\n');
+    if (new TextEncoder().encode('#!AirNote-Todo:1\n' + text).length > 16384) {
+      showMessage('待辦清單太長，請減少內容後重試。', true); return;
+    }
+  }
+  if (!title || /^[. ]|[. ]$|[\x00-\x1f\x7f\\/:*?"<>|]/.test(title) || !text.trim() ||
+      /[\x00-\x08\x0b\x0c\x0e-\x1f\x7f]/.test(text) ||
+      new TextEncoder().encode(title).length > 80 || new TextEncoder().encode(text).length > 16384) {
+    showMessage(airnoteWords.invalid, true);
+    return;
+  }
+  airnoteLock(true);
+  try {
+    const response = await fetch('/api/airnote', {
+      method: airnoteCurrent ? 'PUT' : 'POST', headers: {'Content-Type': 'application/json'},
+      body: JSON.stringify(Object.assign({title: title, text: text, type: type}, airnoteCurrent || {}))
+    });
+    if (!response.ok) throw airnoteResponseError(response.status);
+    const saved = await response.json();
+    airnoteCurrent = {name: saved.name, revision: saved.revision};
+    airnoteField('title').value = title;
+    airnoteField('text').value = text;
+    airnoteClean = airnoteDraft();
+    airnoteMode();
+    showMessage(airnoteWords.saved + saved.name, false);
+    try { await fetchAirnotesPage(0); }
+    catch (error) { showMessage(airnoteWords.saved + saved.name + ' — ' + airnoteWords.refreshFailed, true); }
+  } catch (error) { showMessage('AirNote：' + airnoteErrorText(error), true); }
+  finally { airnoteLock(false); }
+}
+// 手動輸入會移動事項，記住的位置不再可靠。
+airnoteField('text').addEventListener('input', () => { airnoteItemSelected.clear(); airnotePreview(); });
+airnotePreview();
+airnoteClean = airnoteDraft();
+airnoteMode();
+window.addEventListener('beforeunload', function (event) {
+  if (!airnoteDirty()) return;
+  event.preventDefault();
+  event.returnValue = '';
+});
+
+// ---- Panes ----------------------------------------------------------------
+// One section on screen at a time. The choice lives in the hash so a reload
+// and the browser's Back button both land where the user was, and so a link
+// to a pane is a link somebody can send.
+
+// Panes and their sidebar entries are built from one list, so a category can
+// never show up in the sidebar without a pane behind it.
+function installSettingsPanes(panes) {
+  document.getElementById('settings-panes').innerHTML = panes.map(function (p) {
+    return '<div class="pane" id="pane-' + p.id + '" hidden>' + p.html + '</div>';
+  }).join('');
+  document.getElementById('nav-cats').innerHTML = panes.map(function (p) {
+    // The label is the ordering key rather than the index, so a saved order
+    // survives the firmware gaining a category ahead of the others.
+    return '<a href="#' + p.id + '" id="navpane-' + p.id + '" data-nav-key="' +
+      escapeHtml(p.label) + '">' + escapeHtml(p.label) + '</a>';
+  }).join('');
+  // The sidebar may carry an order the user dragged it into, so re-apply that
+  // and then read the pane order back off the screen. That keeps the default
+  // pane as whatever now sits at the top of the group.
+  if (window.crossmuxNav) window.crossmuxNav.refresh();
+  settingsPanes = Array.prototype.map.call(
+    document.getElementById('nav-cats').children,
+    function (link) { return link.id.slice('navpane-'.length); });
+  PANES = IS_DEVICE_PAGE ? DEVICE_PANES.slice() : settingsPanes.slice();
+}
+
+function showPane(name) {
+  if (!IS_DEVICE_PAGE && DEVICE_PANES.includes(name)) {
+    location.replace('/device' + location.search + '#' + name);
+    return;
+  }
+  const wanted = PANES.indexOf(name) >= 0 ? name : PANES[0];
+  if (!wanted) return;
+  PANES.forEach(function (pane) {
+    const el = document.getElementById('pane-' + pane);
+    if (el) el.hidden = pane !== wanted;
+    const link = document.getElementById('navpane-' + pane);
+    if (link) link.classList.toggle('active', pane === wanted);
+  });
+  // Save Settings belongs to the setting categories and nowhere else.
+  const save = document.getElementById('save-container');
+  if (save) {
+    save.style.display = (!IS_DEVICE_PAGE && settingsReady && settingsPanes.indexOf(wanted) >= 0) ? '' : 'none';
+  }
+  if (wanted === 'airnote' && !airnoteListed) loadAirnotes();
+  if (wanted === 'airphoto' && !airphotoReady) initAirphoto();
+  if (location.hash.slice(1) !== wanted) history.replaceState(null, '', '#' + wanted);
+}
+
+window.addEventListener('hashchange', function () { showPane(location.hash.slice(1)); });
+
+</script>
+</body>
+</html>

@@ -1,0 +1,554 @@
+{
+  "version": "1.5.8-hanmo-bold-status-20261010",
+  "backend": "mbedTLS 3.6.5 (Apache-2.0); TLS 1.2 and 1.3",
+  "artifacts": [
+    {
+      "name": "firmware.bin",
+      "bytes": 7419824,
+      "sha256": "9baa09af3fae76dda4e71d847a7369389650a9337a979b3dca3ca2aa432e2e4a"
+    },
+    {
+      "name": "firmware.elf",
+      "bytes": 129426120,
+      "sha256": "74478bd1c48a538d11d3957b506e96c6855b1361c0e60fcf68168013b36fc35f"
+    },
+    {
+      "name": "firmware.map",
+      "bytes": 44051900,
+      "sha256": "27a98b552e35a1b1303d257c41ac2ca785e2bcbf01a41031a05a9e5811a31356"
+    }
+  ],
+  "admittedArchives": [
+    {
+      "archive": "libFrameworkArduino.a",
+      "category": "Arduino source rebuilt",
+      "sha256": "baa888dabfb5473cc8a6f7660c5667502404cfa14a7ac70a5bd31ab215ee5bcf"
+    },
+    {
+      "archive": "libbootloader_support.a",
+      "category": "SDK source rebuilt",
+      "sha256": "2b20ee3450b63491fc86274f84bfe18a36c7d866ce391657e7f5535b5ab38d2b"
+    },
+    {
+      "archive": "libesp_hw_support.a",
+      "category": "SDK source rebuilt",
+      "sha256": "1426845d7a54849d3a99ac0ed116964ba44259413ba78376b44597d114e2ec0f"
+    },
+    {
+      "archive": "libesp_psram.a",
+      "category": "SDK source rebuilt",
+      "sha256": "2fe1983f5e529ca4df92fa5c00fdbd7510aeb886ed7a7bec16cc1e9479a98262"
+    },
+    {
+      "archive": "libesp_system.a",
+      "category": "SDK source rebuilt",
+      "sha256": "60585dc758d02cb2cf863f86a0479681cade3c2fe2db93f04f9a7d0a74e4edd0"
+    },
+    {
+      "archive": "libfreertos.a",
+      "category": "SDK source rebuilt",
+      "sha256": "4d492387c4a1dc55d56219aaa0d298c9222630784cee4fe162f6674eab242af4"
+    },
+    {
+      "archive": "libspi_flash.a",
+      "category": "SDK source rebuilt",
+      "sha256": "d2a98682ac64cef054451812ac8005c5e4d901dff971deac6fc7c38dc08cef7d"
+    },
+    {
+      "archive": "libbtbb.a",
+      "category": "vendor binary; original license retained",
+      "sha256": "80d9976d6347be8b974e963d1a6b6a2f58bb4cff08cb5b0bbbb78e9841e8a018"
+    },
+    {
+      "archive": "libbtdm_app.a",
+      "category": "vendor binary; original license retained",
+      "sha256": "41516c52a86c389488f30c3ba6da9727dfbb9316580209c5cac861ef73f9e00a"
+    },
+    {
+      "archive": "libphy.a",
+      "category": "vendor binary; original license retained",
+      "sha256": "29dcc18a035801bd41486d5d59f3caeb62f8ed153533c488828bffef1abb99fd"
+    },
+    {
+      "archive": "libapp_update.a",
+      "category": "SDK source rebuilt",
+      "sha256": "7e9b20ebbb2f8dd34287f55c39fcd5528fcf2f16699146b7e2c3c6ba69d7be5a"
+    },
+    {
+      "archive": "libarduino_tinyusb.a",
+      "category": "SDK source rebuilt",
+      "sha256": "69af4c6a2a16d09a1e318df3bceec8c6169f69e2c87afa3d084dda020b16af66"
+    },
+    {
+      "archive": "libbt.a",
+      "category": "SDK source rebuilt",
+      "sha256": "fb69f17636bfaf62fbeffce377117db96095e880dc88beb156bee84dd329e8b1"
+    },
+    {
+      "archive": "libcoexist.a",
+      "category": "vendor binary; original license retained",
+      "sha256": "fc370f917302c0da9437063ba76113e9102bc8af4a6985aa9ba2d2c09231dfbd"
+    },
+    {
+      "archive": "libcore.a",
+      "category": "vendor binary; original license retained",
+      "sha256": "858c8b217befe5ed93cbd485d16849060a29399907ab9cb81353fc8e3379f4bc"
+    },
+    {
+      "archive": "libcxx.a",
+      "category": "SDK source rebuilt",
+      "sha256": "7a4183625d055024ae3e0e31ee1c4f3e1eabd02e3875a655852e35a56b8d37d7"
+    },
+    {
+      "archive": "libefuse.a",
+      "category": "SDK source rebuilt",
+      "sha256": "451def96f0a705d658638c3dd64ef5aa2f09d817ef0672af52b231e2cfab907b"
+    },
+    {
+      "archive": "libesp-tls.a",
+      "category": "SDK source rebuilt",
+      "sha256": "4b8314e9df855fb9540cf6989599c6eb62ecf4cacc9d08644968fc84f03262a9"
+    },
+    {
+      "archive": "libesp_adc.a",
+      "category": "SDK source rebuilt",
+      "sha256": "3e4ecf4d14da7fc7fd354c4263839dc2fb6c6e39cfe117304fc3f4384b1c47ee"
+    },
+    {
+      "archive": "libesp_app_format.a",
+      "category": "SDK source rebuilt",
+      "sha256": "6a456a8270e70b10e904cf4117a84a16e8b717707474b6a55e9b48cf35b3298d"
+    },
+    {
+      "archive": "libesp_coex.a",
+      "category": "SDK source rebuilt",
+      "sha256": "4d164248caebad1f1641545f4205f7e427384779447df3f8348121a70ef7f95a"
+    },
+    {
+      "archive": "libesp_common.a",
+      "category": "SDK source rebuilt",
+      "sha256": "cf86d9fccd352da827f7c9f58bc8253b0edf2508993bba87b0dd22a9ad75e15a"
+    },
+    {
+      "archive": "libesp_driver_gpio.a",
+      "category": "SDK source rebuilt",
+      "sha256": "7181a98723ed047cfc6ae449ae9d3afc947b683842f74160c8a2e768beaf0b35"
+    },
+    {
+      "archive": "libesp_driver_i2c.a",
+      "category": "SDK source rebuilt",
+      "sha256": "584a02cf1d8198d488f12381a65b4e4ba93b78f74c1fcfcfb94a6cf31933ef60"
+    },
+    {
+      "archive": "libesp_driver_ledc.a",
+      "category": "SDK source rebuilt",
+      "sha256": "98e20ed707265009ef6f655b685e92cdac6762bb0f257c2d12512e6f983193a9"
+    },
+    {
+      "archive": "libesp_driver_rmt.a",
+      "category": "SDK source rebuilt",
+      "sha256": "9f213a5c1e65ff6797d3ab1487cccb22e390b2d8eaad6061fb08d6a14a2dcde9"
+    },
+    {
+      "archive": "libesp_driver_sdmmc.a",
+      "category": "SDK source rebuilt",
+      "sha256": "858d564d82da598a49c8ffa6c8a9b869f209f43e843a7d643056b28ff5af0778"
+    },
+    {
+      "archive": "libesp_driver_spi.a",
+      "category": "SDK source rebuilt",
+      "sha256": "b1dbba105df3c674b1308170739e724f8933897bff207c20714520f601e86249"
+    },
+    {
+      "archive": "libesp_driver_tsens.a",
+      "category": "SDK source rebuilt",
+      "sha256": "f90f85db4df1eed06e358a837846147e11e96445874029d5cfd9afd8df75a7f4"
+    },
+    {
+      "archive": "libesp_driver_uart.a",
+      "category": "SDK source rebuilt",
+      "sha256": "8eec0dc1c041e9f1c7f7b6832708d89cde38d6405ed337b9b18ee2e391ee16bf"
+    },
+    {
+      "archive": "libesp_driver_usb_serial_jtag.a",
+      "category": "SDK source rebuilt",
+      "sha256": "5a3e23567f7879c2363393874767ddb094e74d3e85b00499b29ccff1f01c7e9e"
+    },
+    {
+      "archive": "libesp_eth.a",
+      "category": "SDK source rebuilt",
+      "sha256": "c319c89d76724469229f4afa11cd08c217e480e56d7243fcbb6fe9bb3e72ed1a"
+    },
+    {
+      "archive": "libesp_event.a",
+      "category": "SDK source rebuilt",
+      "sha256": "731df25fede191b070331335c34c10bd990706e7fccdd103d2167bf4015977c7"
+    },
+    {
+      "archive": "libesp_http_client.a",
+      "category": "SDK source rebuilt",
+      "sha256": "27af067b66853461eef83534e80987a3165319cbe3a15ad1a81f38fa433c9e98"
+    },
+    {
+      "archive": "libesp_mm.a",
+      "category": "SDK source rebuilt",
+      "sha256": "0a2f03174d1c69893c9bd1514fc75aad9fa0c5f44234349203873bb516aaea34"
+    },
+    {
+      "archive": "libesp_netif.a",
+      "category": "SDK source rebuilt",
+      "sha256": "c595a7a4f2347750f660595ada265991e1d7ba55810bae382aab88a1137bdd6c"
+    },
+    {
+      "archive": "libesp_partition.a",
+      "category": "SDK source rebuilt",
+      "sha256": "8a69904334a35f4dd8f0c0ddbd5d8b3c3bf046dd822deb04afecc36e7af42ba6"
+    },
+    {
+      "archive": "libesp_phy.a",
+      "category": "SDK source rebuilt",
+      "sha256": "34035e3f3e828a7a09a611189db34987216d8c202539716a0cd6d938108826ba"
+    },
+    {
+      "archive": "libesp_pm.a",
+      "category": "SDK source rebuilt",
+      "sha256": "503e0c6f326a18505a84c553de64f4833f566ee5ec03f6d0bcb90b72b4e8865a"
+    },
+    {
+      "archive": "libesp_ringbuf.a",
+      "category": "SDK source rebuilt",
+      "sha256": "6405cb2d3f0a895174b7695e762a75c874b91cfe5d63c47a13f0d16ef21320e9"
+    },
+    {
+      "archive": "libesp_rom.a",
+      "category": "SDK source rebuilt",
+      "sha256": "2dc181f3b239b9ec336dfe380ac51a497f51beace2d66703cf420a1cddbac715"
+    },
+    {
+      "archive": "libesp_security.a",
+      "category": "SDK source rebuilt",
+      "sha256": "f4bbb3ba85049a6ecb19edc2e8577990a971ed8d57e2e8e586d9e4c098f6a865"
+    },
+    {
+      "archive": "libesp_timer.a",
+      "category": "SDK source rebuilt",
+      "sha256": "649c17364db7471e57ba79b97be2857c81b3462ec9f90bc9023bd09ad57882e7"
+    },
+    {
+      "archive": "libesp_vfs_console.a",
+      "category": "SDK source rebuilt",
+      "sha256": "0844bf9926cb5937925ba4e16010df54785906c4049bca2ec3b2eeda22d2877e"
+    },
+    {
+      "archive": "libesp_wifi.a",
+      "category": "SDK source rebuilt",
+      "sha256": "e587214dde11fba04269e2a699d5b025529d839be6090c02d64f1420eea43a76"
+    },
+    {
+      "archive": "libespcoredump.a",
+      "category": "SDK source rebuilt",
+      "sha256": "5b005a721eb93815f8b3bb9e7e12787efb4f8e7985533ccc0521593c8835b5bb"
+    },
+    {
+      "archive": "libespnow.a",
+      "category": "vendor binary; original license retained",
+      "sha256": "da84ddf8fd7dbbc0d1d75b1400004bf1bdefa2e2c083ccb08d36bea3d9d428c0"
+    },
+    {
+      "archive": "libespressif__esp_diagnostics.a",
+      "category": "SDK source rebuilt",
+      "sha256": "81757c98e66643b7ac315a35caa54f58606a0c2f4d616f83643b6b361e3aa058"
+    },
+    {
+      "archive": "libespressif__mdns.a",
+      "category": "SDK source rebuilt",
+      "sha256": "54088e3b90cc82d372ec457eb68d2de79e624eff5096c01a0026f4ca1f9830db"
+    },
+    {
+      "archive": "libespressif__network_provisioning.a",
+      "category": "SDK source rebuilt",
+      "sha256": "2cc536211c3371e796c702cad012b8ecc08dfbf646752b7d0083fa5e536a18fb"
+    },
+    {
+      "archive": "libhal.a",
+      "category": "SDK source rebuilt",
+      "sha256": "b6d194fa543f434affc141966dd0fdde1a663672662c647ae7186d1c08ba165d"
+    },
+    {
+      "archive": "libheap.a",
+      "category": "SDK source rebuilt",
+      "sha256": "326ac809bbe1e940766fdb39e1d2610e0aa7af4c027cf834e189b22a87904030"
+    },
+    {
+      "archive": "libhttp_parser.a",
+      "category": "SDK source rebuilt",
+      "sha256": "d37ee9799af47e811530a1a358680a6154df0de7024af7d8b30a093ac493e657"
+    },
+    {
+      "archive": "libjson.a",
+      "category": "SDK source rebuilt",
+      "sha256": "055680ff2b06bad5b596e62f1eb98efa11258acdf6023bf83fb336c2c08a48e1"
+    },
+    {
+      "archive": "liblog.a",
+      "category": "SDK source rebuilt",
+      "sha256": "6253be53b4828de5ad4abfbdf1081f39a0b98939497a62a800354859cdb4d491"
+    },
+    {
+      "archive": "liblwip.a",
+      "category": "SDK source rebuilt",
+      "sha256": "613bb5f459887d58620ad2b420f90e80cfc7ae5fe7c966c02f5b4eec49c8d9da"
+    },
+    {
+      "archive": "libmbedcrypto.a",
+      "category": "SDK source rebuilt",
+      "sha256": "56fa410c29238ef2d8559011a5f74608f3373c9022318cda3815bf8cdbb7a708"
+    },
+    {
+      "archive": "libmbedtls.a",
+      "category": "SDK source rebuilt",
+      "sha256": "23b42d9fb8e523bc82771f90c8c38f94805ac8a601bab627ad7c1d510ea0f71c"
+    },
+    {
+      "archive": "libmbedtls_2.a",
+      "category": "SDK source rebuilt",
+      "sha256": "4dc06cc4d0028653bafbbdc3435a41f4d69ec9374605b767e2be81fef854b819"
+    },
+    {
+      "archive": "libmbedx509.a",
+      "category": "SDK source rebuilt",
+      "sha256": "27c32276f7cbec72720b3d5a558b944da714cdbf407b123f942cfc4eabb8b132"
+    },
+    {
+      "archive": "libmesh.a",
+      "category": "vendor binary; original license retained",
+      "sha256": "05f75a2003b306b955a5fcd760f284a70f08de60e9565d36207f476ba3af3f36"
+    },
+    {
+      "archive": "libnet80211.a",
+      "category": "vendor binary; original license retained",
+      "sha256": "cf07bc6d095215f4b29673c34d61956f198c1415f732ece645904c448457a0ed"
+    },
+    {
+      "archive": "libnewlib.a",
+      "category": "SDK source rebuilt",
+      "sha256": "146e5c33ee2e4b88c19b0a5228ef7f0adf4d26ebb5c79c54ec97ed3450466a7d"
+    },
+    {
+      "archive": "libnvs_flash.a",
+      "category": "SDK source rebuilt",
+      "sha256": "a17ec0e1b288f1567d9f582417a33ec043e7ef13413337b36a782b07af47e7ee"
+    },
+    {
+      "archive": "libnvs_sec_provider.a",
+      "category": "SDK source rebuilt",
+      "sha256": "82eeb8b8df50d6c8807e770e409036d763d0daf4d20faaf805cc9a718f5261fb"
+    },
+    {
+      "archive": "libpp.a",
+      "category": "vendor binary; original license retained",
+      "sha256": "3d7c337588f2e8ffe0fc54e5a7ae58c0565e917163257bd56883b925609dcdc6"
+    },
+    {
+      "archive": "libprotobuf-c.a",
+      "category": "SDK source rebuilt",
+      "sha256": "785cda67440056f3842dc0861056c754635d40621f9941c9bc90b2214f4e40ce"
+    },
+    {
+      "archive": "libprotocomm.a",
+      "category": "SDK source rebuilt",
+      "sha256": "4f21135ff192be40f2421c6a4c4d6f6bd5947b457fcbf9a6686fc9250a2c65a4"
+    },
+    {
+      "archive": "libpthread.a",
+      "category": "SDK source rebuilt",
+      "sha256": "29771ea1f5f3eb5d7ec2e00327193c25f7a4fbc0f1c61ec016dd2d4e4432ad60"
+    },
+    {
+      "archive": "libsdmmc.a",
+      "category": "SDK source rebuilt",
+      "sha256": "6a019f84c8cfa15e0885d82f6ffff7fbec22e1b5ba8985aa6164fcb718066b0e"
+    },
+    {
+      "archive": "libsmartconfig.a",
+      "category": "vendor binary; original license retained",
+      "sha256": "b68547acbfc823d0410e8550ae403f9b4ef7bf0e052dbd09a915c105ba7d84fd"
+    },
+    {
+      "archive": "libsoc.a",
+      "category": "SDK source rebuilt",
+      "sha256": "590054d0c76558873d775902eaee8454c2c29deb41bd048c7b4ebc02f06e6d1a"
+    },
+    {
+      "archive": "libtcp_transport.a",
+      "category": "SDK source rebuilt",
+      "sha256": "f45a5ed788fc87173c48bcf954013faecb93dfa94c63037298ed14c509d35f46"
+    },
+    {
+      "archive": "libusb.a",
+      "category": "SDK source rebuilt",
+      "sha256": "89745d769ba2f86731ea69cd26921ef2cff648b3f1cf24b25acf19d56aa3207b"
+    },
+    {
+      "archive": "libvfs.a",
+      "category": "SDK source rebuilt",
+      "sha256": "097f01f5b7d8012c7459e24cd6f4fc36097b36581be1385b4cdd920c5cf644e2"
+    },
+    {
+      "archive": "libwpa_supplicant.a",
+      "category": "SDK source rebuilt",
+      "sha256": "9cf8f6078cb658c2cadd5593c1a8d9262639dc2d39d1fdb8af047bb39d15b08f"
+    },
+    {
+      "archive": "libxt_hal.a",
+      "category": "vendor binary; original license retained",
+      "sha256": "4823e6c657199a6726f3163f15e1222edb85a8a33eeaafd2aad0cc06150cc4ec"
+    },
+    {
+      "archive": "libxtensa.a",
+      "category": "SDK source rebuilt",
+      "sha256": "8e5fa3927f1be4f11dc16a34772ee1a2e26e9086e551005c100c92417437043c"
+    },
+    {
+      "archive": "libc.a",
+      "category": "standard toolchain runtime",
+      "sha256": "5822b6c1f326d3b07cf1ca208796c8dd5561e958e474be6bfdc7291af03a4f69"
+    },
+    {
+      "archive": "libm.a",
+      "category": "standard toolchain runtime",
+      "sha256": "aa7543aeab844a83814029d2acffac1bf0f704e9e00dfdcccc3970150e52ed93"
+    },
+    {
+      "archive": "libstdc++.a",
+      "category": "standard toolchain runtime",
+      "sha256": "463dfe3add3229df13eaa6ef0abb0af7e93e4a6bef7744f7d4e12e44d4ed3346"
+    },
+    {
+      "archive": "libgcc.a",
+      "category": "standard toolchain runtime",
+      "sha256": "56b8198266e92af9cf8d9f4d07e93c03d38cfe7be176b00d2641b245f11a5a5f"
+    }
+  ],
+  "sdkSourceBuiltArchives": 66,
+  "vendorPrebuiltArchives": 11,
+  "sdkValidation": "Reuses the prior source-rebuilt SDK; all admitted archive hashes matched. SDK not rebuilt for this UI-only change.",
+  "deviceHistoryRows": 71,
+  "sourceCorrespondence": {
+    "programInputFiles": 1776,
+    "allByteIdenticalToFinalBuild": true,
+    "capturedGeneratedHeaders": [
+      {
+        "path": "src/network/html/zh-Hant/HomePageHtml.generated.h",
+        "reason": "capture exact build-generated gzip header; decompressed HTML/JS unchanged",
+        "sha256": "40591296572d4d4108f857931eaf7cb3a65b17be92dc9f19ca54d48bf7e3d193"
+      },
+      {
+        "path": "src/network/html/zh-Hant/FontsPageHtml.generated.h",
+        "reason": "capture exact build-generated gzip header; decompressed HTML/JS unchanged",
+        "sha256": "4595c50b821a5ba65ff3e67bb85ba3f5050a33c4b46b466a7c96c4de87820483"
+      },
+      {
+        "path": "src/network/html/zh-Hant/SettingsPageHtml.generated.h",
+        "reason": "capture exact build-generated gzip header; decompressed HTML/JS unchanged",
+        "sha256": "cd285520efab161d73f73351fae65cf158b61910d2e64bda5cef524b4edf9d6a"
+      },
+      {
+        "path": "src/network/html/zh-Hant/FilesPageHtml.generated.h",
+        "reason": "capture exact build-generated gzip header; decompressed HTML/JS unchanged",
+        "sha256": "621bb8f2765d94caeae62363fb95268c009d8d0fe8bc992d61c424a91d6bbda6"
+      },
+      {
+        "path": "src/network/html/zh-CN/HomePageHtml.generated.h",
+        "reason": "capture exact build-generated gzip header; decompressed HTML/JS unchanged",
+        "sha256": "6c10daf2d29c07e076575f4624fe2bc710ff6c10a5a12cd32bc6e1599feed5fd"
+      },
+      {
+        "path": "src/network/html/zh-CN/FontsPageHtml.generated.h",
+        "reason": "capture exact build-generated gzip header; decompressed HTML/JS unchanged",
+        "sha256": "650616c7326091e94831651b28fd95815df96d2cbc9a5204cd80eac5ec1f3e63"
+      },
+      {
+        "path": "src/network/html/zh-CN/SettingsPageHtml.generated.h",
+        "reason": "capture exact build-generated gzip header; decompressed HTML/JS unchanged",
+        "sha256": "cf3ae4dd5c17c67d4c2ada52f035fb60ad3bb0341c58e8074d34c8104918e02a"
+      },
+      {
+        "path": "src/network/html/zh-CN/FilesPageHtml.generated.h",
+        "reason": "capture exact build-generated gzip header; decompressed HTML/JS unchanged",
+        "sha256": "959334f565df12314f43754d57f0df10b1a9f3c32b2708bb749886748eee4faa"
+      },
+      {
+        "path": "src/network/html/js/jszip_minJs.generated.h",
+        "reason": "capture exact build-generated gzip header; decompressed HTML/JS unchanged",
+        "sha256": "244dc30c7c348d66447bd94c43ecf97d2c366a1b6699a69245110d1a240b6d88"
+      },
+      {
+        "path": "src/network/html/js/navJs.generated.h",
+        "reason": "capture exact build-generated gzip header; decompressed HTML/JS unchanged",
+        "sha256": "c221972cb806e5c3d8e613e4b245ed9918776540605d38635ccbf801027b7203"
+      },
+      {
+        "path": "src/network/html/en/HomePageHtml.generated.h",
+        "reason": "capture exact build-generated gzip header; decompressed HTML/JS unchanged",
+        "sha256": "9eea3cf76af44d3c034d69a3c53c940033a7354208adabcff48cea7f28d74096"
+      },
+      {
+        "path": "src/network/html/en/FontsPageHtml.generated.h",
+        "reason": "capture exact build-generated gzip header; decompressed HTML/JS unchanged",
+        "sha256": "6f20ecbeb538cc89e4a3d1f27f9f7a154159f4f602dcd02e854364c5ae0d5f8a"
+      },
+      {
+        "path": "src/network/html/en/SettingsPageHtml.generated.h",
+        "reason": "capture exact build-generated gzip header; decompressed HTML/JS unchanged",
+        "sha256": "a986aba2a3495a49442e24f468a07bbe00fb4bbf62cac2fb9b96d79d519127c5"
+      },
+      {
+        "path": "src/network/html/en/FilesPageHtml.generated.h",
+        "reason": "capture exact build-generated gzip header; decompressed HTML/JS unchanged",
+        "sha256": "bef7f04dea6ee93fea155951248d121bd112d2254bd8abd203b24543716038bc"
+      }
+    ],
+    "note": "gzip generation includes timestamps; no claim of globally bit-reproducible builds"
+  },
+  "testsThisVersion": {
+    "scopedPass": 16,
+    "scopedSkip": 1,
+    "deviceBuild": true,
+    "simulatorBuild": true,
+    "simulator": {
+      "version": "1.5.8-hanmo-bold-status-20261010",
+      "visuallyReviewed": true,
+      "readerFlows": [
+        "both-right",
+        "right-progress",
+        "split",
+        "wifi-hidden",
+        "battery-hidden",
+        "both-left",
+        "wifi-center"
+      ],
+      "readerCapturedFrames": 21,
+      "readerStatusFramesReviewed": 7,
+      "uiFlows": [
+        "5-ZH_TW-0-flow",
+        "5-ZH_TW-1-flow",
+        "5-EN-0-flow",
+        "5-ZH_CN-0-flow"
+      ],
+      "uiCapturedAndReviewedFrames": 20,
+      "uiFlow": "INX Home \u2192 Settings \u2192 Reader expanded \u2192 Back \u2192 Apps",
+      "findings": "Wi-Fi appears before the percent+battery group when both on the right, including when page progress is shown. Left/hidden/center configurations remain functional; title truncates when center Wi-Fi takes its lane. Bold normal/large UI and three languages show no observed clipping or overlapping in these frames.",
+      "scope": "Synthetic SD and actual desktop simulator, not physical SD, wireless connectivity, device e-ink appearance or hardware latency. Prior pilot-old-reader is baseline only and excluded from totals. Other themes, all games and all Japanese lessons not rerun."
+    }
+  },
+  "inheritedTestsNotRerun": {
+    "realHostTLS": 10,
+    "productionAdapterWithTransportStub": 14,
+    "sourceGuards": 3,
+    "lgplRelinkProbe": true
+  },
+  "hardwareValidated": false,
+  "published": false,
+  "bitReproducibleClaim": false
+}

@@ -1,0 +1,19 @@
+{
+  "baselineAppSha256": "dd022c57b3de3df92929e48114416aa899a73a11b8ff89fe8bf9cd77bcbfc360",
+  "changes": [
+    {
+      "file": "dependencies/arduino-core-3.3.7/cores/esp32/esp32-hal-misc.c",
+      "marker": "HANMO_LGPL_CORE_RELINK_PROBE_20261009"
+    },
+    {
+      "file": "dependencies/WebSockets/src/WebSockets.cpp",
+      "marker": "HANMO_LGPL_WS_RELINK_PROBE_20261009"
+    }
+  ],
+  "success": true,
+  "probeAppSha256": "bf0b64da545430c532fe31d9781401bdbd7e09a8c298f5ffb63db291f94239d7",
+  "probeBytes": 7398160,
+  "markersInAppAndElf": true,
+  "sourcesRestored": true,
+  "notFlashed": true
+}

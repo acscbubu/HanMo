@@ -1,0 +1,1320 @@
+#include "BaseTheme.h"
+
+#include <FreeInkUIGfxRenderer.h>
+#include <GfxRenderer.h>
+#include <HalClock.h>
+#include <HalGPIO.h>
+#include <HalPowerManager.h>
+#include <HalStorage.h>
+#include <Logging.h>
+
+#include <algorithm>
+#include <cstdint>
+#include <string>
+
+#include "BleInput.h"
+#include "I18n.h"
+#include "RecentBooksStore.h"
+#include "components/UIScale.h"
+#include "components/UITheme.h"
+#include "components/UIThemeTokens.h"
+#include "components/UiAppHelpers.h"
+#include "components/icons/bluetooth.h"
+#include "components/icons/bookmark.h"
+#include "fontIds.h"
+#include "GlobalWifiStatus.h"
+#include "util/TimeUtils.h"
+
+// Internal constants
+namespace {
+constexpr int homeMenuMargin = 20;
+constexpr int homeMarginTop = 30;
+constexpr int subtitleY = 738;
+constexpr int bookmarkStatusIconWidth = 16;
+constexpr int bookmarkStatusIconHeight = 14;
+constexpr int bookmarkStatusIconGap = 4;
+constexpr int bookmarkStatusIconTopCrop = 2;
+constexpr int bluetoothStatusIconWidth = 16;
+constexpr int bluetoothStatusIconHeight = 16;
+
+void drawBookmarkStatusIcon(const GfxRenderer& renderer, const int x, const int y) {
+  constexpr int bytesPerRow = bookmarkStatusIconWidth / 8;
+  for (int row = 0; row < bookmarkStatusIconHeight; ++row) {
+    for (int col = 0; col < bookmarkStatusIconWidth; ++col) {
+      const uint8_t byte = BookmarkStatusIcon[(row + bookmarkStatusIconTopCrop) * bytesPerRow + col / 8];
+      const uint8_t mask = 1U << (7 - (col % 8));
+      renderer.drawPixel(x + col, y + row, (byte & mask) != 0);
+    }
+  }
+}
+
+void drawBluetoothStatusIcon(const GfxRenderer& renderer, const int x, const int y) {
+  constexpr int bytesPerRow = bluetoothStatusIconWidth / 8;
+  for (int row = 0; row < bluetoothStatusIconHeight; ++row) {
+    for (int col = 0; col < bluetoothStatusIconWidth; ++col) {
+      const uint8_t byte = BluetoothStatusIcon[row * bytesPerRow + col / 8];
+      renderer.drawPixel(x + col, y + row, (byte & (1U << (7 - col % 8))) == 0);
+    }
+  }
+}
+
+}  // namespace
+
+void BaseTheme::drawBatteryOutline(const GfxRenderer& renderer, int x, int y, int battWidth, int rectHeight) {
+  // Top line
+  renderer.drawLine(x + 1, y, x + battWidth - 3, y);
+  // Bottom line
+  renderer.drawLine(x + 1, y + rectHeight - 1, x + battWidth - 3, y + rectHeight - 1);
+  // Left line
+  renderer.drawLine(x, y + 1, x, y + rectHeight - 2);
+  // Battery end
+  renderer.drawLine(x + battWidth - 2, y + 1, x + battWidth - 2, y + rectHeight - 2);
+  renderer.drawPixel(x + battWidth - 1, y + 3);
+  renderer.drawPixel(x + battWidth - 1, y + rectHeight - 4);
+  renderer.drawLine(x + battWidth - 0, y + 4, x + battWidth - 0, y + rectHeight - 5);
+}
+
+void BaseTheme::drawDitherMask(const GfxRenderer& renderer, const int x, const int y, const int width,
+                               const int height) {
+  for (int py = y; py < y + height; py++) {
+    for (int px = x; px < x + width; px++) {
+      if ((px + py) % 2 == 0) renderer.drawPixel(px, py, false);
+    }
+  }
+}
+
+void BaseTheme::drawBatteryLightningBolt(const GfxRenderer& renderer, int boltX, int boltY) {
+  // Draw lightning bolt (white/inverted on black fill for visibility)
+  renderer.drawLine(boltX + 4, boltY + 0, boltX + 5, boltY + 0, false);
+  renderer.drawLine(boltX + 3, boltY + 1, boltX + 4, boltY + 1, false);
+  renderer.drawLine(boltX + 2, boltY + 2, boltX + 5, boltY + 2, false);
+  renderer.drawLine(boltX + 3, boltY + 3, boltX + 4, boltY + 3, false);
+  renderer.drawLine(boltX + 2, boltY + 4, boltX + 3, boltY + 4, false);
+  renderer.drawLine(boltX + 1, boltY + 5, boltX + 4, boltY + 5, false);
+  renderer.drawLine(boltX + 2, boltY + 6, boltX + 3, boltY + 6, false);
+  renderer.drawLine(boltX + 1, boltY + 7, boltX + 2, boltY + 7, false);
+}
+
+void BaseTheme::fillBatteryIcon(const GfxRenderer& renderer, Rect rect, uint16_t percentage) const {
+  const bool charging = gpio.isUsbConnected();
+
+  const int maxFillWidth = rect.width - 5;
+  const int fillHeight = rect.height - 4;
+  if (maxFillWidth <= 0 || fillHeight <= 0) {
+    return;
+  }
+  // +1 to round up so we always fill at least one pixel
+  int filledWidth = percentage * maxFillWidth / 100 + 1;
+  if (filledWidth > maxFillWidth) {
+    filledWidth = maxFillWidth;
+  }
+
+  // When charging, ensure minimum fill so lightning bolt is fully visible
+  constexpr int minFillForBolt = 8;
+  if (charging && filledWidth < minFillForBolt) {
+    filledWidth = std::min(minFillForBolt, maxFillWidth);
+  }
+
+  renderer.fillRect(rect.x + 2, rect.y + 2, filledWidth, fillHeight);
+
+  if (charging) {
+    drawBatteryLightningBolt(renderer, rect.x + 4, rect.y + 2);
+  }
+}
+
+void BaseTheme::drawBatteryLeft(const GfxRenderer& renderer, Rect rect, const bool showPercentage) const {
+  // Left aligned: icon on left, percentage on right (reader mode)
+  const uint16_t percentage = powerManager.getBatteryPercentage();
+  const int y = rect.y + 6;
+
+  if (showPercentage) {
+    const auto percentageText = std::to_string(percentage) + "%";
+    renderer.drawText(STATUS_NUMERIC_FONT_ID, rect.x + batteryPercentSpacing + rect.width, rect.y,
+                      percentageText.c_str());
+  }
+
+  const Rect iconRect{rect.x, y, rect.width, rect.height};
+  drawBatteryOutline(renderer, rect.x, y, rect.width, rect.height);
+  fillBatteryIcon(renderer, iconRect, percentage);
+}
+
+void BaseTheme::drawBatteryRight(const GfxRenderer& renderer, Rect rect, const bool showPercentage) const {
+  const uint16_t percentage = powerManager.getBatteryPercentage();
+  const int y = rect.y + 6;
+
+  if (showPercentage) {
+    const auto percentageText = std::to_string(percentage) + "%";
+    const int textWidth = renderer.getTextWidth(STATUS_NUMERIC_FONT_ID, percentageText.c_str());
+    renderer.drawText(STATUS_NUMERIC_FONT_ID, rect.x - textWidth - batteryPercentSpacing, rect.y,
+                      percentageText.c_str());
+  }
+
+  const Rect iconRect{rect.x, y, rect.width, rect.height};
+  drawBatteryOutline(renderer, rect.x, y, rect.width, rect.height);
+  fillBatteryIcon(renderer, iconRect, percentage);
+}
+
+int BaseTheme::measureProgressBarHeight(const GfxRenderer& renderer, const int barHeight,
+                                        const bool showPercentage) const {
+  constexpr int percentageGap = 15;
+  return barHeight <= 0 ? 0 : barHeight + (showPercentage ? percentageGap + renderer.getLineHeight(uiScaleSpec().bodyFontId) : 0);
+}
+
+int BaseTheme::drawProgressBar(const GfxRenderer& renderer, Rect rect, const size_t current, const size_t total,
+                               const bool showPercentage) const {
+  if (total == 0) return rect.y;
+  const int percent = static_cast<int>((static_cast<uint64_t>(current) * 100) / total);
+  renderer.drawRect(rect.x, rect.y, rect.width, rect.height);
+  const int fillWidth = (rect.width - 4) * percent / 100;
+  if (fillWidth > 0) renderer.fillRect(rect.x + 2, rect.y + 2, fillWidth, rect.height - 4);
+  if (showPercentage) {
+    char percentText[16];
+    snprintf(percentText, sizeof(percentText), "%d%%", percent);
+    renderer.drawCenteredText(uiScaleSpec().bodyFontId, rect.y + rect.height + 15, percentText);
+  }
+  return rect.y + measureProgressBarHeight(renderer, rect.height, showPercentage);
+}
+
+// Centre a button-hint label inside its box. A label that fits is drawn on the
+// single baseline it always was; one too wide used to overflow the button border
+// and run into the neighbouring hint, and now wraps to at most two centred lines
+// (wrappedText() ellipsises anything that still doesn't fit). Shared so every
+// theme's drawButtonHints() gets the same behaviour.
+void BaseTheme::drawHintLabel(GfxRenderer& renderer, const int fontId, const char* label, const int x,
+                              const int boxWidth, const int boxTop, const int boxHeight, const int singleLineYOffset) {
+  constexpr int textPadding = 4;  // keeps a wrapped label off the button's border
+  const int maxTextWidth = boxWidth - (textPadding * 2);
+
+  const int textWidth = renderer.getTextWidth(fontId, label);
+  if (textWidth <= maxTextWidth) {
+    renderer.drawText(fontId, x + (boxWidth - 1 - textWidth) / 2, boxTop + singleLineYOffset, label);
+    return;
+  }
+
+  // Spaced by the glyph height, not getLineHeight() — that returns the font's
+  // full advanceY (leading included), which stacks two lines taller than the
+  // button and clips the second one.
+  constexpr int lineGap = 2;
+  const int step = renderer.getTextHeight(fontId) + lineGap;
+  const auto lines = renderer.wrappedText(fontId, label, maxTextWidth, 2);
+  const int block = static_cast<int>(lines.size()) * step - lineGap;
+  int lineY = boxTop + std::max(1, (boxHeight - block) / 2);
+  for (const auto& line : lines) {
+    const int lineWidth = renderer.getTextWidth(fontId, line.c_str());
+    renderer.drawText(fontId, x + (boxWidth - 1 - lineWidth) / 2, lineY, line.c_str());
+    lineY += step;
+  }
+}
+
+void BaseTheme::drawButtonHints(GfxRenderer& renderer, const char* btn1, const char* btn2, const char* btn3,
+                                const char* btn4) const {
+  if (!buttonHintsVisible()) return;
+
+  const GfxRenderer::Orientation orig_orientation = renderer.getOrientation();
+  renderer.setOrientation(GfxRenderer::Orientation::Portrait);
+
+  const int pageHeight = renderer.getScreenHeight();
+  constexpr int buttonWidth = 106;
+  constexpr int buttonHeight = BaseMetrics::values.buttonHintsHeight;
+  constexpr int buttonY = BaseMetrics::values.buttonHintsHeight;  // Distance from bottom
+  constexpr int textYOffset = 7;                                  // Distance from top of button to text baseline
+  // Keyed to the portrait panel width: the 528-wide X3 gets more spacing than
+  // the 480-wide boards (X4, X4 Pro, and the other 800x480 panels).
+  constexpr int narrowButtonPositions[] = {25, 130, 245, 350};
+  constexpr int wideButtonPositions[] = {38, 154, 268, 384};
+  const int* buttonPositions = renderer.getScreenWidth() >= 528 ? wideButtonPositions : narrowButtonPositions;
+  const char* labels[] = {btn1, btn2, btn3, btn4};
+
+  for (int i = 0; i < 4; i++) {
+    // Only draw if the label is non-empty
+    if (labels[i] != nullptr && labels[i][0] != '\0') {
+      const int x = buttonPositions[i];
+      renderer.fillRect(x, pageHeight - buttonY, buttonWidth, buttonHeight, false);
+      renderer.drawRect(x, pageHeight - buttonY, buttonWidth, buttonHeight);
+      drawHintLabel(renderer, uiScaleSpec().bodyFontId, labels[i], x, buttonWidth, pageHeight - buttonY, buttonHeight,
+                    textYOffset);
+    }
+  }
+
+  renderer.setOrientation(orig_orientation);
+}
+
+bool BaseTheme::buttonHintsVisible() const { return !gpio.hasTouch() && SETTINGS.showButtonHints; }
+
+void BaseTheme::drawSideButtonHints(const GfxRenderer& renderer, const char* topBtn, const char* bottomBtn) const {
+  if (gpio.hasTouch()) {
+    return;
+  }
+
+  const int screenWidth = renderer.getScreenWidth();
+  constexpr int buttonWidth = BaseMetrics::values.sideButtonHintsWidth;  // Width on screen (height when rotated)
+  constexpr int buttonHeight = 80;                                       // Height on screen (width when rotated)
+  constexpr int buttonMargin = 4;
+
+  if (gpio.hasEdgeSideButtons()) {
+    // Edge-button layout (X3, X4 Pro): Up on left side, Down on right side, positioned higher
+    constexpr int x3ButtonY = 155;
+
+    if (topBtn != nullptr && topBtn[0] != '\0') {
+      const int leftX = buttonMargin;
+      renderer.drawRect(leftX, x3ButtonY, buttonWidth, buttonHeight);
+      const int textWidth = renderer.getTextWidth(SMALL_FONT_ID, topBtn);
+      const int textHeight = renderer.getTextHeight(SMALL_FONT_ID);
+      const int textX = leftX + (buttonWidth - textHeight) / 2;
+      const int textY = x3ButtonY + (buttonHeight + textWidth) / 2;
+      renderer.drawTextRotated90CW(SMALL_FONT_ID, textX, textY, topBtn);
+    }
+
+    if (bottomBtn != nullptr && bottomBtn[0] != '\0') {
+      const int rightX = screenWidth - buttonMargin - buttonWidth;
+      renderer.drawRect(rightX, x3ButtonY, buttonWidth, buttonHeight);
+      const int textWidth = renderer.getTextWidth(SMALL_FONT_ID, bottomBtn);
+      const int textHeight = renderer.getTextHeight(SMALL_FONT_ID);
+      const int textX = rightX + (buttonWidth - textHeight) / 2;
+      const int textY = x3ButtonY + (buttonHeight + textWidth) / 2;
+      renderer.drawTextRotated90CW(SMALL_FONT_ID, textX, textY, bottomBtn);
+    }
+  } else {
+    // X4 layout: Both buttons stacked on right side
+    constexpr int topButtonY = 345;
+    const char* labels[] = {topBtn, bottomBtn};
+    const int x = screenWidth - buttonMargin - buttonWidth;
+
+    if (topBtn != nullptr && topBtn[0] != '\0') {
+      renderer.drawLine(x, topButtonY, x + buttonWidth - 1, topButtonY);
+      renderer.drawLine(x, topButtonY, x, topButtonY + buttonHeight - 1);
+      renderer.drawLine(x + buttonWidth - 1, topButtonY, x + buttonWidth - 1, topButtonY + buttonHeight - 1);
+    }
+
+    if ((topBtn != nullptr && topBtn[0] != '\0') || (bottomBtn != nullptr && bottomBtn[0] != '\0')) {
+      renderer.drawLine(x, topButtonY + buttonHeight, x + buttonWidth - 1, topButtonY + buttonHeight);
+    }
+
+    if (bottomBtn != nullptr && bottomBtn[0] != '\0') {
+      renderer.drawLine(x, topButtonY + buttonHeight, x, topButtonY + 2 * buttonHeight - 1);
+      renderer.drawLine(x + buttonWidth - 1, topButtonY + buttonHeight, x + buttonWidth - 1,
+                        topButtonY + 2 * buttonHeight - 1);
+      renderer.drawLine(x, topButtonY + 2 * buttonHeight - 1, x + buttonWidth - 1, topButtonY + 2 * buttonHeight - 1);
+    }
+
+    for (int i = 0; i < 2; i++) {
+      if (labels[i] != nullptr && labels[i][0] != '\0') {
+        const int y = topButtonY + i * buttonHeight;
+        const int textWidth = renderer.getTextWidth(SMALL_FONT_ID, labels[i]);
+        const int textHeight = renderer.getTextHeight(SMALL_FONT_ID);
+        const int textX = x + (buttonWidth - textHeight) / 2;
+        const int textY = y + (buttonHeight + textWidth) / 2;
+        renderer.drawTextRotated90CW(SMALL_FONT_ID, textX, textY, labels[i]);
+      }
+    }
+  }
+}
+
+int BaseTheme::getListRowStep(bool hasSubtitle) const {
+  int rowHeight = (hasSubtitle) ? BaseMetrics::values.listWithSubtitleRowHeight : BaseMetrics::values.listRowHeight;
+  return rowHeight;
+}
+
+int BaseTheme::getListPageItems(int contentHeight, bool hasSubtitle) const {
+  const int rowStep = getListRowStep(hasSubtitle);
+  if (rowStep <= 0) return 1;
+  return std::max(1, contentHeight / rowStep);
+}
+
+void BaseTheme::drawSideScrollBar(const GfxRenderer& renderer, Rect rect, const int itemCount, const int pageStartIndex,
+                                  const int pageItems) const {
+  if (itemCount <= pageItems || pageItems <= 0 || rect.height <= 0) return;
+  const auto& metrics = UITheme::getInstance().getMetrics();
+  const int totalPages = 1 + (itemCount - 1) / pageItems;
+  const int currentPage = std::clamp(pageStartIndex / pageItems, 0, totalPages - 1);
+  const int barHeight = std::max(1, static_cast<int>((static_cast<int64_t>(rect.height) * pageItems) / itemCount));
+  const int barY =
+      rect.y + static_cast<int>((static_cast<int64_t>(rect.height - barHeight) * currentPage) / (totalPages - 1));
+  const int barX = rect.x + rect.width - metrics.scrollBarRightOffset;
+  renderer.drawLine(barX, rect.y, barX, rect.y + rect.height, true);
+  renderer.fillRect(barX - metrics.scrollBarWidth, barY, metrics.scrollBarWidth, barHeight, true);
+}
+
+void BaseTheme::drawList(const GfxRenderer& renderer, Rect rect, int itemCount, int selectedIndex,
+                         const std::function<std::string(int index)>& rowTitle,
+                         const std::function<std::string(int index)>& rowSubtitle,
+                         const std::function<UIIcon(int index)>& rowIcon,
+                         const std::function<std::string(int index)>& rowValue, bool highlightValue,
+                         const std::function<bool(int index)>& rowDimmed, const bool showSelection,
+                         const std::function<bool(int index)>&) const {
+  int rowHeight =
+      (rowSubtitle != nullptr) ? BaseMetrics::values.listWithSubtitleRowHeight : BaseMetrics::values.listRowHeight;
+  int pageItems = rowHeight > 0 ? std::max(1, rect.height / rowHeight) : 1;
+
+  const int totalPages = (itemCount + pageItems - 1) / pageItems;
+  if (totalPages > 1) {
+    constexpr int indicatorWidth = 20;
+    constexpr int arrowSize = 6;
+    constexpr int margin = 15;  // Offset from right edge
+
+    const int centerX = rect.x + rect.width - indicatorWidth / 2 - margin;
+    const int indicatorTop = rect.y;  // Offset to avoid overlapping side button hints
+    const int indicatorBottom = rect.y + rect.height - arrowSize;
+
+    // Draw up arrow at top (^) - narrow point at top, wide base at bottom
+    for (int i = 0; i < arrowSize; ++i) {
+      const int lineWidth = 1 + i * 2;
+      const int startX = centerX - i;
+      renderer.drawLine(startX, indicatorTop + i, startX + lineWidth - 1, indicatorTop + i);
+    }
+
+    // Draw down arrow at bottom (v) - wide base at top, narrow point at bottom
+    for (int i = 0; i < arrowSize; ++i) {
+      const int lineWidth = 1 + (arrowSize - 1 - i) * 2;
+      const int startX = centerX - (arrowSize - 1 - i);
+      renderer.drawLine(startX, indicatorBottom - arrowSize + 1 + i, startX + lineWidth - 1,
+                        indicatorBottom - arrowSize + 1 + i);
+    }
+  }
+
+  // Draw selection
+  int contentWidth = rect.width - 5;
+  if (showSelection && selectedIndex >= 0) {
+    renderer.fillRect(rect.x, rect.y + selectedIndex % pageItems * rowHeight - 2, rect.width, rowHeight);
+  }
+  constexpr int minValueGap = 10;
+
+  // Draw all items
+  const auto pageStartIndex = selectedIndex / pageItems * pageItems;
+  for (int i = pageStartIndex; i < itemCount && i < pageStartIndex + pageItems; i++) {
+    const int itemY = rect.y + (i % pageItems) * rowHeight;
+    const bool selected = showSelection && i == selectedIndex;
+
+    int rowTextWidth = contentWidth - BaseMetrics::values.contentSidePadding * 2;
+    std::string valueText;
+    if (rowValue != nullptr) {
+      valueText = rowValue(i);
+      if (!valueText.empty()) {
+        int maxValW = std::max(0, rowTextWidth - 40 - minValueGap);
+        valueText = renderer.truncatedText(uiScaleSpec().bodyFontId, valueText.c_str(), maxValW);
+        int valueWidth = renderer.getTextWidth(uiScaleSpec().bodyFontId, valueText.c_str()) + minValueGap;
+        rowTextWidth -= valueWidth;
+      }
+    }
+
+    auto itemName = rowTitle(i);
+    auto font = uiScaleSpec().bodyFontId;
+    auto item = renderer.truncatedText(font, itemName.c_str(), rowTextWidth);
+    renderer.drawText(font, rect.x + BaseMetrics::values.contentSidePadding, itemY, item.c_str(), !selected);
+
+    // Apply checkerboard dither to create gray text effect for dimmed items
+    if (rowDimmed && rowDimmed(i) && !selected) {
+      const int titleWidth = renderer.getTextWidth(font, item.c_str());
+      const int lineH = renderer.getLineHeight(font);
+      const int tx = rect.x + BaseMetrics::values.contentSidePadding;
+      for (int py = itemY; py < itemY + lineH; py++)
+        for (int px = tx; px < tx + titleWidth; px++)
+          if ((px + py) % 2 == 0) renderer.drawPixel(px, py, false);
+    }
+
+    if (rowSubtitle != nullptr) {
+      std::string subtitleText = rowSubtitle(i);
+      if (!subtitleText.empty()) {
+        auto subtitle = renderer.truncatedText(SMALL_FONT_ID, subtitleText.c_str(), rowTextWidth);
+        renderer.drawText(SMALL_FONT_ID, rect.x + BaseMetrics::values.contentSidePadding, itemY + 22, subtitle.c_str(),
+                          !selected);
+      }
+    }
+
+    if (!valueText.empty()) {
+      const auto valueTextWidth = renderer.getTextWidth(uiScaleSpec().bodyFontId, valueText.c_str());
+      int valueY = itemY;
+      if (rowSubtitle != nullptr) {
+        valueY = itemY + 10;
+      }
+      renderer.drawText(uiScaleSpec().bodyFontId, rect.x + contentWidth - BaseMetrics::values.contentSidePadding - valueTextWidth,
+                        valueY, valueText.c_str(), !selected);
+    }
+  }
+}
+
+void BaseTheme::drawHeader(const GfxRenderer& renderer, Rect rect, const char* title, const char* subtitle) const {
+  // Every activity header renders through the FreeInkUI header + battery
+  // indicator components, styled by the active theme's tokens (padding,
+  // centering, underline). Non-interactive frame: no hit rects registered.
+  namespace fui = freeink::ui;
+  const auto spec = uiScaleSpec();
+  fui::GfxRendererFrame<1> ui(renderer, spec.smallFontId, spec.bodyFontId, spec.titleFontId);
+  // Refresh the app-wide shared tokens instead of copying ~1.5KB of
+  // ThemeTokens onto this render-path stack frame; the values derived here
+  // are identical to what every FreeInkApp screen derives. Goes through the
+  // same publish-a-fresh-slot path applySharedUiTheme() uses (see
+  // UiAppHelpers.h) rather than overwriting the previously-published
+  // instance in place, since some other FreeInkApp could be mid-read of it.
+  const fui::ThemeTokens& tokens = refreshSharedUiThemeTokens(ui.target);
+  // Header status text (battery percent, right label) stays at the fixed
+  // small font like the legacy headers; the uiScale small font is for list
+  // subtitles.
+  ui.target.setFont(fui::GfxRendererTarget::FONT_SMALL, SMALL_FONT_ID);
+  const ThemeMetrics& metrics = UITheme::getInstance().getMetrics();
+  const fui::Rect band{static_cast<int16_t>(rect.x), static_cast<int16_t>(rect.y), static_cast<int16_t>(rect.width),
+                       static_cast<int16_t>(rect.height)};
+
+  const bool showBatteryPercentage =
+      SETTINGS.hideBatteryPercentage != CrossPointSettings::HIDE_BATTERY_PERCENTAGE::HIDE_ALWAYS;
+  const uint16_t percentage = powerManager.getBatteryPercentage();
+  char percentText[8];
+  snprintf(percentText, sizeof(percentText), "%u%%", static_cast<unsigned>(percentage));
+  // The icon glyph extends 2px past glyphWidth (terminal nub); reserve it or
+  // the percent label's rect comes up short and the text truncates.
+  constexpr int16_t batteryNubWidth = 2;
+  int16_t batteryReserve = static_cast<int16_t>(metrics.batteryWidth + batteryNubWidth);
+  if (showBatteryPercentage) {
+    batteryReserve = static_cast<int16_t>(
+        batteryReserve + batteryPercentSpacing +
+        ui.target.measureText(fui::GfxRendererTarget::FONT_SMALL, percentText, tokens.smallText).width);
+  }
+
+  const bool batteryLeftForWifi = metrics.headerBatterySide == 1;
+  const int wifiInset = metrics.headerBatteryDetached ? 12 : tokens.headerSidePadding;
+  const int batteryStartForWifi = batteryLeftForWifi ? rect.x+wifiInset : rect.x+rect.width-wifiInset-batteryReserve;
+  GlobalWifiStatus::place(renderer,rect.x+wifiInset,rect.x+rect.width-wifiInset,rect.y,
+      metrics.batteryBarHeight,batteryStartForWifi,batteryStartForWifi+batteryReserve);
+  const auto wifiBox = renderer.getSystemStatusRect();
+  fui::HeaderProps props;
+  props.title = title;
+  props.rightLabel = subtitle;  // firmware headers right-align the secondary text
+  const bool batteryLeft = metrics.headerBatterySide == 1;
+  const bool batteryDetached = metrics.headerBatteryDetached;
+  // Shared-line headers with the battery on the right: the header component
+  // places rightLabel inside the battery reserve, so it sits mid-band next to
+  // the icon and shifts with the percent label's width. Draw it manually below
+  // instead, pinned at the fixed side inset in the band's lower half — the
+  // same corner the detached (Lyra) layout puts it — so the label holds one
+  // position across themes and battery states.
+  const bool manualRightLabel = subtitle != nullptr && !batteryDetached && !batteryLeft;
+  if (manualRightLabel) {
+    props.rightLabel = nullptr;
+  }
+  props.borderEdges = fui::EdgeBottom;
+  props.titleText = tokens.titleText;
+  props.titleText.align = tokens.headerTitleAlign;
+  props.subtitleText = tokens.smallText;
+  props.styles = tokens.popup;
+  props.sidePadding = tokens.headerSidePadding;
+  if (batteryDetached) {
+    // Battery in its own corner strip; the title owns the full width of the
+    // lower sub-band, so long book titles span the header (Lyra layout).
+    // Anchor the title with explicit clearance above the band's bottom rule
+    // instead of naive sub-band centering, which left the glyphs nearly
+    // touching it.
+    const int titleLineHeight = ui.target.lineHeight(fui::GfxRendererTarget::FONT_TITLE);
+    const int titleTop = static_cast<int>(band.height) - tokens.headerUnderline - tokens.spaceMd - titleLineHeight;
+    props.titleOffsetY = static_cast<int16_t>(titleTop - (static_cast<int>(band.height) - titleLineHeight) / 2);
+  } else {
+    const int16_t reserve = static_cast<int16_t>(batteryReserve + tokens.spaceMd);
+    if (batteryLeft) {
+      props.leftReserve = reserve;
+    } else {
+      props.rightReserve = reserve;
+    }
+  }
+  if (!batteryDetached && wifiBox.width) {
+    if (SETTINGS.wifiStatusPosition == 1) props.leftReserve = std::max<int16_t>(props.leftReserve,wifiBox.x+wifiBox.width-band.x+8);
+    else props.rightReserve = std::max<int16_t>(props.rightReserve,band.right()-wifiBox.x+8);
+  }
+  if (manualRightLabel && *subtitle) {
+    // The manual label still needs title space reserved by the header layout.
+    props.rightReserve = std::max<int16_t>(props.rightReserve, static_cast<int16_t>(
+        std::min<int>(band.width / 2,
+            ui.target.measureText(fui::GfxRendererTarget::FONT_SMALL, subtitle, tokens.smallText).width) + tokens.spaceMd));
+  }
+  // Underline only under a titled header: an untitled band (Lyra home screen)
+  // historically drew no rule, and the old themes keyed the line on the title.
+  if (title != nullptr && props.styles.normal.border.kind == fui::PaintKind::None && tokens.headerUnderline > 0) {
+    props.styles.normal.border = fui::Paint::solid(fui::Color::Black);
+    props.styles.normal.borderWidth = tokens.headerUnderline;
+  }
+  fui::header(ui.frame, band, props);
+
+  fui::BatteryIndicatorProps battery;
+  battery.percent = static_cast<uint8_t>(percentage > 100 ? 100 : percentage);
+  battery.charging = gpio.isUsbConnected();
+  battery.label = showBatteryPercentage ? percentText : nullptr;
+  battery.text = tokens.smallText;
+  battery.glyphWidth = static_cast<int16_t>(metrics.batteryWidth);
+  battery.glyphHeight = static_cast<int16_t>(metrics.batteryHeight);
+  battery.gap = batteryPercentSpacing;
+  // Detached: hug the corner (12px, the legacy inset) within the battery
+  // strip; shared line: sit on the content grid. Both anchor to the band's top
+  // strip (batteryBarHeight) — the legacy shared-line headers drew the battery
+  // at the top edge, and it keeps the lower-right corner free for the manual
+  // right label below.
+  const int16_t batteryEdgeInset = batteryDetached ? 12 : tokens.headerSidePadding;
+  const int16_t batteryX = batteryLeft ? static_cast<int16_t>(band.x + batteryEdgeInset)
+                                       : static_cast<int16_t>(band.right() - batteryEdgeInset - batteryReserve);
+  const int16_t batteryH = static_cast<int16_t>(metrics.batteryBarHeight);
+  fui::batteryIndicator(ui.frame, fui::Rect{batteryX, band.y, batteryReserve, batteryH}, battery);
+
+  if (manualRightLabel) {
+    const fui::Size labelSize = ui.target.measureText(fui::GfxRendererTarget::FONT_SMALL, subtitle, tokens.smallText);
+    const int16_t labelH = ui.target.lineHeight(fui::GfxRendererTarget::FONT_SMALL);
+    const fui::Rect labelRect{static_cast<int16_t>(band.right() - tokens.headerSidePadding - labelSize.width),
+                              static_cast<int16_t>(band.bottom() - tokens.headerUnderline - tokens.spaceSm - labelH),
+                              labelSize.width, labelH};
+    ui.target.text(labelRect, subtitle, tokens.smallText);
+  }
+}
+
+void BaseTheme::drawMainTabBar(const GfxRenderer&, Rect, MainTab) const {}
+
+BaseTheme::HomeExtrasSpan BaseTheme::drawHomeExtras(const GfxRenderer& renderer, const Rect band,
+                                                    const int textTop) const {
+  struct Item {
+    const char* text;
+    uint8_t slot;
+    int width;
+  };
+  char clockBuf[9];
+  Item items[2];
+  size_t count = 0;
+
+  if (SETTINGS.homeLabelPos != CrossPointSettings::HOME_HEADER_HIDDEN && SETTINGS.homeLabel[0] != '\0') {
+    items[count++] = {SETTINGS.homeLabel, SETTINGS.homeLabelPos, 0};
+  }
+  if (SETTINGS.homeClockPos != CrossPointSettings::HOME_HEADER_HIDDEN) {
+    if (!TimeUtils::formatCurrentTime(clockBuf, sizeof(clockBuf), SETTINGS.clockFormat == 1)) {
+      snprintf(clockBuf, sizeof(clockBuf), "--:--");
+    }
+    items[count++] = {clockBuf, SETTINGS.homeClockPos, 0};
+  }
+
+  HomeExtrasSpan span;
+  if (count == 0) return span;
+
+  constexpr int edgeInset = 12;
+  constexpr int itemGap = 10;
+  const int height = renderer.getLineHeight(uiScaleSpec().bodyFontId);
+  for (size_t i = 0; i < count; ++i) items[i].width = renderer.getTextWidth(uiScaleSpec().bodyFontId, items[i].text);
+
+  constexpr uint8_t slots[] = {CrossPointSettings::HOME_HEADER_LEFT, CrossPointSettings::HOME_HEADER_CENTER,
+                               CrossPointSettings::HOME_HEADER_RIGHT};
+  for (const uint8_t slot : slots) {
+    int runWidth = 0;
+    size_t inSlot = 0;
+    for (size_t i = 0; i < count; ++i) {
+      if (items[i].slot != slot) continue;
+      runWidth += items[i].width + (inSlot > 0 ? itemGap : 0);
+      ++inSlot;
+    }
+    if (inSlot == 0) continue;
+
+    int x;
+    if (slot == CrossPointSettings::HOME_HEADER_LEFT) {
+      x = band.x + edgeInset;
+      span.leftEnd = x + runWidth;
+    } else if (slot == CrossPointSettings::HOME_HEADER_CENTER) {
+      x = band.x + (band.width - runWidth) / 2;
+    } else {
+      x = band.x + band.width - edgeInset - runWidth;
+      span.rightStart = x;
+    }
+
+    const auto wifi = renderer.getSystemStatusRect();
+    int runEnd = x+runWidth;
+    if (wifi.width && textTop < wifi.y+wifi.height && textTop+height > wifi.y && x < wifi.x+wifi.width+8 && runEnd > wifi.x-8) {
+      if (slot == CrossPointSettings::HOME_HEADER_LEFT) x = wifi.x+wifi.width+8;
+      else x = std::max(band.x+edgeInset,wifi.x-8-runWidth);
+      runEnd = std::min(band.x+band.width-edgeInset,wifi.x > x ? wifi.x-8 : band.x+band.width-edgeInset);
+    }
+    for (size_t i = 0; i < count; ++i) {
+      if (items[i].slot != slot) continue;
+      const GfxRenderer::ClipScope clip(renderer, x, textTop, std::max(0,std::min(items[i].width,runEnd-x)), height);
+      renderer.drawText(uiScaleSpec().bodyFontId, x, textTop, items[i].text);
+      x += items[i].width + itemGap;
+    }
+  }
+  return span;
+}
+
+void BaseTheme::drawHomeHeader(const GfxRenderer& renderer, const Rect rect, const char* title) const {
+  drawHeader(renderer, rect, title);
+  // The theme has already laid out its own band, so the label goes on top of
+  // it, centred in the band's height rather than into a layout this class does
+  // not own. Overlap is the user's to resolve by choosing another slot.
+  const int height = renderer.getLineHeight(uiScaleSpec().bodyFontId);
+  drawHomeExtras(renderer, rect, rect.y + std::max(0, (rect.height - height) / 2));
+}
+
+void BaseTheme::drawSubHeader(const GfxRenderer& renderer, Rect rect, const char* label, const char* rightLabel) const {
+  constexpr int labelGap = 10;
+  const int contentWidth = std::max(0, rect.width - BaseMetrics::values.contentSidePadding * 2);
+
+  int labelWidth = contentWidth;
+  if (rightLabel) {
+    auto truncatedRightLabel = renderer.truncatedText(SMALL_FONT_ID, rightLabel, contentWidth, EpdFontFamily::REGULAR);
+    const int rightLabelWidth = renderer.getTextWidth(SMALL_FONT_ID, truncatedRightLabel.c_str());
+    renderer.drawText(SMALL_FONT_ID, rect.x + rect.width - BaseMetrics::values.contentSidePadding - rightLabelWidth,
+                      rect.y + 7, truncatedRightLabel.c_str());
+    labelWidth = std::max(0, contentWidth - rightLabelWidth - labelGap);
+  }
+
+  if (labelWidth > 0) {
+    auto truncatedLabel = renderer.truncatedText(uiScaleSpec().bodyFontId, label, labelWidth, EpdFontFamily::REGULAR);
+    renderer.drawText(uiScaleSpec().bodyFontId, rect.x + BaseMetrics::values.contentSidePadding, rect.y, truncatedLabel.c_str(),
+                      true, EpdFontFamily::REGULAR);
+  }
+}
+
+void BaseTheme::drawTabBar(const GfxRenderer& renderer, const Rect rect, const std::vector<TabInfo>& tabs,
+                           const bool selected) const {
+  constexpr int underlineHeight = 2;
+  constexpr int underlineGap = 4;
+  const int lineHeight = renderer.getLineHeight(uiScaleSpec().bodyFontId);
+  int currentX = rect.x + BaseMetrics::values.contentSidePadding;
+  for (const auto& tab : tabs) {
+    const auto style = tab.selected ? EpdFontFamily::BOLD : EpdFontFamily::REGULAR;
+    const int textWidth = renderer.getTextWidth(uiScaleSpec().bodyFontId, tab.label, style);
+    if (tab.selected) {
+      if (selected) {
+        renderer.fillRect(currentX - 3, rect.y, textWidth + 6, lineHeight + underlineGap);
+      } else {
+        renderer.fillRect(currentX, rect.y + lineHeight + underlineGap, textWidth, underlineHeight);
+      }
+    }
+    renderer.drawText(uiScaleSpec().bodyFontId, currentX, rect.y, tab.label, !(tab.selected && selected), style);
+    currentX += textWidth + BaseMetrics::values.tabSpacing;
+  }
+}
+
+bool BaseTheme::tabIndexFromPoint(const GfxRenderer& renderer, const Rect rect, const std::vector<TabInfo>& tabs,
+                                  const int x, const int y, int& index) const {
+  if (tabs.empty() || y < rect.y || y >= rect.y + rect.height) return false;
+  int currentX = rect.x + BaseMetrics::values.contentSidePadding;
+  for (size_t i = 0; i < tabs.size(); i++) {
+    const auto& tab = tabs[i];
+    const auto style = tab.selected ? EpdFontFamily::BOLD : EpdFontFamily::REGULAR;
+    const int textWidth = renderer.getTextWidth(uiScaleSpec().bodyFontId, tab.label, style);
+    const int left = i == 0 ? rect.x : currentX - BaseMetrics::values.tabSpacing / 2;
+    const int right = currentX + textWidth + BaseMetrics::values.tabSpacing / 2;
+    if (x >= left && x < right) {
+      index = static_cast<int>(i);
+      return true;
+    }
+    currentX += textWidth + BaseMetrics::values.tabSpacing;
+  }
+  return false;
+}
+
+// Draw the "Recent Book" cover card on the home screen
+// TODO: Refactor method to make it cleaner, split into smaller methods
+int BaseTheme::recentBookIndexAt(int, int) const {
+  // Single-cover themes show only the first recent book; a tap anywhere in
+  // the cover strip therefore selects book 0.
+  return 0;
+}
+
+void BaseTheme::drawRecentBookCover(GfxRenderer& renderer, Rect rect, const std::vector<RecentBook>& recentBooks,
+                                    const int selectorIndex, bool& coverRendered, bool& coverBufferStored,
+                                    bool& bufferRestored, std::function<bool()> storeCoverBuffer) const {
+  const bool hasContinueReading = !recentBooks.empty();
+  const bool bookSelected = hasContinueReading && selectorIndex == 0;
+
+  // --- Top "book" card for the current title (selectorIndex == 0) ---
+  // When there's no cover image, use fixed size (half screen)
+  // When there's cover image, adapt width to image aspect ratio, keep height fixed at 400px
+  const int baseHeight = rect.height;  // Fixed height (400px)
+
+  int bookWidth, bookX;
+  bool hasCoverImage = false;
+
+  if (hasContinueReading && !recentBooks[0].coverBmpPath.empty()) {
+    // Try to get actual image dimensions from BMP header
+    const std::string coverBmpPath =
+        UITheme::getCoverThumbPath(recentBooks[0].coverBmpPath, BaseMetrics::values.homeCoverHeight);
+
+    HalFile file;
+    if (Storage.openFileForRead("HOME", coverBmpPath, file)) {
+      Bitmap bitmap(file);
+      if (bitmap.parseHeaders() == BmpReaderError::Ok) {
+        hasCoverImage = true;
+        const int imgWidth = bitmap.getWidth();
+        const int imgHeight = bitmap.getHeight();
+
+        // Calculate width based on aspect ratio, maintaining baseHeight
+        if (imgWidth > 0 && imgHeight > 0) {
+          const float aspectRatio = static_cast<float>(imgWidth) / static_cast<float>(imgHeight);
+          bookWidth = static_cast<int>(baseHeight * aspectRatio);
+
+          // Ensure width doesn't exceed reasonable limits (max 90% of screen width)
+          const int maxWidth = static_cast<int>(rect.width * 0.9f);
+          if (bookWidth > maxWidth) {
+            bookWidth = maxWidth;
+          }
+        } else {
+          bookWidth = rect.width / 2;  // Fallback
+        }
+      }
+    }
+  }
+
+  if (!hasCoverImage) {
+    // No cover: use half screen size
+    bookWidth = rect.width / 2;
+  }
+
+  bookX = rect.x + (rect.width - bookWidth) / 2;
+  const int bookY = rect.y;
+  const int bookHeight = baseHeight;
+
+  // Bookmark dimensions (used in multiple places)
+  const int bookmarkWidth = bookWidth / 8;
+  const int bookmarkHeight = bookHeight / 5;
+  const int bookmarkX = bookX + bookWidth - bookmarkWidth - 10;
+  const int bookmarkY = bookY + 5;
+
+  // Draw book card regardless, fill with message based on `hasContinueReading`
+  {
+    // Draw cover image as background if available (inside the box)
+    // Only load from SD on first render, then use stored buffer
+
+    if (hasContinueReading && !recentBooks[0].coverBmpPath.empty() && !coverRendered) {
+      const std::string coverBmpPath =
+          UITheme::getCoverThumbPath(recentBooks[0].coverBmpPath, BaseMetrics::values.homeCoverHeight);
+
+      // First time: load cover from SD and render
+      HalFile file;
+      if (Storage.openFileForRead("HOME", coverBmpPath, file)) {
+        Bitmap bitmap(file);
+        if (bitmap.parseHeaders() == BmpReaderError::Ok) {
+          LOG_DBG("THEME", "Rendering bmp");
+
+          // Draw the cover image (bookWidth and bookHeight already match image aspect ratio)
+          renderer.drawBitmap(bitmap, bookX, bookY, bookWidth, bookHeight);
+
+          // Draw border around the card
+          renderer.drawRect(bookX, bookY, bookWidth, bookHeight);
+
+          // No bookmark ribbon when cover is shown - it would just cover the art
+
+          // Store the buffer with cover image for fast navigation
+          coverBufferStored = storeCoverBuffer();
+          coverRendered = coverBufferStored;  // Only consider it rendered if we successfully stored the buffer
+
+          // First render: if selected, draw selection indicators now
+          if (bookSelected) {
+            LOG_DBG("THEME", "Drawing selection");
+            renderer.drawRect(bookX + 1, bookY + 1, bookWidth - 2, bookHeight - 2);
+            renderer.drawRect(bookX + 2, bookY + 2, bookWidth - 4, bookHeight - 4);
+          }
+        }
+      }
+    }
+
+    if (!bufferRestored && !coverRendered) {
+      // No cover image: draw border or fill, plus bookmark as visual flair
+      if (bookSelected) {
+        renderer.fillRect(bookX, bookY, bookWidth, bookHeight);
+      } else {
+        renderer.drawRect(bookX, bookY, bookWidth, bookHeight);
+      }
+
+      // Draw bookmark ribbon when no cover image (visual decoration)
+      if (hasContinueReading) {
+        const int notchDepth = bookmarkHeight / 3;
+        const int centerX = bookmarkX + bookmarkWidth / 2;
+
+        const int xPoints[5] = {
+            bookmarkX,                  // top-left
+            bookmarkX + bookmarkWidth,  // top-right
+            bookmarkX + bookmarkWidth,  // bottom-right
+            centerX,                    // center notch point
+            bookmarkX                   // bottom-left
+        };
+        const int yPoints[5] = {
+            bookmarkY,                                // top-left
+            bookmarkY,                                // top-right
+            bookmarkY + bookmarkHeight,               // bottom-right
+            bookmarkY + bookmarkHeight - notchDepth,  // center notch point
+            bookmarkY + bookmarkHeight                // bottom-left
+        };
+
+        // Draw bookmark ribbon (inverted if selected)
+        renderer.fillPolygon(xPoints, yPoints, 5, !bookSelected);
+      }
+    }
+
+    // If buffer was restored, draw selection indicators if needed
+    if (bufferRestored && bookSelected && coverRendered) {
+      // Draw selection border (no bookmark inversion needed since cover has no bookmark)
+      renderer.drawRect(bookX + 1, bookY + 1, bookWidth - 2, bookHeight - 2);
+      renderer.drawRect(bookX + 2, bookY + 2, bookWidth - 4, bookHeight - 4);
+    } else if (!coverRendered && !bufferRestored) {
+      // Selection border already handled above in the no-cover case
+    }
+  }
+
+  if (hasContinueReading && !hasCoverImage) {
+    const std::string& lastBookTitle = recentBooks[0].title;
+    const std::string& lastBookAuthor = recentBooks[0].author;
+
+    auto lines = renderer.wrappedText(uiScaleSpec().bodyFontId, lastBookTitle.c_str(), bookWidth - 40, 3);
+
+    // Book title text
+    int totalTextHeight = renderer.getLineHeight(uiScaleSpec().bodyFontId) * static_cast<int>(lines.size());
+    if (!lastBookAuthor.empty()) {
+      totalTextHeight += renderer.getLineHeight(uiScaleSpec().bodyFontId) * 3 / 2;
+    }
+
+    // Vertically center the title block within the card
+    int titleYStart = bookY + (bookHeight - totalTextHeight) / 2;
+
+    const auto truncatedAuthor = lastBookAuthor.empty()
+                                     ? std::string{}
+                                     : renderer.truncatedText(uiScaleSpec().bodyFontId, lastBookAuthor.c_str(), bookWidth - 40);
+
+    for (const auto& line : lines) {
+      renderer.drawCenteredText(uiScaleSpec().bodyFontId, titleYStart, line.c_str(), !bookSelected);
+      titleYStart += renderer.getLineHeight(uiScaleSpec().bodyFontId);
+    }
+
+    if (!truncatedAuthor.empty()) {
+      titleYStart += renderer.getLineHeight(uiScaleSpec().bodyFontId) / 2;
+      renderer.drawCenteredText(uiScaleSpec().bodyFontId, titleYStart, truncatedAuthor.c_str(), !bookSelected);
+    }
+
+    const int continueY = bookY + bookHeight - renderer.getLineHeight(uiScaleSpec().bodyFontId) * 3 / 2;
+    renderer.drawCenteredText(uiScaleSpec().bodyFontId, continueY, tr(STR_CONTINUE_READING), !bookSelected);
+  } else if (!hasContinueReading) {
+    // No book to continue reading
+    const int y =
+        bookY + (bookHeight - renderer.getLineHeight(uiScaleSpec().bodyFontId) - renderer.getLineHeight(uiScaleSpec().bodyFontId)) / 2;
+    renderer.drawCenteredText(uiScaleSpec().bodyFontId, y, tr(STR_NO_OPEN_BOOK));
+    renderer.drawCenteredText(uiScaleSpec().bodyFontId, y + renderer.getLineHeight(uiScaleSpec().bodyFontId), tr(STR_START_READING));
+  }
+}
+
+int BaseTheme::getMenuRowHeight(const GfxRenderer&) const { return UITheme::getInstance().getMetrics().menuRowHeight; }
+
+void BaseTheme::drawButtonMenu(GfxRenderer& renderer, Rect rect, const int buttonCount, const int selectedIndex,
+                               const std::function<std::string(int)>& buttonLabel,
+                               const std::function<UIIcon(int)>& rowIcon, const int rowSpacing) const {
+  const int spacing = rowSpacing < 0 ? BaseMetrics::values.menuSpacing : rowSpacing;
+  for (int i = 0; i < buttonCount; ++i) {
+    const int tileY = BaseMetrics::values.verticalSpacing + rect.y +
+                      static_cast<int>(i) * (BaseMetrics::values.menuRowHeight + spacing);
+    const bool selected = selectedIndex == i;
+    const Rect tile{rect.x + BaseMetrics::values.contentSidePadding, tileY,
+                    rect.width - BaseMetrics::values.contentSidePadding * 2, BaseMetrics::values.menuRowHeight};
+    if (selected)
+      renderer.fillRect(tile.x, tile.y, tile.width, tile.height);
+    else
+      renderer.drawRect(tile.x, tile.y, tile.width, tile.height);
+    const std::string label = buttonLabel(i);
+    const int textX = rect.x + (rect.width - renderer.getTextWidth(uiScaleSpec().bodyFontId, label.c_str())) / 2;
+    const int textY = tileY + (tile.height - renderer.getLineHeight(uiScaleSpec().bodyFontId)) / 2;
+    renderer.drawText(uiScaleSpec().bodyFontId, textX, textY, label.c_str(), !selected);
+  }
+}
+
+void BaseTheme::drawHomeMenu(GfxRenderer& renderer, Rect rect, const int buttonCount, const int selectedIndex,
+                             const std::function<std::string(int)>& buttonLabel,
+                             const std::function<UIIcon(int)>& rowIcon) const {
+  drawButtonMenu(renderer, rect, buttonCount, selectedIndex, buttonLabel, rowIcon);
+}
+
+Rect BaseTheme::drawPopup(const GfxRenderer& renderer, const char* message) const {
+  const auto& metrics = UITheme::getInstance().getMetrics();
+  const int marginX = metrics.popupMarginX;
+  const int marginY = metrics.popupMarginY;
+  const int frameThickness = metrics.popupFrameThickness;
+  const EpdFontFamily::Style popupFontFamily = metrics.popupTextBold ? EpdFontFamily::BOLD : EpdFontFamily::REGULAR;
+  // Scale y position proportionally to screen height
+  const int y = static_cast<int>(renderer.getScreenHeight() * metrics.popupTopOffsetRatio);
+  const int textWidth = renderer.getTextWidth(uiScaleSpec().bodyFontId, message, popupFontFamily);
+  const int textHeight = renderer.getLineHeight(uiScaleSpec().bodyFontId);
+  const int w = textWidth + marginX * 2;
+  const int h = textHeight + marginY * 2;
+  const int x = (renderer.getScreenWidth() - w) / 2;
+
+  const bool useRoundedPopup = metrics.popupCornerRadius > 0;
+  if (useRoundedPopup) {
+    renderer.fillRoundedRect(x - frameThickness, y - frameThickness, w + frameThickness * 2, h + frameThickness * 2,
+                             metrics.popupCornerRadius + frameThickness, Color::White);
+    renderer.fillRoundedRect(x, y, w, h, metrics.popupCornerRadius, Color::Black);
+  } else {
+    renderer.fillRect(x - frameThickness, y - frameThickness, w + frameThickness * 2, h + frameThickness * 2, true);
+    renderer.fillRect(x, y, w, h, false);
+  }
+
+  const int textX = x + (w - textWidth) / 2;
+  const int textY = y + marginY + metrics.popupTextBaselineOffsetY;
+  renderer.drawText(uiScaleSpec().bodyFontId, textX, textY, message, metrics.popupTextInverted, popupFontFamily);
+  renderer.displayBuffer();
+  return Rect{x, y, w, h};
+}
+
+void BaseTheme::fillPopupProgress(const GfxRenderer& renderer, const Rect& layout, const int progress) const {
+  const auto& metrics = UITheme::getInstance().getMetrics();
+  const int barHeight = metrics.popupProgressBarHeight;
+  const int barWidth =
+      std::max(0, layout.width - metrics.popupMarginX * 2);  // twice the margin in drawPopup to match text width
+  const int barX = layout.x + (layout.width - barWidth) / 2;
+  const int barY = layout.y + layout.height - metrics.popupMarginY / 2 - barHeight / 2 - 1;
+  if (barWidth <= 0 || barHeight <= 0) {
+    renderer.displayBuffer(HalDisplay::FAST_REFRESH);
+    return;
+  }
+
+  const int scaledProgress = metrics.popupProgressClampPercent ? std::clamp(progress, 0, 100) : progress;
+  const int fillWidth = barWidth * scaledProgress / 100;
+
+  if (metrics.popupProgressDrawOutline) {
+    renderer.drawRect(barX, barY, barWidth, barHeight, 1, metrics.popupProgressOutlineInverted);
+  }
+  if (fillWidth > 0) {
+    renderer.fillRect(barX, barY, fillWidth, barHeight, metrics.popupProgressFillInverted);
+  }
+
+  renderer.displayBuffer(HalDisplay::FAST_REFRESH);
+}
+
+void BaseTheme::drawStatusBar(GfxRenderer& renderer, const float bookProgress, const int currentPage,
+                              const int pageCount, std::string title, const int paddingBottom, const int textYOffset,
+                              const bool fillMargin, const bool isPageBookmarked, const bool pageCountEstimated) const {
+  auto metrics = UITheme::getInstance().getMetrics();
+  int orientedMarginTop, orientedMarginRight, orientedMarginBottom, orientedMarginLeft;
+  renderer.getOrientedViewableTRBL(&orientedMarginTop, &orientedMarginRight, &orientedMarginBottom,
+                                   &orientedMarginLeft);
+  const auto sb = SETTINGS.statusBarSpec();
+  const bool showStatusBarTextLane = sb.textLaneVisible();
+
+  // Draw Progress Text
+  const auto screenHeight = renderer.getScreenHeight();
+  auto textY = screenHeight - UITheme::getInstance().getStatusBarHeight() - orientedMarginBottom - paddingBottom - 4;
+
+  int leftClusterX = metrics.statusBarHorizontalMargin + orientedMarginLeft + 1;
+  int rightClusterX = renderer.getScreenWidth() - metrics.statusBarHorizontalMargin - orientedMarginRight;
+#if FREEINK_DEVICE_EEGO_A4
+  // The EEGO A4 panel has physically rounded corners; the status bar text must
+  // stay inside the 28 px UI content inset (eego-a4-template-firmware
+  // SAFE_AREA spec), so clamp the left/right text clusters out of the corner
+  // cutouts. The bottom ~4 px of the bar is covered by the bezel, so the whole
+  // cluster is also lifted by that amount (measured on device).
+  constexpr int kEegoStatusBarSafeInset = 28;
+  leftClusterX = std::max(leftClusterX, kEegoStatusBarSafeInset);
+  rightClusterX = std::min(rightClusterX, renderer.getScreenWidth() - kEegoStatusBarSafeInset);
+  textY -= 4;
+#endif
+  int leftClusterWidth = 0;
+  int rightClusterWidth = 0;
+
+  // Both clusters grow inward from their own edge and the title centres in
+  // whatever they leave. Everything that can sit at either end goes through
+  // here, so the reservation and the gap live in one place instead of being
+  // re-derived at each call site.
+  constexpr int clusterGap = 10;
+  const auto placeInCluster = [&](const bool onLeft, const int width) {
+    int& clusterWidth = onLeft ? leftClusterWidth : rightClusterWidth;
+    const int gap = clusterWidth > 0 ? clusterGap : 0;
+    const int x = onLeft ? leftClusterX + clusterWidth + gap : rightClusterX - clusterWidth - gap - width;
+    clusterWidth += width + gap;
+    return x;
+  };
+
+  const auto drawReadingBattery = [&]() {
+    // Draw Battery
+    const bool showBatteryPercentage = sb.showBatteryPercent;
+
+    if (sb.showBattery) {
+      int batteryWidth = metrics.batteryWidth;
+      if (showBatteryPercentage) {
+        const uint16_t percentage = powerManager.getBatteryPercentage();
+        // width of icon + spacing + text for layout purposes
+        batteryWidth += batteryPercentSpacing +
+                        renderer.getTextWidth(STATUS_NUMERIC_FONT_ID, (std::to_string(percentage) + "%").c_str());
+      }
+      const int batteryX = placeInCluster(sb.batteryOnLeft, batteryWidth);
+      // Keep the same cluster width and placement, with percent before the icon.
+      const int iconX = batteryX + batteryWidth - metrics.batteryWidth;
+      GUI.drawBatteryRight(renderer, Rect{iconX, textY, metrics.batteryWidth, metrics.batteryHeight},
+                           showBatteryPercentage);
+    }
+  };
+  // Right clusters grow inwards: reserve the whole percent+battery group
+  // first, then Wi-Fi. Other side/hidden/centre choices retain their layout.
+  const bool batteryAtRightEdge = sb.showBattery && !sb.batteryOnLeft &&
+                                  GlobalWifiStatus::visible() && SETTINGS.wifiStatusPosition == 0;
+  if (batteryAtRightEdge) drawReadingBattery();
+
+  if (GlobalWifiStatus::visible() && SETTINGS.wifiStatusPosition != 2) {
+    const int x = placeInCluster(SETTINGS.wifiStatusPosition == 1,WifiStatusLayout::width);
+    renderer.setSystemStatusRect(x,textY+2,WifiStatusLayout::width,WifiStatusLayout::height);
+  }
+  if (sb.showBookProgressPercent || sb.showChapterPageCount) {
+    char progressStr[32];
+
+    // Draw the estimate marker separately so it can use the next UI font size.
+    const bool showEstimate = pageCountEstimated && sb.showChapterPageCount;
+
+    if (sb.showBookProgressPercent && sb.showChapterPageCount) {
+      snprintf(progressStr, sizeof(progressStr), "%d/%d  %.0f%%", currentPage, pageCount, bookProgress);
+    } else if (sb.showBookProgressPercent) {
+      snprintf(progressStr, sizeof(progressStr), "%.0f%%", bookProgress);
+    } else {
+      snprintf(progressStr, sizeof(progressStr), "%d/%d", currentPage, pageCount);
+    }
+
+    int progressTextWidth = renderer.getTextWidth(SMALL_FONT_ID, progressStr);
+    const int estimateWidth = showEstimate ? renderer.getTextWidth(uiScaleSpec().bodyFontId, "~") : 0;
+    constexpr int estimateGap = 2;
+    const int estimateSpacing = showEstimate ? estimateGap : 0;
+    const int progressX = placeInCluster(sb.progressOnLeft, estimateWidth + estimateSpacing + progressTextWidth);
+    if (showEstimate) {
+      const int estimateY = textY + (renderer.getLineHeight(SMALL_FONT_ID) - renderer.getLineHeight(uiScaleSpec().bodyFontId)) / 2;
+      renderer.drawText(uiScaleSpec().bodyFontId, progressX, estimateY, "~");
+    }
+    renderer.drawText(SMALL_FONT_ID, progressX + estimateWidth + estimateSpacing, textY, progressStr);
+  }
+
+  // Draw Progress Bar
+  if (sb.showsProgressBar()) {
+#if FREEINK_DEVICE_EEGO_A4
+    // The bar's bottom edge is lifted 4 px so the bezel does not cover it
+    // (measured on device); horizontal span is untouched.
+    const int barMarginLeft = fillMargin ? 0 : orientedMarginLeft;
+    const int barMarginRight = fillMargin ? 0 : orientedMarginRight;
+    const int progressBarMaxWidth = renderer.getScreenWidth() - barMarginLeft - barMarginRight;
+    const int progressBarY = renderer.getScreenHeight() - 4 - orientedMarginBottom - sb.progressBarHeightPx -
+                             paddingBottom + (fillMargin ? 1 : 0);
+#else
+    const int barMarginLeft = fillMargin ? 0 : orientedMarginLeft;
+    const int barMarginRight = fillMargin ? 0 : orientedMarginRight;
+    const int progressBarMaxWidth = renderer.getScreenWidth() - barMarginLeft - barMarginRight;
+    const int progressBarY = renderer.getScreenHeight() - orientedMarginBottom - sb.progressBarHeightPx -
+                             paddingBottom + (fillMargin ? 1 : 0);
+#endif
+    size_t progress;
+    if (sb.progressBarMode == CrossPointSettings::STATUS_BAR_PROGRESS_BAR::BOOK_PROGRESS) {
+      progress = static_cast<size_t>(bookProgress);
+    } else {
+      // Chapter progress
+      progress = (pageCount > 0) ? (static_cast<float>(currentPage) / pageCount) * 100 : 0;
+    }
+    const int barWidth = progressBarMaxWidth * progress / 100;
+    const int barHeight = sb.progressBarHeightPx + (fillMargin ? orientedMarginBottom - 1 : 0);
+    renderer.fillRect(barMarginLeft, progressBarY, barWidth, barHeight, true);
+  }
+
+  // The battery group was already drawn at the edge when sharing the right side.
+  if (!batteryAtRightEdge) drawReadingBattery();
+
+  // Draw the system clock on every board; an external RTC is optional.
+  if (sb.showsClock()) {
+    char timeBuf[9];
+    if (!TimeUtils::formatCurrentTime(timeBuf, sizeof(timeBuf), sb.clock12h)) {
+      snprintf(timeBuf, sizeof(timeBuf), "--:--");
+    }
+    int clockTextWidth = renderer.getTextWidth(STATUS_NUMERIC_FONT_ID, timeBuf);
+    const int clockX =
+        placeInCluster(sb.clockMode == CrossPointSettings::STATUS_BAR_CLOCK_LEFT, clockTextWidth);
+    renderer.drawText(STATUS_NUMERIC_FONT_ID, clockX, textY, timeBuf);
+  }
+
+  if (showStatusBarTextLane && bleinput::isConnected()) {
+    const int bluetoothGap = leftClusterWidth > 0 ? bookmarkStatusIconGap : 0;
+    drawBluetoothStatusIcon(renderer, leftClusterX + leftClusterWidth + bluetoothGap, textY + 3);
+    leftClusterWidth += bluetoothStatusIconWidth + bluetoothGap;
+  }
+
+  // Draw Bookmark
+  if (showStatusBarTextLane && isPageBookmarked) {
+    const int bookmarkGap = leftClusterWidth > 0 ? bookmarkStatusIconGap : 0;
+    const int bookmarkX = leftClusterX + leftClusterWidth + bookmarkGap;
+    const int bookmarkY = textY + 5;
+    drawBookmarkStatusIcon(renderer, bookmarkX, bookmarkY);
+    leftClusterWidth += bookmarkStatusIconWidth + bookmarkGap;
+  }
+
+  // Place center Wi-Fi only after the ordinary clusters have been measured.
+  // The title can shrink; progress, clock and battery must never be overpainted.
+  if (GlobalWifiStatus::visible() && SETTINGS.wifiStatusPosition == 2) {
+    const int left = leftClusterX+leftClusterWidth+8, right = rightClusterX-rightClusterWidth-8;
+    if (right-left >= WifiStatusLayout::width) {
+      const int x = std::clamp((leftClusterX+rightClusterX-WifiStatusLayout::width)/2,left,right-WifiStatusLayout::width);
+      renderer.setSystemStatusRect(x,textY+2,WifiStatusLayout::width,WifiStatusLayout::height);
+      leftClusterWidth = x-leftClusterX+WifiStatusLayout::width;
+    }
+  }
+  // Draw Title
+  if (!title.empty()) {
+    textY -= textYOffset;
+    // Centered chapter title text
+    // Page width minus existing content with 30px padding on each side
+    const int rendererableScreenWidth =
+        renderer.getScreenWidth() - (metrics.statusBarHorizontalMargin * 2) - orientedMarginLeft - orientedMarginRight;
+
+    const int titleMarginLeft = leftClusterWidth + 30;
+    const int titleMarginRight = rightClusterWidth + 30;
+
+    // Attempt to center title on the screen, but if title is too wide then later we will center it within the
+    // available space.
+    int titleMarginLeftAdjusted = std::max(titleMarginLeft, titleMarginRight);
+    int availableTitleSpace = rendererableScreenWidth - 2 * titleMarginLeftAdjusted;
+
+    int titleWidth;
+    titleWidth = renderer.getTextWidth(SMALL_FONT_ID, title.c_str());
+    if (titleWidth > availableTitleSpace) {
+      // Not enough space to center on the screen, center it within the remaining space instead
+      availableTitleSpace = rendererableScreenWidth - titleMarginLeft - titleMarginRight;
+      titleMarginLeftAdjusted = titleMarginLeft;
+    }
+    if (titleWidth > availableTitleSpace) {
+      title = renderer.truncatedText(SMALL_FONT_ID, title.c_str(), availableTitleSpace);
+      titleWidth = renderer.getTextWidth(SMALL_FONT_ID, title.c_str());
+    }
+
+    renderer.drawText(SMALL_FONT_ID,
+                      titleMarginLeftAdjusted + metrics.statusBarHorizontalMargin + orientedMarginLeft +
+                          (availableTitleSpace - titleWidth) / 2,
+                      textY, title.c_str());
+  }
+}
+
+void BaseTheme::drawHelpText(const GfxRenderer& renderer, Rect rect, const char* label) const {
+  const auto& metrics = UITheme::getInstance().getMetrics();
+  auto truncatedLabel =
+      renderer.truncatedText(SMALL_FONT_ID, label, rect.width - metrics.contentSidePadding * 2, EpdFontFamily::REGULAR);
+  renderer.drawCenteredText(SMALL_FONT_ID, rect.y, truncatedLabel.c_str());
+}
+
+void BaseTheme::drawTextField(const GfxRenderer& renderer, Rect rect, const int textWidth, bool cursorMode,
+                              int contentStartX, int contentWidth) const {
+  const auto& metrics = UITheme::getInstance().getMetrics();
+  const int lineHeight = renderer.getLineHeight(uiScaleSpec().bodyFontId);
+  const int lineY = rect.y + rect.height + lineHeight + metrics.verticalSpacing;
+  const int thickness = cursorMode ? metrics.textFieldCursorThickness : metrics.textFieldNormalThickness;
+  if (contentWidth > 0) {
+    renderer.drawLine(rect.x + contentStartX, lineY,
+                      rect.x + contentStartX + contentWidth + metrics.textFieldLineEndOffset, lineY, thickness, true);
+  } else {
+    const int lineW = textWidth + metrics.textFieldHorizontalPadding * 2;
+    const int lineStart = rect.x + (rect.width - lineW) / 2;
+    renderer.drawLine(lineStart, lineY, lineStart + lineW + metrics.textFieldLineEndOffset, lineY, thickness, true);
+  }
+}
+
+bool BaseTheme::drawSelectionBackground(const GfxRenderer& renderer, const Rect rect) const {
+  const auto& metrics = UITheme::getInstance().getMetrics();
+  renderer.fillRoundedRect(rect.x, rect.y, rect.width, rect.height, metrics.optionPopupSelectionRadius,
+                           metrics.optionPopupSelectionLight ? Color::LightGray : Color::Black);
+  return metrics.optionPopupSelectionLight;
+}
+
+void BaseTheme::drawActionButton(const GfxRenderer& renderer, const Rect rect, const char* label,
+                                 const bool active) const {
+  if (rect.width <= 0 || rect.height <= 0 || !label || !*label) return;
+  const auto& metrics = UITheme::getInstance().getMetrics();
+  bool foregroundBlack = true;
+  if (active) {
+    foregroundBlack = drawSelectionBackground(renderer, rect);
+  } else {
+    renderer.fillRoundedRect(rect.x, rect.y, rect.width, rect.height, metrics.optionPopupSelectionRadius, Color::White);
+    renderer.drawRoundedRect(rect.x, rect.y, rect.width, rect.height, 1, metrics.optionPopupSelectionRadius, true);
+  }
+  const int textWidth = renderer.getTextWidth(uiScaleSpec().bodyFontId, label, EpdFontFamily::BOLD);
+  const int textX = rect.x + (rect.width - textWidth) / 2;
+  const int textY = rect.y + (rect.height - renderer.getLineHeight(uiScaleSpec().bodyFontId)) / 2;
+  renderer.drawText(uiScaleSpec().bodyFontId, textX, textY, label, foregroundBlack, EpdFontFamily::BOLD);
+}
+
+void BaseTheme::drawOptionPopup(const GfxRenderer& renderer, const char* title, const std::vector<std::string>& options,
+                                int selectedIndex) const {
+  const auto& metrics = UITheme::getInstance().getMetrics();
+  const auto pageWidth = renderer.getScreenWidth();
+  const auto pageHeight = renderer.getScreenHeight();
+
+  const int optionFontId = uiScaleSpec().bodyFontId;
+  const EpdFontFamily::Style optionStyle =
+      metrics.optionPopupOptionFontBold ? EpdFontFamily::BOLD : EpdFontFamily::REGULAR;
+
+  const int itemSpacing = metrics.optionPopupItemSpacing;
+  const int innerPadding = metrics.optionPopupInnerPadding;
+  const int selectionHPadding = metrics.optionPopupSelectionHPadding;
+  const int selectionVPadding = metrics.optionPopupSelectionVPadding;
+
+  const int optionLineHeight = renderer.getLineHeight(optionFontId);
+  const int titleLineHeight = renderer.getLineHeight(uiScaleSpec().bodyFontId);
+  const int rowHeight = optionLineHeight + selectionVPadding * 2;
+
+  int maxTextWidth = renderer.getTextWidth(uiScaleSpec().bodyFontId, title, EpdFontFamily::BOLD);
+  for (const auto& opt : options) {
+    int w = renderer.getTextWidth(optionFontId, opt.c_str(), optionStyle);
+    if (w > maxTextWidth) maxTextWidth = w;
+  }
+
+  const int optionCount = static_cast<int>(options.size());
+  const int listHeight = rowHeight * optionCount + itemSpacing * (optionCount - 1);
+  const int dialogW = std::min((maxTextWidth + innerPadding * 2 + selectionHPadding * 2) * 12 / 10,
+                               pageWidth - metrics.optionPopupDialogSideMargin * 2);
+  const int contentHeight = titleLineHeight + metrics.optionPopupTitleGap + listHeight;
+  const int dialogH = contentHeight + innerPadding * 2;
+  const int dialogX = (pageWidth - dialogW) / 2;
+  const int dialogY = (pageHeight - dialogH) / 2;
+
+  const int frameThickness = metrics.popupFrameThickness;
+  const int frameRadius = metrics.popupCornerRadius;
+
+  if (frameRadius > 0) {
+    renderer.fillRoundedRect(dialogX - frameThickness, dialogY - frameThickness, dialogW + frameThickness * 2,
+                             dialogH + frameThickness * 2, frameRadius + frameThickness, Color::White);
+    renderer.fillRoundedRect(dialogX, dialogY, dialogW, dialogH, frameRadius, Color::Black);
+    renderer.fillRoundedRect(dialogX + frameThickness, dialogY + frameThickness, dialogW - frameThickness * 2,
+                             dialogH - frameThickness * 2,
+                             frameRadius - frameThickness > 0 ? frameRadius - frameThickness : 0, Color::White);
+  } else {
+    renderer.fillRect(dialogX - frameThickness, dialogY - frameThickness, dialogW + frameThickness * 2,
+                      dialogH + frameThickness * 2, true);
+    renderer.fillRect(dialogX, dialogY, dialogW, dialogH, false);
+  }
+
+  int y = dialogY + innerPadding;
+
+  renderer.drawCenteredText(uiScaleSpec().bodyFontId, y, title, true, EpdFontFamily::BOLD);
+  y += titleLineHeight;
+
+  if (metrics.optionPopupTitleSeparator) {
+    const int sepY = y + metrics.optionPopupTitleGap / 2;
+    renderer.drawLine(dialogX + innerPadding, sepY, dialogX + dialogW - innerPadding, sepY, true);
+  }
+
+  y += metrics.optionPopupTitleGap;
+
+  const int itemRectX = dialogX + innerPadding;
+  const int itemRectW = dialogW - innerPadding * 2;
+  const int selectionRadius = metrics.optionPopupSelectionRadius;
+
+  for (int i = 0; i < optionCount; i++) {
+    const int itemY = y + i * (rowHeight + itemSpacing);
+    const bool selected = (i == selectedIndex);
+    const char* labelText = options[i].c_str();
+
+    if (metrics.optionPopupDrawAllRows || selected) {
+      Color rowColor;
+      if (selected) {
+        rowColor = metrics.optionPopupSelectionLight ? Color::LightGray : Color::Black;
+      } else {
+        rowColor = Color::White;
+      }
+      if (selectionRadius > 0) {
+        renderer.fillRoundedRect(itemRectX, itemY, itemRectW, rowHeight, selectionRadius, rowColor);
+      } else {
+        renderer.fillRect(itemRectX, itemY, itemRectW, rowHeight, rowColor == Color::Black);
+      }
+    }
+
+    const int textW = renderer.getTextWidth(optionFontId, labelText, optionStyle);
+    const int textY = itemY + (rowHeight - optionLineHeight) / 2;
+    const int textX = itemRectX + (itemRectW - textW) / 2;
+    // Unselected items: text is dark (invert=true means draw on white bg).
+    // Selected on dark bg: text must be white (invert=false).
+    // Selected on light bg: text stays dark (invert=true).
+    const bool invertText = selected ? metrics.optionPopupSelectionLight : true;
+    renderer.drawText(optionFontId, textX, textY, labelText, invertText, optionStyle);
+  }
+}

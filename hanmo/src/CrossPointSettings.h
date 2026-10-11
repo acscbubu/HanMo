@@ -1,0 +1,704 @@
+#pragma once
+#include "ScreenShortcutPolicy.h"
+#include "ScreenSettingsPolicy.h"
+#include <ArduinoJson.h>
+#include <BoardConfig.h>
+#include <Epub/ReaderRenderSpec.h>
+#include <PersistableStore.h>
+
+#include <cstdint>
+#include <string>
+
+#include "BleKeyMapping.h"
+#include "InxItemLayout.h"
+#include "InxRecentLayout.h"
+#include "util/ReadingGuideLine.h"
+
+// I18nKeys.h is intentionally NOT included here. It is auto-generated and
+// changes on every translation edit; pulling it into this widely-included
+// settings header would force the entire project to recompile on i18n
+// changes. The default Language index is resolved by defaultLanguageIndex()
+// (declared below, defined in the .cpp where the include is local).
+
+class CrossPointSettings : public PersistableStore<CrossPointSettings> {
+ private:
+  // Private constructor for singleton
+  CrossPointSettings() = default;
+
+  friend class PersistableStore<CrossPointSettings>;
+
+ public:
+  // Returns the first-boot/fallback Language enum index. Defined out of line so
+  // I18nKeys.h stays out of this widely included header.
+  static uint8_t defaultLanguageIndex();
+
+  // Whether the UI language is one that reads Chinese.
+  //
+  // Deliberately NOT contentProfile. That one answers "which service region
+  // does this device talk to" -- crossmux.cn against crossmux.com, and the OTA
+  // variant -- and only Simplified belongs on the mainland side of it. Whether
+  // to offer WeRead and Chinese Chess is a different question with a different
+  // answer: a Traditional reader in Taipei or Sydney wants both apps AND the
+  // global endpoints, and folding the two together is what made the Chinese
+  // apps vanish the moment the UI was set to Traditional.
+  //
+  // Out of line for the same reason as defaultLanguageIndex(): I18nKeys.h
+  // stays out of this widely included header.
+  bool readsChinese() const;
+
+  static constexpr uint8_t CURRENT_ONBOARDING_VERSION = 1;
+  static constexpr bool requiresOnboarding(const uint8_t completedVersion) {
+    return completedVersion != CURRENT_ONBOARDING_VERSION;
+  }
+
+  // Access the settings mutex for protecting multi-field reads/writes from other cores.
+  // Callers must not re-enter SETTINGS methods that lock storeMutex while holding it.
+  std::mutex& getMutex() const { return storeMutex; }
+
+  enum SLEEP_SCREEN_MODE {
+    DARK = 0,
+    LIGHT = 1,
+    CUSTOM = 2,
+    COVER = 3,
+    BLANK = 4,
+    COVER_CUSTOM = 5,
+    QUICK_RESUME = 6,
+    TRANSPARENT = 7,
+    SLEEP_SCREEN_MODE_COUNT
+  };
+  enum SLEEP_SCREEN_COVER_MODE { FIT = 0, CROP = 1, SLEEP_SCREEN_COVER_MODE_COUNT };
+  enum SLEEP_SCREEN_COVER_FILTER {
+    NO_FILTER = 0,
+    BLACK_AND_WHITE = 1,
+    INVERTED_BLACK_AND_WHITE = 2,
+    SLEEP_SCREEN_COVER_FILTER_COUNT
+  };
+
+  // Legacy aggregate status-bar modes, retained only for settings.bin migration.
+  enum STATUS_BAR_MODE {
+    NONE = 0,
+    NO_PROGRESS = 1,
+    FULL = 2,
+    BOOK_PROGRESS_BAR = 3,
+    ONLY_BOOK_PROGRESS_BAR = 4,
+    CHAPTER_PROGRESS_BAR = 5,
+    STATUS_BAR_MODE_COUNT
+  };
+
+  enum STATUS_BAR_PROGRESS_BAR {
+    BOOK_PROGRESS = 0,
+    CHAPTER_PROGRESS = 1,
+    HIDE_PROGRESS = 2,
+    STATUS_BAR_PROGRESS_BAR_COUNT
+  };
+  enum STATUS_BAR_PROGRESS_BAR_THICKNESS {
+    PROGRESS_BAR_THIN = 0,
+    PROGRESS_BAR_NORMAL = 1,
+    PROGRESS_BAR_THICK = 2,
+    STATUS_BAR_PROGRESS_BAR_THICKNESS_COUNT
+  };
+  enum STATUS_BAR_TITLE { BOOK_TITLE = 0, CHAPTER_TITLE = 1, HIDE_TITLE = 2, STATUS_BAR_TITLE_COUNT };
+  enum XTC_STATUS_BAR_MODE {
+    XTC_STATUS_BAR_HIDE = 0,
+    XTC_STATUS_BAR_BOTTOM = 1,
+    XTC_STATUS_BAR_TOP = 2,
+    XTC_STATUS_BAR_MODE_COUNT
+  };
+
+  enum STATUS_BAR_CLOCK_MODE {
+    STATUS_BAR_CLOCK_HIDE = 0,
+    STATUS_BAR_CLOCK_RIGHT = 1,
+    STATUS_BAR_CLOCK_LEFT = 2,
+    STATUS_BAR_CLOCK_MODE_COUNT
+  };
+
+  // The battery used to be a plain on/off and always drew on the left, so 1
+  // has to keep meaning left or every existing device would move it on update.
+  enum STATUS_BAR_BATTERY_MODE {
+    STATUS_BAR_BATTERY_HIDE = 0,
+    STATUS_BAR_BATTERY_LEFT = 1,
+    STATUS_BAR_BATTERY_RIGHT = 2,
+    STATUS_BAR_BATTERY_MODE_COUNT
+  };
+
+  // Which end of the bar the page counter and progress percentage sit at.
+  // They share one drawn string, so they share one side.
+  enum STATUS_BAR_SIDE { STATUS_BAR_SIDE_RIGHT = 0, STATUS_BAR_SIDE_LEFT = 1, STATUS_BAR_SIDE_COUNT };
+
+  // Where a home-header element sits. Right is where the battery has always
+  // been drawn, so it keeps value 0.
+  enum HOME_HEADER_SLOT {
+    HOME_HEADER_RIGHT = 0,
+    HOME_HEADER_LEFT = 1,
+    HOME_HEADER_CENTER = 2,
+    HOME_HEADER_HIDDEN = 3,
+    HOME_HEADER_SLOT_COUNT
+  };
+
+  enum ORIENTATION {
+    PORTRAIT = 0,       // 480x800 logical coordinates (current default)
+    LANDSCAPE_CW = 1,   // 800x480 logical coordinates, rotated 180° (swap top/bottom)
+    INVERTED = 2,       // 480x800 logical coordinates, inverted
+    LANDSCAPE_CCW = 3,  // 800x480 logical coordinates, native panel orientation
+    ORIENTATION_COUNT
+  };
+
+  // Front button layout options (legacy)
+  // Default: Back, Confirm, Left, Right
+  // Swapped: Left, Right, Back, Confirm
+  enum FRONT_BUTTON_LAYOUT {
+    BACK_CONFIRM_LEFT_RIGHT = 0,
+    LEFT_RIGHT_BACK_CONFIRM = 1,
+    LEFT_BACK_CONFIRM_RIGHT = 2,
+    BACK_CONFIRM_RIGHT_LEFT = 3,
+    FRONT_BUTTON_LAYOUT_COUNT
+  };
+
+  enum class ContentProfile : uint8_t { Global = 0, China = 1 };
+
+  enum HAPTIC_FEEDBACK_LEVEL {
+    HAPTIC_FEEDBACK_OFF = 0,
+    HAPTIC_FEEDBACK_LOW,
+    HAPTIC_FEEDBACK_MEDIUM,
+    HAPTIC_FEEDBACK_HIGH,
+    HAPTIC_FEEDBACK_LEVEL_COUNT
+  };
+
+  enum SOUND_FEEDBACK_LEVEL {
+    SOUND_FEEDBACK_OFF = 0,
+    SOUND_FEEDBACK_LOW = 1,
+    SOUND_FEEDBACK_MEDIUM = 2,
+    SOUND_FEEDBACK_HIGH = 3,
+    SOUND_FEEDBACK_LEVEL_COUNT
+  };
+
+  // Front button hardware identifiers (for remapping)
+  enum FRONT_BUTTON_HARDWARE {
+    FRONT_HW_BACK = 0,
+    FRONT_HW_CONFIRM = 1,
+    FRONT_HW_LEFT = 2,
+    FRONT_HW_RIGHT = 3,
+    FRONT_BUTTON_HARDWARE_COUNT
+  };
+
+  // Side button layout options
+  // Default: Up = Previous, Down = Next
+  enum SIDE_BUTTON_LAYOUT { PREV_NEXT = 0, NEXT_PREV = 1, SIDE_BUTTONS_DISABLED = 2, SIDE_BUTTON_LAYOUT_COUNT };
+
+  // Font family options (built-in fonts only; SD card fonts use sdFontFamilyName)
+  enum FONT_FAMILY { NOTOSERIF = 0, NOTOSANS = 1, FONT_FAMILY_COUNT };
+  static constexpr uint8_t LEGACY_OPENDYSLEXIC = 2;
+  static constexpr uint8_t BUILTIN_FONT_COUNT = FONT_FAMILY_COUNT;
+  // Reader font size is a point size, not an enum slot — see fontPointSize.
+  // Legacy 1.4-and-earlier files stored a 0..3 SMALL/MEDIUM/LARGE/EXTRA_LARGE
+  // slot; fromJson() folds that range up (see LEGACY_FONT_SIZE_MAX).
+  static constexpr uint8_t LEGACY_FONT_SIZE_MAX = 3;
+  static constexpr uint8_t DEFAULT_FONT_POINT_SIZE = 12;
+  enum LINE_COMPRESSION { TIGHT = 0, NORMAL = 1, WIDE = 2, EXTRA_WIDE = 3, LINE_COMPRESSION_COUNT };
+  enum SYNTHETIC_BOLD {
+    SYNTHETIC_BOLD_OFF = 0,
+    SYNTHETIC_BOLD_LIGHT = 1,
+    SYNTHETIC_BOLD_STANDARD = 2,
+    SYNTHETIC_BOLD_HEAVY = 3,
+    SYNTHETIC_BOLD_COUNT
+  };
+  enum PARAGRAPH_ALIGNMENT {
+    JUSTIFIED = 0,
+    LEFT_ALIGN = 1,
+    CENTER_ALIGN = 2,
+    RIGHT_ALIGN = 3,
+    BOOK_STYLE = 4,
+    PARAGRAPH_ALIGNMENT_COUNT
+  };
+
+  static constexpr int8_t READING_GUIDE_LINE_OFFSET_MIN = -30;
+  static constexpr int8_t READING_GUIDE_LINE_OFFSET_MAX = 30;
+  static constexpr int8_t READING_GUIDE_LINE_OFFSET_DEFAULT = -2;
+
+  // Auto-sleep timeout options (in minutes)
+  enum SLEEP_TIMEOUT {
+    SLEEP_1_MIN = 0,
+    SLEEP_5_MIN = 1,
+    SLEEP_10_MIN = 2,
+    SLEEP_15_MIN = 3,
+    SLEEP_30_MIN = 4,
+    SLEEP_TIMEOUT_COUNT
+  };
+
+  // E-ink refresh frequency (pages between full refreshes).
+  enum REFRESH_FREQUENCY {
+    REFRESH_1 = 0,
+    REFRESH_5 = 1,
+    REFRESH_10 = 2,
+    REFRESH_15 = 3,
+    REFRESH_30 = 4,
+    REFRESH_NEVER = 5,
+    REFRESH_FREQUENCY_COUNT
+  };
+
+  // Short power button press actions
+  enum SHORT_PWRBTN {
+    IGNORE = 0,
+    SLEEP = 1,
+    PAGE_TURN = 2,
+    FORCE_REFRESH = 3,
+    FOOTNOTES = 4,
+    PWR_CONFIRM = 5,
+    SHORT_PWRBTN_COUNT
+  };
+
+  // Long-press Confirm action while reading an EPUB. The setting cycles through these values.
+  // Persisted in settings.json by index: any new function (e.g. dictionary, bookmark) MUST use a
+  // value >= 2 and be appended at the END of the enumValues array in SettingsList.h, otherwise the
+  // stored indices shift and existing saves are silently misinterpreted.
+  enum LONG_PRESS_MENU_FUNCTION {
+    LP_MENU_KOSYNC = 0,
+    LP_MENU_DISABLED = 1,
+    LP_MENU_BOOKMARK = 2,
+    LP_MENU_DICTIONARY = 3,
+    LP_MENU_READER_MENU = 4,
+    LONG_PRESS_MENU_FUNCTION_COUNT
+  };
+
+  // Hide battery percentage
+  enum HIDE_BATTERY_PERCENTAGE { HIDE_NEVER = 0, HIDE_READER = 1, HIDE_ALWAYS = 2, HIDE_BATTERY_PERCENTAGE_COUNT };
+
+  // A corner tap in the reader, used as a shortcut. None by default: the
+  // corners sit inside the page-turn thirds, so anything else here takes area
+  // away from turning pages and has to be asked for.
+  enum CORNER_TAP_ACTION {
+    CORNER_TAP_NONE = 0,
+    CORNER_TAP_BOOKMARK = 1,
+    CORNER_TAP_READER_MENU = 2,
+    CORNER_TAP_DICTIONARY = 3,
+    CORNER_TAP_ACTION_COUNT
+  };
+
+  // Page turn button long press behavior
+  enum LONG_PRESS_BUTTON_BEHAVIOR {
+    OFF = 0,
+    CHAPTER_SKIP = 1,
+    ORIENTATION_CHANGE = 2,
+    LONG_PRESS_BUTTON_BEHAVIOR_COUNT
+  };
+
+  // UI Theme
+  enum UI_THEME { CLASSIC = 0, LYRA = 1, LYRA_3_COVERS = 2, ROUNDEDRAFF = 3, LYRA_CAROUSEL = 4, INX = 5 };
+
+  // Image rendering in EPUB reader
+  enum IMAGE_RENDERING { IMAGES_DISPLAY = 0, IMAGES_PLACEHOLDER = 1, IMAGES_SUPPRESS = 2, IMAGE_RENDERING_COUNT };
+
+  // How Select opens the reader menu: the classic full-screen list, or a toolbar
+  // overlay (top/bottom bars with Contents / Text / More bottom-sheet panels)
+  // painted over the page.
+  enum READER_MENU_STYLE { READER_MENU_LIST = 0, READER_MENU_TOOLBAR = 1, READER_MENU_STYLE_COUNT };
+
+  enum TILT_PAGE_TURN { TILT_OFF = 0, TILT_NORMAL = 1, TILT_NVERTED = 2, TILT_PAGE_TURN_COUNT };
+
+  enum TOUCH_READER_CONTROLS {
+    TOUCH_READER_OFF = 0,
+    TOUCH_READER_ON = 1,
+    TOUCH_READER_SWIPE = 2,
+    TOUCH_READER_INVERTED_TAP = 3,
+    TOUCH_READER_CONTROLS_COUNT
+  };
+
+  // How the reader menu opens on touch boards. Persisted under the legacy
+  // "tapForReaderMenu" key: 0/1 keep their old Off/Tap meaning.
+  enum SHOW_READER_MENU { READER_MENU_OFF = 0, READER_MENU_TAP = 1, READER_MENU_SWIPE_UP = 2, SHOW_READER_MENU_COUNT };
+
+  enum QUICK_RESUME_SLEEP_SCREEN {
+    QUICK_RESUME_NEVER = 0,
+    QUICK_RESUME_AFTER_TIMEOUT = 1,
+    QUICK_RESUME_SLEEP_SCREEN_COUNT
+  };
+
+  // Daily reading goal target (used by the Reading Analytics suite to mark
+  // goal-met days, streaks and the reading profile).
+  enum DAILY_GOAL_TARGET {
+    DAILY_GOAL_15_MIN = 0,
+    DAILY_GOAL_30_MIN = 1,
+    DAILY_GOAL_45_MIN = 2,
+    DAILY_GOAL_60_MIN = 3,
+    DAILY_GOAL_TARGET_COUNT
+  };
+
+  // Sleep screen settings
+  // Fixed bounded paths avoid persistent heap allocation; legacy sleep.bmp remains the fallback.
+  uint8_t bootScreen = ScreenSettingsPolicy::BootDefault;
+  uint8_t shutdownScreen = ScreenSettingsPolicy::FollowSleep;
+  char bootScreenImage[ScreenSettingsPolicy::PATH_BYTES] = "";
+  char shutdownScreenImage[ScreenSettingsPolicy::PATH_BYTES] = "";
+  char sleepScreenImage[ScreenSettingsPolicy::PATH_BYTES] = "";
+  uint8_t sleepScreen = LIGHT;
+  // Night mode: inverted output polarity, applied to every activity per
+  // render by ActivityManager. The sleep screen opts out itself.
+  uint8_t screenInverted = 0;
+  // Sleep screen cover mode settings
+  uint8_t sleepScreenCoverMode = FIT;
+  // Sleep screen cover filter
+  uint8_t sleepScreenCoverFilter = NO_FILTER;
+  // Status bar settings (statusBar is retained only for settings.bin migration).
+  uint8_t statusBar = FULL;
+  uint8_t statusBarChapterPageCount = 1;
+  uint8_t statusBarBookProgressPercentage = 1;
+  uint8_t statusBarProgressBar = HIDE_PROGRESS;
+  uint8_t statusBarProgressBarThickness = PROGRESS_BAR_NORMAL;
+  uint8_t statusBarTitle = CHAPTER_TITLE;
+  uint8_t statusBarBattery = 1;
+  uint8_t statusBarProgressSide = STATUS_BAR_SIDE_RIGHT;
+  uint8_t xtcStatusBarMode = XTC_STATUS_BAR_HIDE;
+  // Clock display in the reader status bar.
+  uint8_t statusBarClock = STATUS_BAR_CLOCK_HIDE;
+  uint8_t wifiStatusPosition = 0; // right, left, centre, hidden (global strip)
+  uint8_t infoBoardRotate = 1;
+  uint8_t infoBoardInterval = 1; // 15, 30, 60, 120 seconds
+  uint8_t infoBoardCity = 0; // Melbourne, Sydney, Brisbane
+  uint8_t infoBoardDemo = 0;
+  char infoBoardPcUrl[128] = "";
+  // Clock UTC offset in quarter-hour steps, biased by 48 so it fits in uint8_t.
+  // Value 48 = UTC+0, 0 = UTC-12:00, 104 = UTC+14:00.
+  // Quarter-hour granularity supports oddball zones like Nepal (+5:45) and Chatham (+12:45).
+  uint8_t clockUtcOffsetQ = 48;
+  // Clock display format: 0 = 24-hour, 1 = 12-hour
+  uint8_t clockFormat = 0;
+  // Opportunistically synchronize the system UTC clock while Wi-Fi is already connected.
+  uint8_t clockAutoSync = 1;
+  // Text rendering settings
+  uint8_t extraParagraphSpacing = 0;
+  uint8_t textAntiAliasing = 1;
+  uint8_t fakeBold = SYNTHETIC_BOLD_STANDARD;
+  uint8_t readingBackgroundEnabled = 0;
+  uint8_t readingGuideLineEnabled = 0;
+  uint8_t readingGuideLineStyle = static_cast<uint8_t>(readingGuideLine::Style::ShortDash);
+  int8_t readingGuideLineOffset = READING_GUIDE_LINE_OFFSET_DEFAULT;
+  // Short power button click behaviour
+  uint8_t shortPwrBtn = IGNORE;
+  // EPUB reading orientation settings
+  // 0 = portrait (default), 1 = landscape clockwise, 2 = inverted, 3 = landscape counter-clockwise
+  uint8_t orientation = PORTRAIT;
+  // Button layouts (front layout retained for migration only)
+  uint8_t frontButtonLayout = BACK_CONFIRM_LEFT_RIGHT;
+  uint8_t sideButtonLayout = PREV_NEXT;
+  uint8_t frontButtonFollowOrientation = 0;
+  // Front button remap (logical -> hardware)
+  // Used by MappedInputManager to translate logical buttons into physical front buttons.
+  uint8_t frontButtonBack = FRONT_HW_BACK;
+  uint8_t frontButtonConfirm = FRONT_HW_CONFIRM;
+  uint8_t frontButtonLeft = FRONT_HW_LEFT;
+  uint8_t frontButtonRight = FRONT_HW_RIGHT;
+  // BLE HID page-turner settings. The fixed map is 30 bytes and never allocates.
+  uint8_t bluetoothEnabled = 0;
+  bleinput::KeyMap bleKeyMap{};
+  // Reader font settings
+  uint8_t fontFamily = NOTOSANS;
+  // Point size of the reader font. Only sizes the active family actually ships
+  // are selectable; SdCardFontSystem::ensureLoaded() snaps this to the nearest
+  // available size (and persists the snap) whenever the family changes.
+  uint8_t fontPointSize = DEFAULT_FONT_POINT_SIZE;
+  uint8_t lineSpacing = NORMAL;
+  uint8_t paragraphAlignment = JUSTIFIED;
+  // Auto-sleep timeout setting (default 10 minutes). Legacy sleepTimeout enum values are migration-only.
+  uint8_t sleepTimeoutMinutes = 10;
+  // E-ink refresh frequency (default 15 pages)
+  uint8_t refreshFrequency = REFRESH_15;
+  uint8_t hyphenationEnabled = 0;
+
+  // Reader screen margin settings
+  static constexpr uint8_t SCREEN_MARGIN_MIN = 5;
+  static constexpr uint8_t SCREEN_MARGIN_MAX = 40;
+  static constexpr uint8_t SCREEN_MARGIN_STEP = 5;
+  uint8_t screenMargin = SCREEN_MARGIN_MIN;
+  // OPDS download destination folder ("" = SD root). Global; edited from the
+  // OPDS server list. Persisted via a category-less SettingInfo::String in
+  // SettingsList.h, so it stays out of the on-device Settings screen.
+  char opdsDownloadFolder[64] = "";
+  // On-disk filename format for OPDS downloads (0=Author-Title default, 1=Title-Author,
+  // 2=Title). See OpdsFilenameFormat. Persisted via a category-less SettingInfo::Enum,
+  // edited from the OPDS server list; hidden from the on-device Settings screen.
+  uint8_t opdsFilenameFormat = 0;
+  // Hide battery percentage
+  uint8_t hideBatteryPercentage = HIDE_NEVER;
+  // Long-press page turn button behavior
+  uint8_t longPressButtonBehavior = OFF;
+  // Long-press Confirm function in EPUB reader (cycles through LONG_PRESS_MENU_FUNCTION values).
+  // Defaults to Disabled so shortcut-based bookmark toggling remains opt-in.
+  uint8_t longPressMenuFunction = LP_MENU_DISABLED;
+  // UI Theme
+  uint8_t uiTheme = INX;
+  // Interface text size. 0 = standard (body 10pt), 1 = large (body 12pt).
+  // The ceiling is 12pt because that is the largest built-in CJK size drawn
+  // from the broad character set; 14pt and up only carry the glyphs the
+  // translations themselves use, so a book title would come out with holes.
+  uint8_t uiTextSize = 0;
+  // Draw interface CJK from the installed SD font instead of the built-in
+  // subset. Off by default: it costs resident heap, and it only helps once a
+  // family shipping 8, 10 and 12pt is installed. See setupUiFallbacks().
+  uint8_t uiSdFont = 0;
+  uint8_t homeShortcut1 = 0;
+  uint8_t homeShortcut2 = 0;
+  uint8_t homeShortcut3 = 0;
+  uint8_t homeShortcut4 = 0;
+  uint8_t homeShortcut5 = 0;
+  uint8_t homeShortcut6 = 0;
+  uint8_t homeBatteryPos = HOME_HEADER_RIGHT;
+  uint8_t homeLabelPos = HOME_HEADER_CENTER;
+  // Hidden by default: a clock nobody asked for would change every existing
+  // home screen on update.
+  uint8_t homeClockPos = HOME_HEADER_HIDDEN;
+  uint8_t cornerTapMiddleLeft = CORNER_TAP_NONE;
+  uint8_t cornerTapMiddleRight = CORNER_TAP_NONE;
+  uint8_t quickPanel1 = ScreenShortcutPolicy::Night;
+  uint8_t quickPanel2 = ScreenShortcutPolicy::Refresh;
+  uint8_t quickPanel3 = ScreenShortcutPolicy::Orientation;
+  uint8_t quickPanel4 = ScreenShortcutPolicy::Touch;
+  uint8_t quickPanel5 = ScreenShortcutPolicy::Light;
+  uint8_t quickPanel6 = ScreenShortcutPolicy::AirNote;
+  // Optional tiles 7-12: nothing is shown for them until the user picks an
+  // action, so the panel keeps its original two rows after an update.
+  uint8_t quickPanel7 = ScreenShortcutPolicy::Disabled;
+  uint8_t quickPanel8 = ScreenShortcutPolicy::Disabled;
+  uint8_t quickPanel9 = ScreenShortcutPolicy::Disabled;
+  uint8_t quickPanel10 = ScreenShortcutPolicy::Disabled;
+  uint8_t quickPanel11 = ScreenShortcutPolicy::Disabled;
+  uint8_t quickPanel12 = ScreenShortcutPolicy::Disabled;
+  uint8_t cornerTapTopLeft = CORNER_TAP_NONE;
+  uint8_t cornerTapTopRight = CORNER_TAP_NONE;
+  uint8_t cornerTapBottomLeft = CORNER_TAP_NONE;
+  uint8_t cornerTapBottomRight = CORNER_TAP_NONE;
+
+  // Per-category settings order, held as positions into each category's
+  // built-in list.
+  //
+  // Positions rather than keys because a byte each keeps this inside the
+  // struct; keys would be the stable identity but sixty of them is most of a
+  // kilobyte. The cost is that changing what a category contains invalidates
+  // its order, which the stored count turns into a reset rather than a
+  // scramble -- the same bargain appsCatalogVersion makes for the apps menu.
+  // A count of zero means that category has never been reordered, so the
+  // built-in order stands and nothing has to be written until someone drags.
+  static constexpr uint8_t SETTINGS_ORDER_CATEGORIES = 4;
+  static constexpr uint8_t SETTINGS_ORDER_CAPACITY = 32;
+  uint8_t settingsOrder[SETTINGS_ORDER_CATEGORIES][SETTINGS_ORDER_CAPACITY]{};
+  uint8_t settingsOrderCount[SETTINGS_ORDER_CATEGORIES]{};
+
+  // The struct holds bytes; the settings file holds "a,b,c|d,e|..." so one
+  // hidden string entry carries all four lists instead of four array fields
+  // the persistence loop has no case for.
+  std::string encodeSettingsOrder() const;
+  void decodeSettingsOrder(const std::string& text);
+  // Moves one row within a category, materialising the identity order on the
+  // first move. `count` is how many rows that category currently has; a
+  // mismatch with the stored count discards the stored order rather than
+  // applying it to a list it was not written for.
+  bool reorderSettings(uint8_t category, uint8_t count, int from, int to);
+  // Free text for the home header, empty by default. Edited from the web
+  // settings page: the on-device settings screen has no text input for STRING
+  // rows, only the web server renders them.
+  char homeLabel[24] = "";
+  // 32 UTF-8 bytes plus terminator; changes apply on the next hotspot start.
+  char hotspotName[33] = "XTEINK-X4-PRO";
+  char versionDisplayName[33] = "";
+  uint8_t showVersionNumber = 1;
+  // Show front-button hints along the bottom edge on non-touch devices.
+  uint8_t showButtonHints = 1;
+  uint8_t inxRecentLayout = static_cast<uint8_t>(InxRecentLayout::Flow);
+  uint8_t inxLibraryLayout = static_cast<uint8_t>(InxItemLayout::Icons);
+  uint8_t inxAppsLayout = static_cast<uint8_t>(InxItemLayout::Icons);
+  // Show and enable the Standby shortcut on the home screen.
+  uint8_t standbyShortcutEnabled = 1;
+  // Sunlight fading compensation
+  uint8_t fadingFix = 0;
+  // Power button return from footnotes (1 = enabled, 0 = disabled)
+  uint8_t pwrBtnFootnoteBack = 1;
+  // Use book's embedded CSS styles for EPUB rendering (1 = enabled, 0 = disabled)
+  uint8_t embeddedStyle = 1;
+  // Focus Reading - emphasizes the first part of words with bold
+  uint8_t focusReadingEnabled = 0;
+  uint8_t readerMenuStyle = READER_MENU_LIST;
+  // SD card font family name (empty = use built-in fontFamily)
+  char sdFontFamilyName[32] = "";
+  // Prefer the internal Flash cache for the selected SD reader font.
+  uint8_t sdFontFlashPreload = 0;
+  // Dictionary folder name under /dictionaries (empty = no dictionary)
+  char dictionaryName[32] = "";
+  // Show hidden files/directories (starting with '.') in the file browser (0 = hidden, 1 = show)
+  uint8_t showHiddenFiles = 0;
+  // Physical-button audio feedback level. Surfaced only by capable builds.
+#if CROSSPOINT_CAP_SOUND_FEEDBACK
+  uint8_t soundFeedbackLevel = SOUND_FEEDBACK_MEDIUM;
+#else
+  uint8_t soundFeedbackLevel = SOUND_FEEDBACK_OFF;
+#endif
+#if FREEINK_CAP_HAPTIC
+  uint8_t hapticFeedbackLevel = HAPTIC_FEEDBACK_MEDIUM;
+#endif
+  // Remove a book from the Recent Books list when its End-of-Book screen is reached (0 = off, 1 = on)
+  uint8_t removeReadBooksFromRecents = 0;
+  // Move epub to /Read/ folder on SD card when finished (0 = disabled, 1 = enabled)
+  uint8_t moveFinishedToReadFolder = 0;
+  // Short press Back goes to file browser instead of home (0 = disabled, 1 = enabled)
+  uint8_t backShortToFileBrowser = 0;
+  // Apps menu visibility. Set bits hide stable app IDs.
+  static constexpr uint8_t APPS_CATALOG_VERSION = 1;
+  static constexpr uint8_t PIXEL_SWITCH_APP_ID = 12;
+  // WeRead (1): the one app on this menu that is only worth a row to somebody
+  // who reads Chinese. Gated on the UI LANGUAGE, not on contentProfile -- see
+  // readsChinese().
+  //
+  // Chinese Chess used to be here too (bit 4). It is a game, so it moved to the
+  // shelf's Games folder, and it is NOT language-gated there: the board needs
+  // no reading, its strings translate, and the folder has its own per-item
+  // hide for anyone who wants the row back.
+  static constexpr uint32_t CHINESE_LANGUAGE_APPS_MASK = (uint32_t{1} << 1);
+  // Custom build: every app shipped in this image is visible from first boot.
+  static constexpr uint32_t DEFAULT_HIDDEN_APPS_MASK = 0;
+  uint32_t hiddenAppsMask = DEFAULT_HIDDEN_APPS_MASK;
+  // The Apps menu order, as stable AppId values. Empty means "catalog order",
+  // which is what a device that has never been reordered stores -- writing the
+  // default out would freeze it, and then a firmware that adds an app would
+  // have to guess where the user wanted it.
+  //
+  // Resolution appends: an AppId the catalog has and this list does not goes
+  // on the end rather than disappearing. That is the whole reason this is a
+  // list of IDs and not of catalog indices.
+  static constexpr uint8_t APP_ORDER_CAPACITY = 32;
+  uint8_t appOrder[APP_ORDER_CAPACITY]{};
+  uint8_t appOrderCount = 0;
+  uint8_t appsCatalogVersion = APPS_CATALOG_VERSION;
+  // Image rendering mode in EPUB reader
+  uint8_t imageRendering = IMAGES_DISPLAY;
+  // Tilt-based page turning (X3 only — requires QMI8658 IMU)
+  uint8_t tiltPageTurn = TILT_OFF;
+  // Touch screen reader zones/gestures on boards with a touch controller.
+  uint8_t touchReaderControls = TOUCH_READER_ON;
+  uint8_t gestureNextPage = 0, gesturePreviousPage = 0; // 0 inherits legacy control mode
+  uint8_t gesturePinchFont = 0, gestureRotation = 0, gestureStatusBar = 0;
+  uint8_t gestureSwipeUp = 0, gestureSwipeDown = 0, gestureSwipeLeft = 0, gestureSwipeRight = 0;
+  // Reader menu open gesture (SHOW_READER_MENU: off / center tap / bottom-edge
+  // up-swipe). Only surfaced on home-key boards, where Home is the capacitive
+  // key and the bottom edge is free; elsewhere it stays at the Tap default.
+  uint8_t showReaderMenu = READER_MENU_TAP;
+  // Frontlight quick-panel state. Brightness and warmth remain persisted even
+  // when restore-on-wake is disabled.
+  uint8_t frontlightBrightness = 60;
+  uint8_t frontlightWarmth = 50;
+  uint8_t frontlightOn = 0;
+  uint8_t frontlightRestoreOnWake = 1;
+  // Language setting (Language enum index). Fresh devices start in English and
+  // choose their UI language and matching content profile in the startup guide.
+  // Resolved out-of-line in CrossPointSettings.cpp so the generated
+  // I18nKeys.h header doesn't leak into every consumer of this header.
+  // Factory reset reconstructs the settings and the startup guide asks again.
+  uint8_t language = defaultLanguageIndex();
+  ContentProfile contentProfile = ContentProfile::Global;
+  // Exact version of the startup guide last completed. Zero/missing means never completed.
+  uint8_t onboardingVersion = 0;
+  // Keyboard layouts the user can reach, using keyboard_layouts::ALL table bits.
+  // 0 means "not configured", resolved to the UI language's layout plus English.
+  // Any other value is an explicit choice and is used as-is: the language of the
+  // books someone reads is not necessarily the language of their UI.
+  // See keyboard_layouts:: for the bit assignment and the defaulting rules.
+  uint16_t keyboardLayouts = 0;
+  // Quick Resume: keep current content visible with moon icon instead of showing a static sleep screen.
+  uint8_t quickResumeSleepScreen = QUICK_RESUME_NEVER;
+  // OTA update channel preference (0 = stable, 1 = nightly).
+  uint8_t otaNightlyEnabled = 0;
+  // Reading Analytics suite settings.
+  // Daily reading goal target (DAILY_GOAL_TARGET enum index).
+  uint8_t dailyGoalTarget = DAILY_GOAL_30_MIN;
+  // Achievement tracking + unlock popups (1 = enabled, 0 = disabled).
+  uint8_t achievementsEnabled = 1;
+  uint8_t achievementPopups = 0;
+
+  static constexpr uint8_t MIN_SLEEP_TIMEOUT_MINUTES = 1;
+  static constexpr uint8_t SLEEP_TIMEOUT_NEVER_MINUTES = 31;
+  static constexpr uint8_t MAX_SLEEP_TIMEOUT_MINUTES = SLEEP_TIMEOUT_NEVER_MINUTES;
+
+  // Callback to resolve SD card font IDs. Set by SdCardFontSystem::begin().
+  // Returns font ID or 0 if not found.
+  using SdFontIdResolver = int (*)(void* ctx, const char* familyName, uint8_t pointSize);
+  SdFontIdResolver sdFontIdResolver = nullptr;
+  void* sdFontResolverCtx = nullptr;
+
+  uint16_t getPowerButtonDuration() const {
+    return (shortPwrBtn == CrossPointSettings::SHORT_PWRBTN::SLEEP) ? 10 : 400;
+  }
+  int getReaderFontId() const;
+
+  // Drop the SD font selection and fall back to the built-in family. The reader
+  // point size comes back into BUILTIN_READER_POINT_SIZES with it, since that is
+  // the only set a built-in family ships — otherwise the settings UI would keep
+  // offering a size nothing renders at. Both fields are persisted in one write.
+  void clearSdFontFamily();
+
+  // Resolved status-bar composition. Consumers read the spec; only settings
+  // editors read the raw fields.
+  //
+  // Deliberately NOT built under storeMutex: every field it reads is a single
+  // byte, so a concurrent settings write can never produce a corrupt value —
+  // only a snapshot mixing pre- and post-change fields. That costs at most one
+  // e-ink frame drawn with a mixed status bar, which self-corrects on the next
+  // refresh. Locking here would instead put a mutex on the render path and
+  // stall it behind the SD write inside saveToFile(). Don't add one back.
+  struct StatusBarSpec {
+    bool showChapterPageCount = false;
+    bool showBookProgressPercent = false;
+    uint8_t titleMode = HIDE_TITLE;  // STATUS_BAR_TITLE
+    bool showBattery = false;
+    bool batteryOnLeft = true;
+    bool progressOnLeft = false;
+    bool showBatteryPercent = false;
+    uint8_t clockMode = STATUS_BAR_CLOCK_HIDE;  // STATUS_BAR_CLOCK_MODE
+    bool clock12h = false;
+    uint8_t clockUtcOffsetQ = 48;             // 48 = UTC+0
+    uint8_t progressBarMode = HIDE_PROGRESS;  // STATUS_BAR_PROGRESS_BAR
+    uint8_t progressBarHeightPx = 0;          // (thickness+1)*2; 0 when the bar is hidden
+    uint8_t xtcMode = XTC_STATUS_BAR_HIDE;    // XTC_STATUS_BAR_MODE
+
+    bool showsProgressBar() const { return progressBarMode != HIDE_PROGRESS; }
+    bool showsTitle() const { return titleMode != HIDE_TITLE; }
+    bool showsClock() const { return clockMode != STATUS_BAR_CLOCK_HIDE; }
+    bool textLaneVisible() const {
+      return showChapterPageCount || showBookProgressPercent || showsTitle() || showBattery || showsClock();
+    }
+  };
+  StatusBarSpec statusBarSpec() const;
+
+  // Resolved text-rendering configuration for the Epub layout engine. The
+  // viewport is renderer/orientation-derived, so the caller supplies it —
+  // passing it in keeps a spec from ever existing in a half-filled state.
+  // Unlocked for the same reason as statusBarSpec(); see the note above.
+  ReaderRenderSpec readerRenderSpec(uint16_t viewportWidth, uint16_t viewportHeight) const;
+
+  static const char* getFilePath() { return "/.crosspoint/settings.json"; }
+  // Keep the UI language, service region, and regional-app defaults in sync.
+  // The caller persists the resulting settings.
+  void applyLanguageSelection(uint8_t languageIndex);
+  bool loadFromFile();
+  void toJson(JsonDocument& doc) const;
+  bool fromJson(JsonVariantConst doc);
+
+  static void validateFrontButtonMapping(CrossPointSettings& settings);
+  static uint8_t sleepTimeoutEnumToMinutes(uint8_t legacyValue);
+
+ private:
+  bool loadFromBinaryFile();
+  bool migrateLanguageBinaryFile();
+
+ public:
+  float getReaderLineCompression() const;
+  unsigned long getSleepTimeoutMs() const;
+  int getRefreshFrequency() const;
+  // Daily reading goal in milliseconds, derived from dailyGoalTarget.
+  uint64_t getDailyGoalMs() const;
+};
+
+static_assert(CrossPointSettings::CURRENT_ONBOARDING_VERSION > 0);
+static_assert(CrossPointSettings::CURRENT_ONBOARDING_VERSION < UINT8_MAX);
+static_assert(!CrossPointSettings::requiresOnboarding(CrossPointSettings::CURRENT_ONBOARDING_VERSION));
+static_assert(CrossPointSettings::requiresOnboarding(0));
+static_assert(CrossPointSettings::requiresOnboarding(CrossPointSettings::CURRENT_ONBOARDING_VERSION + 1));
+
+// Helper macro to access settings
+#define SETTINGS CrossPointSettings::getInstance()

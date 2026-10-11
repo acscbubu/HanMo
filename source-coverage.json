@@ -1,0 +1,412 @@
+[
+  {
+    "archive": "libFrameworkArduino.a",
+    "sourceOrNotice": "dependencies/arduino-core-3.3.7",
+    "status": "source-directory-present"
+  },
+  {
+    "archive": "libbootloader_support.a",
+    "sourceOrNotice": "sdk-source/esp-idf/components/bootloader_support",
+    "status": "source-rebuild-tested"
+  },
+  {
+    "archive": "libesp_hw_support.a",
+    "sourceOrNotice": "sdk-source/esp-idf/components/esp_hw_support",
+    "status": "source-rebuild-tested"
+  },
+  {
+    "archive": "libesp_psram.a",
+    "sourceOrNotice": "sdk-source/esp-idf/components/esp_psram",
+    "status": "source-rebuild-tested"
+  },
+  {
+    "archive": "libesp_system.a",
+    "sourceOrNotice": "sdk-source/esp-idf/components/esp_system",
+    "status": "source-rebuild-tested"
+  },
+  {
+    "archive": "libfreertos.a",
+    "sourceOrNotice": "sdk-source/esp-idf/components/freertos",
+    "status": "source-rebuild-tested"
+  },
+  {
+    "archive": "libspi_flash.a",
+    "sourceOrNotice": "sdk-source/esp-idf/components/spi_flash",
+    "status": "source-rebuild-tested"
+  },
+  {
+    "archive": "libbtbb.a",
+    "sourceOrNotice": "binary-system-libraries/libbtbb.a",
+    "status": "vendor precompiled binary; original license and provenance retained"
+  },
+  {
+    "archive": "libbtdm_app.a",
+    "sourceOrNotice": "binary-system-libraries/libbtdm_app.a",
+    "status": "vendor precompiled binary; original license and provenance retained"
+  },
+  {
+    "archive": "libphy.a",
+    "sourceOrNotice": "binary-system-libraries/libphy.a",
+    "status": "vendor precompiled binary; original license and provenance retained"
+  },
+  {
+    "archive": "libapp_update.a",
+    "sourceOrNotice": "sdk-source/esp-idf/components/app_update",
+    "status": "source-rebuild-tested"
+  },
+  {
+    "archive": "libarduino_tinyusb.a",
+    "sourceOrNotice": "sdk-source/tinyusb",
+    "status": "source-rebuild-tested"
+  },
+  {
+    "archive": "libbt.a",
+    "sourceOrNotice": "sdk-source/esp-idf/components/bt",
+    "status": "source-rebuild-tested"
+  },
+  {
+    "archive": "libcoexist.a",
+    "sourceOrNotice": "binary-system-libraries/libcoexist.a",
+    "status": "vendor precompiled binary; original license and provenance retained"
+  },
+  {
+    "archive": "libcore.a",
+    "sourceOrNotice": "binary-system-libraries/libcore.a",
+    "status": "vendor precompiled binary; original license and provenance retained"
+  },
+  {
+    "archive": "libcxx.a",
+    "sourceOrNotice": "sdk-source/esp-idf/components/cxx",
+    "status": "source-rebuild-tested"
+  },
+  {
+    "archive": "libefuse.a",
+    "sourceOrNotice": "sdk-source/esp-idf/components/efuse",
+    "status": "source-rebuild-tested"
+  },
+  {
+    "archive": "libesp-tls.a",
+    "sourceOrNotice": "sdk-source/esp-idf/components/esp-tls",
+    "status": "source-rebuild-tested"
+  },
+  {
+    "archive": "libesp_adc.a",
+    "sourceOrNotice": "sdk-source/esp-idf/components/esp_adc",
+    "status": "source-rebuild-tested"
+  },
+  {
+    "archive": "libesp_app_format.a",
+    "sourceOrNotice": "sdk-source/esp-idf/components/esp_app_format",
+    "status": "source-rebuild-tested"
+  },
+  {
+    "archive": "libesp_coex.a",
+    "sourceOrNotice": "sdk-source/esp-idf/components/esp_coex",
+    "status": "source-rebuild-tested"
+  },
+  {
+    "archive": "libesp_common.a",
+    "sourceOrNotice": "sdk-source/esp-idf/components/esp_common",
+    "status": "source-rebuild-tested"
+  },
+  {
+    "archive": "libesp_driver_gpio.a",
+    "sourceOrNotice": "sdk-source/esp-idf/components/esp_driver_gpio",
+    "status": "source-rebuild-tested"
+  },
+  {
+    "archive": "libesp_driver_i2c.a",
+    "sourceOrNotice": "sdk-source/esp-idf/components/esp_driver_i2c",
+    "status": "source-rebuild-tested"
+  },
+  {
+    "archive": "libesp_driver_ledc.a",
+    "sourceOrNotice": "sdk-source/esp-idf/components/esp_driver_ledc",
+    "status": "source-rebuild-tested"
+  },
+  {
+    "archive": "libesp_driver_rmt.a",
+    "sourceOrNotice": "sdk-source/esp-idf/components/esp_driver_rmt",
+    "status": "source-rebuild-tested"
+  },
+  {
+    "archive": "libesp_driver_sdmmc.a",
+    "sourceOrNotice": "sdk-source/esp-idf/components/esp_driver_sdmmc",
+    "status": "source-rebuild-tested"
+  },
+  {
+    "archive": "libesp_driver_spi.a",
+    "sourceOrNotice": "sdk-source/esp-idf/components/esp_driver_spi",
+    "status": "source-rebuild-tested"
+  },
+  {
+    "archive": "libesp_driver_tsens.a",
+    "sourceOrNotice": "sdk-source/esp-idf/components/esp_driver_tsens",
+    "status": "source-rebuild-tested"
+  },
+  {
+    "archive": "libesp_driver_uart.a",
+    "sourceOrNotice": "sdk-source/esp-idf/components/esp_driver_uart",
+    "status": "source-rebuild-tested"
+  },
+  {
+    "archive": "libesp_driver_usb_serial_jtag.a",
+    "sourceOrNotice": "sdk-source/esp-idf/components/esp_driver_usb_serial_jtag",
+    "status": "source-rebuild-tested"
+  },
+  {
+    "archive": "libesp_eth.a",
+    "sourceOrNotice": "sdk-source/esp-idf/components/esp_eth",
+    "status": "source-rebuild-tested"
+  },
+  {
+    "archive": "libesp_event.a",
+    "sourceOrNotice": "sdk-source/esp-idf/components/esp_event",
+    "status": "source-rebuild-tested"
+  },
+  {
+    "archive": "libesp_http_client.a",
+    "sourceOrNotice": "sdk-source/esp-idf/components/esp_http_client",
+    "status": "source-rebuild-tested"
+  },
+  {
+    "archive": "libesp_mm.a",
+    "sourceOrNotice": "sdk-source/esp-idf/components/esp_mm",
+    "status": "source-rebuild-tested"
+  },
+  {
+    "archive": "libesp_netif.a",
+    "sourceOrNotice": "sdk-source/esp-idf/components/esp_netif",
+    "status": "source-rebuild-tested"
+  },
+  {
+    "archive": "libesp_partition.a",
+    "sourceOrNotice": "sdk-source/esp-idf/components/esp_partition",
+    "status": "source-rebuild-tested"
+  },
+  {
+    "archive": "libesp_phy.a",
+    "sourceOrNotice": "sdk-source/esp-idf/components/esp_phy",
+    "status": "source-rebuild-tested"
+  },
+  {
+    "archive": "libesp_pm.a",
+    "sourceOrNotice": "sdk-source/esp-idf/components/esp_pm",
+    "status": "source-rebuild-tested"
+  },
+  {
+    "archive": "libesp_ringbuf.a",
+    "sourceOrNotice": "sdk-source/esp-idf/components/esp_ringbuf",
+    "status": "source-rebuild-tested"
+  },
+  {
+    "archive": "libesp_rom.a",
+    "sourceOrNotice": "sdk-source/esp-idf/components/esp_rom",
+    "status": "source-rebuild-tested"
+  },
+  {
+    "archive": "libesp_security.a",
+    "sourceOrNotice": "sdk-source/esp-idf/components/esp_security",
+    "status": "source-rebuild-tested"
+  },
+  {
+    "archive": "libesp_timer.a",
+    "sourceOrNotice": "sdk-source/esp-idf/components/esp_timer",
+    "status": "source-rebuild-tested"
+  },
+  {
+    "archive": "libesp_vfs_console.a",
+    "sourceOrNotice": "sdk-source/esp-idf/components/esp_vfs_console",
+    "status": "source-rebuild-tested"
+  },
+  {
+    "archive": "libesp_wifi.a",
+    "sourceOrNotice": "sdk-source/esp-idf/components/esp_wifi",
+    "status": "source-rebuild-tested"
+  },
+  {
+    "archive": "libespcoredump.a",
+    "sourceOrNotice": "sdk-source/esp-idf/components/espcoredump",
+    "status": "source-rebuild-tested"
+  },
+  {
+    "archive": "libespnow.a",
+    "sourceOrNotice": "binary-system-libraries/libespnow.a",
+    "status": "vendor precompiled binary; original license and provenance retained"
+  },
+  {
+    "archive": "libespressif__esp_diagnostics.a",
+    "sourceOrNotice": "sdk-source/managed/esp_diagnostics",
+    "status": "source-rebuild-tested"
+  },
+  {
+    "archive": "libespressif__mdns.a",
+    "sourceOrNotice": "sdk-source/managed/mdns",
+    "status": "source-rebuild-tested"
+  },
+  {
+    "archive": "libespressif__network_provisioning.a",
+    "sourceOrNotice": "sdk-source/managed/network_provisioning",
+    "status": "source-rebuild-tested"
+  },
+  {
+    "archive": "libhal.a",
+    "sourceOrNotice": "sdk-source/esp-idf/components/hal",
+    "status": "source-rebuild-tested"
+  },
+  {
+    "archive": "libheap.a",
+    "sourceOrNotice": "sdk-source/esp-idf/components/heap",
+    "status": "source-rebuild-tested"
+  },
+  {
+    "archive": "libhttp_parser.a",
+    "sourceOrNotice": "sdk-source/esp-idf/components/http_parser",
+    "status": "source-rebuild-tested"
+  },
+  {
+    "archive": "libjson.a",
+    "sourceOrNotice": "sdk-source/esp-idf/components/json",
+    "status": "source-rebuild-tested"
+  },
+  {
+    "archive": "liblog.a",
+    "sourceOrNotice": "sdk-source/esp-idf/components/log",
+    "status": "source-rebuild-tested"
+  },
+  {
+    "archive": "liblwip.a",
+    "sourceOrNotice": "sdk-source/esp-idf/components/lwip",
+    "status": "source-rebuild-tested"
+  },
+  {
+    "archive": "libmbedcrypto.a",
+    "sourceOrNotice": "sdk-source/esp-idf/components/mbedtls",
+    "status": "source-rebuild-tested"
+  },
+  {
+    "archive": "libmbedtls.a",
+    "sourceOrNotice": "sdk-source/esp-idf/components/mbedtls",
+    "status": "source-rebuild-tested"
+  },
+  {
+    "archive": "libmbedtls_2.a",
+    "sourceOrNotice": "sdk-source/esp-idf/components/mbedtls",
+    "status": "source-rebuild-tested"
+  },
+  {
+    "archive": "libmbedx509.a",
+    "sourceOrNotice": "sdk-source/esp-idf/components/mbedtls",
+    "status": "source-rebuild-tested"
+  },
+  {
+    "archive": "libmesh.a",
+    "sourceOrNotice": "binary-system-libraries/libmesh.a",
+    "status": "vendor precompiled binary; original license and provenance retained"
+  },
+  {
+    "archive": "libnet80211.a",
+    "sourceOrNotice": "binary-system-libraries/libnet80211.a",
+    "status": "vendor precompiled binary; original license and provenance retained"
+  },
+  {
+    "archive": "libnewlib.a",
+    "sourceOrNotice": "sdk-source/esp-idf/components/newlib",
+    "status": "source-rebuild-tested"
+  },
+  {
+    "archive": "libnvs_flash.a",
+    "sourceOrNotice": "sdk-source/esp-idf/components/nvs_flash",
+    "status": "source-rebuild-tested"
+  },
+  {
+    "archive": "libnvs_sec_provider.a",
+    "sourceOrNotice": "sdk-source/esp-idf/components/nvs_sec_provider",
+    "status": "source-rebuild-tested"
+  },
+  {
+    "archive": "libpp.a",
+    "sourceOrNotice": "binary-system-libraries/libpp.a",
+    "status": "vendor precompiled binary; original license and provenance retained"
+  },
+  {
+    "archive": "libprotobuf-c.a",
+    "sourceOrNotice": "sdk-source/esp-idf/components/protobuf-c",
+    "status": "source-rebuild-tested"
+  },
+  {
+    "archive": "libprotocomm.a",
+    "sourceOrNotice": "sdk-source/esp-idf/components/protocomm",
+    "status": "source-rebuild-tested"
+  },
+  {
+    "archive": "libpthread.a",
+    "sourceOrNotice": "sdk-source/esp-idf/components/pthread",
+    "status": "source-rebuild-tested"
+  },
+  {
+    "archive": "libsdmmc.a",
+    "sourceOrNotice": "sdk-source/esp-idf/components/sdmmc",
+    "status": "source-rebuild-tested"
+  },
+  {
+    "archive": "libsmartconfig.a",
+    "sourceOrNotice": "binary-system-libraries/libsmartconfig.a",
+    "status": "vendor precompiled binary; original license and provenance retained"
+  },
+  {
+    "archive": "libsoc.a",
+    "sourceOrNotice": "sdk-source/esp-idf/components/soc",
+    "status": "source-rebuild-tested"
+  },
+  {
+    "archive": "libtcp_transport.a",
+    "sourceOrNotice": "sdk-source/esp-idf/components/tcp_transport",
+    "status": "source-rebuild-tested"
+  },
+  {
+    "archive": "libusb.a",
+    "sourceOrNotice": "sdk-source/esp-idf/components/usb",
+    "status": "source-rebuild-tested"
+  },
+  {
+    "archive": "libvfs.a",
+    "sourceOrNotice": "sdk-source/esp-idf/components/vfs",
+    "status": "source-rebuild-tested"
+  },
+  {
+    "archive": "libwpa_supplicant.a",
+    "sourceOrNotice": "sdk-source/esp-idf/components/wpa_supplicant",
+    "status": "source-rebuild-tested"
+  },
+  {
+    "archive": "libxt_hal.a",
+    "sourceOrNotice": "binary-system-libraries/libxt_hal.a",
+    "status": "vendor-binary-not-source-rebuilt"
+  },
+  {
+    "archive": "libxtensa.a",
+    "sourceOrNotice": "sdk-source/esp-idf/components/xtensa",
+    "status": "source-rebuild-tested"
+  },
+  {
+    "archive": "libc.a",
+    "sourceOrNotice": "LICENSES/Newlib-COPYING.txt",
+    "status": "standard toolchain runtime; implementation not bundled"
+  },
+  {
+    "archive": "libm.a",
+    "sourceOrNotice": "LICENSES/Newlib-COPYING.txt",
+    "status": "standard toolchain runtime; implementation not bundled"
+  },
+  {
+    "archive": "libstdc++.a",
+    "sourceOrNotice": "LICENSES/GCC-Runtime-Exception.txt",
+    "status": "standard toolchain runtime; implementation not bundled"
+  },
+  {
+    "archive": "libgcc.a",
+    "sourceOrNotice": "LICENSES/GCC-Runtime-Exception.txt",
+    "status": "standard toolchain runtime; implementation not bundled"
+  }
+]

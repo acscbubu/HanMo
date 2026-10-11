@@ -1,0 +1,506 @@
+[
+  {
+    "id": "social-07",
+    "category": 7,
+    "a": {
+      "japanese": "どんなおしごとですか。",
+      "kanaReading": "どんなおしごとですか。",
+      "romaji": "donna oshigoto desu ka?",
+      "meaning": "您做什麼樣的工作？"
+    },
+    "b": {
+      "japanese": "かいしゃいんです。",
+      "kanaReading": "かいしゃいんです。",
+      "romaji": "kaishain desu.",
+      "meaning": "我是公司職員。"
+    },
+    "grammarNotes": [
+      "どんな詢問種類或內容。",
+      "おしごとは工作的客氣說法。"
+    ],
+    "vocabularyCardId": -1
+  },
+  {
+    "id": "social-08",
+    "category": 7,
+    "a": {
+      "japanese": "しゅみはなんですか。",
+      "kanaReading": "しゅみはなんですか。",
+      "romaji": "shumi wa nan desu ka?",
+      "meaning": "您的興趣是什麼？"
+    },
+    "b": {
+      "japanese": "しゃしんをとることです。",
+      "kanaReading": "しゃしんをとることです。",
+      "romaji": "shashin o toru koto desu.",
+      "meaning": "我的興趣是拍照。"
+    },
+    "grammarNotes": [
+      "しゅみ表示興趣。",
+      "動詞後接こと使動作名詞化。"
+    ],
+    "vocabularyCardId": -1
+  },
+  {
+    "id": "social-09",
+    "category": 7,
+    "a": {
+      "japanese": "にほんごがわかりますか。",
+      "kanaReading": "にほんごがわかりますか。",
+      "romaji": "nihongo ga wakarimasu ka?",
+      "meaning": "您聽得懂日語嗎？"
+    },
+    "b": {
+      "japanese": "すこしわかります。",
+      "kanaReading": "すこしわかります。",
+      "romaji": "sukoshi wakarimasu.",
+      "meaning": "聽得懂一點。"
+    },
+    "grammarNotes": [
+      "が標示理解的對象。",
+      "すこし表示一點。"
+    ],
+    "vocabularyCardId": -1
+  },
+  {
+    "id": "social-10",
+    "category": 7,
+    "a": {
+      "japanese": "ゆっくりはなしてください。",
+      "kanaReading": "ゆっくりはなしてください。",
+      "romaji": "yukkuri hanashite kudasai.",
+      "meaning": "請慢慢說。"
+    },
+    "b": {
+      "japanese": "はい、ゆっくりはなします。",
+      "kanaReading": "はい、ゆっくりはなします。",
+      "romaji": "hai, yukkuri hanashimasu.",
+      "meaning": "好的，我慢慢說。"
+    },
+    "grammarNotes": [
+      "ゆっくり表示慢慢地。",
+      "てください用來提出請求。"
+    ],
+    "vocabularyCardId": -1
+  },
+  {
+    "id": "social-11",
+    "category": 7,
+    "a": {
+      "japanese": "もういちどおねがいします。",
+      "kanaReading": "もういちどおねがいします。",
+      "romaji": "mō ichido onegai shimasu.",
+      "meaning": "麻煩再說一次。"
+    },
+    "b": {
+      "japanese": "はい、もういちどいいます。",
+      "kanaReading": "はい、もういちどいいます。",
+      "romaji": "hai, mō ichido iimasu.",
+      "meaning": "好的，我再說一次。"
+    },
+    "grammarNotes": [
+      "もういちど表示再一次。",
+      "いいます表示說出來。"
+    ],
+    "vocabularyCardId": -1
+  },
+  {
+    "id": "social-12",
+    "category": 7,
+    "a": {
+      "japanese": "えいごではなしてもいいですか。",
+      "kanaReading": "えいごではなしてもいいですか。",
+      "romaji": "eigo de hanashite mo ii desu ka?",
+      "meaning": "可以用英語說嗎？"
+    },
+    "b": {
+      "japanese": "はい、だいじょうぶです。",
+      "kanaReading": "はい、だいじょうぶです。",
+      "romaji": "hai, daijōbu desu.",
+      "meaning": "可以，沒問題。"
+    },
+    "grammarNotes": [
+      "で標示使用的語言。",
+      "てもいいですか用來徵求同意。"
+    ],
+    "vocabularyCardId": -1
+  },
+  {
+    "id": "social-13",
+    "category": 7,
+    "a": {
+      "japanese": "にほんごをべんきょうしています。",
+      "kanaReading": "にほんごをべんきょうしています。",
+      "romaji": "nihongo o benkyō shite imasu.",
+      "meaning": "我正在學日語。"
+    },
+    "b": {
+      "japanese": "いっしょにれんしゅうしましょう。",
+      "kanaReading": "いっしょにれんしゅうしましょう。",
+      "romaji": "issho ni renshū shimashō.",
+      "meaning": "一起練習吧。"
+    },
+    "grammarNotes": [
+      "ています表示持續進行。",
+      "ましょう用來提出建議。"
+    ],
+    "vocabularyCardId": -1
+  },
+  {
+    "id": "social-14",
+    "category": 7,
+    "a": {
+      "japanese": "なんとおよびすればいいですか。",
+      "kanaReading": "なんとおよびすればいいですか。",
+      "romaji": "nan to oyobi sureba ii desu ka?",
+      "meaning": "我該怎麼稱呼您？"
+    },
+    "b": {
+      "japanese": "リンとよんでください。",
+      "kanaReading": "リンとよんでください。",
+      "romaji": "rin to yonde kudasai.",
+      "meaning": "請叫我林。"
+    },
+    "grammarNotes": [
+      "と標示稱呼的內容。",
+      "ばいいですか詢問該怎麼做。"
+    ],
+    "vocabularyCardId": -1
+  },
+  {
+    "id": "social-15",
+    "category": 7,
+    "a": {
+      "japanese": "おまねきありがとうございます。",
+      "kanaReading": "おまねきありがとうございます。",
+      "romaji": "omaneki arigatō gozaimasu.",
+      "meaning": "謝謝您的邀請。"
+    },
+    "b": {
+      "japanese": "きてくださってうれしいです。",
+      "kanaReading": "きてくださってうれしいです。",
+      "romaji": "kite kudasatte ureshii desu.",
+      "meaning": "很高興您能來。"
+    },
+    "grammarNotes": [
+      "おまねき表示邀請。",
+      "うれしい表示高興。"
+    ],
+    "vocabularyCardId": -1
+  },
+  {
+    "id": "social-16",
+    "category": 7,
+    "a": {
+      "japanese": "おたんじょうびおめでとうございます。",
+      "kanaReading": "おたんじょうびおめでとうございます。",
+      "romaji": "otanjōbi omedetō gozaimasu.",
+      "meaning": "祝您生日快樂。"
+    },
+    "b": {
+      "japanese": "ありがとうございます。",
+      "kanaReading": "ありがとうございます。",
+      "romaji": "arigatō gozaimasu.",
+      "meaning": "謝謝您。"
+    },
+    "grammarNotes": [
+      "たんじょうび表示生日。",
+      "おめでとうございます用於祝賀。"
+    ],
+    "vocabularyCardId": -1
+  },
+  {
+    "id": "social-17",
+    "category": 7,
+    "a": {
+      "japanese": "これ、よかったらどうぞ。",
+      "kanaReading": "これ、よかったらどうぞ。",
+      "romaji": "kore, yokattara dōzo.",
+      "meaning": "這個送您，請收下。"
+    },
+    "b": {
+      "japanese": "ありがとうございます。うれしいです。",
+      "kanaReading": "ありがとうございます。うれしいです。",
+      "romaji": "arigatō gozaimasu. ureshii desu.",
+      "meaning": "謝謝您，我很開心。"
+    },
+    "grammarNotes": [
+      "よかったら讓提議較柔和。",
+      "どうぞ表示請對方接受。"
+    ],
+    "vocabularyCardId": -1
+  },
+  {
+    "id": "social-18",
+    "category": 7,
+    "a": {
+      "japanese": "しゃしんをとってもいいですか。",
+      "kanaReading": "しゃしんをとってもいいですか。",
+      "romaji": "shashin o totte mo ii desu ka?",
+      "meaning": "可以拍照嗎？"
+    },
+    "b": {
+      "japanese": "はい、どうぞ。",
+      "kanaReading": "はい、どうぞ。",
+      "romaji": "hai, dōzo.",
+      "meaning": "可以，請。"
+    },
+    "grammarNotes": [
+      "しゃしんをとる表示拍照。",
+      "てもいいですか用來徵求同意。"
+    ],
+    "vocabularyCardId": -1
+  },
+  {
+    "id": "social-19",
+    "category": 7,
+    "a": {
+      "japanese": "れんらくさきをおしえてください。",
+      "kanaReading": "れんらくさきをおしえてください。",
+      "romaji": "renrakusaki o oshiete kudasai.",
+      "meaning": "請告訴我您的聯絡方式。"
+    },
+    "b": {
+      "japanese": "はい、メールでいいですか。",
+      "kanaReading": "はい、メールでいいですか。",
+      "romaji": "hai, mēru de ii desu ka?",
+      "meaning": "可以，用電子郵件可以嗎？"
+    },
+    "grammarNotes": [
+      "れんらくさき表示聯絡方式。",
+      "でいいですか確認方式可否。"
+    ],
+    "vocabularyCardId": -1
+  },
+  {
+    "id": "social-20",
+    "category": 7,
+    "a": {
+      "japanese": "いつならあいていますか。",
+      "kanaReading": "いつならあいていますか。",
+      "romaji": "itsu nara aite imasu ka?",
+      "meaning": "您什麼時候有空？"
+    },
+    "b": {
+      "japanese": "どようびのごごはどうですか。",
+      "kanaReading": "どようびのごごはどうですか。",
+      "romaji": "doyōbi no gogo wa dō desu ka?",
+      "meaning": "星期六下午如何？"
+    },
+    "grammarNotes": [
+      "いつ用來詢問時間。",
+      "あいています在此表示有空。"
+    ],
+    "vocabularyCardId": -1
+  },
+  {
+    "id": "social-21",
+    "category": 7,
+    "a": {
+      "japanese": "あした、いっしょにでかけませんか。",
+      "kanaReading": "あした、いっしょにでかけませんか。",
+      "romaji": "ashita, issho ni dekakemasen ka?",
+      "meaning": "明天要不要一起出去？"
+    },
+    "b": {
+      "japanese": "すみません、よていがあります。",
+      "kanaReading": "すみません、よていがあります。",
+      "romaji": "sumimasen, yotei ga arimasu.",
+      "meaning": "不好意思，我有安排了。"
+    },
+    "grammarNotes": [
+      "ませんか用來提出邀請。",
+      "よてい表示預定的安排。"
+    ],
+    "vocabularyCardId": -1
+  },
+  {
+    "id": "social-22",
+    "category": 7,
+    "a": {
+      "japanese": "にちようびにかえてもいいですか。",
+      "kanaReading": "にちようびにかえてもいいですか。",
+      "romaji": "nichiyōbi ni kaete mo ii desu ka?",
+      "meaning": "可以改到星期日嗎？"
+    },
+    "b": {
+      "japanese": "はい、にちようびでだいじょうぶです。",
+      "kanaReading": "はい、にちようびでだいじょうぶです。",
+      "romaji": "hai, nichiyōbi de daijōbu desu.",
+      "meaning": "可以，星期日沒問題。"
+    },
+    "grammarNotes": [
+      "かえて表示變更安排。",
+      "に標示改到的新時間。"
+    ],
+    "vocabularyCardId": -1
+  },
+  {
+    "id": "social-23",
+    "category": 7,
+    "a": {
+      "japanese": "どんなおんがくがすきですか。",
+      "kanaReading": "どんなおんがくがすきですか。",
+      "romaji": "donna ongaku ga suki desu ka?",
+      "meaning": "您喜歡什麼樣的音樂？"
+    },
+    "b": {
+      "japanese": "ジャズがすきです。",
+      "kanaReading": "ジャズがすきです。",
+      "romaji": "jazu ga suki desu.",
+      "meaning": "我喜歡爵士樂。"
+    },
+    "grammarNotes": [
+      "が標示喜歡的對象。",
+      "すきです表示喜歡。"
+    ],
+    "vocabularyCardId": -1
+  },
+  {
+    "id": "social-24",
+    "category": 7,
+    "a": {
+      "japanese": "このまちのおすすめはなんですか。",
+      "kanaReading": "このまちのおすすめはなんですか。",
+      "romaji": "kono machi no osusume wa nan desu ka?",
+      "meaning": "這座城市有什麼推薦的？"
+    },
+    "b": {
+      "japanese": "はなみがおすすめです。",
+      "kanaReading": "はなみがおすすめです。",
+      "romaji": "hanami ga osusume desu.",
+      "meaning": "推薦去賞花。"
+    },
+    "grammarNotes": [
+      "おすすめ表示推薦的事物。",
+      "はなみ表示賞花。"
+    ],
+    "vocabularyCardId": -1
+  },
+  {
+    "id": "social-25",
+    "category": 7,
+    "a": {
+      "japanese": "となりにすわってもいいですか。",
+      "kanaReading": "となりにすわってもいいですか。",
+      "romaji": "tonari ni suwatte mo ii desu ka?",
+      "meaning": "可以坐在您旁邊嗎？"
+    },
+    "b": {
+      "japanese": "はい、どうぞ。",
+      "kanaReading": "はい、どうぞ。",
+      "romaji": "hai, dōzo.",
+      "meaning": "可以，請坐。"
+    },
+    "grammarNotes": [
+      "となり表示旁邊。",
+      "に標示坐下的位置。"
+    ],
+    "vocabularyCardId": -1
+  },
+  {
+    "id": "social-26",
+    "category": 7,
+    "a": {
+      "japanese": "おじゃまします。",
+      "kanaReading": "おじゃまします。",
+      "romaji": "ojama shimasu.",
+      "meaning": "打擾了。"
+    },
+    "b": {
+      "japanese": "どうぞ、おはいりください。",
+      "kanaReading": "どうぞ、おはいりください。",
+      "romaji": "dōzo, ohairi kudasai.",
+      "meaning": "請進。"
+    },
+    "grammarNotes": [
+      "おじゃまします用於登門拜訪。",
+      "おはいりください是客氣請進。"
+    ],
+    "vocabularyCardId": -1
+  },
+  {
+    "id": "social-27",
+    "category": 7,
+    "a": {
+      "japanese": "さきにしつれいします。",
+      "kanaReading": "さきにしつれいします。",
+      "romaji": "saki ni shitsurei shimasu.",
+      "meaning": "我先告辭了。"
+    },
+    "b": {
+      "japanese": "おつかれさまでした。",
+      "kanaReading": "おつかれさまでした。",
+      "romaji": "otsukaresama deshita.",
+      "meaning": "辛苦了。"
+    },
+    "grammarNotes": [
+      "さきに表示比別人先。",
+      "しつれいします用於客氣告辭。"
+    ],
+    "vocabularyCardId": -1
+  },
+  {
+    "id": "social-28",
+    "category": 7,
+    "a": {
+      "japanese": "おくれてすみません。",
+      "kanaReading": "おくれてすみません。",
+      "romaji": "okurete sumimasen.",
+      "meaning": "抱歉，我遲到了。"
+    },
+    "b": {
+      "japanese": "だいじょうぶです。",
+      "kanaReading": "だいじょうぶです。",
+      "romaji": "daijōbu desu.",
+      "meaning": "沒關係。"
+    },
+    "grammarNotes": [
+      "おくれる表示遲到。",
+      "て形接すみません表示道歉。"
+    ],
+    "vocabularyCardId": -1
+  },
+  {
+    "id": "social-29",
+    "category": 7,
+    "a": {
+      "japanese": "そつぎょうおめでとうございます。",
+      "kanaReading": "そつぎょうおめでとうございます。",
+      "romaji": "sotsugyō omedetō gozaimasu.",
+      "meaning": "恭喜您畢業。"
+    },
+    "b": {
+      "japanese": "ありがとうございます。",
+      "kanaReading": "ありがとうございます。",
+      "romaji": "arigatō gozaimasu.",
+      "meaning": "謝謝您。"
+    },
+    "grammarNotes": [
+      "そつぎょう表示畢業。",
+      "ございます使祝賀更客氣。"
+    ],
+    "vocabularyCardId": -1
+  },
+  {
+    "id": "social-30",
+    "category": 7,
+    "a": {
+      "japanese": "おてつだいありがとうございます。",
+      "kanaReading": "おてつだいありがとうございます。",
+      "romaji": "otetsudai arigatō gozaimasu.",
+      "meaning": "謝謝您幫忙。"
+    },
+    "b": {
+      "japanese": "どういたしまして。",
+      "kanaReading": "どういたしまして。",
+      "romaji": "dō itashimashite.",
+      "meaning": "不客氣。"
+    },
+    "grammarNotes": [
+      "おてつだい是幫忙的客氣說法。",
+      "どういたしまして回應謝意。"
+    ],
+    "vocabularyCardId": -1
+  }
+]

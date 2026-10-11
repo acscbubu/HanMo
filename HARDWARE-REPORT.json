@@ -1,0 +1,17 @@
+{
+  "reportedDate": "2026-10-11",
+  "timezone": "Australia/Sydney",
+  "version": "1.5.8-hanmo-bold-status-20261010",
+  "evidenceType": "user-report",
+  "userConfirmed": [
+    "flashed",
+    "boot",
+    "reading",
+    "AirNote",
+    "AirPhoto",
+    "Wi-Fi"
+  ],
+  "deviceImageReadbackPerformedByThisTask": false,
+  "fullRegressionClaim": false,
+  "publishedByThisTask": false
+}

@@ -1,0 +1,7 @@
+HanMo Kana bitmap subset derived from Maruko Gothic CJK JP Medium.
+
+Copyright 2025 The Maruko Gothic Authors (https://github.com/max32002/maruko-gothic)
+
+This Font Software is licensed under the SIL Open Font License, Version 1.1. This license is available with a FAQ at: https://scripts.sil.org/OFL
+
+https://scripts.sil.org/OFL

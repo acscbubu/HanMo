@@ -1,0 +1,506 @@
+[
+  {
+    "id": "sentence-07",
+    "category": 0,
+    "a": {
+      "japanese": "わたしはがくせいです。",
+      "kanaReading": "わたしはがくせいです。",
+      "romaji": "watashi wa gakusei desu.",
+      "meaning": "我是學生。"
+    },
+    "b": {
+      "japanese": "",
+      "kanaReading": "",
+      "romaji": "",
+      "meaning": ""
+    },
+    "grammarNotes": [
+      "は表示主題，讀 wa。",
+      "です讓名詞句更客氣。"
+    ],
+    "vocabularyCardId": -1
+  },
+  {
+    "id": "sentence-08",
+    "category": 0,
+    "a": {
+      "japanese": "おしごとはなんですか。",
+      "kanaReading": "おしごとはなんですか。",
+      "romaji": "oshigoto wa nan desu ka?",
+      "meaning": "您從事什麼工作？"
+    },
+    "b": {
+      "japanese": "",
+      "kanaReading": "",
+      "romaji": "",
+      "meaning": ""
+    },
+    "grammarNotes": [
+      "おしごとは工作的客氣說法。",
+      "なんですか用來問是什麼。"
+    ],
+    "vocabularyCardId": -1
+  },
+  {
+    "id": "sentence-09",
+    "category": 0,
+    "a": {
+      "japanese": "これはわたしのかばんです。",
+      "kanaReading": "これはわたしのかばんです。",
+      "romaji": "kore wa watashi no kaban desu.",
+      "meaning": "這是我的包包。"
+    },
+    "b": {
+      "japanese": "",
+      "kanaReading": "",
+      "romaji": "",
+      "meaning": ""
+    },
+    "grammarNotes": [
+      "の表示所屬關係。",
+      "これは用來介紹眼前物品。"
+    ],
+    "vocabularyCardId": -1
+  },
+  {
+    "id": "sentence-10",
+    "category": 0,
+    "a": {
+      "japanese": "あれはわたしのじてんしゃです。",
+      "kanaReading": "あれはわたしのじてんしゃです。",
+      "romaji": "are wa watashi no jitensha desu.",
+      "meaning": "那是我的腳踏車。"
+    },
+    "b": {
+      "japanese": "",
+      "kanaReading": "",
+      "romaji": "",
+      "meaning": ""
+    },
+    "grammarNotes": [
+      "あれ指離雙方較遠的物品。",
+      "わたしの表示我的。"
+    ],
+    "vocabularyCardId": -1
+  },
+  {
+    "id": "sentence-11",
+    "category": 0,
+    "a": {
+      "japanese": "にほんごはむずかしいです。",
+      "kanaReading": "にほんごはむずかしいです。",
+      "romaji": "nihongo wa muzukashii desu.",
+      "meaning": "日語很難。"
+    },
+    "b": {
+      "japanese": "",
+      "kanaReading": "",
+      "romaji": "",
+      "meaning": ""
+    },
+    "grammarNotes": [
+      "むずかしい表示困難。",
+      "い形容詞後加です更客氣。"
+    ],
+    "vocabularyCardId": -1
+  },
+  {
+    "id": "sentence-12",
+    "category": 0,
+    "a": {
+      "japanese": "きょうはさむくないです。",
+      "kanaReading": "きょうはさむくないです。",
+      "romaji": "kyō wa samukunai desu.",
+      "meaning": "今天不冷。"
+    },
+    "b": {
+      "japanese": "",
+      "kanaReading": "",
+      "romaji": "",
+      "meaning": ""
+    },
+    "grammarNotes": [
+      "さむい的否定是さむくない。",
+      "きょう表示今天。"
+    ],
+    "vocabularyCardId": -1
+  },
+  {
+    "id": "sentence-13",
+    "category": 0,
+    "a": {
+      "japanese": "わたしはコーヒーがすきです。",
+      "kanaReading": "わたしはコーヒーがすきです。",
+      "romaji": "watashi wa kōhī ga suki desu.",
+      "meaning": "我喜歡咖啡。"
+    },
+    "b": {
+      "japanese": "",
+      "kanaReading": "",
+      "romaji": "",
+      "meaning": ""
+    },
+    "grammarNotes": [
+      "が標示喜歡的對象。",
+      "すきです表示喜歡。"
+    ],
+    "vocabularyCardId": -1
+  },
+  {
+    "id": "sentence-14",
+    "category": 0,
+    "a": {
+      "japanese": "あまいものはすきではありません。",
+      "kanaReading": "あまいものはすきではありません。",
+      "romaji": "amai mono wa suki de wa arimasen.",
+      "meaning": "我不喜歡甜食。"
+    },
+    "b": {
+      "japanese": "",
+      "kanaReading": "",
+      "romaji": "",
+      "meaning": ""
+    },
+    "grammarNotes": [
+      "あまいもの指甜的東西。",
+      "ではありません表示客氣否定。"
+    ],
+    "vocabularyCardId": -1
+  },
+  {
+    "id": "sentence-15",
+    "category": 0,
+    "a": {
+      "japanese": "ねこがへやにいます。",
+      "kanaReading": "ねこがへやにいます。",
+      "romaji": "neko ga heya ni imasu.",
+      "meaning": "房間裡有貓。"
+    },
+    "b": {
+      "japanese": "",
+      "kanaReading": "",
+      "romaji": "",
+      "meaning": ""
+    },
+    "grammarNotes": [
+      "います用於人或動物的存在。",
+      "に標示存在的地點。"
+    ],
+    "vocabularyCardId": -1
+  },
+  {
+    "id": "sentence-16",
+    "category": 0,
+    "a": {
+      "japanese": "つくえのうえにペンがあります。",
+      "kanaReading": "つくえのうえにペンがあります。",
+      "romaji": "tsukue no ue ni pen ga arimasu.",
+      "meaning": "桌上有筆。"
+    },
+    "b": {
+      "japanese": "",
+      "kanaReading": "",
+      "romaji": "",
+      "meaning": ""
+    },
+    "grammarNotes": [
+      "のうえ表示在上面。",
+      "あります用於物品的存在。"
+    ],
+    "vocabularyCardId": -1
+  },
+  {
+    "id": "sentence-17",
+    "category": 0,
+    "a": {
+      "japanese": "がっこうはえきのちかくです。",
+      "kanaReading": "がっこうはえきのちかくです。",
+      "romaji": "gakkō wa eki no chikaku desu.",
+      "meaning": "學校在車站附近。"
+    },
+    "b": {
+      "japanese": "",
+      "kanaReading": "",
+      "romaji": "",
+      "meaning": ""
+    },
+    "grammarNotes": [
+      "のちかく表示在附近。",
+      "は提示要說明位置的地方。"
+    ],
+    "vocabularyCardId": -1
+  },
+  {
+    "id": "sentence-18",
+    "category": 0,
+    "a": {
+      "japanese": "いまはひまではありません。",
+      "kanaReading": "いまはひまではありません。",
+      "romaji": "ima wa hima de wa arimasen.",
+      "meaning": "現在沒空。"
+    },
+    "b": {
+      "japanese": "",
+      "kanaReading": "",
+      "romaji": "",
+      "meaning": ""
+    },
+    "grammarNotes": [
+      "ひま表示有空。",
+      "ではありません表示客氣否定。"
+    ],
+    "vocabularyCardId": -1
+  },
+  {
+    "id": "sentence-19",
+    "category": 0,
+    "a": {
+      "japanese": "まいあさろくじにおきます。",
+      "kanaReading": "まいあさろくじにおきます。",
+      "romaji": "maiasa rokuji ni okimasu.",
+      "meaning": "每天早上六點起床。"
+    },
+    "b": {
+      "japanese": "",
+      "kanaReading": "",
+      "romaji": "",
+      "meaning": ""
+    },
+    "grammarNotes": [
+      "に標示具體的時間。",
+      "おきます表示起床。"
+    ],
+    "vocabularyCardId": -1
+  },
+  {
+    "id": "sentence-20",
+    "category": 0,
+    "a": {
+      "japanese": "あしたはちちとでかけます。",
+      "kanaReading": "あしたはちちとでかけます。",
+      "romaji": "ashita wa chichi to dekakemasu.",
+      "meaning": "明天要和爸爸出門。"
+    },
+    "b": {
+      "japanese": "",
+      "kanaReading": "",
+      "romaji": "",
+      "meaning": ""
+    },
+    "grammarNotes": [
+      "と表示與誰一起行動。",
+      "ちち用來對外說自己的父親。"
+    ],
+    "vocabularyCardId": -1
+  },
+  {
+    "id": "sentence-21",
+    "category": 0,
+    "a": {
+      "japanese": "きのうははやくねました。",
+      "kanaReading": "きのうははやくねました。",
+      "romaji": "kinō wa hayaku nemashita.",
+      "meaning": "昨天很早就睡了。"
+    },
+    "b": {
+      "japanese": "",
+      "kanaReading": "",
+      "romaji": "",
+      "meaning": ""
+    },
+    "grammarNotes": [
+      "ました表示過去的動作。",
+      "はやく在此表示時間早。"
+    ],
+    "vocabularyCardId": -1
+  },
+  {
+    "id": "sentence-22",
+    "category": 0,
+    "a": {
+      "japanese": "きょうはテレビをみません。",
+      "kanaReading": "きょうはテレビをみません。",
+      "romaji": "kyō wa terebi o mimasen.",
+      "meaning": "今天不看電視。"
+    },
+    "b": {
+      "japanese": "",
+      "kanaReading": "",
+      "romaji": "",
+      "meaning": ""
+    },
+    "grammarNotes": [
+      "ません是ます的否定形式。",
+      "を標示動作對象，讀 o。"
+    ],
+    "vocabularyCardId": -1
+  },
+  {
+    "id": "sentence-23",
+    "category": 0,
+    "a": {
+      "japanese": "どようびにえいがをみます。",
+      "kanaReading": "どようびにえいがをみます。",
+      "romaji": "doyōbi ni eiga o mimasu.",
+      "meaning": "星期六要看電影。"
+    },
+    "b": {
+      "japanese": "",
+      "kanaReading": "",
+      "romaji": "",
+      "meaning": ""
+    },
+    "grammarNotes": [
+      "に可標示星期等時間。",
+      "えいがをみます表示看電影。"
+    ],
+    "vocabularyCardId": -1
+  },
+  {
+    "id": "sentence-24",
+    "category": 0,
+    "a": {
+      "japanese": "にちようびはなにをしますか。",
+      "kanaReading": "にちようびはなにをしますか。",
+      "romaji": "nichiyōbi wa nani o shimasu ka?",
+      "meaning": "星期日要做什麼？"
+    },
+    "b": {
+      "japanese": "",
+      "kanaReading": "",
+      "romaji": "",
+      "meaning": ""
+    },
+    "grammarNotes": [
+      "なに用來問什麼。",
+      "か放在句尾表示疑問。"
+    ],
+    "vocabularyCardId": -1
+  },
+  {
+    "id": "sentence-25",
+    "category": 0,
+    "a": {
+      "japanese": "まいにちバスでがっこうへいきます。",
+      "kanaReading": "まいにちバスでがっこうへいきます。",
+      "romaji": "mainichi basu de gakkō e ikimasu.",
+      "meaning": "每天搭公車去學校。"
+    },
+    "b": {
+      "japanese": "",
+      "kanaReading": "",
+      "romaji": "",
+      "meaning": ""
+    },
+    "grammarNotes": [
+      "で標示交通工具。",
+      "へ表示方向，讀 e。"
+    ],
+    "vocabularyCardId": -1
+  },
+  {
+    "id": "sentence-26",
+    "category": 0,
+    "a": {
+      "japanese": "ここにすわってもいいですか。",
+      "kanaReading": "ここにすわってもいいですか。",
+      "romaji": "koko ni suwatte mo ii desu ka?",
+      "meaning": "可以坐在這裡嗎？"
+    },
+    "b": {
+      "japanese": "",
+      "kanaReading": "",
+      "romaji": "",
+      "meaning": ""
+    },
+    "grammarNotes": [
+      "に標示坐下的位置。",
+      "てもいいですか用來徵求同意。"
+    ],
+    "vocabularyCardId": -1
+  },
+  {
+    "id": "sentence-27",
+    "category": 0,
+    "a": {
+      "japanese": "ゆっくりはなしてください。",
+      "kanaReading": "ゆっくりはなしてください。",
+      "romaji": "yukkuri hanashite kudasai.",
+      "meaning": "請說慢一點。"
+    },
+    "b": {
+      "japanese": "",
+      "kanaReading": "",
+      "romaji": "",
+      "meaning": ""
+    },
+    "grammarNotes": [
+      "ゆっくり表示慢慢地。",
+      "てください用來客氣地請求。"
+    ],
+    "vocabularyCardId": -1
+  },
+  {
+    "id": "sentence-28",
+    "category": 0,
+    "a": {
+      "japanese": "もういちどいってください。",
+      "kanaReading": "もういちどいってください。",
+      "romaji": "mō ichido itte kudasai.",
+      "meaning": "請再說一次。"
+    },
+    "b": {
+      "japanese": "",
+      "kanaReading": "",
+      "romaji": "",
+      "meaning": ""
+    },
+    "grammarNotes": [
+      "もういちど表示再一次。",
+      "いって是いう的て形。"
+    ],
+    "vocabularyCardId": -1
+  },
+  {
+    "id": "sentence-29",
+    "category": 0,
+    "a": {
+      "japanese": "しおをとってください。",
+      "kanaReading": "しおをとってください。",
+      "romaji": "shio o totte kudasai.",
+      "meaning": "請把鹽拿給我。"
+    },
+    "b": {
+      "japanese": "",
+      "kanaReading": "",
+      "romaji": "",
+      "meaning": ""
+    },
+    "grammarNotes": [
+      "を標示動作對象，讀 o。",
+      "とって是とる的て形。"
+    ],
+    "vocabularyCardId": -1
+  },
+  {
+    "id": "sentence-30",
+    "category": 0,
+    "a": {
+      "japanese": "いっしょにさんぽしませんか。",
+      "kanaReading": "いっしょにさんぽしませんか。",
+      "romaji": "issho ni sanpo shimasen ka?",
+      "meaning": "要不要一起散步？"
+    },
+    "b": {
+      "japanese": "",
+      "kanaReading": "",
+      "romaji": "",
+      "meaning": ""
+    },
+    "grammarNotes": [
+      "いっしょに表示一起。",
+      "ませんか用來客氣地邀請。"
+    ],
+    "vocabularyCardId": -1
+  }
+]

@@ -1,0 +1,184 @@
+[
+  {
+    "name": "public_noto_sans_7",
+    "size": 7,
+    "source": "lib/EpdFont/builtinFonts/source/NotoSans/NotoSans-Regular.ttf",
+    "sourceSha256": "fe8c022f48d8dd29f17b744d16f9346f4357e16f7d4f7be58b000ae7c291b614",
+    "output": "src/apps_local/ui/fonts/public_noto_sans_7.h",
+    "sha256": "b5a7e132e3755bbdacd14020d691e634d8989e418acb85a4e06de4920c370a1a",
+    "metrics": [
+      20,
+      16,
+      10
+    ],
+    "characters": " !\"#$%&'()*+,-./0123456789:;<=>?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\\]^_`abcdefghijklmnopqrstuvwxyz{|}~ °×÷–—‘’“”•…�"
+  },
+  {
+    "name": "public_noto_sans_10",
+    "size": 10,
+    "source": "lib/EpdFont/builtinFonts/source/NotoSans/NotoSans-Regular.ttf",
+    "sourceSha256": "fe8c022f48d8dd29f17b744d16f9346f4357e16f7d4f7be58b000ae7c291b614",
+    "output": "src/apps_local/ui/fonts/public_noto_sans_10.h",
+    "sha256": "3c30e1a5b1157ebba341dea7bd9a0bb75548ee44ed87953537a5372ad760c832",
+    "metrics": [
+      28,
+      23,
+      15
+    ],
+    "characters": " !\"#$%&'()*+,-./0123456789:;<=>?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\\]^_`abcdefghijklmnopqrstuvwxyz{|}~ °×÷–—‘’“”•…�"
+  },
+  {
+    "name": "public_noto_sans_15",
+    "size": 15,
+    "source": "lib/EpdFont/builtinFonts/source/NotoSans/NotoSans-Regular.ttf",
+    "sourceSha256": "fe8c022f48d8dd29f17b744d16f9346f4357e16f7d4f7be58b000ae7c291b614",
+    "output": "src/apps_local/ui/fonts/public_noto_sans_15.h",
+    "sha256": "88268e7aa4475d52583b6dabf2cf21783a238e8ab1d1a4fb18b70663515db838",
+    "metrics": [
+      43,
+      34,
+      22
+    ],
+    "characters": " !\"#$%&'()*+,-./0123456789:;<=>?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\\]^_`abcdefghijklmnopqrstuvwxyz{|}~ °×÷–—‘’“”•…�"
+  },
+  {
+    "name": "public_noto_sans_22",
+    "size": 22,
+    "source": "lib/EpdFont/builtinFonts/source/NotoSans/NotoSans-Regular.ttf",
+    "sourceSha256": "fe8c022f48d8dd29f17b744d16f9346f4357e16f7d4f7be58b000ae7c291b614",
+    "output": "src/apps_local/ui/fonts/public_noto_sans_22.h",
+    "sha256": "a84ce7aa1c37d0d64f166a0ab7b0beb2b3fe1972dfc833ebd6706ccbbd90b6d0",
+    "metrics": [
+      62,
+      49,
+      33
+    ],
+    "characters": " !\"#$%&'()*+,-./0123456789:;<=>?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\\]^_`abcdefghijklmnopqrstuvwxyz{|}~ °×÷–—‘’“”•…�"
+  },
+  {
+    "name": "public_noto_sans_32",
+    "size": 32,
+    "source": "lib/EpdFont/builtinFonts/source/NotoSans/NotoSans-Regular.ttf",
+    "sourceSha256": "fe8c022f48d8dd29f17b744d16f9346f4357e16f7d4f7be58b000ae7c291b614",
+    "output": "src/apps_local/ui/fonts/public_noto_sans_32.h",
+    "sha256": "921d888f6e46c165cf609c5dfba6133539956496eb3155a73707cc33289172a9",
+    "metrics": [
+      91,
+      72,
+      48
+    ],
+    "characters": " !\"#$%&'()*+,-./0123456789:;<=>?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\\]^_`abcdefghijklmnopqrstuvwxyz{|}~ °×÷–—‘’“”•…�"
+  },
+  {
+    "name": "public_noto_sans_47",
+    "size": 47,
+    "source": "lib/EpdFont/builtinFonts/source/NotoSans/NotoSans-Regular.ttf",
+    "sourceSha256": "fe8c022f48d8dd29f17b744d16f9346f4357e16f7d4f7be58b000ae7c291b614",
+    "output": "src/apps_local/ui/fonts/public_noto_sans_47.h",
+    "sha256": "b8aa5d4a44bb60ccb2782cc9f72e3fc97ee2da3bf9ce04960326b5322cc9afae",
+    "metrics": [
+      133,
+      105,
+      70
+    ],
+    "characters": " !\"#$%&'()*+,-./0123456789:;<=>?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\\]^_`abcdefghijklmnopqrstuvwxyz{|}~ °×÷–—‘’“”•…�"
+  },
+  {
+    "name": "public_noto_serif_9",
+    "size": 9,
+    "source": "lib/EpdFont/builtinFonts/source/NotoSerif/NotoSerif-Regular.ttf",
+    "sourceSha256": "a7e8ea1ab7e7d368b001c892d6148325fffc849a46e030e55e1bdc597bbe939d",
+    "output": "src/apps_local/ui/fonts/public_noto_serif_9.h",
+    "sha256": "28566d2472676ff75917e53064fb9270bfcbac16a3dc038aa93d77e260acbad9",
+    "metrics": [
+      26,
+      21,
+      13
+    ],
+    "characters": " !\"#$%&'()*+,-./0123456789:;<=>?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\\]^_`abcdefghijklmnopqrstuvwxyz{|}~ °×÷–—‘’“”•…�"
+  },
+  {
+    "name": "public_noto_serif_12",
+    "size": 12,
+    "source": "lib/EpdFont/builtinFonts/source/NotoSerif/NotoSerif-Regular.ttf",
+    "sourceSha256": "a7e8ea1ab7e7d368b001c892d6148325fffc849a46e030e55e1bdc597bbe939d",
+    "output": "src/apps_local/ui/fonts/public_noto_serif_12.h",
+    "sha256": "aabde40188657670aaf03840ac8f9cfdb9ac8e94522b9fda01b2a2a862e71e84",
+    "metrics": [
+      34,
+      27,
+      18
+    ],
+    "characters": " !\"#$%&'()*+,-./0123456789:;<=>?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\\]^_`abcdefghijklmnopqrstuvwxyz{|}~ °×÷–—‘’“”•…�"
+  },
+  {
+    "name": "public_noto_serif_22",
+    "size": 22,
+    "source": "lib/EpdFont/builtinFonts/source/NotoSerif/NotoSerif-Regular.ttf",
+    "sourceSha256": "a7e8ea1ab7e7d368b001c892d6148325fffc849a46e030e55e1bdc597bbe939d",
+    "output": "src/apps_local/ui/fonts/public_noto_serif_22.h",
+    "sha256": "9ed4c4510eacf4b18898e8bccc48ed4b8c99fc16205ad6b528de551049d6f561",
+    "metrics": [
+      62,
+      49,
+      33
+    ],
+    "characters": " !\"#$%&'()*+,-./0123456789:;<=>?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\\]^_`abcdefghijklmnopqrstuvwxyz{|}~ °×÷–—‘’“”•…�"
+  },
+  {
+    "name": "reading_serif_11",
+    "size": 11,
+    "source": "lib/EpdFont/builtinFonts/source/NotoSerif/NotoSerif-Regular.ttf",
+    "sourceSha256": "a7e8ea1ab7e7d368b001c892d6148325fffc849a46e030e55e1bdc597bbe939d",
+    "output": "src/apps_local/ui/fonts/reading_serif_11.h",
+    "sha256": "52bc745cd458c19026b07b4a6214e0b994429e25e8e2391ced47a46a49f1c07d",
+    "metrics": [
+      31,
+      25,
+      16
+    ],
+    "characters": " !\"#$%&'()*+,-./0123456789:;<=>?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\\]^_`abcdefghijklmnopqrstuvwxyz{|}~ °×÷–—‘’“”•…�"
+  },
+  {
+    "name": "reading_serif_14",
+    "size": 14,
+    "source": "lib/EpdFont/builtinFonts/source/NotoSerif/NotoSerif-Regular.ttf",
+    "sourceSha256": "a7e8ea1ab7e7d368b001c892d6148325fffc849a46e030e55e1bdc597bbe939d",
+    "output": "src/apps_local/ui/fonts/reading_serif_14.h",
+    "sha256": "e8514f29358befc145998a1af59f89bf1375364ffc03f513135ffccbfc7d2fae",
+    "metrics": [
+      40,
+      32,
+      21
+    ],
+    "characters": " !\"#$%&'()*+,-./0123456789:;<=>?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\\]^_`abcdefghijklmnopqrstuvwxyz{|}~ °×÷–—‘’“”•…�"
+  },
+  {
+    "name": "reading_serif_bold_12",
+    "size": 12,
+    "source": "lib/EpdFont/builtinFonts/source/NotoSerif/NotoSerif-Bold.ttf",
+    "sourceSha256": "1b941681106aae26ead3a24c6f15b51f994b1b26adce8742a37ce96648f0fe0a",
+    "output": "src/apps_local/ui/fonts/reading_serif_bold_12.h",
+    "sha256": "79167d73da77fb0f7c6bf7cf1d3b41a22acf8d9d54ad6ad82b7caa8bd26a4131",
+    "metrics": [
+      34,
+      27,
+      18
+    ],
+    "characters": " !\"#$%&'()*+,-./0123456789:;<=>?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\\]^_`abcdefghijklmnopqrstuvwxyz{|}~ °×÷–—‘’“”•…�"
+  },
+  {
+    "name": "reading_serif_bold_16",
+    "size": 16,
+    "source": "lib/EpdFont/builtinFonts/source/NotoSerif/NotoSerif-Bold.ttf",
+    "sourceSha256": "1b941681106aae26ead3a24c6f15b51f994b1b26adce8742a37ce96648f0fe0a",
+    "output": "src/apps_local/ui/fonts/reading_serif_bold_16.h",
+    "sha256": "983e58180ca9864f83408156bf6f3226fed2a9cea6069bf2665298af812b8bd9",
+    "metrics": [
+      45,
+      36,
+      24
+    ],
+    "characters": " !\"#$%&'()*+,-./0123456789:;<=>?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\\]^_`abcdefghijklmnopqrstuvwxyz{|}~ °×÷–—‘’“”•…�"
+  }
+]

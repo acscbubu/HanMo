@@ -1,0 +1,506 @@
+[
+  {
+    "id": "shopping-07",
+    "category": 3,
+    "a": {
+      "japanese": "しちゃくしてもいいですか。",
+      "kanaReading": "しちゃくしてもいいですか。",
+      "romaji": "shichaku shite mo ii desu ka?",
+      "meaning": "可以試穿嗎？"
+    },
+    "b": {
+      "japanese": "はい、こちらでどうぞ。",
+      "kanaReading": "はい、こちらでどうぞ。",
+      "romaji": "hai, kochira de dōzo.",
+      "meaning": "可以，請在這裡試穿。"
+    },
+    "grammarNotes": [
+      "しちゃくします表示試穿。",
+      "てもいいですか用來徵求同意。"
+    ],
+    "vocabularyCardId": -1
+  },
+  {
+    "id": "shopping-08",
+    "category": 3,
+    "a": {
+      "japanese": "かがみはありますか。",
+      "kanaReading": "かがみはありますか。",
+      "romaji": "kagami wa arimasu ka?",
+      "meaning": "有鏡子嗎？"
+    },
+    "b": {
+      "japanese": "はい、うしろにあります。",
+      "kanaReading": "はい、うしろにあります。",
+      "romaji": "hai, ushiro ni arimasu.",
+      "meaning": "有，在後面。"
+    },
+    "grammarNotes": [
+      "かがみ是鏡子。",
+      "うしろ表示後方。"
+    ],
+    "vocabularyCardId": -1
+  },
+  {
+    "id": "shopping-09",
+    "category": 3,
+    "a": {
+      "japanese": "このくつはすこしきついです。",
+      "kanaReading": "このくつはすこしきついです。",
+      "romaji": "kono kutsu wa sukoshi kitsui desu.",
+      "meaning": "這雙鞋有一點緊。"
+    },
+    "b": {
+      "japanese": "べつのサイズをおもちします。",
+      "kanaReading": "べつのサイズをおもちします。",
+      "romaji": "betsu no saizu o omochi shimasu.",
+      "meaning": "我拿別的尺寸來。"
+    },
+    "grammarNotes": [
+      "きつい表示穿戴時偏緊。",
+      "べつの表示另外的。"
+    ],
+    "vocabularyCardId": -1
+  },
+  {
+    "id": "shopping-10",
+    "category": 3,
+    "a": {
+      "japanese": "げんきんでもはらえますか。",
+      "kanaReading": "げんきんでもはらえますか。",
+      "romaji": "genkin de mo haraemasu ka?",
+      "meaning": "也可以付現金嗎？"
+    },
+    "b": {
+      "japanese": "はい、げんきんもつかえます。",
+      "kanaReading": "はい、げんきんもつかえます。",
+      "romaji": "hai, genkin mo tsukaemasu.",
+      "meaning": "可以，也能用現金。"
+    },
+    "grammarNotes": [
+      "で標示付款方式。",
+      "はらえます表示可以付款。"
+    ],
+    "vocabularyCardId": -1
+  },
+  {
+    "id": "shopping-11",
+    "category": 3,
+    "a": {
+      "japanese": "めんぜいにできますか。",
+      "kanaReading": "めんぜいにできますか。",
+      "romaji": "menzei ni dekimasu ka?",
+      "meaning": "可以辦理免稅嗎？"
+    },
+    "b": {
+      "japanese": "パスポートをみせてください。",
+      "kanaReading": "パスポートをみせてください。",
+      "romaji": "pasupōto o misete kudasai.",
+      "meaning": "請出示護照。"
+    },
+    "grammarNotes": [
+      "めんぜい表示免稅。",
+      "みせてください表示請出示。"
+    ],
+    "vocabularyCardId": -1
+  },
+  {
+    "id": "shopping-12",
+    "category": 3,
+    "a": {
+      "japanese": "パスポートのコピーでもいいですか。",
+      "kanaReading": "パスポートのコピーでもいいですか。",
+      "romaji": "pasupōto no kopī de mo ii desu ka?",
+      "meaning": "護照影本也可以嗎？"
+    },
+    "b": {
+      "japanese": "いいえ、げんぽんがひつようです。",
+      "kanaReading": "いいえ、げんぽんがひつようです。",
+      "romaji": "iie, genpon ga hitsuyō desu.",
+      "meaning": "不，需要正本。"
+    },
+    "grammarNotes": [
+      "でもいいですか問替代物可不可以。",
+      "げんぽん表示正本。"
+    ],
+    "vocabularyCardId": -1
+  },
+  {
+    "id": "shopping-13",
+    "category": 3,
+    "a": {
+      "japanese": "プレゼントようにつつめますか。",
+      "kanaReading": "プレゼントようにつつめますか。",
+      "romaji": "purezento yō ni tsutsumemasu ka?",
+      "meaning": "可以包裝成禮物嗎？"
+    },
+    "b": {
+      "japanese": "はい、リボンもつけます。",
+      "kanaReading": "はい、リボンもつけます。",
+      "romaji": "hai, ribon mo tsukemasu.",
+      "meaning": "可以，也會附上緞帶。"
+    },
+    "grammarNotes": [
+      "よう表示某種用途。",
+      "つつめます表示可以包裝。"
+    ],
+    "vocabularyCardId": -1
+  },
+  {
+    "id": "shopping-14",
+    "category": 3,
+    "a": {
+      "japanese": "ホテルにおくれますか。",
+      "kanaReading": "ホテルにおくれますか。",
+      "romaji": "hoteru ni okuremasu ka?",
+      "meaning": "可以寄到飯店嗎？"
+    },
+    "b": {
+      "japanese": "はい、ごじゅうしょをどうぞ。",
+      "kanaReading": "はい、ごじゅうしょをどうぞ。",
+      "romaji": "hai, gojūsho o dōzo.",
+      "meaning": "可以，請提供地址。"
+    },
+    "grammarNotes": [
+      "に標示寄送的目的地。",
+      "おくれます表示可以寄送。"
+    ],
+    "vocabularyCardId": -1
+  },
+  {
+    "id": "shopping-15",
+    "category": 3,
+    "a": {
+      "japanese": "サイズをこうかんできますか。",
+      "kanaReading": "サイズをこうかんできますか。",
+      "romaji": "saizu o kōkan dekimasu ka?",
+      "meaning": "可以換尺寸嗎？"
+    },
+    "b": {
+      "japanese": "レシートをみせてください。",
+      "kanaReading": "レシートをみせてください。",
+      "romaji": "reshīto o misete kudasai.",
+      "meaning": "請出示購物明細。"
+    },
+    "grammarNotes": [
+      "こうかんします表示交換。",
+      "できますか詢問可不可以。"
+    ],
+    "vocabularyCardId": -1
+  },
+  {
+    "id": "shopping-16",
+    "category": 3,
+    "a": {
+      "japanese": "へんぴんはできますか。",
+      "kanaReading": "へんぴんはできますか。",
+      "romaji": "henpin wa dekimasu ka?",
+      "meaning": "可以退貨嗎？"
+    },
+    "b": {
+      "japanese": "みしようならできます。",
+      "kanaReading": "みしようならできます。",
+      "romaji": "mishiyō nara dekimasu.",
+      "meaning": "如果未使用就可以。"
+    },
+    "grammarNotes": [
+      "へんぴん表示退貨。",
+      "なら表示以某條件為前提。"
+    ],
+    "vocabularyCardId": -1
+  },
+  {
+    "id": "shopping-17",
+    "category": 3,
+    "a": {
+      "japanese": "ざいこはありますか。",
+      "kanaReading": "ざいこはありますか。",
+      "romaji": "zaiko wa arimasu ka?",
+      "meaning": "有庫存嗎？"
+    },
+    "b": {
+      "japanese": "いま、かくにんします。",
+      "kanaReading": "いま、かくにんします。",
+      "romaji": "ima, kakunin shimasu.",
+      "meaning": "我現在確認一下。"
+    },
+    "grammarNotes": [
+      "ざいこ表示庫存。",
+      "かくにんします表示確認。"
+    ],
+    "vocabularyCardId": -1
+  },
+  {
+    "id": "shopping-18",
+    "category": 3,
+    "a": {
+      "japanese": "いつにゅうかしますか。",
+      "kanaReading": "いつにゅうかしますか。",
+      "romaji": "itsu nyūka shimasu ka?",
+      "meaning": "什麼時候會到貨？"
+    },
+    "b": {
+      "japanese": "らいしゅうのよていです。",
+      "kanaReading": "らいしゅうのよていです。",
+      "romaji": "raishū no yotei desu.",
+      "meaning": "預計下週。"
+    },
+    "grammarNotes": [
+      "にゅうかします表示商品到貨。",
+      "よてい表示預定的安排。"
+    ],
+    "vocabularyCardId": -1
+  },
+  {
+    "id": "shopping-19",
+    "category": 3,
+    "a": {
+      "japanese": "いつまでたべられますか。",
+      "kanaReading": "いつまでたべられますか。",
+      "romaji": "itsu made taberaremasu ka?",
+      "meaning": "這個可以吃到哪一天？"
+    },
+    "b": {
+      "japanese": "あさってまでです。",
+      "kanaReading": "あさってまでです。",
+      "romaji": "asatte made desu.",
+      "meaning": "到後天。"
+    },
+    "grammarNotes": [
+      "たべられます是たべる的可能形。",
+      "あさって表示後天。"
+    ],
+    "vocabularyCardId": -1
+  },
+  {
+    "id": "shopping-20",
+    "category": 3,
+    "a": {
+      "japanese": "でんちはついていますか。",
+      "kanaReading": "でんちはついていますか。",
+      "romaji": "denchi wa tsuite imasu ka?",
+      "meaning": "有附電池嗎？"
+    },
+    "b": {
+      "japanese": "いいえ、べつうりです。",
+      "kanaReading": "いいえ、べつうりです。",
+      "romaji": "iie, betsūri desu.",
+      "meaning": "沒有，要另外買。"
+    },
+    "grammarNotes": [
+      "ついています表示有附上。",
+      "べつうり表示分開販售。"
+    ],
+    "vocabularyCardId": -1
+  },
+  {
+    "id": "shopping-21",
+    "category": 3,
+    "a": {
+      "japanese": "ためしてもいいですか。",
+      "kanaReading": "ためしてもいいですか。",
+      "romaji": "tameshite mo ii desu ka?",
+      "meaning": "可以試用嗎？"
+    },
+    "b": {
+      "japanese": "はい、ボタンをおしてください。",
+      "kanaReading": "はい、ボタンをおしてください。",
+      "romaji": "hai, botan o oshite kudasai.",
+      "meaning": "可以，請按按鈕。"
+    },
+    "grammarNotes": [
+      "ためします表示試用。",
+      "おしてください表示請按下。"
+    ],
+    "vocabularyCardId": -1
+  },
+  {
+    "id": "shopping-22",
+    "category": 3,
+    "a": {
+      "japanese": "セールはいつまでですか。",
+      "kanaReading": "セールはいつまでですか。",
+      "romaji": "sēru wa itsu made desu ka?",
+      "meaning": "特賣到什麼時候？"
+    },
+    "b": {
+      "japanese": "にちようびまでです。",
+      "kanaReading": "にちようびまでです。",
+      "romaji": "nichiyōbi made desu.",
+      "meaning": "到星期日。"
+    },
+    "grammarNotes": [
+      "いつまで詢問截止時間。",
+      "にちようび是星期日。"
+    ],
+    "vocabularyCardId": -1
+  },
+  {
+    "id": "shopping-23",
+    "category": 3,
+    "a": {
+      "japanese": "ぜいきんはふくまれていますか。",
+      "kanaReading": "ぜいきんはふくまれていますか。",
+      "romaji": "zeikin wa fukumarete imasu ka?",
+      "meaning": "價格已經含稅了嗎？"
+    },
+    "b": {
+      "japanese": "はい、ぜいこみです。",
+      "kanaReading": "はい、ぜいこみです。",
+      "romaji": "hai, zeikomi desu.",
+      "meaning": "是的，是含稅價。"
+    },
+    "grammarNotes": [
+      "ふくまれています表示已包含。",
+      "ぜいこみ表示含稅。"
+    ],
+    "vocabularyCardId": -1
+  },
+  {
+    "id": "shopping-24",
+    "category": 3,
+    "a": {
+      "japanese": "ひとりなんこまでかえますか。",
+      "kanaReading": "ひとりなんこまでかえますか。",
+      "romaji": "hitori nanko made kaemasu ka?",
+      "meaning": "每人最多可以買幾個？"
+    },
+    "b": {
+      "japanese": "おひとりふたつまでです。",
+      "kanaReading": "おひとりふたつまでです。",
+      "romaji": "ohitori futatsu made desu.",
+      "meaning": "每人最多兩個。"
+    },
+    "grammarNotes": [
+      "なんこ用來問幾個。",
+      "まで可表示數量的上限。"
+    ],
+    "vocabularyCardId": -1
+  },
+  {
+    "id": "shopping-25",
+    "category": 3,
+    "a": {
+      "japanese": "おつりがすくないです。",
+      "kanaReading": "おつりがすくないです。",
+      "romaji": "otsuri ga sukunai desu.",
+      "meaning": "找的錢少了。"
+    },
+    "b": {
+      "japanese": "すみません、かぞえなおします。",
+      "kanaReading": "すみません、かぞえなおします。",
+      "romaji": "sumimasen, kazoe naoshimasu.",
+      "meaning": "不好意思，我重新數一次。"
+    },
+    "grammarNotes": [
+      "おつり表示找回的零錢。",
+      "動詞接なおす表示重新做。"
+    ],
+    "vocabularyCardId": -1
+  },
+  {
+    "id": "shopping-26",
+    "category": 3,
+    "a": {
+      "japanese": "こまかいおかねでもいいですか。",
+      "kanaReading": "こまかいおかねでもいいですか。",
+      "romaji": "komakai okane de mo ii desu ka?",
+      "meaning": "用零錢付也可以嗎？"
+    },
+    "b": {
+      "japanese": "はい、だいじょうぶです。",
+      "kanaReading": "はい、だいじょうぶです。",
+      "romaji": "hai, daijōbu desu.",
+      "meaning": "可以，沒問題。"
+    },
+    "grammarNotes": [
+      "こまかいおかね表示零錢。",
+      "だいじょうぶ表示沒有問題。"
+    ],
+    "vocabularyCardId": -1
+  },
+  {
+    "id": "shopping-27",
+    "category": 3,
+    "a": {
+      "japanese": "かごをかりてもいいですか。",
+      "kanaReading": "かごをかりてもいいですか。",
+      "romaji": "kago o karite mo ii desu ka?",
+      "meaning": "可以借購物籃嗎？"
+    },
+    "b": {
+      "japanese": "はい、いりぐちにあります。",
+      "kanaReading": "はい、いりぐちにあります。",
+      "romaji": "hai, iriguchi ni arimasu.",
+      "meaning": "可以，入口有。"
+    },
+    "grammarNotes": [
+      "かります表示借入。",
+      "いりぐち表示入口。"
+    ],
+    "vocabularyCardId": -1
+  },
+  {
+    "id": "shopping-28",
+    "category": 3,
+    "a": {
+      "japanese": "とりおきできますか。",
+      "kanaReading": "とりおきできますか。",
+      "romaji": "torioki dekimasu ka?",
+      "meaning": "可以幫我保留商品嗎？"
+    },
+    "b": {
+      "japanese": "はい、あしたまでです。",
+      "kanaReading": "はい、あしたまでです。",
+      "romaji": "hai, ashita made desu.",
+      "meaning": "可以，保留到明天。"
+    },
+    "grammarNotes": [
+      "とりおき表示替客人保留商品。",
+      "まで標示保留期限。"
+    ],
+    "vocabularyCardId": -1
+  },
+  {
+    "id": "shopping-29",
+    "category": 3,
+    "a": {
+      "japanese": "あしたもあいていますか。",
+      "kanaReading": "あしたもあいていますか。",
+      "romaji": "ashita mo aite imasu ka?",
+      "meaning": "明天也有營業嗎？"
+    },
+    "b": {
+      "japanese": "いいえ、ていきゅうびです。",
+      "kanaReading": "いいえ、ていきゅうびです。",
+      "romaji": "iie, teikyūbi desu.",
+      "meaning": "沒有，明天是公休日。"
+    },
+    "grammarNotes": [
+      "あいています在此表示店有開。",
+      "ていきゅうび表示固定休息日。"
+    ],
+    "vocabularyCardId": -1
+  },
+  {
+    "id": "shopping-30",
+    "category": 3,
+    "a": {
+      "japanese": "ほしょうはどのくらいですか。",
+      "kanaReading": "ほしょうはどのくらいですか。",
+      "romaji": "hoshō wa dono kurai desu ka?",
+      "meaning": "保固有多久？"
+    },
+    "b": {
+      "japanese": "いちねんかんです。",
+      "kanaReading": "いちねんかんです。",
+      "romaji": "ichinenkan desu.",
+      "meaning": "一年。"
+    },
+    "grammarNotes": [
+      "ほしょう在此表示商品保固。",
+      "ねんかん表示以年計的期間。"
+    ],
+    "vocabularyCardId": -1
+  }
+]

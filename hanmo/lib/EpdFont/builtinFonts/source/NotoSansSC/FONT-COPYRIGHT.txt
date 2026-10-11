@@ -1,0 +1,20 @@
+NotoSansSC-Regular.otf — embedded font metadata, unmodified
+
+nameID 0:
+© 2014-2021 Adobe (http://www.adobe.com/).
+
+nameID 1:
+Noto Sans SC
+
+nameID 2:
+Regular
+
+nameID 5:
+Version 2.004;hotconv 1.0.118;makeotfexe 2.5.65603
+
+nameID 13:
+This Font Software is licensed under the SIL Open Font License, Version 1.1. This Font Software is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the SIL Open Font License for the specific language, permissions and limitations governing your use of this Font Software.
+
+nameID 14:
+http://scripts.sil.org/OFL
+

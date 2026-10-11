@@ -1,0 +1,2320 @@
+# Frozen external-component settings from the original DIO/OPI SDK.
+config AFE_INTERFACE_V1
+    bool
+    default y
+
+config APPTRACE_DEST_NONE
+    bool
+    default y
+
+config APPTRACE_DEST_UART_NONE
+    bool
+    default y
+
+config APPTRACE_LOCK_ENABLE
+    bool
+    default y
+
+config APPTRACE_UART_TASK_PRIO
+    int
+    default 1
+
+config ARDUINO_IDF_BRANCH
+    string
+    default "release/v5.5"
+
+config ARDUINO_IDF_COMMIT
+    string
+    default "87912cd291"
+
+config BF20A6_SUPPORT
+    bool
+    default y
+
+config BF3005_SUPPORT
+    bool
+    default y
+
+config BLE_DEVICE_NAME_PREFIX
+    string
+    default "MATTER-"
+
+config BLE_FAST_ADVERTISING_INTERVAL_MAX
+    int
+    default 40
+
+config BLE_FAST_ADVERTISING_INTERVAL_MIN
+    int
+    default 40
+
+config BLE_SLOW_ADVERTISING_INTERVAL_MAX
+    int
+    default 800
+
+config BLE_SLOW_ADVERTISING_INTERVAL_MIN
+    int
+    default 800
+
+config CAMERA_CORE0
+    bool
+    default y
+
+config CAMERA_DMA_BUFFER_SIZE_MAX
+    int
+    default 32768
+
+config CAMERA_JPEG_MODE_FRAME_SIZE_AUTO
+    bool
+    default y
+
+config CAMERA_TASK_STACK_SIZE
+    int
+    default 4096
+
+config CHIPOBLE_ENABLE_ADVERTISING_AUTOSTART
+    int
+    default 0
+
+config CHIPOBLE_SINGLE_CONNECTION
+    bool
+    default y
+
+config CHIP_CONFIG_IM_PRETTY_PRINT
+    bool
+    default y
+
+config CHIP_CONFIG_NAMESPACE_PARTITION_LABEL
+    string
+    default "nvs"
+
+config CHIP_COUNTERS_NAMESPACE_PARTITION_LABEL
+    string
+    default "nvs"
+
+config CHIP_DISCOVERY_TIMEOUT_SECS
+    int
+    default 900
+
+config CHIP_ENABLE_PAIRING_AUTOSTART
+    bool
+    default y
+
+config CHIP_FACTORY_NAMESPACE_PARTITION_LABEL
+    string
+    default "nvs"
+
+config CHIP_KVS_NAMESPACE_PARTITION_LABEL
+    string
+    default "nvs"
+
+config CHIP_LOG_DEFAULT_LEVEL
+    int
+    default 1
+
+config CHIP_LOG_DEFAULT_LEVEL_EQUALS_LOG_DEFAULT_LEVEL
+    bool
+    default y
+
+config CHIP_PROJECT_CONFIG
+    string
+    default ""
+
+config CHIP_TASK_PRIORITY
+    int
+    default 1
+
+config CHIP_TASK_STACK_SIZE
+    int
+    default 8192
+
+config DEFAULT_DEVICE_HARDWARE_VERSION
+    int
+    default 0
+
+config DEFAULT_INCOMING_CONNECTION_IDLE_TIMEOUT
+    int
+    default 15000
+
+config DEFAULT_WIFI_PASSWORD
+    string
+    default ""
+
+config DEFAULT_WIFI_SSID
+    string
+    default ""
+
+config DEVICE_PRODUCT_ID
+    hex
+    default 0x8000
+
+config DEVICE_SOFTWARE_VERSION_NUMBER
+    int
+    default 0
+
+config DEVICE_TYPE
+    int
+    default 0
+
+config DEVICE_VENDOR_ID
+    hex
+    default 0xFFF1
+
+config DIAG_DATA_STORE_REPORTING_WATERMARK_PERCENT
+    int
+    default 80
+
+config DIAG_DATA_STORE_RTC
+    bool
+    default y
+
+config DISPATCH_EVENT_LONG_DISPATCH_TIME_WARNING_THRESHOLD_MS
+    int
+    default 700
+
+config DSP_MAX_FFT_SIZE
+    int
+    default 4096
+
+config DSP_MAX_FFT_SIZE_4096
+    bool
+    default y
+
+config DSP_OPTIMIZATION
+    int
+    default 1
+
+config DSP_OPTIMIZATIONS_SUPPORTED
+    bool
+    default y
+
+config DSP_OPTIMIZED
+    bool
+    default y
+
+config ENABLE_CHIPOBLE
+    bool
+    default y
+
+config ENABLE_CHIP_DATA_MODEL
+    bool
+    default y
+
+config ENABLE_LWIP_THREAD_SAFETY
+    bool
+    default y
+
+config ENABLE_PERSIST_SUBSCRIPTIONS
+    bool
+    default y
+
+config ENABLE_ROUTE_HOOK
+    bool
+    default y
+
+config ENABLE_SERVICE_DIRECTORY_TIME_SYNC
+    bool
+    default y
+
+config ENABLE_TEST_SETUP_PARAMS
+    bool
+    default y
+
+config ENABLE_WIFI_AP
+    bool
+    default y
+
+config ENABLE_WIFI_STATION
+    bool
+    default y
+
+config ENABLE_WIFI_TELEMETRY
+    bool
+    default y
+
+config EN_SPEECH_COMMAND_ID0
+    string
+    default ""
+
+config EN_SPEECH_COMMAND_ID1
+    string
+    default ""
+
+config EN_SPEECH_COMMAND_ID10
+    string
+    default ""
+
+config EN_SPEECH_COMMAND_ID100
+    string
+    default ""
+
+config EN_SPEECH_COMMAND_ID101
+    string
+    default ""
+
+config EN_SPEECH_COMMAND_ID102
+    string
+    default ""
+
+config EN_SPEECH_COMMAND_ID103
+    string
+    default ""
+
+config EN_SPEECH_COMMAND_ID104
+    string
+    default ""
+
+config EN_SPEECH_COMMAND_ID105
+    string
+    default ""
+
+config EN_SPEECH_COMMAND_ID106
+    string
+    default ""
+
+config EN_SPEECH_COMMAND_ID107
+    string
+    default ""
+
+config EN_SPEECH_COMMAND_ID108
+    string
+    default ""
+
+config EN_SPEECH_COMMAND_ID109
+    string
+    default ""
+
+config EN_SPEECH_COMMAND_ID11
+    string
+    default ""
+
+config EN_SPEECH_COMMAND_ID110
+    string
+    default ""
+
+config EN_SPEECH_COMMAND_ID111
+    string
+    default ""
+
+config EN_SPEECH_COMMAND_ID112
+    string
+    default ""
+
+config EN_SPEECH_COMMAND_ID113
+    string
+    default ""
+
+config EN_SPEECH_COMMAND_ID114
+    string
+    default ""
+
+config EN_SPEECH_COMMAND_ID115
+    string
+    default ""
+
+config EN_SPEECH_COMMAND_ID116
+    string
+    default ""
+
+config EN_SPEECH_COMMAND_ID117
+    string
+    default ""
+
+config EN_SPEECH_COMMAND_ID118
+    string
+    default ""
+
+config EN_SPEECH_COMMAND_ID119
+    string
+    default ""
+
+config EN_SPEECH_COMMAND_ID12
+    string
+    default ""
+
+config EN_SPEECH_COMMAND_ID120
+    string
+    default ""
+
+config EN_SPEECH_COMMAND_ID121
+    string
+    default ""
+
+config EN_SPEECH_COMMAND_ID122
+    string
+    default ""
+
+config EN_SPEECH_COMMAND_ID123
+    string
+    default ""
+
+config EN_SPEECH_COMMAND_ID124
+    string
+    default ""
+
+config EN_SPEECH_COMMAND_ID125
+    string
+    default ""
+
+config EN_SPEECH_COMMAND_ID126
+    string
+    default ""
+
+config EN_SPEECH_COMMAND_ID127
+    string
+    default ""
+
+config EN_SPEECH_COMMAND_ID128
+    string
+    default ""
+
+config EN_SPEECH_COMMAND_ID129
+    string
+    default ""
+
+config EN_SPEECH_COMMAND_ID13
+    string
+    default ""
+
+config EN_SPEECH_COMMAND_ID130
+    string
+    default ""
+
+config EN_SPEECH_COMMAND_ID131
+    string
+    default ""
+
+config EN_SPEECH_COMMAND_ID132
+    string
+    default ""
+
+config EN_SPEECH_COMMAND_ID133
+    string
+    default ""
+
+config EN_SPEECH_COMMAND_ID134
+    string
+    default ""
+
+config EN_SPEECH_COMMAND_ID135
+    string
+    default ""
+
+config EN_SPEECH_COMMAND_ID136
+    string
+    default ""
+
+config EN_SPEECH_COMMAND_ID137
+    string
+    default ""
+
+config EN_SPEECH_COMMAND_ID138
+    string
+    default ""
+
+config EN_SPEECH_COMMAND_ID139
+    string
+    default ""
+
+config EN_SPEECH_COMMAND_ID14
+    string
+    default ""
+
+config EN_SPEECH_COMMAND_ID140
+    string
+    default ""
+
+config EN_SPEECH_COMMAND_ID141
+    string
+    default ""
+
+config EN_SPEECH_COMMAND_ID142
+    string
+    default ""
+
+config EN_SPEECH_COMMAND_ID143
+    string
+    default ""
+
+config EN_SPEECH_COMMAND_ID144
+    string
+    default ""
+
+config EN_SPEECH_COMMAND_ID145
+    string
+    default ""
+
+config EN_SPEECH_COMMAND_ID146
+    string
+    default ""
+
+config EN_SPEECH_COMMAND_ID147
+    string
+    default ""
+
+config EN_SPEECH_COMMAND_ID148
+    string
+    default ""
+
+config EN_SPEECH_COMMAND_ID149
+    string
+    default ""
+
+config EN_SPEECH_COMMAND_ID15
+    string
+    default ""
+
+config EN_SPEECH_COMMAND_ID150
+    string
+    default ""
+
+config EN_SPEECH_COMMAND_ID151
+    string
+    default ""
+
+config EN_SPEECH_COMMAND_ID152
+    string
+    default ""
+
+config EN_SPEECH_COMMAND_ID153
+    string
+    default ""
+
+config EN_SPEECH_COMMAND_ID154
+    string
+    default ""
+
+config EN_SPEECH_COMMAND_ID155
+    string
+    default ""
+
+config EN_SPEECH_COMMAND_ID156
+    string
+    default ""
+
+config EN_SPEECH_COMMAND_ID157
+    string
+    default ""
+
+config EN_SPEECH_COMMAND_ID158
+    string
+    default ""
+
+config EN_SPEECH_COMMAND_ID159
+    string
+    default ""
+
+config EN_SPEECH_COMMAND_ID16
+    string
+    default ""
+
+config EN_SPEECH_COMMAND_ID160
+    string
+    default ""
+
+config EN_SPEECH_COMMAND_ID161
+    string
+    default ""
+
+config EN_SPEECH_COMMAND_ID162
+    string
+    default ""
+
+config EN_SPEECH_COMMAND_ID163
+    string
+    default ""
+
+config EN_SPEECH_COMMAND_ID164
+    string
+    default ""
+
+config EN_SPEECH_COMMAND_ID165
+    string
+    default ""
+
+config EN_SPEECH_COMMAND_ID166
+    string
+    default ""
+
+config EN_SPEECH_COMMAND_ID167
+    string
+    default ""
+
+config EN_SPEECH_COMMAND_ID168
+    string
+    default ""
+
+config EN_SPEECH_COMMAND_ID169
+    string
+    default ""
+
+config EN_SPEECH_COMMAND_ID17
+    string
+    default ""
+
+config EN_SPEECH_COMMAND_ID170
+    string
+    default ""
+
+config EN_SPEECH_COMMAND_ID171
+    string
+    default ""
+
+config EN_SPEECH_COMMAND_ID172
+    string
+    default ""
+
+config EN_SPEECH_COMMAND_ID173
+    string
+    default ""
+
+config EN_SPEECH_COMMAND_ID174
+    string
+    default ""
+
+config EN_SPEECH_COMMAND_ID175
+    string
+    default ""
+
+config EN_SPEECH_COMMAND_ID176
+    string
+    default ""
+
+config EN_SPEECH_COMMAND_ID177
+    string
+    default ""
+
+config EN_SPEECH_COMMAND_ID178
+    string
+    default ""
+
+config EN_SPEECH_COMMAND_ID179
+    string
+    default ""
+
+config EN_SPEECH_COMMAND_ID18
+    string
+    default ""
+
+config EN_SPEECH_COMMAND_ID180
+    string
+    default ""
+
+config EN_SPEECH_COMMAND_ID181
+    string
+    default ""
+
+config EN_SPEECH_COMMAND_ID182
+    string
+    default ""
+
+config EN_SPEECH_COMMAND_ID183
+    string
+    default ""
+
+config EN_SPEECH_COMMAND_ID184
+    string
+    default ""
+
+config EN_SPEECH_COMMAND_ID185
+    string
+    default ""
+
+config EN_SPEECH_COMMAND_ID186
+    string
+    default ""
+
+config EN_SPEECH_COMMAND_ID187
+    string
+    default ""
+
+config EN_SPEECH_COMMAND_ID188
+    string
+    default ""
+
+config EN_SPEECH_COMMAND_ID189
+    string
+    default ""
+
+config EN_SPEECH_COMMAND_ID19
+    string
+    default ""
+
+config EN_SPEECH_COMMAND_ID190
+    string
+    default ""
+
+config EN_SPEECH_COMMAND_ID191
+    string
+    default ""
+
+config EN_SPEECH_COMMAND_ID192
+    string
+    default ""
+
+config EN_SPEECH_COMMAND_ID193
+    string
+    default ""
+
+config EN_SPEECH_COMMAND_ID194
+    string
+    default ""
+
+config EN_SPEECH_COMMAND_ID195
+    string
+    default ""
+
+config EN_SPEECH_COMMAND_ID196
+    string
+    default ""
+
+config EN_SPEECH_COMMAND_ID197
+    string
+    default ""
+
+config EN_SPEECH_COMMAND_ID198
+    string
+    default ""
+
+config EN_SPEECH_COMMAND_ID199
+    string
+    default ""
+
+config EN_SPEECH_COMMAND_ID2
+    string
+    default ""
+
+config EN_SPEECH_COMMAND_ID20
+    string
+    default ""
+
+config EN_SPEECH_COMMAND_ID21
+    string
+    default ""
+
+config EN_SPEECH_COMMAND_ID22
+    string
+    default ""
+
+config EN_SPEECH_COMMAND_ID23
+    string
+    default ""
+
+config EN_SPEECH_COMMAND_ID24
+    string
+    default ""
+
+config EN_SPEECH_COMMAND_ID25
+    string
+    default ""
+
+config EN_SPEECH_COMMAND_ID26
+    string
+    default ""
+
+config EN_SPEECH_COMMAND_ID27
+    string
+    default ""
+
+config EN_SPEECH_COMMAND_ID28
+    string
+    default ""
+
+config EN_SPEECH_COMMAND_ID29
+    string
+    default ""
+
+config EN_SPEECH_COMMAND_ID3
+    string
+    default ""
+
+config EN_SPEECH_COMMAND_ID30
+    string
+    default ""
+
+config EN_SPEECH_COMMAND_ID31
+    string
+    default ""
+
+config EN_SPEECH_COMMAND_ID32
+    string
+    default ""
+
+config EN_SPEECH_COMMAND_ID33
+    string
+    default ""
+
+config EN_SPEECH_COMMAND_ID34
+    string
+    default ""
+
+config EN_SPEECH_COMMAND_ID35
+    string
+    default ""
+
+config EN_SPEECH_COMMAND_ID36
+    string
+    default ""
+
+config EN_SPEECH_COMMAND_ID37
+    string
+    default ""
+
+config EN_SPEECH_COMMAND_ID38
+    string
+    default ""
+
+config EN_SPEECH_COMMAND_ID39
+    string
+    default ""
+
+config EN_SPEECH_COMMAND_ID4
+    string
+    default ""
+
+config EN_SPEECH_COMMAND_ID40
+    string
+    default ""
+
+config EN_SPEECH_COMMAND_ID41
+    string
+    default ""
+
+config EN_SPEECH_COMMAND_ID42
+    string
+    default ""
+
+config EN_SPEECH_COMMAND_ID43
+    string
+    default ""
+
+config EN_SPEECH_COMMAND_ID44
+    string
+    default ""
+
+config EN_SPEECH_COMMAND_ID45
+    string
+    default ""
+
+config EN_SPEECH_COMMAND_ID46
+    string
+    default ""
+
+config EN_SPEECH_COMMAND_ID47
+    string
+    default ""
+
+config EN_SPEECH_COMMAND_ID48
+    string
+    default ""
+
+config EN_SPEECH_COMMAND_ID49
+    string
+    default ""
+
+config EN_SPEECH_COMMAND_ID5
+    string
+    default ""
+
+config EN_SPEECH_COMMAND_ID50
+    string
+    default ""
+
+config EN_SPEECH_COMMAND_ID51
+    string
+    default ""
+
+config EN_SPEECH_COMMAND_ID52
+    string
+    default ""
+
+config EN_SPEECH_COMMAND_ID53
+    string
+    default ""
+
+config EN_SPEECH_COMMAND_ID54
+    string
+    default ""
+
+config EN_SPEECH_COMMAND_ID55
+    string
+    default ""
+
+config EN_SPEECH_COMMAND_ID56
+    string
+    default ""
+
+config EN_SPEECH_COMMAND_ID57
+    string
+    default ""
+
+config EN_SPEECH_COMMAND_ID58
+    string
+    default ""
+
+config EN_SPEECH_COMMAND_ID59
+    string
+    default ""
+
+config EN_SPEECH_COMMAND_ID6
+    string
+    default ""
+
+config EN_SPEECH_COMMAND_ID60
+    string
+    default ""
+
+config EN_SPEECH_COMMAND_ID61
+    string
+    default ""
+
+config EN_SPEECH_COMMAND_ID62
+    string
+    default ""
+
+config EN_SPEECH_COMMAND_ID63
+    string
+    default ""
+
+config EN_SPEECH_COMMAND_ID64
+    string
+    default ""
+
+config EN_SPEECH_COMMAND_ID65
+    string
+    default ""
+
+config EN_SPEECH_COMMAND_ID66
+    string
+    default ""
+
+config EN_SPEECH_COMMAND_ID67
+    string
+    default ""
+
+config EN_SPEECH_COMMAND_ID68
+    string
+    default ""
+
+config EN_SPEECH_COMMAND_ID69
+    string
+    default ""
+
+config EN_SPEECH_COMMAND_ID7
+    string
+    default ""
+
+config EN_SPEECH_COMMAND_ID70
+    string
+    default ""
+
+config EN_SPEECH_COMMAND_ID71
+    string
+    default ""
+
+config EN_SPEECH_COMMAND_ID72
+    string
+    default ""
+
+config EN_SPEECH_COMMAND_ID73
+    string
+    default ""
+
+config EN_SPEECH_COMMAND_ID74
+    string
+    default ""
+
+config EN_SPEECH_COMMAND_ID75
+    string
+    default ""
+
+config EN_SPEECH_COMMAND_ID76
+    string
+    default ""
+
+config EN_SPEECH_COMMAND_ID77
+    string
+    default ""
+
+config EN_SPEECH_COMMAND_ID78
+    string
+    default ""
+
+config EN_SPEECH_COMMAND_ID79
+    string
+    default ""
+
+config EN_SPEECH_COMMAND_ID8
+    string
+    default ""
+
+config EN_SPEECH_COMMAND_ID80
+    string
+    default ""
+
+config EN_SPEECH_COMMAND_ID81
+    string
+    default ""
+
+config EN_SPEECH_COMMAND_ID82
+    string
+    default ""
+
+config EN_SPEECH_COMMAND_ID83
+    string
+    default ""
+
+config EN_SPEECH_COMMAND_ID84
+    string
+    default ""
+
+config EN_SPEECH_COMMAND_ID85
+    string
+    default ""
+
+config EN_SPEECH_COMMAND_ID86
+    string
+    default ""
+
+config EN_SPEECH_COMMAND_ID87
+    string
+    default ""
+
+config EN_SPEECH_COMMAND_ID88
+    string
+    default ""
+
+config EN_SPEECH_COMMAND_ID89
+    string
+    default ""
+
+config EN_SPEECH_COMMAND_ID9
+    string
+    default ""
+
+config EN_SPEECH_COMMAND_ID90
+    string
+    default ""
+
+config EN_SPEECH_COMMAND_ID91
+    string
+    default ""
+
+config EN_SPEECH_COMMAND_ID92
+    string
+    default ""
+
+config EN_SPEECH_COMMAND_ID93
+    string
+    default ""
+
+config EN_SPEECH_COMMAND_ID94
+    string
+    default ""
+
+config EN_SPEECH_COMMAND_ID95
+    string
+    default ""
+
+config EN_SPEECH_COMMAND_ID96
+    string
+    default ""
+
+config EN_SPEECH_COMMAND_ID97
+    string
+    default ""
+
+config EN_SPEECH_COMMAND_ID98
+    string
+    default ""
+
+config EN_SPEECH_COMMAND_ID99
+    string
+    default ""
+
+config ESPHID_TASK_SIZE_BLE
+    int
+    default 4096
+
+config ESPHID_TASK_SIZE_BT
+    int
+    default 2048
+
+config ESP_HTTPS_OTA_EVENT_POST_TIMEOUT
+    int
+    default 2000
+
+config ESP_HTTPS_SERVER_ENABLE
+    bool
+    default y
+
+config ESP_HTTPS_SERVER_EVENT_POST_TIMEOUT
+    int
+    default 2000
+
+config ESP_INSIGHTS_CLOUD_POST_MAX_INTERVAL_SEC
+    int
+    default 240
+
+config ESP_INSIGHTS_CLOUD_POST_MIN_INTERVAL_SEC
+    int
+    default 60
+
+config ESP_INSIGHTS_ENABLED
+    bool
+    default y
+
+config ESP_INSIGHTS_META_VERSION_10
+    bool
+    default y
+
+config ESP_INSIGHTS_TRANSPORT_HTTPS
+    bool
+    default y
+
+config ESP_INSIGHTS_TRANSPORT_HTTPS_HOST
+    string
+    default "https://client.insights.espressif.com"
+
+config ESP_MATTER_AGGREGATOR_ENDPOINT_COUNT
+    int
+    default 1
+
+config ESP_MATTER_ATTRIBUTE_BUFFER_LARGEST
+    int
+    default 259
+
+config ESP_MATTER_BINDING_TABLE_SIZE
+    int
+    default 10
+
+config ESP_MATTER_BRIDGE_INFO_PART_NAME
+    string
+    default "nvs"
+
+config ESP_MATTER_CONSOLE_MAX_COMMANDS
+    int
+    default 10
+
+config ESP_MATTER_CONSOLE_TASK_STACK
+    int
+    default 2048
+
+config ESP_MATTER_DEFERRED_ATTR_PERSISTENCE_TIME_MS
+    int
+    default 3000
+
+config ESP_MATTER_ENABLE_DATA_MODEL
+    bool
+    default y
+
+config ESP_MATTER_ENABLE_MATTER_SERVER
+    bool
+    default y
+
+config ESP_MATTER_ENABLE_OPENTHREAD
+    bool
+    default y
+
+config ESP_MATTER_MAX_DEVICE_TYPE_COUNT
+    int
+    default 16
+
+config ESP_MATTER_MAX_DYNAMIC_ENDPOINT_COUNT
+    int
+    default 32
+
+config ESP_MATTER_MEM_ALLOC_MODE_DEFAULT
+    bool
+    default y
+
+config ESP_MATTER_MODE_SELECT_CLUSTER_ENDPOINT_COUNT
+    int
+    default 0
+
+config ESP_MATTER_NVS_PART_NAME
+    string
+    default "nvs"
+
+config ESP_MATTER_SCENES_TABLE_SIZE
+    int
+    default 16
+
+config ESP_MATTER_TEMPERATURE_CONTROL_CLUSTER_ENDPOINT_COUNT
+    int
+    default 0
+
+config ESP_MATTER_UNICAST_MESSAGE_COUNT
+    int
+    default 10
+
+config ESP_MODEM_CMUX_DEFRAGMENT_PAYLOAD
+    bool
+    default y
+
+config ESP_MODEM_CMUX_DELAY_AFTER_DLCI_SETUP
+    int
+    default 0
+
+config ESP_MODEM_C_API_STR_MAX
+    int
+    default 128
+
+config ESP_MODEM_USE_INFLATABLE_BUFFER_IF_NEEDED
+    bool
+    default y
+
+config ESP_MODEM_USE_PPP_MODE
+    bool
+    default y
+
+config ESP_RMAKER_CLAIM_SERVICE_BASE_URL
+    string
+    default "https://esp-claiming.rainmaker.espressif.com"
+
+config ESP_RMAKER_CLAIM_TYPE
+    int
+    default 1
+
+config ESP_RMAKER_CMD_RESP_ENABLE
+    bool
+    default y
+
+config ESP_RMAKER_CONSOLE_UART_NUM
+    int
+    default 0
+
+config ESP_RMAKER_CONSOLE_UART_NUM_0
+    bool
+    default y
+
+config ESP_RMAKER_MAX_PARAM_DATA_SIZE
+    int
+    default 1024
+
+config ESP_RMAKER_MQTT_BUDGET_REVIVE_COUNT
+    int
+    default 1
+
+config ESP_RMAKER_MQTT_BUDGET_REVIVE_PERIOD
+    int
+    default 5
+
+config ESP_RMAKER_MQTT_DEFAULT_BUDGET
+    int
+    default 100
+
+config ESP_RMAKER_MQTT_ENABLE_BUDGETING
+    bool
+    default y
+
+config ESP_RMAKER_MQTT_HOST
+    string
+    default "a1p72mufdu6064-ats.iot.us-east-1.amazonaws.com"
+
+config ESP_RMAKER_MQTT_MAX_BUDGET
+    int
+    default 1024
+
+config ESP_RMAKER_MQTT_USE_BASIC_INGEST_TOPICS
+    bool
+    default y
+
+config ESP_RMAKER_OTA_AUTOFETCH
+    bool
+    default y
+
+config ESP_RMAKER_OTA_AUTOFETCH_PERIOD
+    int
+    default 0
+
+config ESP_RMAKER_OTA_HTTP_RX_BUFFER_SIZE
+    int
+    default 1024
+
+config ESP_RMAKER_OTA_ROLLBACK_WAIT_PERIOD
+    int
+    default 90
+
+config ESP_RMAKER_OTA_TIME_SUPPORT
+    bool
+    default y
+
+config ESP_RMAKER_SCENES_MAX_SCENES
+    int
+    default 10
+
+config ESP_RMAKER_SCHEDULING_MAX_SCHEDULES
+    int
+    default 10
+
+config ESP_RMAKER_SELF_CLAIM
+    bool
+    default y
+
+config ESP_RMAKER_SKIP_VERSION_CHECK
+    bool
+    default y
+
+config ESP_RMAKER_USER_ID_CHECK
+    bool
+    default y
+
+config ESP_RMAKER_USE_CERT_BUNDLE
+    bool
+    default y
+
+config ESP_RMAKER_USE_NVS
+    bool
+    default y
+
+config ESP_RMAKER_USING_NETWORK_PROV
+    bool
+    default y
+
+config ESP_SECURE_CERT_DS_PERIPHERAL
+    bool
+    default y
+
+config EVENT_LOGGING_CRIT_BUFFER_SIZE
+    int
+    default 4096
+
+config EVENT_LOGGING_DEBUG_BUFFER_SIZE
+    int
+    default 1024
+
+config EVENT_LOGGING_INFO_BUFFER_SIZE
+    int
+    default 1024
+
+config EXAMPLE_COMMISSIONABLE_DATA_PROVIDER
+    bool
+    default y
+
+config EXAMPLE_DAC_PROVIDER
+    bool
+    default y
+
+config EXAMPLE_DEVICE_INSTANCE_INFO_PROVIDER
+    bool
+    default y
+
+config FATFS_ALLOC_PREFER_EXTRAM
+    bool
+    default y
+
+config FATFS_API_ENCODING_UTF_8
+    bool
+    default y
+
+config FATFS_CODEPAGE
+    int
+    default 850
+
+config FATFS_CODEPAGE_850
+    bool
+    default y
+
+config FATFS_DONT_TRUST_FREE_CLUSTER_CNT
+    int
+    default 0
+
+config FATFS_DONT_TRUST_LAST_ALLOC
+    int
+    default 0
+
+config FATFS_FS_LOCK
+    int
+    default 0
+
+config FATFS_LFN_STACK
+    bool
+    default y
+
+config FATFS_LINK_LOCK
+    bool
+    default y
+
+config FATFS_MAX_LFN
+    int
+    default 255
+
+config FATFS_PER_FILE_CACHE
+    bool
+    default y
+
+config FATFS_SECTOR_4096
+    bool
+    default y
+
+config FATFS_TIMEOUT_MS
+    int
+    default 10000
+
+config FATFS_USE_LABEL
+    bool
+    default y
+
+config FATFS_USE_STRFUNC_NONE
+    bool
+    default y
+
+config FATFS_VFS_FSTAT_BLKSIZE
+    int
+    default 0
+
+config FATFS_VOLUME_COUNT
+    int
+    default 2
+
+config FMB_ASCII_TIMEOUT_WAIT_BEFORE_SEND_MS
+    int
+    default 0
+
+config FMB_COMM_MODE_ASCII_EN
+    bool
+    default y
+
+config FMB_COMM_MODE_RTU_EN
+    bool
+    default y
+
+config FMB_COMM_MODE_TCP_EN
+    bool
+    default y
+
+config FMB_CONTROLLER_NOTIFY_QUEUE_SIZE
+    int
+    default 20
+
+config FMB_CONTROLLER_NOTIFY_TIMEOUT
+    int
+    default 20
+
+config FMB_CONTROLLER_STACK_SIZE
+    int
+    default 4096
+
+config FMB_EVENT_QUEUE_TIMEOUT
+    int
+    default 20
+
+config FMB_MASTER_DELAY_MS_CONVERT
+    int
+    default 200
+
+config FMB_MASTER_TIMEOUT_MS_RESPOND
+    int
+    default 3000
+
+config FMB_PORT_TASK_AFFINITY
+    hex
+    default 0x0
+
+config FMB_PORT_TASK_AFFINITY_CPU0
+    bool
+    default y
+
+config FMB_PORT_TASK_PRIO
+    int
+    default 10
+
+config FMB_PORT_TASK_STACK_SIZE
+    int
+    default 4096
+
+config FMB_QUEUE_LENGTH
+    int
+    default 20
+
+config FMB_SERIAL_ASCII_BITS_PER_SYMB
+    int
+    default 8
+
+config FMB_SERIAL_ASCII_TIMEOUT_RESPOND_MS
+    int
+    default 1000
+
+config FMB_SERIAL_BUF_SIZE
+    int
+    default 256
+
+config FMB_TCP_CONNECTION_TOUT_SEC
+    int
+    default 20
+
+config FMB_TCP_PORT_DEFAULT
+    int
+    default 502
+
+config FMB_TCP_PORT_MAX_CONN
+    int
+    default 5
+
+config FMB_TIMER_PORT_ENABLED
+    bool
+    default y
+
+config GC0308_SUPPORT
+    bool
+    default y
+
+config GC032A_SUPPORT
+    bool
+    default y
+
+config GC2145_SUPPORT
+    bool
+    default y
+
+config GC_SENSOR_SUBSAMPLE_MODE
+    bool
+    default y
+
+config HM0360_SUPPORT
+    bool
+    default y
+
+config HM1055_SUPPORT
+    bool
+    default y
+
+config JD_USE_ROM
+    bool
+    default y
+
+config LCD_RGB_RESTART_IN_VSYNC
+    bool
+    default y
+
+config LITTLEFS_ASSERTS
+    bool
+    default y
+
+config LITTLEFS_BLOCK_CYCLES
+    int
+    default 512
+
+config LITTLEFS_CACHE_SIZE
+    int
+    default 512
+
+config LITTLEFS_LOOKAHEAD_SIZE
+    int
+    default 128
+
+config LITTLEFS_MALLOC_STRATEGY_DEFAULT
+    bool
+    default y
+
+config LITTLEFS_MAX_PARTITIONS
+    int
+    default 3
+
+config LITTLEFS_MTIME_USE_SECONDS
+    bool
+    default y
+
+config LITTLEFS_OBJ_NAME_LEN
+    int
+    default 64
+
+config LITTLEFS_PAGE_SIZE
+    int
+    default 256
+
+config LITTLEFS_READ_SIZE
+    int
+    default 128
+
+config LITTLEFS_USE_MTIME
+    bool
+    default y
+
+config LITTLEFS_WRITE_SIZE
+    int
+    default 128
+
+config MAX_BINDINGS
+    int
+    default 8
+
+config MAX_CONNECTIONS
+    int
+    default 8
+
+config MAX_EVENT_QUEUE_SIZE
+    int
+    default 40
+
+config MAX_EXCHANGE_CONTEXTS
+    int
+    default 8
+
+config MAX_FABRICS
+    int
+    default 5
+
+config MAX_GROUPS_PER_FABRIC_PER_ENDPOINT
+    int
+    default 4
+
+config MAX_GROUP_ENDPOINTS_PER_FABRIC
+    int
+    default 1
+
+config MAX_GROUP_KEYS_PER_FABRIC
+    int
+    default 3
+
+config MAX_PEER_NODES
+    int
+    default 16
+
+config MAX_PERMIT_LIST_SIZE
+    int
+    default 20
+
+config MAX_SCAN_NETWORKS_RESULTS
+    int
+    default 10
+
+config MAX_UNSOLICITED_MESSAGE_HANDLERS
+    int
+    default 8
+
+config MEGA_CCM_SUPPORT
+    bool
+    default y
+
+config MODEL_IN_FLASH
+    bool
+    default y
+
+config MRP_LOCAL_ACTIVE_RETRY_INTERVAL_FOR_WIFI_ETHERNET
+    int
+    default 300
+
+config MRP_LOCAL_IDLE_RETRY_INTERVAL_FOR_WIFI_ETHERNET
+    int
+    default 500
+
+config MRP_MAX_RETRANS
+    int
+    default 4
+
+config MRP_RETRY_INTERVAL_SENDER_BOOST_FOR_WIFI_ETHERNET
+    int
+    default 0
+
+config NN_OPTIMIZATIONS
+    int
+    default 1
+
+config NN_OPTIMIZED
+    bool
+    default y
+
+config NONE_DEVICE_INFO_PROVIDER
+    bool
+    default y
+
+config NT99141_SUPPORT
+    bool
+    default y
+
+config NUM_TCP_ENDPOINTS
+    int
+    default 8
+
+config NUM_TIMERS
+    int
+    default 32
+
+config NUM_UDP_ENDPOINTS
+    int
+    default 8
+
+config OV2640_SUPPORT
+    bool
+    default y
+
+config OV3660_SUPPORT
+    bool
+    default y
+
+config OV5640_SUPPORT
+    bool
+    default y
+
+config OV7670_SUPPORT
+    bool
+    default y
+
+config OV7725_SUPPORT
+    bool
+    default y
+
+config RENDEZVOUS_WAIT_FOR_COMMISSIONING_COMPLETE
+    int
+    default 0
+
+config RTC_STORE_CRITICAL_DATA_SIZE
+    int
+    default 4096
+
+config RTC_STORE_DATA_SIZE
+    int
+    default 6144
+
+config SC030IOT_SUPPORT
+    bool
+    default y
+
+config SCCB_CLK_FREQ
+    int
+    default 100000
+
+config SCCB_HARDWARE_I2C_DRIVER_NEW
+    bool
+    default y
+
+config SCCB_HARDWARE_I2C_PORT1
+    bool
+    default y
+
+config SERIAL_FLASHER_BOOT_HOLD_TIME_MS
+    int
+    default 50
+
+config SERIAL_FLASHER_MD5_ENABLED
+    bool
+    default y
+
+config SERIAL_FLASHER_RESET_HOLD_TIME_MS
+    int
+    default 100
+
+config SERVICE_PROVISIONING_CONNECTIVITY_TIMEOUT
+    int
+    default 10000
+
+config SERVICE_PROVISIONING_ENDPOINT_ID
+    hex
+    default 0x18B4300200000010
+
+config SERVICE_PROVISIONING_REQUEST_TIMEOUT
+    int
+    default 10000
+
+config SPIFFS_CACHE
+    bool
+    default y
+
+config SPIFFS_CACHE_WR
+    bool
+    default y
+
+config SPIFFS_GC_MAX_RUNS
+    int
+    default 10
+
+config SPIFFS_MAX_PARTITIONS
+    int
+    default 3
+
+config SPIFFS_META_LENGTH
+    int
+    default 4
+
+config SPIFFS_OBJ_NAME_LEN
+    int
+    default 32
+
+config SPIFFS_PAGE_CHECK
+    bool
+    default y
+
+config SPIFFS_PAGE_SIZE
+    int
+    default 256
+
+config SPIFFS_USE_MAGIC
+    bool
+    default y
+
+config SPIFFS_USE_MAGIC_LENGTH
+    bool
+    default y
+
+config SPIFFS_USE_MTIME
+    bool
+    default y
+
+config SR_MN_CN_NONE
+    bool
+    default y
+
+config SR_MN_EN_MULTINET5_SINGLE_RECOGNITION_QUANT8
+    bool
+    default y
+
+config SR_NSN_WEBRTC
+    bool
+    default y
+
+config SR_VADN_WEBRTC
+    bool
+    default y
+
+config SR_WN_WN9_HIESP
+    bool
+    default y
+
+config SUPPORT_ACCESS_CONTROL_CLUSTER
+    bool
+    default y
+
+config SUPPORT_ACCOUNT_LOGIN_CLUSTER
+    bool
+    default y
+
+config SUPPORT_ACTIVATED_CARBON_FILTER_MONITORING_CLUSTER
+    bool
+    default y
+
+config SUPPORT_ADMINISTRATOR_COMMISSIONING_CLUSTER
+    bool
+    default y
+
+config SUPPORT_AIR_QUALITY_CLUSTER
+    bool
+    default y
+
+config SUPPORT_APPLICATION_BASIC_CLUSTER
+    bool
+    default y
+
+config SUPPORT_APPLICATION_LAUNCHER_CLUSTER
+    bool
+    default y
+
+config SUPPORT_AUDIO_OUTPUT_CLUSTER
+    bool
+    default y
+
+config SUPPORT_BASIC_INFORMATION_CLUSTER
+    bool
+    default y
+
+config SUPPORT_BINDING_CLUSTER
+    bool
+    default y
+
+config SUPPORT_BOOLEAN_STATE_CONFIGURATION_CLUSTER
+    bool
+    default y
+
+config SUPPORT_BRIDGED_DEVICE_BASIC_INFORMATION_CLUSTER
+    bool
+    default y
+
+config SUPPORT_CARBON_DIOXIDE_CONCENTRATION_MEASUREMENT_CLUSTER
+    bool
+    default y
+
+config SUPPORT_CARBON_MONOXIDE_CONCENTRATION_MEASUREMENT_CLUSTER
+    bool
+    default y
+
+config SUPPORT_CHANNEL_CLUSTER
+    bool
+    default y
+
+config SUPPORT_COLOR_CONTROL_CLUSTER
+    bool
+    default y
+
+config SUPPORT_COMMISSIONER_CONTROL_CLUSTER
+    bool
+    default y
+
+config SUPPORT_CONTENT_APP_OBSERVER_CLUSTER
+    bool
+    default y
+
+config SUPPORT_CONTENT_CONTROL_CLUSTER
+    bool
+    default y
+
+config SUPPORT_CONTENT_LAUNCHER_CLUSTER
+    bool
+    default y
+
+config SUPPORT_DESCRIPTOR_CLUSTER
+    bool
+    default y
+
+config SUPPORT_DEVICE_ENERGY_MANAGEMENT_CLUSTER
+    bool
+    default y
+
+config SUPPORT_DEVICE_ENERGY_MANAGEMENT_MODE_CLUSTER
+    bool
+    default y
+
+config SUPPORT_DIAGNOSTIC_LOGS_CLUSTER
+    bool
+    default y
+
+config SUPPORT_DISHWASHER_ALARM_CLUSTER
+    bool
+    default y
+
+config SUPPORT_DISHWASHER_MODE_CLUSTER
+    bool
+    default y
+
+config SUPPORT_DOOR_LOCK_CLUSTER
+    bool
+    default y
+
+config SUPPORT_ECOSYSTEM_INFORMATION_CLUSTER
+    bool
+    default y
+
+config SUPPORT_ELECTRICAL_ENERGY_MEASUREMENT_CLUSTER
+    bool
+    default y
+
+config SUPPORT_ELECTRICAL_POWER_MEASUREMENT_CLUSTER
+    bool
+    default y
+
+config SUPPORT_ENERGY_EVSE_CLUSTER
+    bool
+    default y
+
+config SUPPORT_ENERGY_EVSE_MODE_CLUSTER
+    bool
+    default y
+
+config SUPPORT_ENERGY_PREFERENCE_CLUSTER
+    bool
+    default y
+
+config SUPPORT_ETHERNET_NETWORK_DIAGNOSTICS_CLUSTER
+    bool
+    default y
+
+config SUPPORT_FAN_CONTROL_CLUSTER
+    bool
+    default y
+
+config SUPPORT_FAULT_INJECTION_CLUSTER
+    bool
+    default y
+
+config SUPPORT_FIXED_LABEL_CLUSTER
+    bool
+    default y
+
+config SUPPORT_FORMALDEHYDE_CONCENTRATION_MEASUREMENT_CLUSTER
+    bool
+    default y
+
+config SUPPORT_GENERAL_COMMISSIONING_CLUSTER
+    bool
+    default y
+
+config SUPPORT_GENERAL_DIAGNOSTICS_CLUSTER
+    bool
+    default y
+
+config SUPPORT_GROUPS_CLUSTER
+    bool
+    default y
+
+config SUPPORT_GROUP_KEY_MANAGEMENT_CLUSTER
+    bool
+    default y
+
+config SUPPORT_HEPA_FILTER_MONITORING_CLUSTER
+    bool
+    default y
+
+config SUPPORT_ICD_MANAGEMENT_CLUSTER
+    bool
+    default y
+
+config SUPPORT_IDENTIFY_CLUSTER
+    bool
+    default y
+
+config SUPPORT_KEYPAD_INPUT_CLUSTER
+    bool
+    default y
+
+config SUPPORT_LAUNDRY_DRYER_CONTROLS_CLUSTER
+    bool
+    default y
+
+config SUPPORT_LAUNDRY_WASHER_CONTROLS_CLUSTER
+    bool
+    default y
+
+config SUPPORT_LAUNDRY_WASHER_MODE_CLUSTER
+    bool
+    default y
+
+config SUPPORT_LEVEL_CONTROL_CLUSTER
+    bool
+    default y
+
+config SUPPORT_LOCALIZATION_CONFIGURATION_CLUSTER
+    bool
+    default y
+
+config SUPPORT_LOW_POWER_CLUSTER
+    bool
+    default y
+
+config SUPPORT_MEDIA_INPUT_CLUSTER
+    bool
+    default y
+
+config SUPPORT_MEDIA_PLAYBACK_CLUSTER
+    bool
+    default y
+
+config SUPPORT_MESSAGES_CLUSTER
+    bool
+    default y
+
+config SUPPORT_MICROWAVE_OVEN_CONTROL_CLUSTER
+    bool
+    default y
+
+config SUPPORT_MICROWAVE_OVEN_MODE_CLUSTER
+    bool
+    default y
+
+config SUPPORT_MODE_SELECT_CLUSTER
+    bool
+    default y
+
+config SUPPORT_NETWORK_COMMISSIONING_CLUSTER
+    bool
+    default y
+
+config SUPPORT_NITROGEN_DIOXIDE_CONCENTRATION_MEASUREMENT_CLUSTER
+    bool
+    default y
+
+config SUPPORT_OCCUPANCY_SENSING_CLUSTER
+    bool
+    default y
+
+config SUPPORT_ON_OFF_CLUSTER
+    bool
+    default y
+
+config SUPPORT_OPERATIONAL_CREDENTIALS_CLUSTER
+    bool
+    default y
+
+config SUPPORT_OPERATIONAL_STATE_CLUSTER
+    bool
+    default y
+
+config SUPPORT_OPERATIONAL_STATE_OVEN_CLUSTER
+    bool
+    default y
+
+config SUPPORT_OPERATIONAL_STATE_RVC_CLUSTER
+    bool
+    default y
+
+config SUPPORT_OTA_SOFTWARE_UPDATE_PROVIDER_CLUSTER
+    bool
+    default y
+
+config SUPPORT_OTA_SOFTWARE_UPDATE_REQUESTOR_CLUSTER
+    bool
+    default y
+
+config SUPPORT_OVEN_MODE_CLUSTER
+    bool
+    default y
+
+config SUPPORT_OZONE_CONCENTRATION_MEASUREMENT_CLUSTER
+    bool
+    default y
+
+config SUPPORT_PM10_CONCENTRATION_MEASUREMENT_CLUSTER
+    bool
+    default y
+
+config SUPPORT_PM1_CONCENTRATION_MEASUREMENT_CLUSTER
+    bool
+    default y
+
+config SUPPORT_PM2_5_CONCENTRATION_MEASUREMENT_CLUSTER
+    bool
+    default y
+
+config SUPPORT_POWER_SOURCE_CLUSTER
+    bool
+    default y
+
+config SUPPORT_POWER_SOURCE_CONFIGURATION_CLUSTER
+    bool
+    default y
+
+config SUPPORT_POWER_TOPOLOGY_CLUSTER
+    bool
+    default y
+
+config SUPPORT_PUMP_CONFIGURATION_AND_CONTROL_CLUSTER
+    bool
+    default y
+
+config SUPPORT_RADON_CONCENTRATION_MEASUREMENT_CLUSTER
+    bool
+    default y
+
+config SUPPORT_REFRIGERATOR_ALARM_CLUSTER
+    bool
+    default y
+
+config SUPPORT_REFRIGERATOR_AND_TEMPERATURE_CONTROLLED_CABINET_MODE_CLUSTER
+    bool
+    default y
+
+config SUPPORT_RVC_CLEAN_MODE_CLUSTER
+    bool
+    default y
+
+config SUPPORT_RVC_RUN_MODE_CLUSTER
+    bool
+    default y
+
+config SUPPORT_SAMPLE_MEI_CLUSTER
+    bool
+    default y
+
+config SUPPORT_SCENES_CLUSTER
+    bool
+    default y
+
+config SUPPORT_SERVICE_AREA_CLUSTER
+    bool
+    default y
+
+config SUPPORT_SMOKE_CO_ALARM_CLUSTER
+    bool
+    default y
+
+config SUPPORT_SOFTWARE_DIAGNOSTICS_CLUSTER
+    bool
+    default y
+
+config SUPPORT_SWITCH_CLUSTER
+    bool
+    default y
+
+config SUPPORT_TARGET_NAVIGATOR_CLUSTER
+    bool
+    default y
+
+config SUPPORT_TEMPERATURE_CONTROL_CLUSTER
+    bool
+    default y
+
+config SUPPORT_THERMOSTAT_CLUSTER
+    bool
+    default y
+
+config SUPPORT_THERMOSTAT_USER_INTERFACE_CONFIGURATION_CLUSTER
+    bool
+    default y
+
+config SUPPORT_THREAD_BORDER_ROUTER_MANAGEMENT_CLUSTER
+    bool
+    default y
+
+config SUPPORT_THREAD_NETWORK_DIAGNOSTICS_CLUSTER
+    bool
+    default y
+
+config SUPPORT_THREAD_NETWORK_DIRECTORY_CLUSTER
+    bool
+    default y
+
+config SUPPORT_TIMER_CLUSTER
+    bool
+    default y
+
+config SUPPORT_TIME_FORMAT_LOCALIZATION_CLUSTER
+    bool
+    default y
+
+config SUPPORT_TIME_SYNCHRONIZATION_CLUSTER
+    bool
+    default y
+
+config SUPPORT_TVOC_CONCENTRATION_MEASUREMENT_CLUSTER
+    bool
+    default y
+
+config SUPPORT_UNIT_TESTING_CLUSTER
+    bool
+    default y
+
+config SUPPORT_USER_LABEL_CLUSTER
+    bool
+    default y
+
+config SUPPORT_VALVE_CONFIGURATION_AND_CONTROL_CLUSTER
+    bool
+    default y
+
+config SUPPORT_WAKE_ON_LAN_CLUSTER
+    bool
+    default y
+
+config SUPPORT_WATER_HEATER_MANAGEMENT_CLUSTER
+    bool
+    default y
+
+config SUPPORT_WATER_HEATER_MODE_CLUSTER
+    bool
+    default y
+
+config SUPPORT_WIFI_NETWORK_DIAGNOSTICS_CLUSTER
+    bool
+    default y
+
+config SUPPORT_WIFI_NETWORK_MANAGEMENT_CLUSTER
+    bool
+    default y
+
+config SUPPORT_WINDOW_COVERING_CLUSTER
+    bool
+    default y
+
+config TEST_EVENT_TRIGGER_ENABLED
+    bool
+    default y
+
+config TEST_EVENT_TRIGGER_ENABLE_KEY
+    string
+    default "00112233445566778899aabbccddeeff"
+
+config ULP_COPROC_ENABLED
+    bool
+    default y
+
+config ULP_COPROC_RESERVE_MEM
+    int
+    default 512
+
+config ULP_COPROC_TYPE_FSM
+    bool
+    default y
+
+config UNITY_ENABLE_DOUBLE
+    bool
+    default y
+
+config UNITY_ENABLE_FLOAT
+    bool
+    default y
+
+config UNITY_ENABLE_IDF_TEST_RUNNER
+    bool
+    default y
+
+config USE_BLE_ONLY_FOR_COMMISSIONING
+    bool
+    default y
+
+config USE_TEST_SERIAL_NUMBER
+    string
+    default "TEST_SN"
+
+config WIFI_AP_BEACON_INTERVAL
+    int
+    default 100
+
+config WIFI_AP_CHANNEL
+    int
+    default 1
+
+config WIFI_AP_IDLE_TIMEOUT
+    int
+    default 120000
+
+config WIFI_AP_MAX_STATIONS
+    int
+    default 4
+
+config WIFI_AP_SSID_PREFIX
+    string
+    default "MATTER-"
+
+config WIFI_CONNECTIVITY_TIMEOUT
+    int
+    default 30000
+
+config WIFI_NETWORK_COMMISSIONING_DRIVER
+    bool
+    default y
+
+config WIFI_NETWORK_ENDPOINT_ID
+    int
+    default 0
+
+config WIFI_PROV_AUTOSTOP_TIMEOUT
+    int
+    default 30
+
+config WIFI_PROV_BLE_SEC_CONN
+    bool
+    default y
+
+config WIFI_PROV_SCAN_MAX_ENTRIES
+    int
+    default 16
+
+config WIFI_PROV_STA_ALL_CHANNEL_SCAN
+    bool
+    default y
+
+config WIFI_SCAN_COMPLETION_TIMEOUT
+    int
+    default 10000
+
+config WIFI_STATION_RECONNECT_INTERVAL
+    int
+    default 100
+
+config WL_SECTOR_SIZE
+    int
+    default 4096
+
+config WL_SECTOR_SIZE_4096
+    bool
+    default y
+
+config ZB_ENABLED
+    bool
+    default y
+
+config ZB_RADIO_SPINEL_UART
+    bool
+    default y
+
+config ZB_ZCZR
+    bool
+    default y

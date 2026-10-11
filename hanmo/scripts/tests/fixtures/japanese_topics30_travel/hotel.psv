@@ -1,0 +1,24 @@
+precheck-luggage|チェックインまでにもつをあずけたいです。|chekkuin made nimotsu o azuketai desu.|我想在入住前寄放行李。|はい、こちらであずかります。|hai, kochira de azukarimasu.|好的，我們在這裡幫您保管。|まで表示時間的終點。|たいです表示想做某事。
+wifi-password|ワイファイのあんしょうばんごうは。|waifai no anshō bangō wa?|無線網路的密碼是什麼？|このかみにかいてあります。|kono kami ni kaite arimasu.|寫在這張紙上。|は後省略問句是口語說法。|てあります表示已做好並留著。
+elevator-location|エレベーターはどこですか。|erebētā wa doko desu ka?|電梯在哪裡？|フロントのうしろです。|furonto no ushiro desu.|在櫃檯後面。|の連接物品與相對位置。|うしろ表示後面。
+nonsmoking-room|きんえんのへやをおねがいします。|kin'en no heya o onegai shimasu.|麻煩給我禁菸房。|はい、きんえんのおへやです。|hai, kin'en no oheya desu.|好的，是禁菸房。|きんえん表示禁止吸菸。|ん後接母音時加撇號區分。
+extend-stay|もういっぱくできますか。|mō ippaku dekimasu ka?|可以再住一晚嗎？|はい、できます。|hai, dekimasu.|可以。|いっぱく表示住一晚。|できますか詢問是否可行。
+walkin-availability|こんや、あいているへやはありますか。|kon'ya, aite iru heya wa arimasu ka?|今晚有空房嗎？|はい、ひとへやあります。|hai, hitoheya arimasu.|有，還有一間。|あいている修飾空著的房間。|ありますか詢問有沒有。
+nightly-rate|いっぱく、いくらですか。|ippaku, ikura desu ka?|住一晚多少錢？|はっせんえんです。|hassen'en desu.|八千日圓。|いくら用來詢問價格。|八千日圓讀はっせんえん。
+laundry-facility|せんたくきはありますか。|sentakuki wa arimasu ka?|有洗衣機嗎？|はい、にかいにあります。|hai, nikai ni arimasu.|有，在二樓。|に表示物品所在的位置。|せんたくき是洗衣機。
+taxi-request|タクシーをよんでいただけますか。|takushī o yonde itadakemasu ka?|可以幫我叫計程車嗎？|はい、すぐによびます。|hai, sugu ni yobimasu.|好的，馬上幫您叫。|ていただけますか是客氣請求。|よぶ表示叫來。
+lost-room-key|へやのかぎをなくしました。|heya no kagi o nakushimashita.|我弄丟房間鑰匙了。|おへやのばんごうはなんばんですか。|oheya no bangō wa nanban desu ka?|請問您的房號是幾號？|なくしました表示弄丟了。|なんばん用來詢問號碼。
+broken-aircon|エアコンがうごきません。|eakon ga ugokimasen.|冷氣不運作。|すぐにかくにんします。|sugu ni kakunin shimasu.|我們馬上確認。|ません表示客氣的否定。|が標示發生問題的物品。
+no-hot-water|おゆがでません。|oyu ga demasen.|沒有熱水。|かかりのものをよびます。|kakari no mono o yobimasu.|我請工作人員過來。|おゆ表示熱水。|でません表示沒有流出。
+noise-complaint|となりのへやがうるさいです。|tonari no heya ga urusai desu.|隔壁房間很吵。|もうしわけありません。|mōshiwake arimasen.|非常抱歉。|となりの表示隔壁的。|うるさい表示吵雜。
+breakfast-included|あさごはんはついていますか。|asagohan wa tsuite imasu ka?|有附早餐嗎？|はい、りょうきんにふくまれます。|hai, ryōkin ni fukumaremasu.|有，已包含在費用裡。|ついています表示附有。|りょうきん表示費用。
+breakfast-place|あさごはんはどこでたべますか。|asagohan wa doko de tabemasu ka?|早餐在哪裡吃？|いっかいのレストランです。|ikkai no resutoran desu.|在一樓的餐廳。|どこで詢問動作的地點。|一樓讀作いっかい。
+checkout-request|チェックアウトをおねがいします。|chekkuauto o onegai shimasu.|麻煩辦理退房。|かぎをおかえしください。|kagi o okaeshi kudasai.|請歸還鑰匙。|を表示歸還的物品。|おかえしください是客氣請求。
+receipt-request|りょうしゅうしょをください。|ryōshūsho o kudasai.|請給我收據。|おなまえはどうしますか。|onamae wa dō shimasu ka?|收據的抬頭要寫什麼名字？|りょうしゅうしょ表示收據。|どうしますか詢問如何處理。
+late-checkout|おそくチェックアウトできますか。|osoku chekkuauto dekimasu ka?|可以延後退房嗎？|ごごいちじまでならできます。|gogo ichiji made nara dekimasu.|延到下午一點的話可以。|おそく表示晚一些。|なら表示以此為條件。
+wakeup-call|あした、ろくじにおこしてください。|ashita, rokuji ni okoshite kudasai.|明天請在六點叫醒我。|はい、ろくじですね。|hai, rokuji desu ne.|好的，六點對吧。|に標示具體時間。|おこしてください表示請叫醒。
+postcheckout-luggage|ゆうがたまでにもつをあずけます。|yūgata made nimotsu o azukemasu.|我要把行李寄放到傍晚。|はい、このふだをおもちください。|hai, kono fuda o omochi kudasai.|好的，請收好這張寄物牌。|ゆうがた表示傍晚。|ふだ在此指寄物牌。
+skip-cleaning|きょうはそうじはいりません。|kyō wa sōji wa irimasen.|今天不用打掃。|はい、わかりました。|hai, wakarimashita.|好的，知道了。|いりません表示不需要。|きょうは提示今天的安排。
+extra-blanket|もうふをかしていただけますか。|mōfu o kashite itadakemasu ka?|可以借我毛毯嗎？|はい、おへやにおもちします。|hai, oheya ni omochi shimasu.|好的，我拿到您的房間。|もうふ表示毛毯。|かして表示借給對方。
+charger-loan|じゅうでんきをかりられますか。|jūdenki o kariraremasu ka?|可以借充電器嗎？|どのタイプですか。|dono taipu desu ka?|請問是哪種類型？|かりられます表示能借用。|どの後面接名詞詢問哪種。
+late-return|よるおそくかえってもいいですか。|yoru osoku kaette mo ii desu ka?|晚上晚一點回來可以嗎？|はい、うらのいりぐちをどうぞ。|hai, ura no iriguchi o dōzo.|可以，請走後方入口。|てもいいですか用來徵求同意。|うら表示後方或背面。

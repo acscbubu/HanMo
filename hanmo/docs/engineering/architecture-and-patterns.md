@@ -1,0 +1,170 @@
+# Architecture & Common Patterns
+
+> Deep reference for [AGENTS.md](../../AGENTS.md). For the big-picture runtime
+> lifecycle, activity model, and dataflow diagrams, see
+> [../contributing/architecture.md](../contributing/architecture.md). This file
+> covers the agent-facing details: directory layout, the HAL, and the reusable
+> code patterns (singletons, activity lifecycle, FreeRTOS tasks, fonts).
+
+## Directory Structure
+* lib/: Internal libraries (Epub engine, GfxRenderer, UITheme, I18n)
+  * lib/hal/: Hardware Abstraction Layer (HalDisplay, HalGPIO, HalStorage)
+  * lib/I18n/: Internationalization (translations in `translations/*.yaml`, generated string tables)
+* src/activities/: UI logic using the Activity Lifecycle (onEnter, loop, onExit)
+* freeink-sdk/: Low-level SDK (FreeInkDisplay, InputManager, BatteryMonitor, SDCardManager)
+* .crosspoint/: SD-based binary cache for EPUB metadata and pre-rendered layout sections
+
+## Hardware Abstraction Layer (HAL)
+
+**CRITICAL**: Always use HAL classes, NOT SDK classes directly.
+
+| HAL Class | Wraps SDK Class | Purpose | Singleton Macro |
+|-----------|----------------|---------|-----------------|
+| `HalDisplay` | `EInkDisplay` | E-ink display control | *(none)* |
+| `HalGPIO` | `InputManager` | Button input handling | *(none)* |
+| `HalStorage` | `SDCardManager` | SD card file I/O | `Storage` |
+
+**Location**: [lib/hal/](../../lib/hal/)
+
+**Why HAL?**
+- Provides consistent error logging per module
+- Abstracts SDK implementation details
+- Centralizes resource management
+
+**Example - HalStorage**:
+```cpp
+#include <HalStorage.h>
+
+// Use Storage singleton (defined via macro)
+HalFile file;
+if (Storage.openFileForRead("MODULE", "/path/to/file.bin", file)) {
+  // Read from file
+  // No file.close() needed — DESTRUCTOR_CLOSES_FILE=1 handles it at scope exit
+}
+```
+
+**Usage**: Use `HalFile` (the mutex-wrapping handle), NOT raw SdFat `FsFile` or Arduino `File`. Do NOT add `file.close()` for local variables (see [build-system.md](build-system.md) → DESTRUCTOR_CLOSES_FILE).
+
+**SdFat is not thread-safe; all SD access MUST go through HalStorage**:
+- SdFat's `SdSpiCard` tracks SPI bus state with an unsynchronized `m_spiActive` bool. Two tasks calling SdFat concurrently can confuse that state machine and end with one task calling `SPIClass::endTransaction()` against a paramLock the *other* task is holding. That trips FreeRTOS's `xTaskPriorityDisinherit` assert (`tasks.c:5156, pxTCB == pxCurrentTCBs[0]`) and panics the system. See SdFat issue #518.
+- `HalStorage` serializes everything via `storageMutex`. Downstream code uses `HalFile` (declared in `<HalStorage.h>`); every method call (read, write, seek, close) takes the mutex. `HalFile`'s destructor also takes the mutex before letting the underlying SdFat `FsFile` close.
+- **Never** call into `SdFat` / `SdSpiCard` / `FsBaseFile` / `SDCardManager` / raw `FsFile` directly — that bypasses the mutex.
+
+**CPU frequency changes must go through `HalPowerManager::setPowerSaving()`**:
+- `modeMutex` protects the target-mode decision, the entire `setCpuFrequencyMhz()` call, and the `isLowPower` update. Update state only after a successful transition; repeated requests for the current state do nothing.
+- Arduino's APB callbacks hold SPI locks between the BEFORE and AFTER callbacks. Concurrent frequency changes can deadlock: one task holds a SPI lock while waiting for the APB callback lock, and another holds the APB callback lock while waiting for that SPI lock. Serializing only the state assignment is insufficient.
+- `HalPowerManager::Lock` sets `NormalSpeed` under `modeMutex`, then releases the mutex **before** calling `setPowerSaving(false)`. Keep that ordering: the mutex is not recursive. Obtain the power lock before starting SPI work. The existing helper supports only one active power lock; it is not a nested-lock counter.
+- Preserve the Wi-Fi/C3 BLE host guards and board-specific frequency restrictions. Light sleep and CPU downclocking are separate decisions; fixing clock serialization must not disable either Bluetooth or standby light sleep.
+
+`Storage.getSpace(totalBytes, freeBytes)` queries filesystem data capacity, not
+raw card size, through the SDK's unified capacity query under the same mutex.
+Both outputs are zero on failure; callers must check the boolean result before
+using them. The SDK derives cluster bytes from 512-byte sectors with 64-bit
+arithmetic because SdFat 2.3.1's FAT `bytesPerCluster()` truncates 64 KiB to zero.
+Successful free-space scans are cached for 20 seconds from completion; failures
+invalidate the cache and are retried on the next query. Mount/unmount resets it.
+The cache is a snapshot, not an immediate accounting of subsequent writes.
+The About page paints its loading state before this synchronous query; input
+waits for the scan to finish. Host simulator capacity comes from `statvfs`, so
+use `python3 scripts/tests/test_sd_space.py` for FAT calculation regressions.
+
+---
+
+## Common Patterns
+
+### Singleton Access
+**Available Singletons**:
+```cpp
+#define SETTINGS CrossPointSettings::getInstance()  // User settings
+#define APP_STATE CrossPointState::getInstance()    // Runtime state
+#define GUI UITheme::getInstance()                   // Current theme
+#define Storage HalStorage::getInstance()            // SD card I/O
+#define I18N I18n::getInstance()                     // Internationalization
+```
+
+### Activity Lifecycle and Memory Management
+
+**Source**: [src/main.cpp:132-143](../../src/main.cpp)
+
+**CRITICAL**: Activities are **heap-allocated** and **deleted on exit**.
+
+```cpp
+// main.cpp navigation pattern
+void exitActivity() {
+  if (currentActivity) {
+    currentActivity->onExit();
+    delete currentActivity;  // Activity deleted here!
+    currentActivity = nullptr;
+  }
+}
+
+void enterNewActivity(Activity* activity) {
+  currentActivity = activity;  // Heap-allocated activity
+  currentActivity->onEnter();
+}
+```
+
+**Memory Implications**:
+- Activity navigation = `delete` old activity + `new` create next activity
+- Any memory allocated in `onEnter()` MUST be freed in `onExit()`
+- FreeRTOS tasks MUST be deleted in `onExit()` before activity destruction
+- Member `FsFile` handles MUST be closed in `onExit()` (local `FsFile` variables auto-close via destructor)
+- `ActivityManager` calls `onExit()` while already holding `RenderLock`; never acquire a second render lock there
+
+**Activity Pattern**:
+```cpp
+void onEnter()  { Activity::onEnter(); /* alloc: buffer, tasks */ render(); }
+void loop()     { /* read the mappedInput snapshot; handle input */ }
+void onExit()   { /* free: vTaskDelete, free buffer, close member FsFiles */ Activity::onExit(); }
+```
+
+The main loop updates mapped input once per frame before
+`ActivityManager::loop()`. Normal Activities must not update it again.
+
+**Critical**: Free resources in reverse order. Delete tasks BEFORE activity destruction.
+
+### FreeRTOS Task Guidelines
+
+**Source**: [src/activities/util/KeyboardEntryActivity.cpp:45-50](../../src/activities/util/KeyboardEntryActivity.cpp)
+
+**Pattern**: See Activity Lifecycle above. `xTaskCreate(&taskTrampoline, "Name", stackSize, this, 1, &handle)`
+
+**Stack Sizing** (in BYTES, not words):
+- **2048**: Simple rendering (most activities)
+- **4096**: Network, EPUB parsing
+- Monitor: `uxTaskGetStackHighWaterMark()` if crashes
+
+**Rules**: Always `vTaskDelete()` in `onExit()` before destruction. Use mutex if shared state.
+
+### Global Font Loading
+
+**Source**: [src/main.cpp:40-115](../../src/main.cpp)
+
+**Built-in fonts are global static objects** at firmware startup:
+- International UI fonts: 8, 10, 12pt
+- Simplified-Chinese UI fallbacks: 8, 10, 12pt
+- Offline reader fallback: 12pt; other sizes and styles use SD `.cpfont`
+
+OpenDyslexic and the broad Noto reader families live in the SD font catalog
+(`lib/EpdFont/scripts/sd-fonts.yaml`). Legacy IDs resolve to the 12pt fallback.
+
+**Compilation Flag**:
+```cpp
+#ifndef OMIT_FONTS
+  // Most fonts loaded here
+#endif
+```
+
+**Implications**:
+- Fonts stored in **Flash** (marked as `static const` in `lib/EpdFont/builtinFonts/`)
+- Font rendering data cached in **DRAM** when first used
+- `OMIT_FONTS` can reduce binary size for minimal builds
+- Font IDs defined in [src/fontIds.h](../../src/fontIds.h)
+
+**Usage**:
+```cpp
+#include "fontIds.h"
+
+renderer.insertFont(FONT_UI_MEDIUM, ui12FontFamily);
+renderer.drawText(FONT_UI_MEDIUM, x, y, "Hello", true);
+```

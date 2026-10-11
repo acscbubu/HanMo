@@ -1,0 +1,13 @@
+# Build products belong outside the delivered sources.
+**/.pio/
+**/.cache/
+**/__pycache__/
+**/*.pyc
+/.venv/
+/hanmo/build/
+/private/
+/verification/
+*.eml
+platformio.local.ini
+.env
+.env.*

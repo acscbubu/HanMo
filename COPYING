@@ -1,0 +1,6 @@
+License index
+
+HanMo original application: LICENSE (MIT).
+mbedTLS: Apache-2.0 option in sdk-source/esp-idf/components/mbedtls/mbedtls/LICENSE.
+Arduino / WebSockets: LGPL-2.1-or-later; see LGPL-RELINK.md and original dependency license files.
+Other independent components and assets retain their own licenses, indexed in notice-index.json.

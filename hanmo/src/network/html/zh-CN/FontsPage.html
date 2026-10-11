@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>字体管理 - 翰墨</title>
+    <style>
+      :root {
+        --font-color: #333;
+        --bg: #f5f5f5;
+        --title-color: #2c3e50;
+        --card-bg: #FFF;
+        --label-color: #7f8c8d;
+        --border-color: #eee;
+        --accent-color: rgb(110, 154, 130);
+        --accent-hover-color: #5a8c73;
+        --danger-color: #e74c3c;
+        --danger-hover: #c0392b;
+      }
+      @media (prefers-color-scheme: dark) {
+        :root {
+          --font-color: #f5f5f5;
+          --bg: #333;
+          --title-color: #ecf0f1;
+          --card-bg: #444;
+          --label-color: #bdc3c7;
+          --border-color: #555;
+          color-scheme: dark;
+        }
+      }
+      body {
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+          Oxygen, Ubuntu, sans-serif;
+        max-width: 1100px;
+        margin: 0 auto;
+        padding: 20px;
+        background-color: var(--bg);
+        color: var(--font-color);
+      }
+          h1 {
+            color: var(--title-color);
+            border-bottom: 2px solid var(--accent-color);
+            padding-bottom: 10px;
+          }
+          /* The name sits in the middle and is the user's to change; nav.js fetches
+             it and hangs the rename control off it. */
+          h1.brand { display: flex; align-items: center; justify-content: center; gap: 10px; }
+      h2 { color: var(--title-color); margin-top: 0; }
+      h3 { margin: 0 0 8px 0; }
+      .card {
+        background: var(--card-bg);
+        border-radius: 8px;
+        padding: 20px;
+        margin: 15px 0;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      }
+      .nav-links {
+        margin: 20px 0;
+        display: flex;
+        gap: 10px;
+      }
+
+      /* Sidebar shell: the nav is a column on the left, the page is the
+         column beside it. min-width:0 on the content matters -- the file
+         manager has wide rows and a flex child will not shrink below its
+         content without it. */
+      .shell {
+        display: flex;
+        gap: 20px;
+        align-items: flex-start;
+      }
+      .shell > .nav-links {
+        flex: 0 0 170px;
+        flex-direction: column;
+        position: sticky;
+        top: 20px;
+        margin: 0;
+      }
+      .shell > .content {
+        flex: 1;
+        min-width: 0;
+      }
+      .shell > .content > *:first-child {
+        margin-top: 0;
+      }
+      /* A 170px column on a phone leaves nothing for the page, so below this
+         the nav goes back to a row above the content. */
+      @media (max-width: 720px) {
+        .shell {
+          display: block;
+        }
+        .shell > .nav-links {
+          position: static;
+          flex-direction: row;
+          flex-wrap: wrap;
+          margin-bottom: 15px;
+        }
+      }
+      .nav-links a {
+        padding: 10px 20px;
+        color: var(--font-color);
+        text-decoration: none;
+        border-radius: 4px;
+      }
+      .nav-links a.active {
+        background-color: var(--accent-color);
+        color: white;
+      }
+      .nav-links a:not(.active):hover {
+        background-color: var(--accent-hover-color);
+        color: white;
+      }
+      .family {
+        border-bottom: 1px solid var(--border-color);
+        padding: 12px 0;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+      .family:last-child { border-bottom: none; }
+      .family-info { flex: 1; }
+      .family-meta { color: var(--label-color); font-size: 0.9em; }
+      .btn {
+        padding: 6px 16px;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        font-size: 0.9em;
+      }
+      .btn-danger {
+        background: var(--danger-color);
+        color: white;
+      }
+      .btn-danger:hover { background: var(--danger-hover); }
+      .btn-primary {
+        background: var(--accent-color);
+        color: white;
+      }
+      .btn-primary:hover { background: var(--accent-hover-color); }
+      .upload-form {
+        display: flex;
+        gap: 10px;
+        align-items: center;
+        flex-wrap: wrap;
+      }
+      .upload-form input[type="text"] {
+        padding: 6px 10px;
+        border: 1px solid var(--border-color);
+        border-radius: 4px;
+        background: var(--bg);
+        color: var(--font-color);
+      }
+      .upload-form input[type="file"] { flex: 1; min-width: 200px; }
+      #status {
+        margin-top: 10px;
+        padding: 8px;
+        border-radius: 4px;
+        display: none;
+      }
+      .status-ok { background: #d4edda; color: #155724; display: block !important; }
+      .status-err { background: #f8d7da; color: #721c24; display: block !important; }
+      .empty { color: var(--label-color); text-align: center; padding: 20px; }
+      /* Sidebar links can be dragged into a different order; nav.js keeps it. */
+      [data-nav-group] [data-nav-key] { cursor: grab; touch-action: none; }
+      [data-nav-group].nav-reordering [data-nav-key] { cursor: grabbing; }
+      [data-nav-key].nav-dragging { opacity: 0.5; pointer-events: none; }
+    </style>
+    <script src="/js/nav.js" defer></script>
+  </head>
+  <body>
+    <h1 class="brand"><span aria-hidden="true">📚</span><span data-brand="title">翰墨</span></h1>
+
+    <div class="shell">
+<div class="nav-links" data-nav-group="pages">
+    <a href="/" data-nav-key="home">主页</a>
+    <a href="/files" data-nav-key="files">文件管理</a>
+    <a href="/device" data-nav-key="device">设备</a>
+    <a href="/fonts" class="active" aria-current="page" data-nav-key="fonts">字体</a>
+    <a href="/settings" data-nav-key="settings">设置</a>
+</div>
+<div class="content">
+
+    <div class="card">
+      <h2>已安装字体</h2>
+      <div id="families"><p class="empty">正在读取…</p></div>
+    </div>
+
+    <div class="card">
+      <h2>上传字体</h2>
+      <form class="upload-form" id="uploadForm">
+        <input type="file" id="fontFiles" webkitdirectory directory multiple required />
+        <button type="submit" class="btn btn-primary">上传</button>
+      </form>
+      <p id="pickedInfo" class="family-meta" style="margin: 8px 0 0;"></p>
+      <div id="status"></div>
+    </div>
+
+  </div>
+</div>
+<script>
+    function formatSize(bytes) {
+      if (bytes >= 1048576) return (bytes / 1048576).toFixed(1) + ' MB';
+      if (bytes >= 1024) return (bytes / 1024).toFixed(0) + ' KB';
+      return bytes + ' B';
+    }
+
+    async function loadFonts() {
+      const el = document.getElementById('families');
+      try {
+        const res = await fetch('/api/fonts');
+        const data = await res.json();
+        // Build rows with DOM APIs and textContent so on-device family names
+        // (which can contain arbitrary characters) cannot break markup or
+        // execute script via innerHTML / inline onclick interpolation.
+        el.replaceChildren();
+        if (!data.families || data.families.length === 0) {
+          const p = document.createElement('p');
+          p.className = 'empty';
+          p.textContent = '尚未安装自定义字体';
+          el.appendChild(p);
+          return;
+        }
+        for (const f of data.families) {
+          const row = document.createElement('div');
+          row.className = 'family';
+
+          const info = document.createElement('div');
+          info.className = 'family-info';
+          const h3 = document.createElement('h3');
+          h3.textContent = f.name;
+          info.appendChild(h3);
+          const meta = document.createElement('span');
+          meta.className = 'family-meta';
+          const sizes = (f.sizes || []).join(', ');
+          const filesSizes = (f.files || []).map(fi => formatSize(fi.size)).join(' + ');
+          meta.textContent = sizes + 'pt · ' + filesSizes;
+          info.appendChild(meta);
+
+          const btn = document.createElement('button');
+          btn.className = 'btn btn-danger';
+          btn.textContent = '删除';
+          // Capture name in the closure rather than interpolating into onclick.
+          const familyName = f.name;
+          btn.addEventListener('click', () => deleteFamily(familyName));
+
+          row.appendChild(info);
+          row.appendChild(btn);
+          el.appendChild(row);
+        }
+      } catch (e) {
+        el.replaceChildren();
+        const p = document.createElement('p');
+        p.className = 'empty';
+        p.textContent = '无法读取字体列表';
+        el.appendChild(p);
+      }
+    }
+
+    async function deleteFamily(name) {
+      if (!confirm('确定删除字体家族“' + name + '”吗？')) return;
+      const status = document.getElementById('status');
+      status.className = '';
+      status.style.display = 'block';
+      status.textContent = '正在删除“' + name + '”…';
+      try {
+        const res = await fetch('/api/fonts/delete', {
+          method: 'POST',
+          headers: {'Content-Type': 'application/json'},
+          body: JSON.stringify({family: name})
+        });
+        if (res.ok) {
+          status.className = 'status-ok';
+          status.textContent = '已删除“' + name + '”。';
+        } else {
+          status.className = 'status-err';
+          status.textContent = '删除“' + name + '”失败。';
+        }
+      } catch (err) {
+        status.className = 'status-err';
+        status.textContent = '删除出错：' + err.message;
+      }
+      await loadFonts();
+    }
+
+    // Derive family name from a .cpfont filename: take everything before the
+    // last '-' or '_' (that separator precedes the size suffix, e.g. Bookerly_12.cpfont).
+    function familyFromFilename(name) {
+      const stem = name.replace(/\.cpfont$/i, '');
+      const cut = Math.max(stem.lastIndexOf('-'), stem.lastIndexOf('_'));
+      return cut > 0 ? stem.slice(0, cut) : stem;
+    }
+
+    // Sanitize to match firmware's [A-Za-z0-9_-]+ pattern.
+    function sanitizeFamily(raw) {
+      return raw.replace(/[^A-Za-z0-9_-]/g, '_');
+    }
+
+    function cpfontFilesOnly(fileList) {
+      return Array.from(fileList).filter(f => /\.cpfont$/i.test(f.name));
+    }
+
+    document.getElementById('fontFiles').addEventListener('change', function() {
+      const info = document.getElementById('pickedInfo');
+      const files = cpfontFilesOnly(this.files);
+      if (files.length === 0) {
+        info.textContent = '所选文件夹中没有 .cpfont 文件。';
+        return;
+      }
+      const family = sanitizeFamily(familyFromFilename(files[0].name));
+      info.textContent = files.length + ' 个文件 → 字体家族“' + family + '”';
+    });
+
+    document.getElementById('uploadForm').addEventListener('submit', async function(e) {
+      e.preventDefault();
+      const status = document.getElementById('status');
+      const files = cpfontFilesOnly(document.getElementById('fontFiles').files);
+      if (files.length === 0) {
+        status.className = 'status-err';
+        status.style.display = 'block';
+        status.textContent = '尚未选择 .cpfont 文件。';
+        return;
+      }
+
+      // A directory picker may include files from multiple family subfolders.
+      // Reject that up front — otherwise files[0]'s family is silently reused
+      // for every upload, corrupting the install layout.
+      const families = [...new Set(files.map(f => sanitizeFamily(familyFromFilename(f.name))))];
+      if (families.length !== 1) {
+        status.className = 'status-err';
+        status.style.display = 'block';
+        status.textContent = '请只选择同一个字体家族的文件。';
+        return;
+      }
+      const family = families[0];
+
+      status.className = '';
+      status.style.display = 'block';
+
+      let uploaded = 0;
+      for (const file of files) {
+        status.textContent = '正在上传 ' + (uploaded + 1) + '/' + files.length + '：' + file.name;
+        const formData = new FormData();
+        formData.append('family', family);
+        formData.append('file', file, file.name);
+        try {
+          const res = await fetch('/api/fonts/upload', { method: 'POST', body: formData });
+          const data = await res.json();
+          if (!data.ok) {
+            status.className = 'status-err';
+            status.textContent = file.name + ' 上传失败：' + (data.error || '未知错误');
+            await loadFonts();
+            return;
+          }
+        } catch (err) {
+          status.className = 'status-err';
+          status.textContent = file.name + ' 上传出错：' + err.message;
+          await loadFonts();
+          return;
+        }
+        uploaded++;
+      }
+
+      status.className = 'status-ok';
+      status.textContent = '已将 ' + uploaded + ' 个文件上传到字体家族“' + family + '”。';
+      await loadFonts();
+    });
+
+    loadFonts();
+  </script>
+  </body>
+</html>

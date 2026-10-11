@@ -1,0 +1,506 @@
+[
+  {
+    "id": "directions-07",
+    "category": 6,
+    "a": {
+      "japanese": "ゆうびんきょくはどちらですか。",
+      "kanaReading": "ゆうびんきょくはどちらですか。",
+      "romaji": "yūbinkyoku wa dochira desu ka?",
+      "meaning": "請問郵局在哪邊？"
+    },
+    "b": {
+      "japanese": "みちのむかいがわです。",
+      "kanaReading": "みちのむかいがわです。",
+      "romaji": "michi no mukaigawa desu.",
+      "meaning": "在馬路對面。"
+    },
+    "grammarNotes": [
+      "どちら是方向的客氣問法。",
+      "むかいがわ表示對面。"
+    ],
+    "vocabularyCardId": -1
+  },
+  {
+    "id": "directions-08",
+    "category": 6,
+    "a": {
+      "japanese": "ちかみちはありますか。",
+      "kanaReading": "ちかみちはありますか。",
+      "romaji": "chikamichi wa arimasu ka?",
+      "meaning": "有近路嗎？"
+    },
+    "b": {
+      "japanese": "このろじをとおってください。",
+      "kanaReading": "このろじをとおってください。",
+      "romaji": "kono roji o tōtte kudasai.",
+      "meaning": "請走這條巷子。"
+    },
+    "grammarNotes": [
+      "ちかみち表示近路。",
+      "を標示通過的路線。"
+    ],
+    "vocabularyCardId": -1
+  },
+  {
+    "id": "directions-09",
+    "category": 6,
+    "a": {
+      "japanese": "さかをのぼりますか。",
+      "kanaReading": "さかをのぼりますか。",
+      "romaji": "saka o noborimasu ka?",
+      "meaning": "要上坡嗎？"
+    },
+    "b": {
+      "japanese": "はい、うえにあります。",
+      "kanaReading": "はい、うえにあります。",
+      "romaji": "hai, ue ni arimasu.",
+      "meaning": "是的，目的地在上面。"
+    },
+    "grammarNotes": [
+      "さか表示坡道。",
+      "のぼります表示往上走。"
+    ],
+    "vocabularyCardId": -1
+  },
+  {
+    "id": "directions-10",
+    "category": 6,
+    "a": {
+      "japanese": "みちはどこでわたれますか。",
+      "kanaReading": "みちはどこでわたれますか。",
+      "romaji": "michi wa doko de wataremasu ka?",
+      "meaning": "在哪裡可以過馬路？"
+    },
+    "b": {
+      "japanese": "あのしんごうでわたれます。",
+      "kanaReading": "あのしんごうでわたれます。",
+      "romaji": "ano shingō de wataremasu.",
+      "meaning": "可以在那個紅綠燈處過馬路。"
+    },
+    "grammarNotes": [
+      "わたれます表示可以橫越。",
+      "で表示進行動作的地點。"
+    ],
+    "vocabularyCardId": -1
+  },
+  {
+    "id": "directions-11",
+    "category": 6,
+    "a": {
+      "japanese": "こうえんのいりぐちはどこですか。",
+      "kanaReading": "こうえんのいりぐちはどこですか。",
+      "romaji": "kōen no iriguchi wa doko desu ka?",
+      "meaning": "公園入口在哪裡？"
+    },
+    "b": {
+      "japanese": "あのきのよこです。",
+      "kanaReading": "あのきのよこです。",
+      "romaji": "ano ki no yoko desu.",
+      "meaning": "在那棵樹旁邊。"
+    },
+    "grammarNotes": [
+      "いりぐち表示入口。",
+      "よこ表示旁邊。"
+    ],
+    "vocabularyCardId": -1
+  },
+  {
+    "id": "directions-12",
+    "category": 6,
+    "a": {
+      "japanese": "としょかんまでとおいですか。",
+      "kanaReading": "としょかんまでとおいですか。",
+      "romaji": "toshokan made tōi desu ka?",
+      "meaning": "到圖書館很遠嗎？"
+    },
+    "b": {
+      "japanese": "いいえ、あるいてじゅっぷんです。",
+      "kanaReading": "いいえ、あるいてじゅっぷんです。",
+      "romaji": "iie, aruite juppun desu.",
+      "meaning": "不遠，走路十分鐘。"
+    },
+    "grammarNotes": [
+      "まで標示要到達的地點。",
+      "十分鐘讀作じゅっぷん。"
+    ],
+    "vocabularyCardId": -1
+  },
+  {
+    "id": "directions-13",
+    "category": 6,
+    "a": {
+      "japanese": "えきのどのでぐちですか。",
+      "kanaReading": "えきのどのでぐちですか。",
+      "romaji": "eki no dono deguchi desu ka?",
+      "meaning": "要走車站的哪個出口？"
+    },
+    "b": {
+      "japanese": "にしぐちからでてください。",
+      "kanaReading": "にしぐちからでてください。",
+      "romaji": "nishiguchi kara dete kudasai.",
+      "meaning": "請從西出口出去。"
+    },
+    "grammarNotes": [
+      "どの後接名詞詢問哪一個。",
+      "から表示離開的起點。"
+    ],
+    "vocabularyCardId": -1
+  },
+  {
+    "id": "directions-14",
+    "category": 6,
+    "a": {
+      "japanese": "はくぶつかんはこっちですか。",
+      "kanaReading": "はくぶつかんはこっちですか。",
+      "romaji": "hakubutsukan wa kotchi desu ka?",
+      "meaning": "博物館是往這邊嗎？"
+    },
+    "b": {
+      "japanese": "いいえ、はんたいほうこうです。",
+      "kanaReading": "いいえ、はんたいほうこうです。",
+      "romaji": "iie, hantai hōkō desu.",
+      "meaning": "不是，是相反方向。"
+    },
+    "grammarNotes": [
+      "こっち是こちら的口語說法。",
+      "はんたい表示相反。"
+    ],
+    "vocabularyCardId": -1
+  },
+  {
+    "id": "directions-15",
+    "category": 6,
+    "a": {
+      "japanese": "はしをわたりますか。",
+      "kanaReading": "はしをわたりますか。",
+      "romaji": "hashi o watarimasu ka?",
+      "meaning": "要過橋嗎？"
+    },
+    "b": {
+      "japanese": "はい、わたってすぐです。",
+      "kanaReading": "はい、わたってすぐです。",
+      "romaji": "hai, watatte sugu desu.",
+      "meaning": "對，過橋後馬上就到了。"
+    },
+    "grammarNotes": [
+      "はし在此指橋。",
+      "て形可連接先後的動作。"
+    ],
+    "vocabularyCardId": -1
+  },
+  {
+    "id": "directions-16",
+    "category": 6,
+    "a": {
+      "japanese": "どのかどでまがりますか。",
+      "kanaReading": "どのかどでまがりますか。",
+      "romaji": "dono kado de magarimasu ka?",
+      "meaning": "要在哪個轉角轉彎？"
+    },
+    "b": {
+      "japanese": "ふたつめをみぎにまがってください。",
+      "kanaReading": "ふたつめをみぎにまがってください。",
+      "romaji": "futatsume o migi ni magatte kudasai.",
+      "meaning": "請在第二個轉角右轉。"
+    },
+    "grammarNotes": [
+      "め放在數量後表示順序。",
+      "みぎに表示往右邊。"
+    ],
+    "vocabularyCardId": -1
+  },
+  {
+    "id": "directions-17",
+    "category": 6,
+    "a": {
+      "japanese": "バスていをとおりすぎましたか。",
+      "kanaReading": "バスていをとおりすぎましたか。",
+      "romaji": "basutei o tōrisugimashita ka?",
+      "meaning": "我走過公車站了嗎？"
+    },
+    "b": {
+      "japanese": "はい、すこしもどってください。",
+      "kanaReading": "はい、すこしもどってください。",
+      "romaji": "hai, sukoshi modotte kudasai.",
+      "meaning": "對，請往回走一點。"
+    },
+    "grammarNotes": [
+      "とおりすぎる表示走過頭。",
+      "もどって表示往回走。"
+    ],
+    "vocabularyCardId": -1
+  },
+  {
+    "id": "directions-18",
+    "category": 6,
+    "a": {
+      "japanese": "ちかどうをとおれますか。",
+      "kanaReading": "ちかどうをとおれますか。",
+      "romaji": "chikadō o tōremasu ka?",
+      "meaning": "可以走地下道嗎？"
+    },
+    "b": {
+      "japanese": "はい、むこうがわにでられます。",
+      "kanaReading": "はい、むこうがわにでられます。",
+      "romaji": "hai, mukōgawa ni deraremasu.",
+      "meaning": "可以，能走到另一邊。"
+    },
+    "grammarNotes": [
+      "とおれます表示能通過。",
+      "でられます表示能出去。"
+    ],
+    "vocabularyCardId": -1
+  },
+  {
+    "id": "directions-19",
+    "category": 6,
+    "a": {
+      "japanese": "このみちはとおれますか。",
+      "kanaReading": "このみちはとおれますか。",
+      "romaji": "kono michi wa tōremasu ka?",
+      "meaning": "這條路能通行嗎？"
+    },
+    "b": {
+      "japanese": "いいえ、あちらをまわってください。",
+      "kanaReading": "いいえ、あちらをまわってください。",
+      "romaji": "iie, achira o mawatte kudasai.",
+      "meaning": "不能，請從那邊繞過去。"
+    },
+    "grammarNotes": [
+      "あちら是あそこの客氣說法。",
+      "まわって表示繞行。"
+    ],
+    "vocabularyCardId": -1
+  },
+  {
+    "id": "directions-20",
+    "category": 6,
+    "a": {
+      "japanese": "エスカレーターでいけますか。",
+      "kanaReading": "エスカレーターでいけますか。",
+      "romaji": "esukarētā de ikemasu ka?",
+      "meaning": "可以搭電扶梯過去嗎？"
+    },
+    "b": {
+      "japanese": "はい、にかいへどうぞ。",
+      "kanaReading": "はい、にかいへどうぞ。",
+      "romaji": "hai, nikai e dōzo.",
+      "meaning": "可以，請到二樓。"
+    },
+    "grammarNotes": [
+      "で表示使用的交通方式。",
+      "へ表示方向，此時讀 e。"
+    ],
+    "vocabularyCardId": -1
+  },
+  {
+    "id": "directions-21",
+    "category": 6,
+    "a": {
+      "japanese": "みなみぐちですか、きたぐちですか。",
+      "kanaReading": "みなみぐちですか、きたぐちですか。",
+      "romaji": "minamiguchi desu ka, kitaguchi desu ka?",
+      "meaning": "是南出口還是北出口？"
+    },
+    "b": {
+      "japanese": "きたぐちです。",
+      "kanaReading": "きたぐちです。",
+      "romaji": "kitaguchi desu.",
+      "meaning": "是北出口。"
+    },
+    "grammarNotes": [
+      "か可並列兩個選項。",
+      "きた表示北方。"
+    ],
+    "vocabularyCardId": -1
+  },
+  {
+    "id": "directions-22",
+    "category": 6,
+    "a": {
+      "japanese": "まちあわせはどこですか。",
+      "kanaReading": "まちあわせはどこですか。",
+      "romaji": "machiawase wa doko desu ka?",
+      "meaning": "約在哪裡碰面？"
+    },
+    "b": {
+      "japanese": "ふんすいのまえです。",
+      "kanaReading": "ふんすいのまえです。",
+      "romaji": "funsui no mae desu.",
+      "meaning": "在噴水池前面。"
+    },
+    "grammarNotes": [
+      "まちあわせ表示約好碰面。",
+      "まえ表示前面。"
+    ],
+    "vocabularyCardId": -1
+  },
+  {
+    "id": "directions-23",
+    "category": 6,
+    "a": {
+      "japanese": "じゅうしょをかいていただけますか。",
+      "kanaReading": "じゅうしょをかいていただけますか。",
+      "romaji": "jūsho o kaite itadakemasu ka?",
+      "meaning": "可以幫我寫下地址嗎？"
+    },
+    "b": {
+      "japanese": "はい、このかみにかきます。",
+      "kanaReading": "はい、このかみにかきます。",
+      "romaji": "hai, kono kami ni kakimasu.",
+      "meaning": "可以，我寫在這張紙上。"
+    },
+    "grammarNotes": [
+      "じゅうしょ表示地址。",
+      "に表示寫下內容的地方。"
+    ],
+    "vocabularyCardId": -1
+  },
+  {
+    "id": "directions-24",
+    "category": 6,
+    "a": {
+      "japanese": "このとおりのなまえはなんですか。",
+      "kanaReading": "このとおりのなまえはなんですか。",
+      "romaji": "kono tōri no namae wa nan desu ka?",
+      "meaning": "這條街叫什麼名字？"
+    },
+    "b": {
+      "japanese": "さくらどおりです。",
+      "kanaReading": "さくらどおりです。",
+      "romaji": "sakura dōri desu.",
+      "meaning": "叫櫻花街。"
+    },
+    "grammarNotes": [
+      "とおり表示街道。",
+      "なんですか詢問是什麼。"
+    ],
+    "vocabularyCardId": -1
+  },
+  {
+    "id": "directions-25",
+    "category": 6,
+    "a": {
+      "japanese": "いま、どこにいますか。",
+      "kanaReading": "いま、どこにいますか。",
+      "romaji": "ima, doko ni imasu ka?",
+      "meaning": "我們現在在哪裡？"
+    },
+    "b": {
+      "japanese": "しやくしょのまえです。",
+      "kanaReading": "しやくしょのまえです。",
+      "romaji": "shiyakusho no mae desu.",
+      "meaning": "在市政府前面。"
+    },
+    "grammarNotes": [
+      "います用於人所在的位置。",
+      "どこに詢問所在的地點。"
+    ],
+    "vocabularyCardId": -1
+  },
+  {
+    "id": "directions-26",
+    "category": 6,
+    "a": {
+      "japanese": "すわれるところはありますか。",
+      "kanaReading": "すわれるところはありますか。",
+      "romaji": "suwareru tokoro wa arimasu ka?",
+      "meaning": "有可以坐下的地方嗎？"
+    },
+    "b": {
+      "japanese": "あのベンチでやすめます。",
+      "kanaReading": "あのベンチでやすめます。",
+      "romaji": "ano benchi de yasumemasu.",
+      "meaning": "可以在那張長椅休息。"
+    },
+    "grammarNotes": [
+      "すわれる表示可以坐。",
+      "ところ表示地方。"
+    ],
+    "vocabularyCardId": -1
+  },
+  {
+    "id": "directions-27",
+    "category": 6,
+    "a": {
+      "japanese": "かいだんのないいりぐちはどこですか。",
+      "kanaReading": "かいだんのないいりぐちはどこですか。",
+      "romaji": "kaidan no nai iriguchi wa doko desu ka?",
+      "meaning": "沒有階梯的入口在哪裡？"
+    },
+    "b": {
+      "japanese": "たてもののうらです。",
+      "kanaReading": "たてもののうらです。",
+      "romaji": "tatemono no ura desu.",
+      "meaning": "在建築物後面。"
+    },
+    "grammarNotes": [
+      "のない修飾沒有某物的地方。",
+      "たてもの表示建築物。"
+    ],
+    "vocabularyCardId": -1
+  },
+  {
+    "id": "directions-28",
+    "category": 6,
+    "a": {
+      "japanese": "このかんばんはなんとよみますか。",
+      "kanaReading": "このかんばんはなんとよみますか。",
+      "romaji": "kono kanban wa nan to yomimasu ka?",
+      "meaning": "這個招牌怎麼念？"
+    },
+    "b": {
+      "japanese": "さくらこうえんとよみます。",
+      "kanaReading": "さくらこうえんとよみます。",
+      "romaji": "sakura kōen to yomimasu.",
+      "meaning": "念作「櫻花公園」。"
+    },
+    "grammarNotes": [
+      "なんとよみますか詢問讀法。",
+      "と引出讀出的名稱。"
+    ],
+    "vocabularyCardId": -1
+  },
+  {
+    "id": "directions-29",
+    "category": 6,
+    "a": {
+      "japanese": "スーパーのまえをとおりますか。",
+      "kanaReading": "スーパーのまえをとおりますか。",
+      "romaji": "sūpā no mae o tōrimasu ka?",
+      "meaning": "會經過超市前面嗎？"
+    },
+    "b": {
+      "japanese": "はい、そのさきにあります。",
+      "kanaReading": "はい、そのさきにあります。",
+      "romaji": "hai, sono saki ni arimasu.",
+      "meaning": "會，目的地就在再往前的地方。"
+    },
+    "grammarNotes": [
+      "を表示經過的路線。",
+      "そのさき表示再往前。"
+    ],
+    "vocabularyCardId": -1
+  },
+  {
+    "id": "directions-30",
+    "category": 6,
+    "a": {
+      "japanese": "カフェまであんないしてください。",
+      "kanaReading": "カフェまであんないしてください。",
+      "romaji": "kafe made annai shite kudasai.",
+      "meaning": "請帶我到咖啡廳。"
+    },
+    "b": {
+      "japanese": "はい、いっしょにいきましょう。",
+      "kanaReading": "はい、いっしょにいきましょう。",
+      "romaji": "hai, issho ni ikimashō.",
+      "meaning": "好，我們一起過去吧。"
+    },
+    "grammarNotes": [
+      "あんないする表示帶路。",
+      "ましょう表示一起做吧。"
+    ],
+    "vocabularyCardId": -1
+  }
+]

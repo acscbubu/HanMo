@@ -1,0 +1,24 @@
+request-ambulance|きゅうきゅうしゃをよんでください。|kyūkyūsha o yonde kudasai.|請幫我叫救護車。|はい、すぐにれんらくします。|hai, sugu ni renraku shimasu.|好的，我馬上聯絡。|きゅうきゅうしゃ表示救護車。|てください用來請求協助。
+report-injury|けがをしました。|kega o shimashita.|我受傷了。|きゅうきゅうしゃをよびます。|kyūkyūsha o yobimasu.|我幫您叫救護車。|けがをする表示受傷。|ました表示已發生的事情。
+report-smoke|けむりがでています。|kemuri ga dete imasu.|有煙冒出來。|すぐにかかりのひとをよびます。|sugu ni kakari no hito o yobimasu.|我馬上叫工作人員來。|けむり表示煙。|ています表示正在發生。
+report-fire|かじです。ひとをよんでください。|kaji desu. hito o yonde kudasai.|失火了，請叫人來。|はい、しょうぼうにれんらくします。|hai, shōbō ni renraku shimasu.|好的，我聯絡消防單位。|かじ表示火災。|に標示聯絡的對象。
+earthquake-refuge|じしんです。どこへいきますか。|jishin desu. doko e ikimasu ka?|地震了，要去哪裡？|かかりのひとにききましょう。|kakari no hito ni kikimashō.|我們詢問工作人員吧。|じしん表示地震。|へ表示方向，此時讀 e。
+evacuation-assembly|ひなんするばしょはどこですか。|hinan suru basho wa doko desu ka?|避難的地方在哪裡？|こうえんにあつまってください。|kōen ni atsumatte kudasai.|請到公園集合。|ひなんする表示避難。|あつまってください表示請集合。
+find-staff|かかりのひとはいますか。|kakari no hito wa imasu ka?|有工作人員在嗎？|はい、あちらにいます。|hai, achira ni imasu.|有，在那邊。|います用來表示有人在。|かかりのひと表示工作人員。
+borrow-phone|でんわをかしていただけますか。|denwa o kashite itadakemasu ka?|可以借我電話嗎？|はい、こちらをどうぞ。|hai, kochira o dōzo.|可以，請用這支。|かして表示借給對方。|ていただけますか是客氣請求。
+stolen-bag|かばんをぬすまれました。|kaban o nusumaremashita.|我的包包被偷了。|けいさつにれんらくしましょう。|keisatsu ni renraku shimashō.|我們聯絡警察吧。|ぬすまれました表示被偷。|ましょう表示一起採取行動。
+missing-passport|パスポートがみつかりません。|pasupōto ga mitsukarimasen.|我找不到護照。|りょうじかんにれんらくしましょう。|ryōjikan ni renraku shimashō.|我們聯絡領事館吧。|みつかりません表示找不到。|りょうじかん表示領事館。
+missing-child|こどもがみつかりません。|kodomo ga mitsukarimasen.|我找不到孩子。|かかりのひとにれんらくします。|kakari no hito ni renraku shimasu.|我聯絡工作人員。|が標示找不到的人。|れんらくします表示聯絡。
+interpreter-request|つうやくをおねがいします。|tsūyaku o onegai shimasu.|麻煩安排口譯。|どのことばですか。|dono kotoba desu ka?|請問是哪種語言？|つうやく表示口譯。|どのことば詢問哪種語言。
+location-for-help|ここのじゅうしょをおしえてください。|koko no jūsho o oshiete kudasai.|請告訴我這裡的地址。|このかみにかいてあります。|kono kami ni kaite arimasu.|寫在這張紙上。|ここの表示這個地方的。|おしえてください表示請告知。
+local-emergency-number|きんきゅうのばんごうはなんですか。|kinkyū no bangō wa nan desu ka?|緊急聯絡電話是幾號？|かかりのひとにかくにんします。|kakari no hito ni kakunin shimasu.|我向工作人員確認。|きんきゅう表示緊急。|ばんごう表示號碼。
+contact-family|かぞくにれんらくしたいです。|kazoku ni renraku shitai desu.|我想聯絡家人。|このでんわをつかってください。|kono denwa o tsukatte kudasai.|請用這支電話。|たいです表示想做某事。|に標示聯絡的對象。
+report-gas-smell|ガスのにおいがします。|gasu no nioi ga shimasu.|我聞到瓦斯味。|すぐにかかりのひとをよびます。|sugu ni kakari no hito o yobimasu.|我馬上叫工作人員來。|においがする表示聞到氣味。|ガス在此指瓦斯。
+trapped-elevator|エレベーターにとじこめられました。|erebētā ni tojikomeraremashita.|我被困在電梯裡了。|かんりのひとにれんらくします。|kanri no hito ni renraku shimasu.|我聯絡管理人員。|に表示被困住的地方。|かんりのひと表示管理人員。
+report-accident|ここでじこがありました。|koko de jiko ga arimashita.|這裡發生事故了。|けいさつにれんらくします。|keisatsu ni renraku shimasu.|我聯絡警察。|で標示發生事情的地點。|ありました表示曾發生。
+need-mobility-help|ひとりであるけません。|hitori de arukemasen.|我沒辦法自己走。|たすけをよびます。|tasuke o yobimasu.|我叫人來幫忙。|ひとりで表示獨自。|あるけません表示無法行走。
+request-company|こわいので、いっしょにいてください。|kowai node, issho ni ite kudasai.|我很害怕，請陪著我。|はい、ここにいます。|hai, koko ni imasu.|好，我會在這裡。|ので表示原因。|いてください表示請留在這裡。
+stolen-phone|けいたいをぬすまれました。|keitai o nusumaremashita.|我的手機被偷了。|けいさつにそうだんしましょう。|keisatsu ni sōdan shimashō.|我們向警察求助吧。|けいたい在此指手機。|そうだんする表示商量或求助。
+shelter-pet-policy|ひなんじょにペットをつれていけますか。|hinanjo ni petto o tsurete ikemasu ka?|可以帶寵物去避難所嗎？|かかりのひとにききましょう。|kakari no hito ni kikimashō.|我們詢問工作人員吧。|ひなんじょ表示避難所。|つれていけます表示可以帶去。
+find-water-supply|みずをもらえるばしょはどこですか。|mizu o moraeru basho wa doko desu ka?|哪裡可以領水？|ひなんじょでかくにんしましょう。|hinanjo de kakunin shimashō.|我們到避難所確認吧。|もらえる表示可以領取。|ばしょ表示地點。
+flooded-route|みちがみずにつかっています。|michi ga mizu ni tsukatte imasu.|道路淹水了。|べつのみちをかくにんします。|betsu no michi o kakunin shimasu.|我確認其他路線。|つかっています表示浸在水中。|べつの表示其他的。

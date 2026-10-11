@@ -1,0 +1,50 @@
+{
+  "sourceFonts": [
+    {
+      "path": "lib/EpdFont/builtinFonts/source/HanMoKana/MarukoGothicCJKjp-Bold.ttf",
+      "sha256": "1659498746f95020b85331ee614d0aa79947d6829d755d1d84bbc9df1d1a06ca"
+    },
+    {
+      "path": "lib/EpdFont/builtinFonts/source/HanMoKana/MarukoGothicCJKjp-Medium.ttf",
+      "sha256": "387d649001a83bb0c45021d19e726ff9dd741013e0f182a3bd0e273243b2074f"
+    },
+    {
+      "path": "lib/EpdFont/builtinFonts/source/NotoSans/NotoSans-Regular.ttf",
+      "sha256": "fe8c022f48d8dd29f17b744d16f9346f4357e16f7d4f7be58b000ae7c291b614"
+    },
+    {
+      "path": "lib/EpdFont/builtinFonts/source/NotoSansHebrew/NotoSansHebrew-UIMedium.ttf",
+      "sha256": "17098cdbf05d433454f30b408caacca6889997e1afd74862f53cbcca1bcdf731"
+    },
+    {
+      "path": "lib/EpdFont/builtinFonts/source/NotoSansArabic/NotoSansArabic-UIMedium.ttf",
+      "sha256": "7714df31cda84d5e54eeed693631367e6071a5b5ee18f0bfb4ada88e6f3661e2"
+    },
+    {
+      "path": "lib/EpdFont/builtinFonts/source/Ubuntu/Ubuntu-Vietnamese-Medium.ttf",
+      "sha256": "f8d1df6a88a622bf48e1372f1f04dac0675806745852a99e32797a3f609ca4f8"
+    }
+  ],
+  "glyphsPerSize": 5642,
+  "uiTranslationCodepoints": 1339,
+  "translationFallback": [],
+  "missing": [],
+  "sizes": [
+    {
+      "size": 8,
+      "path": "lib/EpdFont/builtinFonts/hanmo_ui_maruko_8.h",
+      "sha256": "71667e9156025b13e9b3aed1307a2b2243de8373b9f0ae9d7d100219a6f99ade"
+    },
+    {
+      "size": 10,
+      "path": "lib/EpdFont/builtinFonts/hanmo_ui_maruko_10.h",
+      "sha256": "58ca6f53d265b06650cc6210682e55ee5cde1e85c81740353d003468d857af65"
+    },
+    {
+      "size": 12,
+      "path": "lib/EpdFont/builtinFonts/hanmo_ui_maruko_12.h",
+      "sha256": "72c8156a88c8bfb805704e0795f3ae181c5d2d7fb85460ca927ac8eb32c9699a"
+    }
+  ],
+  "format": "uncompressed 1-bit native FreeType monochrome; no device TTF parsing"
+}

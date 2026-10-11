@@ -1,0 +1,81 @@
+{
+  "additional": [
+    {
+      "name": "esp32-wifi-lib",
+      "ref": "66a31b2e1161e20fb3cede2255b7e84586f47f63",
+      "url": "https://codeload.github.com/espressif/esp32-wifi-lib/tar.gz/66a31b2e1161e20fb3cede2255b7e84586f47f63",
+      "path": "components/esp_wifi/lib",
+      "sha256": "ca35692a582022e4cbb8ef42b5c6321f842d6866761a97529992b145cc00e334",
+      "bytes": 9891653
+    },
+    {
+      "name": "esp-phy-lib",
+      "ref": "3d57415af6e4c92eff2c4c3463e20a51d7340aba",
+      "url": "https://codeload.github.com/espressif/esp-phy-lib/tar.gz/3d57415af6e4c92eff2c4c3463e20a51d7340aba",
+      "path": "components/esp_phy/lib",
+      "sha256": "ef292b609b566d6a3858e6562f05c06b0c798887c3d920b2fd2496a4da243b6f",
+      "bytes": 3112221
+    },
+    {
+      "name": "esp32c3-bt-lib",
+      "ref": "16cda80aab0a008093592b7e304c77dcb3ac9ea4",
+      "url": "https://codeload.github.com/espressif/esp32c3-bt-lib/tar.gz/16cda80aab0a008093592b7e304c77dcb3ac9ea4",
+      "path": "components/bt/controller/lib_esp32c3_family",
+      "sha256": "972dd33735bbb554106be6221657ceb72a6ae00da6a8551bf1fdc44c5fcb375d",
+      "bytes": 1933976
+    },
+    {
+      "name": "esp-coex-lib",
+      "ref": "ee5cd79583c02f23e43e62931ffb55f5a4992d0f",
+      "url": "https://codeload.github.com/espressif/esp-coex-lib/tar.gz/ee5cd79583c02f23e43e62931ffb55f5a4992d0f",
+      "path": "components/esp_coex/lib",
+      "sha256": "5d6853117d454306850461241b4f08007d9c628d3ecbe44ce59ca9c905492bb9",
+      "bytes": 219635
+    },
+    {
+      "name": "rmaker_common",
+      "version": "1.4.6",
+      "commit": "6398f401f2d4333cf0ed712d51f8fce3830cadf6",
+      "url": "https://components.espressif.com/components/espressif/rmaker_common/versions/1.4.6",
+      "sha256": "c615791e6ef0e0ed844a686dca65ec5f9609743f295bd50566e940bd934458be",
+      "bytes": 46829
+    }
+  ],
+  "buildSubmodules": [
+    {
+      "path": "components/spiffs/spiffs",
+      "repo": "pellepl/spiffs",
+      "ref": "0dbb3f71c5f6fae3747a9d935372773762baf852",
+      "url": "https://codeload.github.com/pellepl/spiffs/tar.gz/0dbb3f71c5f6fae3747a9d935372773762baf852",
+      "sha256": "ad2f6bd71024d8aa917b860fc0e1e242c10984219ed3460be09a375803a72517"
+    },
+    {
+      "path": "components/mqtt/esp-mqtt",
+      "repo": "espressif/esp-mqtt",
+      "ref": "6af4446a48ea7fa54948edc4e62277ed70abb6e1",
+      "url": "https://codeload.github.com/espressif/esp-mqtt/tar.gz/6af4446a48ea7fa54948edc4e62277ed70abb6e1",
+      "sha256": "29166d1e9c00267e73f3bb525ce921ad4ab80eb349ba1203e3a4d1a402b5e7eb"
+    },
+    {
+      "path": "components/unity/unity",
+      "repo": "ThrowTheSwitch/Unity",
+      "ref": "bf560290f6020737eafaa8b5cbd2177c3956c03f",
+      "url": "https://codeload.github.com/ThrowTheSwitch/Unity/tar.gz/bf560290f6020737eafaa8b5cbd2177c3956c03f",
+      "sha256": "441fae1f1e49f545a871508bf096f50c69e602a9df54ef8a8a4972f52389b77e"
+    },
+    {
+      "path": "components/bt/host/nimble/nimble",
+      "repo": "espressif/esp-nimble",
+      "ref": "039d2d62ed97fed632827fd51294f04068b2ca60",
+      "url": "https://codeload.github.com/espressif/esp-nimble/tar.gz/039d2d62ed97fed632827fd51294f04068b2ca60",
+      "sha256": "158fa33d7cf4ccd2174cfd47124943f7f2178689b52eb4080a10bedab5aa5df9"
+    },
+    {
+      "path": "components/openthread/openthread",
+      "repo": "espressif/openthread",
+      "ref": "a12ff0d0f54fd41954b45047fcdd08f302731c5f",
+      "url": "https://codeload.github.com/espressif/openthread/tar.gz/a12ff0d0f54fd41954b45047fcdd08f302731c5f",
+      "sha256": "b6da0c6628fcad6127339635c7dcf3c037604b2101a95742dd4ca658c0389dea"
+    }
+  ]
+}

@@ -1,0 +1,1784 @@
+[
+  {
+    "path": "build-platform/examples/espidf-coap-server/src/certs/coap_server.key",
+    "sha256": "85f29864eee4d1144a8f369d5c1e2b3844fbcd9c60341184dbdbaac08bda96a8",
+    "upstream": "https://raw.githubusercontent.com/pioarduino/platform-espressif32/55.03.37/examples/espidf-coap-server/src/certs/coap_server.key",
+    "byteIdenticalToUpstream": true
+  },
+  {
+    "path": "sdk-source/esp-idf/components/esp-tls/test_apps/main/test_esp_tls.c",
+    "sha256": "0eabf0e2b58f122662f95e6bb3fe9958d70fe1561b4a3829883870a31ac19534",
+    "upstream": "https://codeload.github.com/espressif/esp-idf/tar.gz/87912cd291",
+    "byteIdenticalToUpstream": true
+  },
+  {
+    "path": "sdk-source/esp-idf/components/esp_tee/test_apps/tee_cli_app/test_certs/server_key.pem",
+    "sha256": "83c35469eabb48189cff37eff508ddea0f901af9d449f1af4ab400da3f523a84",
+    "upstream": "https://codeload.github.com/espressif/esp-idf/tar.gz/87912cd291",
+    "byteIdenticalToUpstream": true
+  },
+  {
+    "path": "sdk-source/esp-idf/components/esp_tee/test_apps/tee_cli_app/test_keys/secure_boot_signing_key.pem",
+    "sha256": "913e816e0e169ad8e8c9dc408b865f2302a7efad8ca3576f6268e5a815d764e8",
+    "upstream": "https://codeload.github.com/espressif/esp-idf/tar.gz/87912cd291",
+    "byteIdenticalToUpstream": true
+  },
+  {
+    "path": "sdk-source/esp-idf/components/hal/test_apps/crypto/main/ecdsa/ecdsa192_priv_key.pem",
+    "sha256": "e65e6f3cc8ec2542a07f8d5bf10820f78a0e385634a6e0d2b1920806dc83f58d",
+    "upstream": "https://codeload.github.com/espressif/esp-idf/tar.gz/87912cd291",
+    "byteIdenticalToUpstream": true
+  },
+  {
+    "path": "sdk-source/esp-idf/components/hal/test_apps/crypto/main/ecdsa/ecdsa256_priv_key.pem",
+    "sha256": "d12efc83460580cfcbdf7e7aecf801193d1b807f98a87ab059844b947449f300",
+    "upstream": "https://codeload.github.com/espressif/esp-idf/tar.gz/87912cd291",
+    "byteIdenticalToUpstream": true
+  },
+  {
+    "path": "sdk-source/esp-idf/components/hal/test_apps/crypto/main/ecdsa/ecdsa384_priv_key.pem",
+    "sha256": "5c398b8e03d119959307a2b2b8f1319198bd38a508772847dafe881c4e7f5aa7",
+    "upstream": "https://codeload.github.com/espressif/esp-idf/tar.gz/87912cd291",
+    "byteIdenticalToUpstream": true
+  },
+  {
+    "path": "sdk-source/esp-idf/components/hal/test_apps/crypto/main/key_manager/ecdsa_256_key.pem",
+    "sha256": "d5aab3bccbaaf4c6cba74d148ba1ef5f7866b346f9ebb5b412fd37f1d9209004",
+    "upstream": "https://codeload.github.com/espressif/esp-idf/tar.gz/87912cd291",
+    "byteIdenticalToUpstream": true
+  },
+  {
+    "path": "sdk-source/esp-idf/components/mbedtls/mbedtls/framework/data_files/cli-rsa.key",
+    "sha256": "660d13287799f69599adf0aff1db46ee42b4c492b0f153f620f89a639dcb8f7d",
+    "upstream": "https://codeload.github.com/espressif/mbedtls/tar.gz/ffb280bb63c78bfec1e1ab55040671768c85c923",
+    "byteIdenticalToUpstream": true
+  },
+  {
+    "path": "sdk-source/esp-idf/components/mbedtls/mbedtls/framework/data_files/cli2.key",
+    "sha256": "f3c47ba835345e9072b0f79628f2d1f539f79749b85afb92bfade5761fbd6757",
+    "upstream": "https://codeload.github.com/espressif/mbedtls/tar.gz/ffb280bb63c78bfec1e1ab55040671768c85c923",
+    "byteIdenticalToUpstream": true
+  },
+  {
+    "path": "sdk-source/esp-idf/components/mbedtls/mbedtls/framework/data_files/dir-maxpath/00.key",
+    "sha256": "cd88d1232e351058359b9aafa390509951c1a0c6b00b7da285009d910e83ce1d",
+    "upstream": "https://codeload.github.com/espressif/mbedtls/tar.gz/ffb280bb63c78bfec1e1ab55040671768c85c923",
+    "byteIdenticalToUpstream": true
+  },
+  {
+    "path": "sdk-source/esp-idf/components/mbedtls/mbedtls/framework/data_files/dir-maxpath/01.key",
+    "sha256": "c20a5c6eb77c8cf63543107c06dcdae2b49f01622e2d10ce6dc09e59397dcbeb",
+    "upstream": "https://codeload.github.com/espressif/mbedtls/tar.gz/ffb280bb63c78bfec1e1ab55040671768c85c923",
+    "byteIdenticalToUpstream": true
+  },
+  {
+    "path": "sdk-source/esp-idf/components/mbedtls/mbedtls/framework/data_files/dir-maxpath/02.key",
+    "sha256": "14e626f8c189a5ff349d8efe35d7c357b75c59c1c267526fcac878743aa53d78",
+    "upstream": "https://codeload.github.com/espressif/mbedtls/tar.gz/ffb280bb63c78bfec1e1ab55040671768c85c923",
+    "byteIdenticalToUpstream": true
+  },
+  {
+    "path": "sdk-source/esp-idf/components/mbedtls/mbedtls/framework/data_files/dir-maxpath/03.key",
+    "sha256": "a04dcc41508c378372d26098665de22c83a63a76ccd1c2533eebe1bf1b9555a1",
+    "upstream": "https://codeload.github.com/espressif/mbedtls/tar.gz/ffb280bb63c78bfec1e1ab55040671768c85c923",
+    "byteIdenticalToUpstream": true
+  },
+  {
+    "path": "sdk-source/esp-idf/components/mbedtls/mbedtls/framework/data_files/dir-maxpath/04.key",
+    "sha256": "28befb1d41f11edfff3c447914acf25d2f620009c184ecd75c6a1a120b24f76a",
+    "upstream": "https://codeload.github.com/espressif/mbedtls/tar.gz/ffb280bb63c78bfec1e1ab55040671768c85c923",
+    "byteIdenticalToUpstream": true
+  },
+  {
+    "path": "sdk-source/esp-idf/components/mbedtls/mbedtls/framework/data_files/dir-maxpath/05.key",
+    "sha256": "39e58ffd6ccad062dcbd4b4e3cb1ac31aa27eb378fea6e302de2785c0becd276",
+    "upstream": "https://codeload.github.com/espressif/mbedtls/tar.gz/ffb280bb63c78bfec1e1ab55040671768c85c923",
+    "byteIdenticalToUpstream": true
+  },
+  {
+    "path": "sdk-source/esp-idf/components/mbedtls/mbedtls/framework/data_files/dir-maxpath/06.key",
+    "sha256": "4c48922433ed3ecd9df09a530a094eefcf61aed3a979c50c138a260a9fcba808",
+    "upstream": "https://codeload.github.com/espressif/mbedtls/tar.gz/ffb280bb63c78bfec1e1ab55040671768c85c923",
+    "byteIdenticalToUpstream": true
+  },
+  {
+    "path": "sdk-source/esp-idf/components/mbedtls/mbedtls/framework/data_files/dir-maxpath/07.key",
+    "sha256": "54e16d5b34cef77bbc747ea32cdea3a512ddfd0c97e0a2856f2e9fbb8224d3b2",
+    "upstream": "https://codeload.github.com/espressif/mbedtls/tar.gz/ffb280bb63c78bfec1e1ab55040671768c85c923",
+    "byteIdenticalToUpstream": true
+  },
+  {
+    "path": "sdk-source/esp-idf/components/mbedtls/mbedtls/framework/data_files/dir-maxpath/08.key",
+    "sha256": "eb9dc2fb50847a846ad4f36e87c8aab98964e3c4cd3cb5a270158a2352022ee8",
+    "upstream": "https://codeload.github.com/espressif/mbedtls/tar.gz/ffb280bb63c78bfec1e1ab55040671768c85c923",
+    "byteIdenticalToUpstream": true
+  },
+  {
+    "path": "sdk-source/esp-idf/components/mbedtls/mbedtls/framework/data_files/dir-maxpath/09.key",
+    "sha256": "ea99373ba8ef0158a51790aeac4a17fc02929be89a2a41b509c1be7fd6cc7310",
+    "upstream": "https://codeload.github.com/espressif/mbedtls/tar.gz/ffb280bb63c78bfec1e1ab55040671768c85c923",
+    "byteIdenticalToUpstream": true
+  },
+  {
+    "path": "sdk-source/esp-idf/components/mbedtls/mbedtls/framework/data_files/dir-maxpath/10.key",
+    "sha256": "74414a3cebefd13ab9d5d6a3b0c2895c39f04deedece9e9b564041d448b49a71",
+    "upstream": "https://codeload.github.com/espressif/mbedtls/tar.gz/ffb280bb63c78bfec1e1ab55040671768c85c923",
+    "byteIdenticalToUpstream": true
+  },
+  {
+    "path": "sdk-source/esp-idf/components/mbedtls/mbedtls/framework/data_files/dir-maxpath/11.key",
+    "sha256": "a969b40ed5608775d422fd77636b57c8ae7f7445aeaee4bc36171d37287d6232",
+    "upstream": "https://codeload.github.com/espressif/mbedtls/tar.gz/ffb280bb63c78bfec1e1ab55040671768c85c923",
+    "byteIdenticalToUpstream": true
+  },
+  {
+    "path": "sdk-source/esp-idf/components/mbedtls/mbedtls/framework/data_files/dir-maxpath/12.key",
+    "sha256": "86213c8881730842dd39b5beb18eed0bc359576faebfd9a3284e82c9b917985b",
+    "upstream": "https://codeload.github.com/espressif/mbedtls/tar.gz/ffb280bb63c78bfec1e1ab55040671768c85c923",
+    "byteIdenticalToUpstream": true
+  },
+  {
+    "path": "sdk-source/esp-idf/components/mbedtls/mbedtls/framework/data_files/dir-maxpath/13.key",
+    "sha256": "3adcac5db34bac9243e241cd3d411c408c40c072a0640736e641b2f5770fa22b",
+    "upstream": "https://codeload.github.com/espressif/mbedtls/tar.gz/ffb280bb63c78bfec1e1ab55040671768c85c923",
+    "byteIdenticalToUpstream": true
+  },
+  {
+    "path": "sdk-source/esp-idf/components/mbedtls/mbedtls/framework/data_files/dir-maxpath/14.key",
+    "sha256": "e2be9d236ea1d90882d8bbb1863544a3e765ac0916870ded784d89a660d35f42",
+    "upstream": "https://codeload.github.com/espressif/mbedtls/tar.gz/ffb280bb63c78bfec1e1ab55040671768c85c923",
+    "byteIdenticalToUpstream": true
+  },
+  {
+    "path": "sdk-source/esp-idf/components/mbedtls/mbedtls/framework/data_files/dir-maxpath/15.key",
+    "sha256": "25f574ba3a37d6edb1b05352976cea0f8e5d42dd222fe86d30fc640daed78c86",
+    "upstream": "https://codeload.github.com/espressif/mbedtls/tar.gz/ffb280bb63c78bfec1e1ab55040671768c85c923",
+    "byteIdenticalToUpstream": true
+  },
+  {
+    "path": "sdk-source/esp-idf/components/mbedtls/mbedtls/framework/data_files/dir-maxpath/16.key",
+    "sha256": "f78786f4534f25e2effd19746c481f8c795347eb700bf0584a046354054430e8",
+    "upstream": "https://codeload.github.com/espressif/mbedtls/tar.gz/ffb280bb63c78bfec1e1ab55040671768c85c923",
+    "byteIdenticalToUpstream": true
+  },
+  {
+    "path": "sdk-source/esp-idf/components/mbedtls/mbedtls/framework/data_files/dir-maxpath/17.key",
+    "sha256": "cc1e209a9cda5fdff62cf61628cdfff437a7301e483ff0bb339c544d6a420b26",
+    "upstream": "https://codeload.github.com/espressif/mbedtls/tar.gz/ffb280bb63c78bfec1e1ab55040671768c85c923",
+    "byteIdenticalToUpstream": true
+  },
+  {
+    "path": "sdk-source/esp-idf/components/mbedtls/mbedtls/framework/data_files/dir-maxpath/18.key",
+    "sha256": "fc91156511ae0f490825d3c170a2a708f2b0c8107124bc0fa703dd19c12695a6",
+    "upstream": "https://codeload.github.com/espressif/mbedtls/tar.gz/ffb280bb63c78bfec1e1ab55040671768c85c923",
+    "byteIdenticalToUpstream": true
+  },
+  {
+    "path": "sdk-source/esp-idf/components/mbedtls/mbedtls/framework/data_files/dir-maxpath/19.key",
+    "sha256": "5ceabbe6c1af30a28ec8d0d58a4911ab557304e5fb84a90e7a1cc48a33f576f3",
+    "upstream": "https://codeload.github.com/espressif/mbedtls/tar.gz/ffb280bb63c78bfec1e1ab55040671768c85c923",
+    "byteIdenticalToUpstream": true
+  },
+  {
+    "path": "sdk-source/esp-idf/components/mbedtls/mbedtls/framework/data_files/dir-maxpath/20.key",
+    "sha256": "a7fc55a3a918fd5b46d9ec2c166a226c361e1e6bc5ac39a33e97c1d664a17715",
+    "upstream": "https://codeload.github.com/espressif/mbedtls/tar.gz/ffb280bb63c78bfec1e1ab55040671768c85c923",
+    "byteIdenticalToUpstream": true
+  },
+  {
+    "path": "sdk-source/esp-idf/components/mbedtls/mbedtls/framework/data_files/ec_224_prv.comp.pem",
+    "sha256": "ffc1772224dbbe9bb5d20fadadfb356e5f1121d1e7c6ec40dcf9376d00fed422",
+    "upstream": "https://codeload.github.com/espressif/mbedtls/tar.gz/ffb280bb63c78bfec1e1ab55040671768c85c923",
+    "byteIdenticalToUpstream": true
+  },
+  {
+    "path": "sdk-source/esp-idf/components/mbedtls/mbedtls/framework/data_files/ec_224_prv.pem",
+    "sha256": "2c5f6e9a1466fd74a1ee2eb5f185abe903bbd67633a3bb3425ff951a5a17e181",
+    "upstream": "https://codeload.github.com/espressif/mbedtls/tar.gz/ffb280bb63c78bfec1e1ab55040671768c85c923",
+    "byteIdenticalToUpstream": true
+  },
+  {
+    "path": "sdk-source/esp-idf/components/mbedtls/mbedtls/framework/data_files/ec_256_long_prv.pem",
+    "sha256": "edbb78411c53e20a480854bd1c55e26668310d1729a0d7ce448138abe51dd763",
+    "upstream": "https://codeload.github.com/espressif/mbedtls/tar.gz/ffb280bb63c78bfec1e1ab55040671768c85c923",
+    "byteIdenticalToUpstream": true
+  },
+  {
+    "path": "sdk-source/esp-idf/components/mbedtls/mbedtls/framework/data_files/ec_256_prv.comp.pem",
+    "sha256": "5c3f0a7d3e98a0ffdb3ec58a4cb6b983ce0d0aa2eac01eeab0ab86e6159c1ab4",
+    "upstream": "https://codeload.github.com/espressif/mbedtls/tar.gz/ffb280bb63c78bfec1e1ab55040671768c85c923",
+    "byteIdenticalToUpstream": true
+  },
+  {
+    "path": "sdk-source/esp-idf/components/mbedtls/mbedtls/framework/data_files/ec_256_prv.pem",
+    "sha256": "0405a70b26333c2555e31ae665c0a5f37c6cd0e38edf5695afe3638743bdd903",
+    "upstream": "https://codeload.github.com/espressif/mbedtls/tar.gz/ffb280bb63c78bfec1e1ab55040671768c85c923",
+    "byteIdenticalToUpstream": true
+  },
+  {
+    "path": "sdk-source/esp-idf/components/mbedtls/mbedtls/framework/data_files/ec_384_prv.comp.pem",
+    "sha256": "81b02aa1c6e41572fded1ac7f1b4f57ff345ccc90a291d36b54064a3c9ceb540",
+    "upstream": "https://codeload.github.com/espressif/mbedtls/tar.gz/ffb280bb63c78bfec1e1ab55040671768c85c923",
+    "byteIdenticalToUpstream": true
+  },
+  {
+    "path": "sdk-source/esp-idf/components/mbedtls/mbedtls/framework/data_files/ec_384_prv.pem",
+    "sha256": "ed3a69ca0c5f4c62fa2c7b64951a11d1378abb72c3a3e439d7e06a9ec82c2075",
+    "upstream": "https://codeload.github.com/espressif/mbedtls/tar.gz/ffb280bb63c78bfec1e1ab55040671768c85c923",
+    "byteIdenticalToUpstream": true
+  },
+  {
+    "path": "sdk-source/esp-idf/components/mbedtls/mbedtls/framework/data_files/ec_521_prv.comp.pem",
+    "sha256": "41ac2334aa2e046fda8176e9b649594e7dd669d2550590a37c74f92575f1be60",
+    "upstream": "https://codeload.github.com/espressif/mbedtls/tar.gz/ffb280bb63c78bfec1e1ab55040671768c85c923",
+    "byteIdenticalToUpstream": true
+  },
+  {
+    "path": "sdk-source/esp-idf/components/mbedtls/mbedtls/framework/data_files/ec_521_prv.pem",
+    "sha256": "ecb4bed1990396b35f4cc0d3e2fa99b4e3876c89bdd05b691e0c02ad4b43b73d",
+    "upstream": "https://codeload.github.com/espressif/mbedtls/tar.gz/ffb280bb63c78bfec1e1ab55040671768c85c923",
+    "byteIdenticalToUpstream": true
+  },
+  {
+    "path": "sdk-source/esp-idf/components/mbedtls/mbedtls/framework/data_files/ec_521_short_prv.pem",
+    "sha256": "f82aecefacddd06e07012fca5751cdca618487c0b97ade4354e082900cc061c2",
+    "upstream": "https://codeload.github.com/espressif/mbedtls/tar.gz/ffb280bb63c78bfec1e1ab55040671768c85c923",
+    "byteIdenticalToUpstream": true
+  },
+  {
+    "path": "sdk-source/esp-idf/components/mbedtls/mbedtls/framework/data_files/ec_bp256_prv.comp.pem",
+    "sha256": "20608b193003072065f367b8d6642d6d55578db84571655d10957cad7aa73158",
+    "upstream": "https://codeload.github.com/espressif/mbedtls/tar.gz/ffb280bb63c78bfec1e1ab55040671768c85c923",
+    "byteIdenticalToUpstream": true
+  },
+  {
+    "path": "sdk-source/esp-idf/components/mbedtls/mbedtls/framework/data_files/ec_bp256_prv.pem",
+    "sha256": "0777db4161e8fd9cfcb0833486ea2992f1e173c22b53520e60799a905b05121d",
+    "upstream": "https://codeload.github.com/espressif/mbedtls/tar.gz/ffb280bb63c78bfec1e1ab55040671768c85c923",
+    "byteIdenticalToUpstream": true
+  },
+  {
+    "path": "sdk-source/esp-idf/components/mbedtls/mbedtls/framework/data_files/ec_bp384_prv.comp.pem",
+    "sha256": "5a446525ff3e7d2b3900d50ea1ec7acb175488e3528ef187b2544bdd8cae687b",
+    "upstream": "https://codeload.github.com/espressif/mbedtls/tar.gz/ffb280bb63c78bfec1e1ab55040671768c85c923",
+    "byteIdenticalToUpstream": true
+  },
+  {
+    "path": "sdk-source/esp-idf/components/mbedtls/mbedtls/framework/data_files/ec_bp384_prv.pem",
+    "sha256": "a72bd58d95029d0d6ab68219a29a25f107e235feb0543df7867e28e2a94f881f",
+    "upstream": "https://codeload.github.com/espressif/mbedtls/tar.gz/ffb280bb63c78bfec1e1ab55040671768c85c923",
+    "byteIdenticalToUpstream": true
+  },
+  {
+    "path": "sdk-source/esp-idf/components/mbedtls/mbedtls/framework/data_files/ec_bp512_prv.comp.pem",
+    "sha256": "7b42b5b3c4f3126c001c1f6d7caa4a266995cf8ee027a78cd8c8a10afe3ba67e",
+    "upstream": "https://codeload.github.com/espressif/mbedtls/tar.gz/ffb280bb63c78bfec1e1ab55040671768c85c923",
+    "byteIdenticalToUpstream": true
+  },
+  {
+    "path": "sdk-source/esp-idf/components/mbedtls/mbedtls/framework/data_files/ec_bp512_prv.pem",
+    "sha256": "9873530d30669de09947d05a9a111a38cd81376e2f97726c42250b958c6a1a0f",
+    "upstream": "https://codeload.github.com/espressif/mbedtls/tar.gz/ffb280bb63c78bfec1e1ab55040671768c85c923",
+    "byteIdenticalToUpstream": true
+  },
+  {
+    "path": "sdk-source/esp-idf/components/mbedtls/mbedtls/framework/data_files/ec_prv.pk8.pem",
+    "sha256": "c6bbe5affbf9a953c8d2124cb80fb48c2e9344b796d328e8c385a1aea5edde64",
+    "upstream": "https://codeload.github.com/espressif/mbedtls/tar.gz/ffb280bb63c78bfec1e1ab55040671768c85c923",
+    "byteIdenticalToUpstream": true
+  },
+  {
+    "path": "sdk-source/esp-idf/components/mbedtls/mbedtls/framework/data_files/ec_prv.pk8nopub.pem",
+    "sha256": "9587d1d0e4c45c1601faa4384e1bd5634a37f4a86ba4fd85fbd7fc85ad110d20",
+    "upstream": "https://codeload.github.com/espressif/mbedtls/tar.gz/ffb280bb63c78bfec1e1ab55040671768c85c923",
+    "byteIdenticalToUpstream": true
+  },
+  {
+    "path": "sdk-source/esp-idf/components/mbedtls/mbedtls/framework/data_files/ec_prv.pk8nopubparam.pem",
+    "sha256": "729ada4d58b82f741acfe7af2649b456c6b2c9f7297d202b83a0680ba4004685",
+    "upstream": "https://codeload.github.com/espressif/mbedtls/tar.gz/ffb280bb63c78bfec1e1ab55040671768c85c923",
+    "byteIdenticalToUpstream": true
+  },
+  {
+    "path": "sdk-source/esp-idf/components/mbedtls/mbedtls/framework/data_files/ec_prv.pk8param.pem",
+    "sha256": "609315a12cb3e58ab934a59c30bef3c835e835bc44244fb640d659f66b82dd8f",
+    "upstream": "https://codeload.github.com/espressif/mbedtls/tar.gz/ffb280bb63c78bfec1e1ab55040671768c85c923",
+    "byteIdenticalToUpstream": true
+  },
+  {
+    "path": "sdk-source/esp-idf/components/mbedtls/mbedtls/framework/data_files/ec_prv.sec1.comp.pem",
+    "sha256": "7ec103a8d1d814f78aafeffad459d050544a50ee0e94ec3eb5dd5d5ba3cd7111",
+    "upstream": "https://codeload.github.com/espressif/mbedtls/tar.gz/ffb280bb63c78bfec1e1ab55040671768c85c923",
+    "byteIdenticalToUpstream": true
+  },
+  {
+    "path": "sdk-source/esp-idf/components/mbedtls/mbedtls/framework/data_files/ec_prv.sec1.pem",
+    "sha256": "e4717c4b0e7e29eda161a63f5d778ce42e87e99e2ce8c440d209949f8fa49647",
+    "upstream": "https://codeload.github.com/espressif/mbedtls/tar.gz/ffb280bb63c78bfec1e1ab55040671768c85c923",
+    "byteIdenticalToUpstream": true
+  },
+  {
+    "path": "sdk-source/esp-idf/components/mbedtls/mbedtls/framework/data_files/ec_prv.sec1.pw.pem",
+    "sha256": "23052547d6b30dfdd3831b5b38c5b11be5bfc90afabe5638b7799a1fc6c67d01",
+    "upstream": "https://codeload.github.com/espressif/mbedtls/tar.gz/ffb280bb63c78bfec1e1ab55040671768c85c923",
+    "byteIdenticalToUpstream": true
+  },
+  {
+    "path": "sdk-source/esp-idf/components/mbedtls/mbedtls/framework/data_files/ec_x25519_prv.pem",
+    "sha256": "93721dd739894eb4f0d22efa3cccf57869bb121fece9cf5c287ec20fc1522b92",
+    "upstream": "https://codeload.github.com/espressif/mbedtls/tar.gz/ffb280bb63c78bfec1e1ab55040671768c85c923",
+    "byteIdenticalToUpstream": true
+  },
+  {
+    "path": "sdk-source/esp-idf/components/mbedtls/mbedtls/framework/data_files/ec_x448_prv.pem",
+    "sha256": "901889edd987b08e343f66f10a650bb1ebd7797595467232adbedb6af0ea3017",
+    "upstream": "https://codeload.github.com/espressif/mbedtls/tar.gz/ffb280bb63c78bfec1e1ab55040671768c85c923",
+    "byteIdenticalToUpstream": true
+  },
+  {
+    "path": "sdk-source/esp-idf/components/mbedtls/mbedtls/framework/data_files/ecdsa_secp256r1.key",
+    "sha256": "0405a70b26333c2555e31ae665c0a5f37c6cd0e38edf5695afe3638743bdd903",
+    "upstream": "https://codeload.github.com/espressif/mbedtls/tar.gz/ffb280bb63c78bfec1e1ab55040671768c85c923",
+    "byteIdenticalToUpstream": true
+  },
+  {
+    "path": "sdk-source/esp-idf/components/mbedtls/mbedtls/framework/data_files/ecdsa_secp384r1.key",
+    "sha256": "ed3a69ca0c5f4c62fa2c7b64951a11d1378abb72c3a3e439d7e06a9ec82c2075",
+    "upstream": "https://codeload.github.com/espressif/mbedtls/tar.gz/ffb280bb63c78bfec1e1ab55040671768c85c923",
+    "byteIdenticalToUpstream": true
+  },
+  {
+    "path": "sdk-source/esp-idf/components/mbedtls/mbedtls/framework/data_files/ecdsa_secp521r1.key",
+    "sha256": "ecb4bed1990396b35f4cc0d3e2fa99b4e3876c89bdd05b691e0c02ad4b43b73d",
+    "upstream": "https://codeload.github.com/espressif/mbedtls/tar.gz/ffb280bb63c78bfec1e1ab55040671768c85c923",
+    "byteIdenticalToUpstream": true
+  },
+  {
+    "path": "sdk-source/esp-idf/components/mbedtls/mbedtls/framework/data_files/format_gen.key",
+    "sha256": "dca1b0916b165817b00f17cca5baabb6cec36da42915d10dc1cfef66e8956c36",
+    "upstream": "https://codeload.github.com/espressif/mbedtls/tar.gz/ffb280bb63c78bfec1e1ab55040671768c85c923",
+    "byteIdenticalToUpstream": true
+  },
+  {
+    "path": "sdk-source/esp-idf/components/mbedtls/mbedtls/framework/data_files/format_rsa.key",
+    "sha256": "4be0c523a0e7e848d00bfd0f14df939cad57cd23fddbc88f637b8dcef84844d9",
+    "upstream": "https://codeload.github.com/espressif/mbedtls/tar.gz/ffb280bb63c78bfec1e1ab55040671768c85c923",
+    "byteIdenticalToUpstream": true
+  },
+  {
+    "path": "sdk-source/esp-idf/components/mbedtls/mbedtls/framework/data_files/parse_input/bitstring-in-dn.pem",
+    "sha256": "a56cb4555c1b735454efe2ad7fe080ba9df5df0119aa6b3ba385ff6148ba895e",
+    "upstream": "https://codeload.github.com/espressif/mbedtls/tar.gz/ffb280bb63c78bfec1e1ab55040671768c85c923",
+    "byteIdenticalToUpstream": true
+  },
+  {
+    "path": "sdk-source/esp-idf/components/mbedtls/mbedtls/framework/data_files/pkcs7-rsa-expired.key",
+    "sha256": "b9fe0e48f037da11997b0dd34880a8448211b6655ee9bd07c02e588b5b7fb300",
+    "upstream": "https://codeload.github.com/espressif/mbedtls/tar.gz/ffb280bb63c78bfec1e1ab55040671768c85c923",
+    "byteIdenticalToUpstream": true
+  },
+  {
+    "path": "sdk-source/esp-idf/components/mbedtls/mbedtls/framework/data_files/pkcs7-rsa-sha256-1.key",
+    "sha256": "60ace2329f0653937027838ebff151b17466ff449853d36522d14a9f3abdc20d",
+    "upstream": "https://codeload.github.com/espressif/mbedtls/tar.gz/ffb280bb63c78bfec1e1ab55040671768c85c923",
+    "byteIdenticalToUpstream": true
+  },
+  {
+    "path": "sdk-source/esp-idf/components/mbedtls/mbedtls/framework/data_files/pkcs7-rsa-sha256-1.pem",
+    "sha256": "ef95cb6b0274072257698227c9f8676e16db31277fed2b97beb07874dfb9d111",
+    "upstream": "https://codeload.github.com/espressif/mbedtls/tar.gz/ffb280bb63c78bfec1e1ab55040671768c85c923",
+    "byteIdenticalToUpstream": true
+  },
+  {
+    "path": "sdk-source/esp-idf/components/mbedtls/mbedtls/framework/data_files/pkcs7-rsa-sha256-2.key",
+    "sha256": "1eefc2ace7dda4777abdb8ed2f6b45f8b8f7c855a5a1f4bb94fa7701edb10b59",
+    "upstream": "https://codeload.github.com/espressif/mbedtls/tar.gz/ffb280bb63c78bfec1e1ab55040671768c85c923",
+    "byteIdenticalToUpstream": true
+  },
+  {
+    "path": "sdk-source/esp-idf/components/mbedtls/mbedtls/framework/data_files/pkcs7-rsa-sha256-2.pem",
+    "sha256": "7dbad2e526ccb07d8aaec7dadfdfbd6b5a6b7bd87c49e21de370f61acdf2268d",
+    "upstream": "https://codeload.github.com/espressif/mbedtls/tar.gz/ffb280bb63c78bfec1e1ab55040671768c85c923",
+    "byteIdenticalToUpstream": true
+  },
+  {
+    "path": "sdk-source/esp-idf/components/mbedtls/mbedtls/framework/data_files/pkcs7-rsa-sha256-3.key",
+    "sha256": "f858ef6204f3742d27c77567bbd8ef425251cc790fe1ea08a2910907292964ee",
+    "upstream": "https://codeload.github.com/espressif/mbedtls/tar.gz/ffb280bb63c78bfec1e1ab55040671768c85c923",
+    "byteIdenticalToUpstream": true
+  },
+  {
+    "path": "sdk-source/esp-idf/components/mbedtls/mbedtls/framework/data_files/pkcs7-rsa-sha256-3.pem",
+    "sha256": "679bbc68a1dde3f35268f2941ed2713a6e5a60c15b91b8f9dac6e12827df8c9f",
+    "upstream": "https://codeload.github.com/espressif/mbedtls/tar.gz/ffb280bb63c78bfec1e1ab55040671768c85c923",
+    "byteIdenticalToUpstream": true
+  },
+  {
+    "path": "sdk-source/esp-idf/components/mbedtls/mbedtls/framework/data_files/rsa4096_prv.pem",
+    "sha256": "fe1368dfb5816c1697ff7842aa4da44fa0961aac16dea803f7b0b1af922f692f",
+    "upstream": "https://codeload.github.com/espressif/mbedtls/tar.gz/ffb280bb63c78bfec1e1ab55040671768c85c923",
+    "byteIdenticalToUpstream": true
+  },
+  {
+    "path": "sdk-source/esp-idf/components/mbedtls/mbedtls/framework/data_files/rsa512.key",
+    "sha256": "799d813958afdbab03c10fb91df109f7d7ee0d9affd2282cf050600d50b97d44",
+    "upstream": "https://codeload.github.com/espressif/mbedtls/tar.gz/ffb280bb63c78bfec1e1ab55040671768c85c923",
+    "byteIdenticalToUpstream": true
+  },
+  {
+    "path": "sdk-source/esp-idf/components/mbedtls/mbedtls/framework/data_files/rsa521.key",
+    "sha256": "4bc698df7312e5ea0a9bda75bc876d16a25a30dbd6d34483b3252ce8224ddf2d",
+    "upstream": "https://codeload.github.com/espressif/mbedtls/tar.gz/ffb280bb63c78bfec1e1ab55040671768c85c923",
+    "byteIdenticalToUpstream": true
+  },
+  {
+    "path": "sdk-source/esp-idf/components/mbedtls/mbedtls/framework/data_files/rsa522.key",
+    "sha256": "aa458ff31c66c8f7af7c6f07418ac9479bc9aad4d8d1e5128f2d7455ca52eeed",
+    "upstream": "https://codeload.github.com/espressif/mbedtls/tar.gz/ffb280bb63c78bfec1e1ab55040671768c85c923",
+    "byteIdenticalToUpstream": true
+  },
+  {
+    "path": "sdk-source/esp-idf/components/mbedtls/mbedtls/framework/data_files/rsa528.key",
+    "sha256": "614f9aec7348a481cb5477c47c3bf76d6af8f4a5f21cc875a8efd026c3bdb085",
+    "upstream": "https://codeload.github.com/espressif/mbedtls/tar.gz/ffb280bb63c78bfec1e1ab55040671768c85c923",
+    "byteIdenticalToUpstream": true
+  },
+  {
+    "path": "sdk-source/esp-idf/components/mbedtls/mbedtls/framework/data_files/rsa_multiple_san_uri.key",
+    "sha256": "44ad6c9596f030ef6c0c64aedfc76e8e950ef6ecbf493ec8b95a7775a7f7d78c",
+    "upstream": "https://codeload.github.com/espressif/mbedtls/tar.gz/ffb280bb63c78bfec1e1ab55040671768c85c923",
+    "byteIdenticalToUpstream": true
+  },
+  {
+    "path": "sdk-source/esp-idf/components/mbedtls/mbedtls/framework/data_files/rsa_pkcs1_1024_3des.pem",
+    "sha256": "2c387321062ad20d5eff5ec30ba57cde1b1788253e315cf3fef64d896dc6141b",
+    "upstream": "https://codeload.github.com/espressif/mbedtls/tar.gz/ffb280bb63c78bfec1e1ab55040671768c85c923",
+    "byteIdenticalToUpstream": true
+  },
+  {
+    "path": "sdk-source/esp-idf/components/mbedtls/mbedtls/framework/data_files/rsa_pkcs1_1024_aes128.pem",
+    "sha256": "5032455d9ae5bd96fec4a14b409d122101ad3f074a29b6af28f67c7081a82366",
+    "upstream": "https://codeload.github.com/espressif/mbedtls/tar.gz/ffb280bb63c78bfec1e1ab55040671768c85c923",
+    "byteIdenticalToUpstream": true
+  },
+  {
+    "path": "sdk-source/esp-idf/components/mbedtls/mbedtls/framework/data_files/rsa_pkcs1_1024_aes192.pem",
+    "sha256": "2628892185635e4f459444f7f5d17dc9f3b0009095d12a11c634bd3a333e4aed",
+    "upstream": "https://codeload.github.com/espressif/mbedtls/tar.gz/ffb280bb63c78bfec1e1ab55040671768c85c923",
+    "byteIdenticalToUpstream": true
+  },
+  {
+    "path": "sdk-source/esp-idf/components/mbedtls/mbedtls/framework/data_files/rsa_pkcs1_1024_aes256.pem",
+    "sha256": "5dae5ea1714082b515a073ec930d9ffb3294ca2a12a66d131cfb5b35489aca78",
+    "upstream": "https://codeload.github.com/espressif/mbedtls/tar.gz/ffb280bb63c78bfec1e1ab55040671768c85c923",
+    "byteIdenticalToUpstream": true
+  },
+  {
+    "path": "sdk-source/esp-idf/components/mbedtls/mbedtls/framework/data_files/rsa_pkcs1_1024_clear.pem",
+    "sha256": "0112d73365e459106014ed440d6ca6d45f234370939790e21e9267bfb073bdb4",
+    "upstream": "https://codeload.github.com/espressif/mbedtls/tar.gz/ffb280bb63c78bfec1e1ab55040671768c85c923",
+    "byteIdenticalToUpstream": true
+  },
+  {
+    "path": "sdk-source/esp-idf/components/mbedtls/mbedtls/framework/data_files/rsa_pkcs1_1024_des.pem",
+    "sha256": "08e9aa7dbf581581131532213ede5f76222efb3c5df3e1d8e9d21f77ffe97be4",
+    "upstream": "https://codeload.github.com/espressif/mbedtls/tar.gz/ffb280bb63c78bfec1e1ab55040671768c85c923",
+    "byteIdenticalToUpstream": true
+  },
+  {
+    "path": "sdk-source/esp-idf/components/mbedtls/mbedtls/framework/data_files/rsa_pkcs1_2048_3des.pem",
+    "sha256": "7576eec37b28007c0fecc1023ffc0cdd51c5b0964f9d02aa1955774ba9f06fcb",
+    "upstream": "https://codeload.github.com/espressif/mbedtls/tar.gz/ffb280bb63c78bfec1e1ab55040671768c85c923",
+    "byteIdenticalToUpstream": true
+  },
+  {
+    "path": "sdk-source/esp-idf/components/mbedtls/mbedtls/framework/data_files/rsa_pkcs1_2048_aes128.pem",
+    "sha256": "ee8bcbff13d7f58c5bab527d72b793fbf2085a568ea25af446017f214531dd17",
+    "upstream": "https://codeload.github.com/espressif/mbedtls/tar.gz/ffb280bb63c78bfec1e1ab55040671768c85c923",
+    "byteIdenticalToUpstream": true
+  },
+  {
+    "path": "sdk-source/esp-idf/components/mbedtls/mbedtls/framework/data_files/rsa_pkcs1_2048_aes192.pem",
+    "sha256": "d24c88836bc1c4cd35734e9fc252ce95f07cf4ef3eb45726ada77b82e3177bc0",
+    "upstream": "https://codeload.github.com/espressif/mbedtls/tar.gz/ffb280bb63c78bfec1e1ab55040671768c85c923",
+    "byteIdenticalToUpstream": true
+  },
+  {
+    "path": "sdk-source/esp-idf/components/mbedtls/mbedtls/framework/data_files/rsa_pkcs1_2048_aes256.pem",
+    "sha256": "182681da70e9eeb1d1508ef4746763fcf14da6eebd414bea090717c0f830e52d",
+    "upstream": "https://codeload.github.com/espressif/mbedtls/tar.gz/ffb280bb63c78bfec1e1ab55040671768c85c923",
+    "byteIdenticalToUpstream": true
+  },
+  {
+    "path": "sdk-source/esp-idf/components/mbedtls/mbedtls/framework/data_files/rsa_pkcs1_2048_clear.pem",
+    "sha256": "3e79c3cb57eb569c4271f69b90b3f9475b02d32b835c91f29786a02d5c04a510",
+    "upstream": "https://codeload.github.com/espressif/mbedtls/tar.gz/ffb280bb63c78bfec1e1ab55040671768c85c923",
+    "byteIdenticalToUpstream": true
+  },
+  {
+    "path": "sdk-source/esp-idf/components/mbedtls/mbedtls/framework/data_files/rsa_pkcs1_2048_des.pem",
+    "sha256": "42183ce524fc60c316f9eac695c30e758d295a0c8013788053c6c43a6ac7fd36",
+    "upstream": "https://codeload.github.com/espressif/mbedtls/tar.gz/ffb280bb63c78bfec1e1ab55040671768c85c923",
+    "byteIdenticalToUpstream": true
+  },
+  {
+    "path": "sdk-source/esp-idf/components/mbedtls/mbedtls/framework/data_files/rsa_pkcs1_4096_3des.pem",
+    "sha256": "a5314e0d8e9ae1e34afe514d9219d507c1f018156bbbcd9ec36a5a935f8186bb",
+    "upstream": "https://codeload.github.com/espressif/mbedtls/tar.gz/ffb280bb63c78bfec1e1ab55040671768c85c923",
+    "byteIdenticalToUpstream": true
+  },
+  {
+    "path": "sdk-source/esp-idf/components/mbedtls/mbedtls/framework/data_files/rsa_pkcs1_4096_aes128.pem",
+    "sha256": "7d544b8d1a6f552c90e4db19d84744b316469d8d6a4eb31e6ce9c6abd8e87e57",
+    "upstream": "https://codeload.github.com/espressif/mbedtls/tar.gz/ffb280bb63c78bfec1e1ab55040671768c85c923",
+    "byteIdenticalToUpstream": true
+  },
+  {
+    "path": "sdk-source/esp-idf/components/mbedtls/mbedtls/framework/data_files/rsa_pkcs1_4096_aes192.pem",
+    "sha256": "1a05e9f1f7152126eb08dffba59841ee525319b46861ee3ed526c687195bc95c",
+    "upstream": "https://codeload.github.com/espressif/mbedtls/tar.gz/ffb280bb63c78bfec1e1ab55040671768c85c923",
+    "byteIdenticalToUpstream": true
+  },
+  {
+    "path": "sdk-source/esp-idf/components/mbedtls/mbedtls/framework/data_files/rsa_pkcs1_4096_aes256.pem",
+    "sha256": "cc66bcd61806a601f33ad93a47a53f4785470e2fcb3ded30a77611b1876cd05f",
+    "upstream": "https://codeload.github.com/espressif/mbedtls/tar.gz/ffb280bb63c78bfec1e1ab55040671768c85c923",
+    "byteIdenticalToUpstream": true
+  },
+  {
+    "path": "sdk-source/esp-idf/components/mbedtls/mbedtls/framework/data_files/rsa_pkcs1_4096_clear.pem",
+    "sha256": "c6ecb3e03f0920f35453d72490e1139f11ecc38a19bd6a1cd89e9004779a372d",
+    "upstream": "https://codeload.github.com/espressif/mbedtls/tar.gz/ffb280bb63c78bfec1e1ab55040671768c85c923",
+    "byteIdenticalToUpstream": true
+  },
+  {
+    "path": "sdk-source/esp-idf/components/mbedtls/mbedtls/framework/data_files/rsa_pkcs1_4096_des.pem",
+    "sha256": "cf6d0a97cd7750310bedd61e505ca57cbe585c33f6f649426e661551a37ea44b",
+    "upstream": "https://codeload.github.com/espressif/mbedtls/tar.gz/ffb280bb63c78bfec1e1ab55040671768c85c923",
+    "byteIdenticalToUpstream": true
+  },
+  {
+    "path": "sdk-source/esp-idf/components/mbedtls/mbedtls/framework/data_files/rsa_pkcs1_768_clear.pem",
+    "sha256": "335df110e261d0bf4a7e191d89d09af8415e99815565791e560faa5362195e5a",
+    "upstream": "https://codeload.github.com/espressif/mbedtls/tar.gz/ffb280bb63c78bfec1e1ab55040671768c85c923",
+    "byteIdenticalToUpstream": true
+  },
+  {
+    "path": "sdk-source/esp-idf/components/mbedtls/mbedtls/framework/data_files/rsa_pkcs1_769_clear.pem",
+    "sha256": "a9589effa6760e1fe16d28b53c577993686fa5a703bdda6ce77fd5485e9ba515",
+    "upstream": "https://codeload.github.com/espressif/mbedtls/tar.gz/ffb280bb63c78bfec1e1ab55040671768c85c923",
+    "byteIdenticalToUpstream": true
+  },
+  {
+    "path": "sdk-source/esp-idf/components/mbedtls/mbedtls/framework/data_files/rsa_pkcs1_770_clear.pem",
+    "sha256": "7f7854478a0624948396c8df9cc1dfc2c9fa184e2991ba20a9cef952903b719b",
+    "upstream": "https://codeload.github.com/espressif/mbedtls/tar.gz/ffb280bb63c78bfec1e1ab55040671768c85c923",
+    "byteIdenticalToUpstream": true
+  },
+  {
+    "path": "sdk-source/esp-idf/components/mbedtls/mbedtls/framework/data_files/rsa_pkcs1_776_clear.pem",
+    "sha256": "75a3858cb1ab1b1a278400c2c78aba3e726c672f05c944ecaab3507299dc39cd",
+    "upstream": "https://codeload.github.com/espressif/mbedtls/tar.gz/ffb280bb63c78bfec1e1ab55040671768c85c923",
+    "byteIdenticalToUpstream": true
+  },
+  {
+    "path": "sdk-source/esp-idf/components/mbedtls/mbedtls/framework/data_files/rsa_pkcs1_784_clear.pem",
+    "sha256": "bcd1edc8e320cc32bb07f11b4d3a52f5b2c40a8fd95e134a5c9c7e97bdb9bc3b",
+    "upstream": "https://codeload.github.com/espressif/mbedtls/tar.gz/ffb280bb63c78bfec1e1ab55040671768c85c923",
+    "byteIdenticalToUpstream": true
+  },
+  {
+    "path": "sdk-source/esp-idf/components/mbedtls/mbedtls/framework/data_files/rsa_single_san_uri.key",
+    "sha256": "c70608aaaab0ee5843083a5a4d08fd5296224ab46736ded39203e87dbd186aa4",
+    "upstream": "https://codeload.github.com/espressif/mbedtls/tar.gz/ffb280bb63c78bfec1e1ab55040671768c85c923",
+    "byteIdenticalToUpstream": true
+  },
+  {
+    "path": "sdk-source/esp-idf/components/mbedtls/mbedtls/framework/data_files/server1.key",
+    "sha256": "469e1de4e72db7ddea4f5f56db4974a612da0f403a8a35464e52d53c60fd61bf",
+    "upstream": "https://codeload.github.com/espressif/mbedtls/tar.gz/ffb280bb63c78bfec1e1ab55040671768c85c923",
+    "byteIdenticalToUpstream": true
+  },
+  {
+    "path": "sdk-source/esp-idf/components/mbedtls/mbedtls/framework/data_files/server10.key",
+    "sha256": "603c53edfff74463bfa4f9e195377224f6980aef4f86c4428a4b119bb440277f",
+    "upstream": "https://codeload.github.com/espressif/mbedtls/tar.gz/ffb280bb63c78bfec1e1ab55040671768c85c923",
+    "byteIdenticalToUpstream": true
+  },
+  {
+    "path": "sdk-source/esp-idf/components/mbedtls/mbedtls/framework/data_files/server2.key",
+    "sha256": "5d061d8e92c246e465654ea6eef75b0667cc49cfb8f76d3b4c2f2517861f8b1e",
+    "upstream": "https://codeload.github.com/espressif/mbedtls/tar.gz/ffb280bb63c78bfec1e1ab55040671768c85c923",
+    "byteIdenticalToUpstream": true
+  },
+  {
+    "path": "sdk-source/esp-idf/components/mbedtls/mbedtls/framework/data_files/server2.key.enc",
+    "sha256": "43d0c8403c6a9ca27cb50ac139650290acdba91ddcd3149d2daf3665898134ff",
+    "upstream": "https://codeload.github.com/espressif/mbedtls/tar.gz/ffb280bb63c78bfec1e1ab55040671768c85c923",
+    "byteIdenticalToUpstream": true
+  },
+  {
+    "path": "sdk-source/esp-idf/components/mbedtls/mbedtls/framework/data_files/server3.key",
+    "sha256": "2a67c4daedc10b0f4bad16f06a30ab5b9f401a541fb61aa4451e23479bb75d7c",
+    "upstream": "https://codeload.github.com/espressif/mbedtls/tar.gz/ffb280bb63c78bfec1e1ab55040671768c85c923",
+    "byteIdenticalToUpstream": true
+  },
+  {
+    "path": "sdk-source/esp-idf/components/mbedtls/mbedtls/framework/data_files/server4.key",
+    "sha256": "ed155b755deaee3b5b8dcf271b4c82368f6b143ede5a0699d4442214c0be7361",
+    "upstream": "https://codeload.github.com/espressif/mbedtls/tar.gz/ffb280bb63c78bfec1e1ab55040671768c85c923",
+    "byteIdenticalToUpstream": true
+  },
+  {
+    "path": "sdk-source/esp-idf/components/mbedtls/mbedtls/framework/data_files/server5.key",
+    "sha256": "dc05ad588945ee5771ea24f4970b79e020acfb9c45c6de9d7975b440394f4938",
+    "upstream": "https://codeload.github.com/espressif/mbedtls/tar.gz/ffb280bb63c78bfec1e1ab55040671768c85c923",
+    "byteIdenticalToUpstream": true
+  },
+  {
+    "path": "sdk-source/esp-idf/components/mbedtls/mbedtls/framework/data_files/server5.key.enc",
+    "sha256": "f15fa2c2053c1e7976dc21c21c0f3f7199f24379310bc5fb9de2edfe5d43ae2f",
+    "upstream": "https://codeload.github.com/espressif/mbedtls/tar.gz/ffb280bb63c78bfec1e1ab55040671768c85c923",
+    "byteIdenticalToUpstream": true
+  },
+  {
+    "path": "sdk-source/esp-idf/components/mbedtls/mbedtls/framework/data_files/server6.key",
+    "sha256": "2c6ba41ff6fa21bd12f3905eae7e39a7c45f26dc35b14e7761342dc50589ea6e",
+    "upstream": "https://codeload.github.com/espressif/mbedtls/tar.gz/ffb280bb63c78bfec1e1ab55040671768c85c923",
+    "byteIdenticalToUpstream": true
+  },
+  {
+    "path": "sdk-source/esp-idf/components/mbedtls/mbedtls/framework/data_files/server7.key",
+    "sha256": "603c53edfff74463bfa4f9e195377224f6980aef4f86c4428a4b119bb440277f",
+    "upstream": "https://codeload.github.com/espressif/mbedtls/tar.gz/ffb280bb63c78bfec1e1ab55040671768c85c923",
+    "byteIdenticalToUpstream": true
+  },
+  {
+    "path": "sdk-source/esp-idf/components/mbedtls/mbedtls/framework/data_files/server8.key",
+    "sha256": "e8dfd0a91df11fc13499c9a63ab457861283667c44682c2ed10329b0e406c460",
+    "upstream": "https://codeload.github.com/espressif/mbedtls/tar.gz/ffb280bb63c78bfec1e1ab55040671768c85c923",
+    "byteIdenticalToUpstream": true
+  },
+  {
+    "path": "sdk-source/esp-idf/components/mbedtls/mbedtls/framework/data_files/server9.key",
+    "sha256": "41227afd38ca676c904ae59589943b5f57576e72b72c98d8f503f57c8ce70552",
+    "upstream": "https://codeload.github.com/espressif/mbedtls/tar.gz/ffb280bb63c78bfec1e1ab55040671768c85c923",
+    "byteIdenticalToUpstream": true
+  },
+  {
+    "path": "sdk-source/esp-idf/components/mbedtls/mbedtls/framework/data_files/test-ca-alt.key",
+    "sha256": "f3a266be97499730ffc421332f58ccd4819993a882a30e55519927cb25c4488c",
+    "upstream": "https://codeload.github.com/espressif/mbedtls/tar.gz/ffb280bb63c78bfec1e1ab55040671768c85c923",
+    "byteIdenticalToUpstream": true
+  },
+  {
+    "path": "sdk-source/esp-idf/components/mbedtls/mbedtls/framework/data_files/test-ca.key",
+    "sha256": "a61c8417f8192f59066a7e38cc1dd40df595cba76ddc513c22a5fe3f2af4d404",
+    "upstream": "https://codeload.github.com/espressif/mbedtls/tar.gz/ffb280bb63c78bfec1e1ab55040671768c85c923",
+    "byteIdenticalToUpstream": true
+  },
+  {
+    "path": "sdk-source/esp-idf/components/mbedtls/mbedtls/framework/data_files/test-ca2.key",
+    "sha256": "72769bdc9f54e0f2c4a8856bcc4545fcc769ccd77d26f7e35fb3f64419a7df35",
+    "upstream": "https://codeload.github.com/espressif/mbedtls/tar.gz/ffb280bb63c78bfec1e1ab55040671768c85c923",
+    "byteIdenticalToUpstream": true
+  },
+  {
+    "path": "sdk-source/esp-idf/components/mbedtls/mbedtls/framework/data_files/test-ca2.key.enc",
+    "sha256": "18b93a1c675861bef54a47c044d4431133b5e92c54e433e1d114fbc43871ef08",
+    "upstream": "https://codeload.github.com/espressif/mbedtls/tar.gz/ffb280bb63c78bfec1e1ab55040671768c85c923",
+    "byteIdenticalToUpstream": true
+  },
+  {
+    "path": "sdk-source/esp-idf/components/mbedtls/mbedtls/framework/data_files/test-ca_unenc.key",
+    "sha256": "58b16ca7fc6898a8721fa4a965e2cda251b339952dc3ad3bc6d9b1ff41d1dd50",
+    "upstream": "https://codeload.github.com/espressif/mbedtls/tar.gz/ffb280bb63c78bfec1e1ab55040671768c85c923",
+    "byteIdenticalToUpstream": true
+  },
+  {
+    "path": "sdk-source/esp-idf/components/mbedtls/mbedtls/framework/data_files/test-int-ca.key",
+    "sha256": "c9ce39dd7a23fbf4f10368519fa23bd4a34f32d6015dde5c4042ba477410133a",
+    "upstream": "https://codeload.github.com/espressif/mbedtls/tar.gz/ffb280bb63c78bfec1e1ab55040671768c85c923",
+    "byteIdenticalToUpstream": true
+  },
+  {
+    "path": "sdk-source/esp-idf/components/mbedtls/mbedtls/framework/data_files/test-int-ca2.key",
+    "sha256": "97ae364e686400105ed7ce07168ba7d64b7797e27b577ce6e1952e01f3ebcb0d",
+    "upstream": "https://codeload.github.com/espressif/mbedtls/tar.gz/ffb280bb63c78bfec1e1ab55040671768c85c923",
+    "byteIdenticalToUpstream": true
+  },
+  {
+    "path": "sdk-source/esp-idf/components/mbedtls/mbedtls/framework/data_files/test-int-ca3.key",
+    "sha256": "8f54c3d71e1669ec7f3f2a1fa835a96b215ff69fae9a7e7081780569ba8e10a9",
+    "upstream": "https://codeload.github.com/espressif/mbedtls/tar.gz/ffb280bb63c78bfec1e1ab55040671768c85c923",
+    "byteIdenticalToUpstream": true
+  },
+  {
+    "path": "sdk-source/esp-idf/components/mbedtls/mbedtls/library/pk_internal.h",
+    "sha256": "822b38a1c868521808896340e15134e04f980ba8117e7b14a193a44d229c0492",
+    "upstream": "https://codeload.github.com/espressif/mbedtls/tar.gz/ffb280bb63c78bfec1e1ab55040671768c85c923",
+    "byteIdenticalToUpstream": true
+  },
+  {
+    "path": "sdk-source/esp-idf/components/mbedtls/mbedtls/tests/include/test/test_certs.h",
+    "sha256": "b9ef007f21b82dfaa255e5597a15c9be51a567be0715e193adc9f95b38442343",
+    "upstream": "https://codeload.github.com/espressif/mbedtls/tar.gz/ffb280bb63c78bfec1e1ab55040671768c85c923",
+    "byteIdenticalToUpstream": true
+  },
+  {
+    "path": "sdk-source/esp-idf/components/mbedtls/mbedtls/tests/suites/test_suite_pem.data",
+    "sha256": "b90e7dbd02bf9d1696aa92a4f8fd6881af9bb94c60e17aaa8b751d92b4e42af5",
+    "upstream": "https://codeload.github.com/espressif/mbedtls/tar.gz/ffb280bb63c78bfec1e1ab55040671768c85c923",
+    "byteIdenticalToUpstream": true
+  },
+  {
+    "path": "sdk-source/esp-idf/components/mbedtls/test_apps/ecdsa_key_p192.pem",
+    "sha256": "987e5b28c3186bdaaa209ac0b17fe9c5da3457b63d201f252cf605faa04034ec",
+    "upstream": "https://codeload.github.com/espressif/esp-idf/tar.gz/87912cd291",
+    "byteIdenticalToUpstream": true
+  },
+  {
+    "path": "sdk-source/esp-idf/components/mbedtls/test_apps/ecdsa_key_p256.pem",
+    "sha256": "6e475ee106193e1823a90f789bb96f3419da9bc4aca412a6b8c738f50723035a",
+    "upstream": "https://codeload.github.com/espressif/esp-idf/tar.gz/87912cd291",
+    "byteIdenticalToUpstream": true
+  },
+  {
+    "path": "sdk-source/esp-idf/components/mbedtls/test_apps/ecdsa_key_p384.pem",
+    "sha256": "5c398b8e03d119959307a2b2b8f1319198bd38a508772847dafe881c4e7f5aa7",
+    "upstream": "https://codeload.github.com/espressif/esp-idf/tar.gz/87912cd291",
+    "byteIdenticalToUpstream": true
+  },
+  {
+    "path": "sdk-source/esp-idf/components/mbedtls/test_apps/main/crts/prvtkey.pem",
+    "sha256": "99f7fae785d86a246a915374d162f99343f03b74f42f7eed7411771d80bd665a",
+    "upstream": "https://codeload.github.com/espressif/esp-idf/tar.gz/87912cd291",
+    "byteIdenticalToUpstream": true
+  },
+  {
+    "path": "sdk-source/esp-idf/components/mbedtls/test_apps/main/test_rsa.c",
+    "sha256": "d335b0293ddbb03c0ae0517bee7cbb3dd7b0466554655da3f110ce9688ccb906",
+    "upstream": "https://codeload.github.com/espressif/esp-idf/tar.gz/87912cd291",
+    "byteIdenticalToUpstream": true
+  },
+  {
+    "path": "sdk-source/esp-idf/components/openthread/openthread/src/cli/cli_tcat.cpp",
+    "sha256": "02bcbc52c8f5369364742c235a5dbcfedc8e6d7107eef95b6e941852c5fd66e5",
+    "upstream": "https://codeload.github.com/espressif/openthread/tar.gz/a12ff0d0f54fd41954b45047fcdd08f302731c5f",
+    "byteIdenticalToUpstream": true
+  },
+  {
+    "path": "sdk-source/esp-idf/components/openthread/openthread/src/cli/cli_tcp.hpp",
+    "sha256": "a8011b63e7226a9f88d299fcba66b67198e9ac9aef1855bf5d67ec0a76c49da6",
+    "upstream": "https://codeload.github.com/espressif/openthread/tar.gz/a12ff0d0f54fd41954b45047fcdd08f302731c5f",
+    "byteIdenticalToUpstream": true
+  },
+  {
+    "path": "sdk-source/esp-idf/components/openthread/openthread/src/cli/x509_cert_key.hpp",
+    "sha256": "bc33f29f9e22c44f9f6bd3a9348fa4e7eec0023c711dc7d85ccb18578d2840c9",
+    "upstream": "https://codeload.github.com/espressif/openthread/tar.gz/a12ff0d0f54fd41954b45047fcdd08f302731c5f",
+    "byteIdenticalToUpstream": true
+  },
+  {
+    "path": "sdk-source/esp-idf/components/openthread/openthread/tests/unit/test_tcat.cpp",
+    "sha256": "97b9d6405cfd559a818bf6a3560f2c6c5f8db5adaa2a8f47af95f6e902502ac7",
+    "upstream": "https://codeload.github.com/espressif/openthread/tar.gz/a12ff0d0f54fd41954b45047fcdd08f302731c5f",
+    "byteIdenticalToUpstream": true
+  },
+  {
+    "path": "sdk-source/esp-idf/components/openthread/openthread/tools/tcat_ble_client/auth/commissioner_key.pem",
+    "sha256": "5dcb195b7c42d256379b1a774704f64a293b624dbc600f264b7a7787f998fafe",
+    "upstream": "https://codeload.github.com/espressif/openthread/tar.gz/a12ff0d0f54fd41954b45047fcdd08f302731c5f",
+    "byteIdenticalToUpstream": true
+  },
+  {
+    "path": "sdk-source/esp-idf/components/openthread/openthread/tools/tcat_ble_client/auth-cert/CommCert1/commissioner_key.pem",
+    "sha256": "5dcb195b7c42d256379b1a774704f64a293b624dbc600f264b7a7787f998fafe",
+    "upstream": "https://codeload.github.com/espressif/openthread/tar.gz/a12ff0d0f54fd41954b45047fcdd08f302731c5f",
+    "byteIdenticalToUpstream": true
+  },
+  {
+    "path": "sdk-source/esp-idf/components/openthread/openthread/tools/tcat_ble_client/auth-cert/CommCert2/commissioner_key.pem",
+    "sha256": "2e2b5df46012d84f80de8657e8ffcb4896fd0e0e7a47cfeeccb797180dd1ee4e",
+    "upstream": "https://codeload.github.com/espressif/openthread/tar.gz/a12ff0d0f54fd41954b45047fcdd08f302731c5f",
+    "byteIdenticalToUpstream": true
+  },
+  {
+    "path": "sdk-source/esp-idf/components/openthread/openthread/tools/tcat_ble_client/auth-cert/CommCert3/commissioner_key.pem",
+    "sha256": "7984cad0bf832679400558ba7d0c2b19123e8dbaa2298a3633d34ba9c0d6c47a",
+    "upstream": "https://codeload.github.com/espressif/openthread/tar.gz/a12ff0d0f54fd41954b45047fcdd08f302731c5f",
+    "byteIdenticalToUpstream": true
+  },
+  {
+    "path": "sdk-source/esp-idf/components/openthread/openthread/tools/tcat_ble_client/auth-cert/CommCert4/commissioner_key.pem",
+    "sha256": "066e22e2b1c1355917e9f8f77c039166e026673a99f74af462a8f3b356262b3c",
+    "upstream": "https://codeload.github.com/espressif/openthread/tar.gz/a12ff0d0f54fd41954b45047fcdd08f302731c5f",
+    "byteIdenticalToUpstream": true
+  },
+  {
+    "path": "sdk-source/esp-idf/components/openthread/openthread/tools/tcat_ble_client/auth-cert/DeviceCert1/commissioner_key.pem",
+    "sha256": "745b233713b5119a689b5019b37efe6c411c5d52e712b07bd350e1dccdb96c57",
+    "upstream": "https://codeload.github.com/espressif/openthread/tar.gz/a12ff0d0f54fd41954b45047fcdd08f302731c5f",
+    "byteIdenticalToUpstream": true
+  },
+  {
+    "path": "sdk-source/esp-idf/components/openthread/openthread/tools/tcat_ble_client/auth-cert/DeviceCert1/device_key.pem",
+    "sha256": "745b233713b5119a689b5019b37efe6c411c5d52e712b07bd350e1dccdb96c57",
+    "upstream": "https://codeload.github.com/espressif/openthread/tar.gz/a12ff0d0f54fd41954b45047fcdd08f302731c5f",
+    "byteIdenticalToUpstream": true
+  },
+  {
+    "path": "sdk-source/esp-idf/components/openthread/openthread/tools/tcat_ble_client/auth-cert/DeviceCert2/commissioner_key.pem",
+    "sha256": "c804ea91673e6a102679a88ef94d66c70f3095af6f4d20f6e8b36733a327a3fb",
+    "upstream": "https://codeload.github.com/espressif/openthread/tar.gz/a12ff0d0f54fd41954b45047fcdd08f302731c5f",
+    "byteIdenticalToUpstream": true
+  },
+  {
+    "path": "sdk-source/esp-idf/components/openthread/openthread/tools/tcat_ble_client/auth-cert/DeviceCert2/device_key.pem",
+    "sha256": "c804ea91673e6a102679a88ef94d66c70f3095af6f4d20f6e8b36733a327a3fb",
+    "upstream": "https://codeload.github.com/espressif/openthread/tar.gz/a12ff0d0f54fd41954b45047fcdd08f302731c5f",
+    "byteIdenticalToUpstream": true
+  },
+  {
+    "path": "sdk-source/esp-idf/components/openthread/openthread/tools/tcat_ble_client/auth-generate/ca/ca_key.pem",
+    "sha256": "4646beebc90e30df8d464b89a52b689a6bbdf2203488bb8e290a117fe3f44038",
+    "upstream": "https://codeload.github.com/espressif/openthread/tar.gz/a12ff0d0f54fd41954b45047fcdd08f302731c5f",
+    "byteIdenticalToUpstream": true
+  },
+  {
+    "path": "sdk-source/esp-idf/components/openthread/openthread/tools/tcat_ble_client/auth-generate/keys/CommCert1_key.pem",
+    "sha256": "5dcb195b7c42d256379b1a774704f64a293b624dbc600f264b7a7787f998fafe",
+    "upstream": "https://codeload.github.com/espressif/openthread/tar.gz/a12ff0d0f54fd41954b45047fcdd08f302731c5f",
+    "byteIdenticalToUpstream": true
+  },
+  {
+    "path": "sdk-source/esp-idf/components/openthread/openthread/tools/tcat_ble_client/auth-generate/keys/CommCert2_key.pem",
+    "sha256": "2e2b5df46012d84f80de8657e8ffcb4896fd0e0e7a47cfeeccb797180dd1ee4e",
+    "upstream": "https://codeload.github.com/espressif/openthread/tar.gz/a12ff0d0f54fd41954b45047fcdd08f302731c5f",
+    "byteIdenticalToUpstream": true
+  },
+  {
+    "path": "sdk-source/esp-idf/components/openthread/openthread/tools/tcat_ble_client/auth-generate/keys/CommCert3_key.pem",
+    "sha256": "7984cad0bf832679400558ba7d0c2b19123e8dbaa2298a3633d34ba9c0d6c47a",
+    "upstream": "https://codeload.github.com/espressif/openthread/tar.gz/a12ff0d0f54fd41954b45047fcdd08f302731c5f",
+    "byteIdenticalToUpstream": true
+  },
+  {
+    "path": "sdk-source/esp-idf/components/openthread/openthread/tools/tcat_ble_client/auth-generate/keys/CommCert4_key.pem",
+    "sha256": "066e22e2b1c1355917e9f8f77c039166e026673a99f74af462a8f3b356262b3c",
+    "upstream": "https://codeload.github.com/espressif/openthread/tar.gz/a12ff0d0f54fd41954b45047fcdd08f302731c5f",
+    "byteIdenticalToUpstream": true
+  },
+  {
+    "path": "sdk-source/esp-idf/components/openthread/openthread/tools/tcat_ble_client/auth-generate/keys/DeviceCert1_key.pem",
+    "sha256": "745b233713b5119a689b5019b37efe6c411c5d52e712b07bd350e1dccdb96c57",
+    "upstream": "https://codeload.github.com/espressif/openthread/tar.gz/a12ff0d0f54fd41954b45047fcdd08f302731c5f",
+    "byteIdenticalToUpstream": true
+  },
+  {
+    "path": "sdk-source/esp-idf/components/openthread/openthread/tools/tcat_ble_client/auth-generate/keys/DeviceCert2_key.pem",
+    "sha256": "c804ea91673e6a102679a88ef94d66c70f3095af6f4d20f6e8b36733a327a3fb",
+    "upstream": "https://codeload.github.com/espressif/openthread/tar.gz/a12ff0d0f54fd41954b45047fcdd08f302731c5f",
+    "byteIdenticalToUpstream": true
+  },
+  {
+    "path": "sdk-source/esp-idf/components/wpa_supplicant/src/tls/tlsv1_cred.c",
+    "sha256": "99efbd808c7d23e67c21579747d9755985bca0970ad21fc3b8d1d4026cc96827",
+    "upstream": "https://codeload.github.com/espressif/esp-idf/tar.gz/87912cd291",
+    "byteIdenticalToUpstream": true
+  },
+  {
+    "path": "sdk-source/esp-idf/examples/protocols/esp_local_ctrl/main/certs/prvtkey.pem",
+    "sha256": "ef747fc20a026ccf9bb4b63de880d87a8a1c7b98fb68d3c3335a41e1a0efecc4",
+    "upstream": "https://codeload.github.com/espressif/esp-idf/tar.gz/87912cd291",
+    "byteIdenticalToUpstream": true
+  },
+  {
+    "path": "sdk-source/esp-idf/examples/protocols/https_request/main/local_server_key.pem",
+    "sha256": "51387c06b4b09cc81e985da238c46caea2222b4661d4852ecfef9fee07506cfe",
+    "upstream": "https://codeload.github.com/espressif/esp-idf/tar.gz/87912cd291",
+    "byteIdenticalToUpstream": true
+  },
+  {
+    "path": "sdk-source/esp-idf/examples/protocols/https_server/simple/main/certs/prvtkey.pem",
+    "sha256": "d0ee3a0f10ec49f4f30b94c267eba715c7d0e87a27523565d2fa3ad378e41f86",
+    "upstream": "https://codeload.github.com/espressif/esp-idf/tar.gz/87912cd291",
+    "byteIdenticalToUpstream": true
+  },
+  {
+    "path": "sdk-source/esp-idf/examples/protocols/https_server/simple/pytest_https_server_simple.py",
+    "sha256": "1dd20f2a3a7d066977edcff8f0a3f45f532e8270a9cc0831d91a2b3761b94cba",
+    "upstream": "https://codeload.github.com/espressif/esp-idf/tar.gz/87912cd291",
+    "byteIdenticalToUpstream": true
+  },
+  {
+    "path": "sdk-source/esp-idf/examples/protocols/https_server/wss_server/main/certs/prvtkey.pem",
+    "sha256": "d0ee3a0f10ec49f4f30b94c267eba715c7d0e87a27523565d2fa3ad378e41f86",
+    "upstream": "https://codeload.github.com/espressif/esp-idf/tar.gz/87912cd291",
+    "byteIdenticalToUpstream": true
+  },
+  {
+    "path": "sdk-source/esp-idf/examples/security/security_features_app/test/test_secure_boot_signing_key.pem",
+    "sha256": "de5418fd83434616a996be38a13feebaa92f94d4cf6efff878fa0840899bcc6b",
+    "upstream": "https://codeload.github.com/espressif/esp-idf/tar.gz/87912cd291",
+    "byteIdenticalToUpstream": true
+  },
+  {
+    "path": "sdk-source/esp-idf/examples/security/tee/tee_secure_ota/test_certs/server_key.pem",
+    "sha256": "2b04158ee50e7e4af9a90cc8860aa91021b22637bae3ba30da746eef342fcb97",
+    "upstream": "https://codeload.github.com/espressif/esp-idf/tar.gz/87912cd291",
+    "byteIdenticalToUpstream": true
+  },
+  {
+    "path": "sdk-source/esp-idf/examples/system/efuse/test/secure_boot_signing_key.pem",
+    "sha256": "2dab0323b5e2863c08e3e3f5d89d36fd9fa9beaed685d3174428645672b3970e",
+    "upstream": "https://codeload.github.com/espressif/esp-idf/tar.gz/87912cd291",
+    "byteIdenticalToUpstream": true
+  },
+  {
+    "path": "sdk-source/esp-idf/examples/system/efuse/test/secure_boot_signing_key_ecdsa.pem",
+    "sha256": "05c80d477cd700b42a0609ae6246ff26a13f7ec181af6119f555df60b340af4f",
+    "upstream": "https://codeload.github.com/espressif/esp-idf/tar.gz/87912cd291",
+    "byteIdenticalToUpstream": true
+  },
+  {
+    "path": "sdk-source/esp-idf/examples/system/efuse/test/secure_boot_signing_key_ecdsa_nistp256.pem",
+    "sha256": "c0d667d9c5b4c1031a3f9902cc5b02e2ff1e17024ab83ddec454ab174e7f7e53",
+    "upstream": "https://codeload.github.com/espressif/esp-idf/tar.gz/87912cd291",
+    "byteIdenticalToUpstream": true
+  },
+  {
+    "path": "sdk-source/esp-idf/examples/system/efuse/test/secure_boot_signing_key_ecdsa_nistp384.pem",
+    "sha256": "f147ccb34d35c209b10e6deae2a19a5fae328ec951013d2100efb41fe68fd16f",
+    "upstream": "https://codeload.github.com/espressif/esp-idf/tar.gz/87912cd291",
+    "byteIdenticalToUpstream": true
+  },
+  {
+    "path": "sdk-source/esp-idf/examples/system/ota/advanced_https_ota/test_certs/server_key.pem",
+    "sha256": "2b04158ee50e7e4af9a90cc8860aa91021b22637bae3ba30da746eef342fcb97",
+    "upstream": "https://codeload.github.com/espressif/esp-idf/tar.gz/87912cd291",
+    "byteIdenticalToUpstream": true
+  },
+  {
+    "path": "sdk-source/esp-idf/examples/system/ota/native_ota_example/pytest_native_ota.py",
+    "sha256": "654adbe95d9521d8e7f9fd956220707ebc999668fe6d8fb1a508088600f053ad",
+    "upstream": "https://codeload.github.com/espressif/esp-idf/tar.gz/87912cd291",
+    "byteIdenticalToUpstream": true
+  },
+  {
+    "path": "sdk-source/esp-idf/examples/system/ota/partitions_ota/pytest_partitions_ota.py",
+    "sha256": "7bb658078ff212c63eb9662db84566ca5af166b4ec110f717fbfe97579f013c5",
+    "upstream": "https://codeload.github.com/espressif/esp-idf/tar.gz/87912cd291",
+    "byteIdenticalToUpstream": true
+  },
+  {
+    "path": "sdk-source/esp-idf/examples/system/ota/partitions_ota/test/secure_boot_signing_key.pem",
+    "sha256": "2dab0323b5e2863c08e3e3f5d89d36fd9fa9beaed685d3174428645672b3970e",
+    "upstream": "https://codeload.github.com/espressif/esp-idf/tar.gz/87912cd291",
+    "byteIdenticalToUpstream": true
+  },
+  {
+    "path": "sdk-source/esp-idf/examples/system/ota/partitions_ota/test/secure_boot_signing_key_ecdsa.pem",
+    "sha256": "05c80d477cd700b42a0609ae6246ff26a13f7ec181af6119f555df60b340af4f",
+    "upstream": "https://codeload.github.com/espressif/esp-idf/tar.gz/87912cd291",
+    "byteIdenticalToUpstream": true
+  },
+  {
+    "path": "sdk-source/esp-idf/examples/system/ota/simple_ota_example/pytest_simple_ota.py",
+    "sha256": "a3ba5c50f80b979916a526ec25cd4bc23b335d7c4fe6164ca476bb93092354a1",
+    "upstream": "https://codeload.github.com/espressif/esp-idf/tar.gz/87912cd291",
+    "byteIdenticalToUpstream": true
+  },
+  {
+    "path": "sdk-source/esp-idf/examples/system/ota/simple_ota_example/test/secure_boot_signing_key.pem",
+    "sha256": "2dab0323b5e2863c08e3e3f5d89d36fd9fa9beaed685d3174428645672b3970e",
+    "upstream": "https://codeload.github.com/espressif/esp-idf/tar.gz/87912cd291",
+    "byteIdenticalToUpstream": true
+  },
+  {
+    "path": "sdk-source/esp-idf/examples/system/ota/simple_ota_example/test/secure_boot_signing_key_ecdsa.pem",
+    "sha256": "05c80d477cd700b42a0609ae6246ff26a13f7ec181af6119f555df60b340af4f",
+    "upstream": "https://codeload.github.com/espressif/esp-idf/tar.gz/87912cd291",
+    "byteIdenticalToUpstream": true
+  },
+  {
+    "path": "sdk-source/esp-idf/examples/wifi/wifi_eap_fast/main/server.key",
+    "sha256": "ab9a6df6cc92197561e553f12964580661f4e795ea2067d515fd6254a6ea665f",
+    "upstream": "https://codeload.github.com/espressif/esp-idf/tar.gz/87912cd291",
+    "byteIdenticalToUpstream": true
+  },
+  {
+    "path": "sdk-source/esp-idf/examples/wifi/wifi_enterprise/main/client.key",
+    "sha256": "e327881522ba1b076db34a4ad663e28e015cdda26becfe78ef35770d66aa5bc9",
+    "upstream": "https://codeload.github.com/espressif/esp-idf/tar.gz/87912cd291",
+    "byteIdenticalToUpstream": true
+  },
+  {
+    "path": "sdk-source/esp-idf/examples/wifi/wifi_enterprise/main/server.key",
+    "sha256": "dbdaebe6dd25087f8ec76da8929ac0f1ec6605ad7a6c89aa17227d940e6688c5",
+    "upstream": "https://codeload.github.com/espressif/esp-idf/tar.gz/87912cd291",
+    "byteIdenticalToUpstream": true
+  },
+  {
+    "path": "sdk-source/esp-idf/tools/test_apps/protocols/mqtt/publish_connect_test/ca.key",
+    "sha256": "54157361c60b97ce743fb8f875466311fd0e1f873224f16ef611bb8339cd638d",
+    "upstream": "https://codeload.github.com/espressif/esp-idf/tar.gz/87912cd291",
+    "byteIdenticalToUpstream": true
+  },
+  {
+    "path": "sdk-source/esp-idf/tools/test_apps/protocols/mqtt/publish_connect_test/client_no_pwd.key",
+    "sha256": "1d1df8ff79d756700952d4c4d16d8b5f9dc2a00069304cdabec79534a8ae09b0",
+    "upstream": "https://codeload.github.com/espressif/esp-idf/tar.gz/87912cd291",
+    "byteIdenticalToUpstream": true
+  },
+  {
+    "path": "sdk-source/esp-idf/tools/test_apps/protocols/mqtt/publish_connect_test/server.key",
+    "sha256": "e567ff3810f9440dcddb6fc14e2bf93a236f9413d8863f0ae8d3baf6796c7ac8",
+    "upstream": "https://codeload.github.com/espressif/esp-idf/tar.gz/87912cd291",
+    "byteIdenticalToUpstream": true
+  },
+  {
+    "path": "sdk-source/esp-idf/tools/test_apps/security/secure_boot/test/secure_boot_signing_key0.pem",
+    "sha256": "75cf766f44f99a3b495a27f8f0f324778c9c2b38914a71633db147a3be99d1f5",
+    "upstream": "https://codeload.github.com/espressif/esp-idf/tar.gz/87912cd291",
+    "byteIdenticalToUpstream": true
+  },
+  {
+    "path": "sdk-source/esp-idf/tools/test_apps/security/secure_boot/test/secure_boot_signing_key1.pem",
+    "sha256": "e27b85b2b1f3ee871fde02328d204fa9e745d7d24a88a385ce241cc534eeb8f5",
+    "upstream": "https://codeload.github.com/espressif/esp-idf/tar.gz/87912cd291",
+    "byteIdenticalToUpstream": true
+  },
+  {
+    "path": "sdk-source/esp-idf/tools/test_apps/security/secure_boot/test/secure_boot_signing_key2.pem",
+    "sha256": "fb1f226cb041dd9c2e0b58e7ca35759f89ce5b562465190de4ac67ac04fd55fa",
+    "upstream": "https://codeload.github.com/espressif/esp-idf/tar.gz/87912cd291",
+    "byteIdenticalToUpstream": true
+  },
+  {
+    "path": "sdk-source/esp-idf/tools/test_apps/security/secure_boot/test_ecdsa_key.pem",
+    "sha256": "ed51fdda4b037f33312c06f18f576d77f26de9635a9e265613523ce67ea192bc",
+    "upstream": "https://codeload.github.com/espressif/esp-idf/tar.gz/87912cd291",
+    "byteIdenticalToUpstream": true
+  },
+  {
+    "path": "sdk-source/esp-idf/tools/test_apps/security/secure_boot/test_ecdsa_p192_key.pem",
+    "sha256": "2ffd99c43429bf613b2485619873407856117d6076fa591f2dba64c8ba623281",
+    "upstream": "https://codeload.github.com/espressif/esp-idf/tar.gz/87912cd291",
+    "byteIdenticalToUpstream": true
+  },
+  {
+    "path": "sdk-source/esp-idf/tools/test_apps/security/secure_boot/test_ecdsa_p256_key.pem",
+    "sha256": "ed51fdda4b037f33312c06f18f576d77f26de9635a9e265613523ce67ea192bc",
+    "upstream": "https://codeload.github.com/espressif/esp-idf/tar.gz/87912cd291",
+    "byteIdenticalToUpstream": true
+  },
+  {
+    "path": "sdk-source/esp-idf/tools/test_apps/security/secure_boot/test_ecdsa_p384_key.pem",
+    "sha256": "f147ccb34d35c209b10e6deae2a19a5fae328ec951013d2100efb41fe68fd16f",
+    "upstream": "https://codeload.github.com/espressif/esp-idf/tar.gz/87912cd291",
+    "byteIdenticalToUpstream": true
+  },
+  {
+    "path": "sdk-source/esp-idf/tools/test_apps/security/secure_boot/test_rsa_3072_key.pem",
+    "sha256": "75cca5a1b8661e839a11b2f6dbba9125091e05d0a136a2e09f7fc6536ccc113c",
+    "upstream": "https://codeload.github.com/espressif/esp-idf/tar.gz/87912cd291",
+    "byteIdenticalToUpstream": true
+  },
+  {
+    "path": "sdk-source/esp-idf/tools/test_apps/security/signed_app_no_secure_boot/secure_boot_signing_key.pem",
+    "sha256": "967db6233d36b7ac1d45e6dd1296eb2303c32c2694c6f8755f3a8345483d14a5",
+    "upstream": "https://codeload.github.com/espressif/esp-idf/tar.gz/87912cd291",
+    "byteIdenticalToUpstream": true
+  },
+  {
+    "path": "sdk-source/esp-idf/tools/test_apps/system/mmu_page_size/secure_boot_signing_key.pem",
+    "sha256": "2dab0323b5e2863c08e3e3f5d89d36fd9fa9beaed685d3174428645672b3970e",
+    "upstream": "https://codeload.github.com/espressif/esp-idf/tar.gz/87912cd291",
+    "byteIdenticalToUpstream": true
+  },
+  {
+    "path": "sdk-source/mbedtls/framework/data_files/cli-rsa.key",
+    "sha256": "660d13287799f69599adf0aff1db46ee42b4c492b0f153f620f89a639dcb8f7d",
+    "upstream": "https://codeload.github.com/espressif/mbedtls/tar.gz/ffb280bb63c78bfec1e1ab55040671768c85c923",
+    "byteIdenticalToUpstream": true
+  },
+  {
+    "path": "sdk-source/mbedtls/framework/data_files/cli2.key",
+    "sha256": "f3c47ba835345e9072b0f79628f2d1f539f79749b85afb92bfade5761fbd6757",
+    "upstream": "https://codeload.github.com/espressif/mbedtls/tar.gz/ffb280bb63c78bfec1e1ab55040671768c85c923",
+    "byteIdenticalToUpstream": true
+  },
+  {
+    "path": "sdk-source/mbedtls/framework/data_files/dir-maxpath/00.key",
+    "sha256": "cd88d1232e351058359b9aafa390509951c1a0c6b00b7da285009d910e83ce1d",
+    "upstream": "https://codeload.github.com/espressif/mbedtls/tar.gz/ffb280bb63c78bfec1e1ab55040671768c85c923",
+    "byteIdenticalToUpstream": true
+  },
+  {
+    "path": "sdk-source/mbedtls/framework/data_files/dir-maxpath/01.key",
+    "sha256": "c20a5c6eb77c8cf63543107c06dcdae2b49f01622e2d10ce6dc09e59397dcbeb",
+    "upstream": "https://codeload.github.com/espressif/mbedtls/tar.gz/ffb280bb63c78bfec1e1ab55040671768c85c923",
+    "byteIdenticalToUpstream": true
+  },
+  {
+    "path": "sdk-source/mbedtls/framework/data_files/dir-maxpath/02.key",
+    "sha256": "14e626f8c189a5ff349d8efe35d7c357b75c59c1c267526fcac878743aa53d78",
+    "upstream": "https://codeload.github.com/espressif/mbedtls/tar.gz/ffb280bb63c78bfec1e1ab55040671768c85c923",
+    "byteIdenticalToUpstream": true
+  },
+  {
+    "path": "sdk-source/mbedtls/framework/data_files/dir-maxpath/03.key",
+    "sha256": "a04dcc41508c378372d26098665de22c83a63a76ccd1c2533eebe1bf1b9555a1",
+    "upstream": "https://codeload.github.com/espressif/mbedtls/tar.gz/ffb280bb63c78bfec1e1ab55040671768c85c923",
+    "byteIdenticalToUpstream": true
+  },
+  {
+    "path": "sdk-source/mbedtls/framework/data_files/dir-maxpath/04.key",
+    "sha256": "28befb1d41f11edfff3c447914acf25d2f620009c184ecd75c6a1a120b24f76a",
+    "upstream": "https://codeload.github.com/espressif/mbedtls/tar.gz/ffb280bb63c78bfec1e1ab55040671768c85c923",
+    "byteIdenticalToUpstream": true
+  },
+  {
+    "path": "sdk-source/mbedtls/framework/data_files/dir-maxpath/05.key",
+    "sha256": "39e58ffd6ccad062dcbd4b4e3cb1ac31aa27eb378fea6e302de2785c0becd276",
+    "upstream": "https://codeload.github.com/espressif/mbedtls/tar.gz/ffb280bb63c78bfec1e1ab55040671768c85c923",
+    "byteIdenticalToUpstream": true
+  },
+  {
+    "path": "sdk-source/mbedtls/framework/data_files/dir-maxpath/06.key",
+    "sha256": "4c48922433ed3ecd9df09a530a094eefcf61aed3a979c50c138a260a9fcba808",
+    "upstream": "https://codeload.github.com/espressif/mbedtls/tar.gz/ffb280bb63c78bfec1e1ab55040671768c85c923",
+    "byteIdenticalToUpstream": true
+  },
+  {
+    "path": "sdk-source/mbedtls/framework/data_files/dir-maxpath/07.key",
+    "sha256": "54e16d5b34cef77bbc747ea32cdea3a512ddfd0c97e0a2856f2e9fbb8224d3b2",
+    "upstream": "https://codeload.github.com/espressif/mbedtls/tar.gz/ffb280bb63c78bfec1e1ab55040671768c85c923",
+    "byteIdenticalToUpstream": true
+  },
+  {
+    "path": "sdk-source/mbedtls/framework/data_files/dir-maxpath/08.key",
+    "sha256": "eb9dc2fb50847a846ad4f36e87c8aab98964e3c4cd3cb5a270158a2352022ee8",
+    "upstream": "https://codeload.github.com/espressif/mbedtls/tar.gz/ffb280bb63c78bfec1e1ab55040671768c85c923",
+    "byteIdenticalToUpstream": true
+  },
+  {
+    "path": "sdk-source/mbedtls/framework/data_files/dir-maxpath/09.key",
+    "sha256": "ea99373ba8ef0158a51790aeac4a17fc02929be89a2a41b509c1be7fd6cc7310",
+    "upstream": "https://codeload.github.com/espressif/mbedtls/tar.gz/ffb280bb63c78bfec1e1ab55040671768c85c923",
+    "byteIdenticalToUpstream": true
+  },
+  {
+    "path": "sdk-source/mbedtls/framework/data_files/dir-maxpath/10.key",
+    "sha256": "74414a3cebefd13ab9d5d6a3b0c2895c39f04deedece9e9b564041d448b49a71",
+    "upstream": "https://codeload.github.com/espressif/mbedtls/tar.gz/ffb280bb63c78bfec1e1ab55040671768c85c923",
+    "byteIdenticalToUpstream": true
+  },
+  {
+    "path": "sdk-source/mbedtls/framework/data_files/dir-maxpath/11.key",
+    "sha256": "a969b40ed5608775d422fd77636b57c8ae7f7445aeaee4bc36171d37287d6232",
+    "upstream": "https://codeload.github.com/espressif/mbedtls/tar.gz/ffb280bb63c78bfec1e1ab55040671768c85c923",
+    "byteIdenticalToUpstream": true
+  },
+  {
+    "path": "sdk-source/mbedtls/framework/data_files/dir-maxpath/12.key",
+    "sha256": "86213c8881730842dd39b5beb18eed0bc359576faebfd9a3284e82c9b917985b",
+    "upstream": "https://codeload.github.com/espressif/mbedtls/tar.gz/ffb280bb63c78bfec1e1ab55040671768c85c923",
+    "byteIdenticalToUpstream": true
+  },
+  {
+    "path": "sdk-source/mbedtls/framework/data_files/dir-maxpath/13.key",
+    "sha256": "3adcac5db34bac9243e241cd3d411c408c40c072a0640736e641b2f5770fa22b",
+    "upstream": "https://codeload.github.com/espressif/mbedtls/tar.gz/ffb280bb63c78bfec1e1ab55040671768c85c923",
+    "byteIdenticalToUpstream": true
+  },
+  {
+    "path": "sdk-source/mbedtls/framework/data_files/dir-maxpath/14.key",
+    "sha256": "e2be9d236ea1d90882d8bbb1863544a3e765ac0916870ded784d89a660d35f42",
+    "upstream": "https://codeload.github.com/espressif/mbedtls/tar.gz/ffb280bb63c78bfec1e1ab55040671768c85c923",
+    "byteIdenticalToUpstream": true
+  },
+  {
+    "path": "sdk-source/mbedtls/framework/data_files/dir-maxpath/15.key",
+    "sha256": "25f574ba3a37d6edb1b05352976cea0f8e5d42dd222fe86d30fc640daed78c86",
+    "upstream": "https://codeload.github.com/espressif/mbedtls/tar.gz/ffb280bb63c78bfec1e1ab55040671768c85c923",
+    "byteIdenticalToUpstream": true
+  },
+  {
+    "path": "sdk-source/mbedtls/framework/data_files/dir-maxpath/16.key",
+    "sha256": "f78786f4534f25e2effd19746c481f8c795347eb700bf0584a046354054430e8",
+    "upstream": "https://codeload.github.com/espressif/mbedtls/tar.gz/ffb280bb63c78bfec1e1ab55040671768c85c923",
+    "byteIdenticalToUpstream": true
+  },
+  {
+    "path": "sdk-source/mbedtls/framework/data_files/dir-maxpath/17.key",
+    "sha256": "cc1e209a9cda5fdff62cf61628cdfff437a7301e483ff0bb339c544d6a420b26",
+    "upstream": "https://codeload.github.com/espressif/mbedtls/tar.gz/ffb280bb63c78bfec1e1ab55040671768c85c923",
+    "byteIdenticalToUpstream": true
+  },
+  {
+    "path": "sdk-source/mbedtls/framework/data_files/dir-maxpath/18.key",
+    "sha256": "fc91156511ae0f490825d3c170a2a708f2b0c8107124bc0fa703dd19c12695a6",
+    "upstream": "https://codeload.github.com/espressif/mbedtls/tar.gz/ffb280bb63c78bfec1e1ab55040671768c85c923",
+    "byteIdenticalToUpstream": true
+  },
+  {
+    "path": "sdk-source/mbedtls/framework/data_files/dir-maxpath/19.key",
+    "sha256": "5ceabbe6c1af30a28ec8d0d58a4911ab557304e5fb84a90e7a1cc48a33f576f3",
+    "upstream": "https://codeload.github.com/espressif/mbedtls/tar.gz/ffb280bb63c78bfec1e1ab55040671768c85c923",
+    "byteIdenticalToUpstream": true
+  },
+  {
+    "path": "sdk-source/mbedtls/framework/data_files/dir-maxpath/20.key",
+    "sha256": "a7fc55a3a918fd5b46d9ec2c166a226c361e1e6bc5ac39a33e97c1d664a17715",
+    "upstream": "https://codeload.github.com/espressif/mbedtls/tar.gz/ffb280bb63c78bfec1e1ab55040671768c85c923",
+    "byteIdenticalToUpstream": true
+  },
+  {
+    "path": "sdk-source/mbedtls/framework/data_files/ec_224_prv.comp.pem",
+    "sha256": "ffc1772224dbbe9bb5d20fadadfb356e5f1121d1e7c6ec40dcf9376d00fed422",
+    "upstream": "https://codeload.github.com/espressif/mbedtls/tar.gz/ffb280bb63c78bfec1e1ab55040671768c85c923",
+    "byteIdenticalToUpstream": true
+  },
+  {
+    "path": "sdk-source/mbedtls/framework/data_files/ec_224_prv.pem",
+    "sha256": "2c5f6e9a1466fd74a1ee2eb5f185abe903bbd67633a3bb3425ff951a5a17e181",
+    "upstream": "https://codeload.github.com/espressif/mbedtls/tar.gz/ffb280bb63c78bfec1e1ab55040671768c85c923",
+    "byteIdenticalToUpstream": true
+  },
+  {
+    "path": "sdk-source/mbedtls/framework/data_files/ec_256_long_prv.pem",
+    "sha256": "edbb78411c53e20a480854bd1c55e26668310d1729a0d7ce448138abe51dd763",
+    "upstream": "https://codeload.github.com/espressif/mbedtls/tar.gz/ffb280bb63c78bfec1e1ab55040671768c85c923",
+    "byteIdenticalToUpstream": true
+  },
+  {
+    "path": "sdk-source/mbedtls/framework/data_files/ec_256_prv.comp.pem",
+    "sha256": "5c3f0a7d3e98a0ffdb3ec58a4cb6b983ce0d0aa2eac01eeab0ab86e6159c1ab4",
+    "upstream": "https://codeload.github.com/espressif/mbedtls/tar.gz/ffb280bb63c78bfec1e1ab55040671768c85c923",
+    "byteIdenticalToUpstream": true
+  },
+  {
+    "path": "sdk-source/mbedtls/framework/data_files/ec_256_prv.pem",
+    "sha256": "0405a70b26333c2555e31ae665c0a5f37c6cd0e38edf5695afe3638743bdd903",
+    "upstream": "https://codeload.github.com/espressif/mbedtls/tar.gz/ffb280bb63c78bfec1e1ab55040671768c85c923",
+    "byteIdenticalToUpstream": true
+  },
+  {
+    "path": "sdk-source/mbedtls/framework/data_files/ec_384_prv.comp.pem",
+    "sha256": "81b02aa1c6e41572fded1ac7f1b4f57ff345ccc90a291d36b54064a3c9ceb540",
+    "upstream": "https://codeload.github.com/espressif/mbedtls/tar.gz/ffb280bb63c78bfec1e1ab55040671768c85c923",
+    "byteIdenticalToUpstream": true
+  },
+  {
+    "path": "sdk-source/mbedtls/framework/data_files/ec_384_prv.pem",
+    "sha256": "ed3a69ca0c5f4c62fa2c7b64951a11d1378abb72c3a3e439d7e06a9ec82c2075",
+    "upstream": "https://codeload.github.com/espressif/mbedtls/tar.gz/ffb280bb63c78bfec1e1ab55040671768c85c923",
+    "byteIdenticalToUpstream": true
+  },
+  {
+    "path": "sdk-source/mbedtls/framework/data_files/ec_521_prv.comp.pem",
+    "sha256": "41ac2334aa2e046fda8176e9b649594e7dd669d2550590a37c74f92575f1be60",
+    "upstream": "https://codeload.github.com/espressif/mbedtls/tar.gz/ffb280bb63c78bfec1e1ab55040671768c85c923",
+    "byteIdenticalToUpstream": true
+  },
+  {
+    "path": "sdk-source/mbedtls/framework/data_files/ec_521_prv.pem",
+    "sha256": "ecb4bed1990396b35f4cc0d3e2fa99b4e3876c89bdd05b691e0c02ad4b43b73d",
+    "upstream": "https://codeload.github.com/espressif/mbedtls/tar.gz/ffb280bb63c78bfec1e1ab55040671768c85c923",
+    "byteIdenticalToUpstream": true
+  },
+  {
+    "path": "sdk-source/mbedtls/framework/data_files/ec_521_short_prv.pem",
+    "sha256": "f82aecefacddd06e07012fca5751cdca618487c0b97ade4354e082900cc061c2",
+    "upstream": "https://codeload.github.com/espressif/mbedtls/tar.gz/ffb280bb63c78bfec1e1ab55040671768c85c923",
+    "byteIdenticalToUpstream": true
+  },
+  {
+    "path": "sdk-source/mbedtls/framework/data_files/ec_bp256_prv.comp.pem",
+    "sha256": "20608b193003072065f367b8d6642d6d55578db84571655d10957cad7aa73158",
+    "upstream": "https://codeload.github.com/espressif/mbedtls/tar.gz/ffb280bb63c78bfec1e1ab55040671768c85c923",
+    "byteIdenticalToUpstream": true
+  },
+  {
+    "path": "sdk-source/mbedtls/framework/data_files/ec_bp256_prv.pem",
+    "sha256": "0777db4161e8fd9cfcb0833486ea2992f1e173c22b53520e60799a905b05121d",
+    "upstream": "https://codeload.github.com/espressif/mbedtls/tar.gz/ffb280bb63c78bfec1e1ab55040671768c85c923",
+    "byteIdenticalToUpstream": true
+  },
+  {
+    "path": "sdk-source/mbedtls/framework/data_files/ec_bp384_prv.comp.pem",
+    "sha256": "5a446525ff3e7d2b3900d50ea1ec7acb175488e3528ef187b2544bdd8cae687b",
+    "upstream": "https://codeload.github.com/espressif/mbedtls/tar.gz/ffb280bb63c78bfec1e1ab55040671768c85c923",
+    "byteIdenticalToUpstream": true
+  },
+  {
+    "path": "sdk-source/mbedtls/framework/data_files/ec_bp384_prv.pem",
+    "sha256": "a72bd58d95029d0d6ab68219a29a25f107e235feb0543df7867e28e2a94f881f",
+    "upstream": "https://codeload.github.com/espressif/mbedtls/tar.gz/ffb280bb63c78bfec1e1ab55040671768c85c923",
+    "byteIdenticalToUpstream": true
+  },
+  {
+    "path": "sdk-source/mbedtls/framework/data_files/ec_bp512_prv.comp.pem",
+    "sha256": "7b42b5b3c4f3126c001c1f6d7caa4a266995cf8ee027a78cd8c8a10afe3ba67e",
+    "upstream": "https://codeload.github.com/espressif/mbedtls/tar.gz/ffb280bb63c78bfec1e1ab55040671768c85c923",
+    "byteIdenticalToUpstream": true
+  },
+  {
+    "path": "sdk-source/mbedtls/framework/data_files/ec_bp512_prv.pem",
+    "sha256": "9873530d30669de09947d05a9a111a38cd81376e2f97726c42250b958c6a1a0f",
+    "upstream": "https://codeload.github.com/espressif/mbedtls/tar.gz/ffb280bb63c78bfec1e1ab55040671768c85c923",
+    "byteIdenticalToUpstream": true
+  },
+  {
+    "path": "sdk-source/mbedtls/framework/data_files/ec_prv.pk8.pem",
+    "sha256": "c6bbe5affbf9a953c8d2124cb80fb48c2e9344b796d328e8c385a1aea5edde64",
+    "upstream": "https://codeload.github.com/espressif/mbedtls/tar.gz/ffb280bb63c78bfec1e1ab55040671768c85c923",
+    "byteIdenticalToUpstream": true
+  },
+  {
+    "path": "sdk-source/mbedtls/framework/data_files/ec_prv.pk8nopub.pem",
+    "sha256": "9587d1d0e4c45c1601faa4384e1bd5634a37f4a86ba4fd85fbd7fc85ad110d20",
+    "upstream": "https://codeload.github.com/espressif/mbedtls/tar.gz/ffb280bb63c78bfec1e1ab55040671768c85c923",
+    "byteIdenticalToUpstream": true
+  },
+  {
+    "path": "sdk-source/mbedtls/framework/data_files/ec_prv.pk8nopubparam.pem",
+    "sha256": "729ada4d58b82f741acfe7af2649b456c6b2c9f7297d202b83a0680ba4004685",
+    "upstream": "https://codeload.github.com/espressif/mbedtls/tar.gz/ffb280bb63c78bfec1e1ab55040671768c85c923",
+    "byteIdenticalToUpstream": true
+  },
+  {
+    "path": "sdk-source/mbedtls/framework/data_files/ec_prv.pk8param.pem",
+    "sha256": "609315a12cb3e58ab934a59c30bef3c835e835bc44244fb640d659f66b82dd8f",
+    "upstream": "https://codeload.github.com/espressif/mbedtls/tar.gz/ffb280bb63c78bfec1e1ab55040671768c85c923",
+    "byteIdenticalToUpstream": true
+  },
+  {
+    "path": "sdk-source/mbedtls/framework/data_files/ec_prv.sec1.comp.pem",
+    "sha256": "7ec103a8d1d814f78aafeffad459d050544a50ee0e94ec3eb5dd5d5ba3cd7111",
+    "upstream": "https://codeload.github.com/espressif/mbedtls/tar.gz/ffb280bb63c78bfec1e1ab55040671768c85c923",
+    "byteIdenticalToUpstream": true
+  },
+  {
+    "path": "sdk-source/mbedtls/framework/data_files/ec_prv.sec1.pem",
+    "sha256": "e4717c4b0e7e29eda161a63f5d778ce42e87e99e2ce8c440d209949f8fa49647",
+    "upstream": "https://codeload.github.com/espressif/mbedtls/tar.gz/ffb280bb63c78bfec1e1ab55040671768c85c923",
+    "byteIdenticalToUpstream": true
+  },
+  {
+    "path": "sdk-source/mbedtls/framework/data_files/ec_prv.sec1.pw.pem",
+    "sha256": "23052547d6b30dfdd3831b5b38c5b11be5bfc90afabe5638b7799a1fc6c67d01",
+    "upstream": "https://codeload.github.com/espressif/mbedtls/tar.gz/ffb280bb63c78bfec1e1ab55040671768c85c923",
+    "byteIdenticalToUpstream": true
+  },
+  {
+    "path": "sdk-source/mbedtls/framework/data_files/ec_x25519_prv.pem",
+    "sha256": "93721dd739894eb4f0d22efa3cccf57869bb121fece9cf5c287ec20fc1522b92",
+    "upstream": "https://codeload.github.com/espressif/mbedtls/tar.gz/ffb280bb63c78bfec1e1ab55040671768c85c923",
+    "byteIdenticalToUpstream": true
+  },
+  {
+    "path": "sdk-source/mbedtls/framework/data_files/ec_x448_prv.pem",
+    "sha256": "901889edd987b08e343f66f10a650bb1ebd7797595467232adbedb6af0ea3017",
+    "upstream": "https://codeload.github.com/espressif/mbedtls/tar.gz/ffb280bb63c78bfec1e1ab55040671768c85c923",
+    "byteIdenticalToUpstream": true
+  },
+  {
+    "path": "sdk-source/mbedtls/framework/data_files/ecdsa_secp256r1.key",
+    "sha256": "0405a70b26333c2555e31ae665c0a5f37c6cd0e38edf5695afe3638743bdd903",
+    "upstream": "https://codeload.github.com/espressif/mbedtls/tar.gz/ffb280bb63c78bfec1e1ab55040671768c85c923",
+    "byteIdenticalToUpstream": true
+  },
+  {
+    "path": "sdk-source/mbedtls/framework/data_files/ecdsa_secp384r1.key",
+    "sha256": "ed3a69ca0c5f4c62fa2c7b64951a11d1378abb72c3a3e439d7e06a9ec82c2075",
+    "upstream": "https://codeload.github.com/espressif/mbedtls/tar.gz/ffb280bb63c78bfec1e1ab55040671768c85c923",
+    "byteIdenticalToUpstream": true
+  },
+  {
+    "path": "sdk-source/mbedtls/framework/data_files/ecdsa_secp521r1.key",
+    "sha256": "ecb4bed1990396b35f4cc0d3e2fa99b4e3876c89bdd05b691e0c02ad4b43b73d",
+    "upstream": "https://codeload.github.com/espressif/mbedtls/tar.gz/ffb280bb63c78bfec1e1ab55040671768c85c923",
+    "byteIdenticalToUpstream": true
+  },
+  {
+    "path": "sdk-source/mbedtls/framework/data_files/format_gen.key",
+    "sha256": "dca1b0916b165817b00f17cca5baabb6cec36da42915d10dc1cfef66e8956c36",
+    "upstream": "https://codeload.github.com/espressif/mbedtls/tar.gz/ffb280bb63c78bfec1e1ab55040671768c85c923",
+    "byteIdenticalToUpstream": true
+  },
+  {
+    "path": "sdk-source/mbedtls/framework/data_files/format_rsa.key",
+    "sha256": "4be0c523a0e7e848d00bfd0f14df939cad57cd23fddbc88f637b8dcef84844d9",
+    "upstream": "https://codeload.github.com/espressif/mbedtls/tar.gz/ffb280bb63c78bfec1e1ab55040671768c85c923",
+    "byteIdenticalToUpstream": true
+  },
+  {
+    "path": "sdk-source/mbedtls/framework/data_files/parse_input/bitstring-in-dn.pem",
+    "sha256": "a56cb4555c1b735454efe2ad7fe080ba9df5df0119aa6b3ba385ff6148ba895e",
+    "upstream": "https://codeload.github.com/espressif/mbedtls/tar.gz/ffb280bb63c78bfec1e1ab55040671768c85c923",
+    "byteIdenticalToUpstream": true
+  },
+  {
+    "path": "sdk-source/mbedtls/framework/data_files/pkcs7-rsa-expired.key",
+    "sha256": "b9fe0e48f037da11997b0dd34880a8448211b6655ee9bd07c02e588b5b7fb300",
+    "upstream": "https://codeload.github.com/espressif/mbedtls/tar.gz/ffb280bb63c78bfec1e1ab55040671768c85c923",
+    "byteIdenticalToUpstream": true
+  },
+  {
+    "path": "sdk-source/mbedtls/framework/data_files/pkcs7-rsa-sha256-1.key",
+    "sha256": "60ace2329f0653937027838ebff151b17466ff449853d36522d14a9f3abdc20d",
+    "upstream": "https://codeload.github.com/espressif/mbedtls/tar.gz/ffb280bb63c78bfec1e1ab55040671768c85c923",
+    "byteIdenticalToUpstream": true
+  },
+  {
+    "path": "sdk-source/mbedtls/framework/data_files/pkcs7-rsa-sha256-1.pem",
+    "sha256": "ef95cb6b0274072257698227c9f8676e16db31277fed2b97beb07874dfb9d111",
+    "upstream": "https://codeload.github.com/espressif/mbedtls/tar.gz/ffb280bb63c78bfec1e1ab55040671768c85c923",
+    "byteIdenticalToUpstream": true
+  },
+  {
+    "path": "sdk-source/mbedtls/framework/data_files/pkcs7-rsa-sha256-2.key",
+    "sha256": "1eefc2ace7dda4777abdb8ed2f6b45f8b8f7c855a5a1f4bb94fa7701edb10b59",
+    "upstream": "https://codeload.github.com/espressif/mbedtls/tar.gz/ffb280bb63c78bfec1e1ab55040671768c85c923",
+    "byteIdenticalToUpstream": true
+  },
+  {
+    "path": "sdk-source/mbedtls/framework/data_files/pkcs7-rsa-sha256-2.pem",
+    "sha256": "7dbad2e526ccb07d8aaec7dadfdfbd6b5a6b7bd87c49e21de370f61acdf2268d",
+    "upstream": "https://codeload.github.com/espressif/mbedtls/tar.gz/ffb280bb63c78bfec1e1ab55040671768c85c923",
+    "byteIdenticalToUpstream": true
+  },
+  {
+    "path": "sdk-source/mbedtls/framework/data_files/pkcs7-rsa-sha256-3.key",
+    "sha256": "f858ef6204f3742d27c77567bbd8ef425251cc790fe1ea08a2910907292964ee",
+    "upstream": "https://codeload.github.com/espressif/mbedtls/tar.gz/ffb280bb63c78bfec1e1ab55040671768c85c923",
+    "byteIdenticalToUpstream": true
+  },
+  {
+    "path": "sdk-source/mbedtls/framework/data_files/pkcs7-rsa-sha256-3.pem",
+    "sha256": "679bbc68a1dde3f35268f2941ed2713a6e5a60c15b91b8f9dac6e12827df8c9f",
+    "upstream": "https://codeload.github.com/espressif/mbedtls/tar.gz/ffb280bb63c78bfec1e1ab55040671768c85c923",
+    "byteIdenticalToUpstream": true
+  },
+  {
+    "path": "sdk-source/mbedtls/framework/data_files/rsa4096_prv.pem",
+    "sha256": "fe1368dfb5816c1697ff7842aa4da44fa0961aac16dea803f7b0b1af922f692f",
+    "upstream": "https://codeload.github.com/espressif/mbedtls/tar.gz/ffb280bb63c78bfec1e1ab55040671768c85c923",
+    "byteIdenticalToUpstream": true
+  },
+  {
+    "path": "sdk-source/mbedtls/framework/data_files/rsa512.key",
+    "sha256": "799d813958afdbab03c10fb91df109f7d7ee0d9affd2282cf050600d50b97d44",
+    "upstream": "https://codeload.github.com/espressif/mbedtls/tar.gz/ffb280bb63c78bfec1e1ab55040671768c85c923",
+    "byteIdenticalToUpstream": true
+  },
+  {
+    "path": "sdk-source/mbedtls/framework/data_files/rsa521.key",
+    "sha256": "4bc698df7312e5ea0a9bda75bc876d16a25a30dbd6d34483b3252ce8224ddf2d",
+    "upstream": "https://codeload.github.com/espressif/mbedtls/tar.gz/ffb280bb63c78bfec1e1ab55040671768c85c923",
+    "byteIdenticalToUpstream": true
+  },
+  {
+    "path": "sdk-source/mbedtls/framework/data_files/rsa522.key",
+    "sha256": "aa458ff31c66c8f7af7c6f07418ac9479bc9aad4d8d1e5128f2d7455ca52eeed",
+    "upstream": "https://codeload.github.com/espressif/mbedtls/tar.gz/ffb280bb63c78bfec1e1ab55040671768c85c923",
+    "byteIdenticalToUpstream": true
+  },
+  {
+    "path": "sdk-source/mbedtls/framework/data_files/rsa528.key",
+    "sha256": "614f9aec7348a481cb5477c47c3bf76d6af8f4a5f21cc875a8efd026c3bdb085",
+    "upstream": "https://codeload.github.com/espressif/mbedtls/tar.gz/ffb280bb63c78bfec1e1ab55040671768c85c923",
+    "byteIdenticalToUpstream": true
+  },
+  {
+    "path": "sdk-source/mbedtls/framework/data_files/rsa_multiple_san_uri.key",
+    "sha256": "44ad6c9596f030ef6c0c64aedfc76e8e950ef6ecbf493ec8b95a7775a7f7d78c",
+    "upstream": "https://codeload.github.com/espressif/mbedtls/tar.gz/ffb280bb63c78bfec1e1ab55040671768c85c923",
+    "byteIdenticalToUpstream": true
+  },
+  {
+    "path": "sdk-source/mbedtls/framework/data_files/rsa_pkcs1_1024_3des.pem",
+    "sha256": "2c387321062ad20d5eff5ec30ba57cde1b1788253e315cf3fef64d896dc6141b",
+    "upstream": "https://codeload.github.com/espressif/mbedtls/tar.gz/ffb280bb63c78bfec1e1ab55040671768c85c923",
+    "byteIdenticalToUpstream": true
+  },
+  {
+    "path": "sdk-source/mbedtls/framework/data_files/rsa_pkcs1_1024_aes128.pem",
+    "sha256": "5032455d9ae5bd96fec4a14b409d122101ad3f074a29b6af28f67c7081a82366",
+    "upstream": "https://codeload.github.com/espressif/mbedtls/tar.gz/ffb280bb63c78bfec1e1ab55040671768c85c923",
+    "byteIdenticalToUpstream": true
+  },
+  {
+    "path": "sdk-source/mbedtls/framework/data_files/rsa_pkcs1_1024_aes192.pem",
+    "sha256": "2628892185635e4f459444f7f5d17dc9f3b0009095d12a11c634bd3a333e4aed",
+    "upstream": "https://codeload.github.com/espressif/mbedtls/tar.gz/ffb280bb63c78bfec1e1ab55040671768c85c923",
+    "byteIdenticalToUpstream": true
+  },
+  {
+    "path": "sdk-source/mbedtls/framework/data_files/rsa_pkcs1_1024_aes256.pem",
+    "sha256": "5dae5ea1714082b515a073ec930d9ffb3294ca2a12a66d131cfb5b35489aca78",
+    "upstream": "https://codeload.github.com/espressif/mbedtls/tar.gz/ffb280bb63c78bfec1e1ab55040671768c85c923",
+    "byteIdenticalToUpstream": true
+  },
+  {
+    "path": "sdk-source/mbedtls/framework/data_files/rsa_pkcs1_1024_clear.pem",
+    "sha256": "0112d73365e459106014ed440d6ca6d45f234370939790e21e9267bfb073bdb4",
+    "upstream": "https://codeload.github.com/espressif/mbedtls/tar.gz/ffb280bb63c78bfec1e1ab55040671768c85c923",
+    "byteIdenticalToUpstream": true
+  },
+  {
+    "path": "sdk-source/mbedtls/framework/data_files/rsa_pkcs1_1024_des.pem",
+    "sha256": "08e9aa7dbf581581131532213ede5f76222efb3c5df3e1d8e9d21f77ffe97be4",
+    "upstream": "https://codeload.github.com/espressif/mbedtls/tar.gz/ffb280bb63c78bfec1e1ab55040671768c85c923",
+    "byteIdenticalToUpstream": true
+  },
+  {
+    "path": "sdk-source/mbedtls/framework/data_files/rsa_pkcs1_2048_3des.pem",
+    "sha256": "7576eec37b28007c0fecc1023ffc0cdd51c5b0964f9d02aa1955774ba9f06fcb",
+    "upstream": "https://codeload.github.com/espressif/mbedtls/tar.gz/ffb280bb63c78bfec1e1ab55040671768c85c923",
+    "byteIdenticalToUpstream": true
+  },
+  {
+    "path": "sdk-source/mbedtls/framework/data_files/rsa_pkcs1_2048_aes128.pem",
+    "sha256": "ee8bcbff13d7f58c5bab527d72b793fbf2085a568ea25af446017f214531dd17",
+    "upstream": "https://codeload.github.com/espressif/mbedtls/tar.gz/ffb280bb63c78bfec1e1ab55040671768c85c923",
+    "byteIdenticalToUpstream": true
+  },
+  {
+    "path": "sdk-source/mbedtls/framework/data_files/rsa_pkcs1_2048_aes192.pem",
+    "sha256": "d24c88836bc1c4cd35734e9fc252ce95f07cf4ef3eb45726ada77b82e3177bc0",
+    "upstream": "https://codeload.github.com/espressif/mbedtls/tar.gz/ffb280bb63c78bfec1e1ab55040671768c85c923",
+    "byteIdenticalToUpstream": true
+  },
+  {
+    "path": "sdk-source/mbedtls/framework/data_files/rsa_pkcs1_2048_aes256.pem",
+    "sha256": "182681da70e9eeb1d1508ef4746763fcf14da6eebd414bea090717c0f830e52d",
+    "upstream": "https://codeload.github.com/espressif/mbedtls/tar.gz/ffb280bb63c78bfec1e1ab55040671768c85c923",
+    "byteIdenticalToUpstream": true
+  },
+  {
+    "path": "sdk-source/mbedtls/framework/data_files/rsa_pkcs1_2048_clear.pem",
+    "sha256": "3e79c3cb57eb569c4271f69b90b3f9475b02d32b835c91f29786a02d5c04a510",
+    "upstream": "https://codeload.github.com/espressif/mbedtls/tar.gz/ffb280bb63c78bfec1e1ab55040671768c85c923",
+    "byteIdenticalToUpstream": true
+  },
+  {
+    "path": "sdk-source/mbedtls/framework/data_files/rsa_pkcs1_2048_des.pem",
+    "sha256": "42183ce524fc60c316f9eac695c30e758d295a0c8013788053c6c43a6ac7fd36",
+    "upstream": "https://codeload.github.com/espressif/mbedtls/tar.gz/ffb280bb63c78bfec1e1ab55040671768c85c923",
+    "byteIdenticalToUpstream": true
+  },
+  {
+    "path": "sdk-source/mbedtls/framework/data_files/rsa_pkcs1_4096_3des.pem",
+    "sha256": "a5314e0d8e9ae1e34afe514d9219d507c1f018156bbbcd9ec36a5a935f8186bb",
+    "upstream": "https://codeload.github.com/espressif/mbedtls/tar.gz/ffb280bb63c78bfec1e1ab55040671768c85c923",
+    "byteIdenticalToUpstream": true
+  },
+  {
+    "path": "sdk-source/mbedtls/framework/data_files/rsa_pkcs1_4096_aes128.pem",
+    "sha256": "7d544b8d1a6f552c90e4db19d84744b316469d8d6a4eb31e6ce9c6abd8e87e57",
+    "upstream": "https://codeload.github.com/espressif/mbedtls/tar.gz/ffb280bb63c78bfec1e1ab55040671768c85c923",
+    "byteIdenticalToUpstream": true
+  },
+  {
+    "path": "sdk-source/mbedtls/framework/data_files/rsa_pkcs1_4096_aes192.pem",
+    "sha256": "1a05e9f1f7152126eb08dffba59841ee525319b46861ee3ed526c687195bc95c",
+    "upstream": "https://codeload.github.com/espressif/mbedtls/tar.gz/ffb280bb63c78bfec1e1ab55040671768c85c923",
+    "byteIdenticalToUpstream": true
+  },
+  {
+    "path": "sdk-source/mbedtls/framework/data_files/rsa_pkcs1_4096_aes256.pem",
+    "sha256": "cc66bcd61806a601f33ad93a47a53f4785470e2fcb3ded30a77611b1876cd05f",
+    "upstream": "https://codeload.github.com/espressif/mbedtls/tar.gz/ffb280bb63c78bfec1e1ab55040671768c85c923",
+    "byteIdenticalToUpstream": true
+  },
+  {
+    "path": "sdk-source/mbedtls/framework/data_files/rsa_pkcs1_4096_clear.pem",
+    "sha256": "c6ecb3e03f0920f35453d72490e1139f11ecc38a19bd6a1cd89e9004779a372d",
+    "upstream": "https://codeload.github.com/espressif/mbedtls/tar.gz/ffb280bb63c78bfec1e1ab55040671768c85c923",
+    "byteIdenticalToUpstream": true
+  },
+  {
+    "path": "sdk-source/mbedtls/framework/data_files/rsa_pkcs1_4096_des.pem",
+    "sha256": "cf6d0a97cd7750310bedd61e505ca57cbe585c33f6f649426e661551a37ea44b",
+    "upstream": "https://codeload.github.com/espressif/mbedtls/tar.gz/ffb280bb63c78bfec1e1ab55040671768c85c923",
+    "byteIdenticalToUpstream": true
+  },
+  {
+    "path": "sdk-source/mbedtls/framework/data_files/rsa_pkcs1_768_clear.pem",
+    "sha256": "335df110e261d0bf4a7e191d89d09af8415e99815565791e560faa5362195e5a",
+    "upstream": "https://codeload.github.com/espressif/mbedtls/tar.gz/ffb280bb63c78bfec1e1ab55040671768c85c923",
+    "byteIdenticalToUpstream": true
+  },
+  {
+    "path": "sdk-source/mbedtls/framework/data_files/rsa_pkcs1_769_clear.pem",
+    "sha256": "a9589effa6760e1fe16d28b53c577993686fa5a703bdda6ce77fd5485e9ba515",
+    "upstream": "https://codeload.github.com/espressif/mbedtls/tar.gz/ffb280bb63c78bfec1e1ab55040671768c85c923",
+    "byteIdenticalToUpstream": true
+  },
+  {
+    "path": "sdk-source/mbedtls/framework/data_files/rsa_pkcs1_770_clear.pem",
+    "sha256": "7f7854478a0624948396c8df9cc1dfc2c9fa184e2991ba20a9cef952903b719b",
+    "upstream": "https://codeload.github.com/espressif/mbedtls/tar.gz/ffb280bb63c78bfec1e1ab55040671768c85c923",
+    "byteIdenticalToUpstream": true
+  },
+  {
+    "path": "sdk-source/mbedtls/framework/data_files/rsa_pkcs1_776_clear.pem",
+    "sha256": "75a3858cb1ab1b1a278400c2c78aba3e726c672f05c944ecaab3507299dc39cd",
+    "upstream": "https://codeload.github.com/espressif/mbedtls/tar.gz/ffb280bb63c78bfec1e1ab55040671768c85c923",
+    "byteIdenticalToUpstream": true
+  },
+  {
+    "path": "sdk-source/mbedtls/framework/data_files/rsa_pkcs1_784_clear.pem",
+    "sha256": "bcd1edc8e320cc32bb07f11b4d3a52f5b2c40a8fd95e134a5c9c7e97bdb9bc3b",
+    "upstream": "https://codeload.github.com/espressif/mbedtls/tar.gz/ffb280bb63c78bfec1e1ab55040671768c85c923",
+    "byteIdenticalToUpstream": true
+  },
+  {
+    "path": "sdk-source/mbedtls/framework/data_files/rsa_single_san_uri.key",
+    "sha256": "c70608aaaab0ee5843083a5a4d08fd5296224ab46736ded39203e87dbd186aa4",
+    "upstream": "https://codeload.github.com/espressif/mbedtls/tar.gz/ffb280bb63c78bfec1e1ab55040671768c85c923",
+    "byteIdenticalToUpstream": true
+  },
+  {
+    "path": "sdk-source/mbedtls/framework/data_files/server1.key",
+    "sha256": "469e1de4e72db7ddea4f5f56db4974a612da0f403a8a35464e52d53c60fd61bf",
+    "upstream": "https://codeload.github.com/espressif/mbedtls/tar.gz/ffb280bb63c78bfec1e1ab55040671768c85c923",
+    "byteIdenticalToUpstream": true
+  },
+  {
+    "path": "sdk-source/mbedtls/framework/data_files/server10.key",
+    "sha256": "603c53edfff74463bfa4f9e195377224f6980aef4f86c4428a4b119bb440277f",
+    "upstream": "https://codeload.github.com/espressif/mbedtls/tar.gz/ffb280bb63c78bfec1e1ab55040671768c85c923",
+    "byteIdenticalToUpstream": true
+  },
+  {
+    "path": "sdk-source/mbedtls/framework/data_files/server2.key",
+    "sha256": "5d061d8e92c246e465654ea6eef75b0667cc49cfb8f76d3b4c2f2517861f8b1e",
+    "upstream": "https://codeload.github.com/espressif/mbedtls/tar.gz/ffb280bb63c78bfec1e1ab55040671768c85c923",
+    "byteIdenticalToUpstream": true
+  },
+  {
+    "path": "sdk-source/mbedtls/framework/data_files/server2.key.enc",
+    "sha256": "43d0c8403c6a9ca27cb50ac139650290acdba91ddcd3149d2daf3665898134ff",
+    "upstream": "https://codeload.github.com/espressif/mbedtls/tar.gz/ffb280bb63c78bfec1e1ab55040671768c85c923",
+    "byteIdenticalToUpstream": true
+  },
+  {
+    "path": "sdk-source/mbedtls/framework/data_files/server3.key",
+    "sha256": "2a67c4daedc10b0f4bad16f06a30ab5b9f401a541fb61aa4451e23479bb75d7c",
+    "upstream": "https://codeload.github.com/espressif/mbedtls/tar.gz/ffb280bb63c78bfec1e1ab55040671768c85c923",
+    "byteIdenticalToUpstream": true
+  },
+  {
+    "path": "sdk-source/mbedtls/framework/data_files/server4.key",
+    "sha256": "ed155b755deaee3b5b8dcf271b4c82368f6b143ede5a0699d4442214c0be7361",
+    "upstream": "https://codeload.github.com/espressif/mbedtls/tar.gz/ffb280bb63c78bfec1e1ab55040671768c85c923",
+    "byteIdenticalToUpstream": true
+  },
+  {
+    "path": "sdk-source/mbedtls/framework/data_files/server5.key",
+    "sha256": "dc05ad588945ee5771ea24f4970b79e020acfb9c45c6de9d7975b440394f4938",
+    "upstream": "https://codeload.github.com/espressif/mbedtls/tar.gz/ffb280bb63c78bfec1e1ab55040671768c85c923",
+    "byteIdenticalToUpstream": true
+  },
+  {
+    "path": "sdk-source/mbedtls/framework/data_files/server5.key.enc",
+    "sha256": "f15fa2c2053c1e7976dc21c21c0f3f7199f24379310bc5fb9de2edfe5d43ae2f",
+    "upstream": "https://codeload.github.com/espressif/mbedtls/tar.gz/ffb280bb63c78bfec1e1ab55040671768c85c923",
+    "byteIdenticalToUpstream": true
+  },
+  {
+    "path": "sdk-source/mbedtls/framework/data_files/server6.key",
+    "sha256": "2c6ba41ff6fa21bd12f3905eae7e39a7c45f26dc35b14e7761342dc50589ea6e",
+    "upstream": "https://codeload.github.com/espressif/mbedtls/tar.gz/ffb280bb63c78bfec1e1ab55040671768c85c923",
+    "byteIdenticalToUpstream": true
+  },
+  {
+    "path": "sdk-source/mbedtls/framework/data_files/server7.key",
+    "sha256": "603c53edfff74463bfa4f9e195377224f6980aef4f86c4428a4b119bb440277f",
+    "upstream": "https://codeload.github.com/espressif/mbedtls/tar.gz/ffb280bb63c78bfec1e1ab55040671768c85c923",
+    "byteIdenticalToUpstream": true
+  },
+  {
+    "path": "sdk-source/mbedtls/framework/data_files/server8.key",
+    "sha256": "e8dfd0a91df11fc13499c9a63ab457861283667c44682c2ed10329b0e406c460",
+    "upstream": "https://codeload.github.com/espressif/mbedtls/tar.gz/ffb280bb63c78bfec1e1ab55040671768c85c923",
+    "byteIdenticalToUpstream": true
+  },
+  {
+    "path": "sdk-source/mbedtls/framework/data_files/server9.key",
+    "sha256": "41227afd38ca676c904ae59589943b5f57576e72b72c98d8f503f57c8ce70552",
+    "upstream": "https://codeload.github.com/espressif/mbedtls/tar.gz/ffb280bb63c78bfec1e1ab55040671768c85c923",
+    "byteIdenticalToUpstream": true
+  },
+  {
+    "path": "sdk-source/mbedtls/framework/data_files/test-ca-alt.key",
+    "sha256": "f3a266be97499730ffc421332f58ccd4819993a882a30e55519927cb25c4488c",
+    "upstream": "https://codeload.github.com/espressif/mbedtls/tar.gz/ffb280bb63c78bfec1e1ab55040671768c85c923",
+    "byteIdenticalToUpstream": true
+  },
+  {
+    "path": "sdk-source/mbedtls/framework/data_files/test-ca.key",
+    "sha256": "a61c8417f8192f59066a7e38cc1dd40df595cba76ddc513c22a5fe3f2af4d404",
+    "upstream": "https://codeload.github.com/espressif/mbedtls/tar.gz/ffb280bb63c78bfec1e1ab55040671768c85c923",
+    "byteIdenticalToUpstream": true
+  },
+  {
+    "path": "sdk-source/mbedtls/framework/data_files/test-ca2.key",
+    "sha256": "72769bdc9f54e0f2c4a8856bcc4545fcc769ccd77d26f7e35fb3f64419a7df35",
+    "upstream": "https://codeload.github.com/espressif/mbedtls/tar.gz/ffb280bb63c78bfec1e1ab55040671768c85c923",
+    "byteIdenticalToUpstream": true
+  },
+  {
+    "path": "sdk-source/mbedtls/framework/data_files/test-ca2.key.enc",
+    "sha256": "18b93a1c675861bef54a47c044d4431133b5e92c54e433e1d114fbc43871ef08",
+    "upstream": "https://codeload.github.com/espressif/mbedtls/tar.gz/ffb280bb63c78bfec1e1ab55040671768c85c923",
+    "byteIdenticalToUpstream": true
+  },
+  {
+    "path": "sdk-source/mbedtls/framework/data_files/test-ca_unenc.key",
+    "sha256": "58b16ca7fc6898a8721fa4a965e2cda251b339952dc3ad3bc6d9b1ff41d1dd50",
+    "upstream": "https://codeload.github.com/espressif/mbedtls/tar.gz/ffb280bb63c78bfec1e1ab55040671768c85c923",
+    "byteIdenticalToUpstream": true
+  },
+  {
+    "path": "sdk-source/mbedtls/framework/data_files/test-int-ca.key",
+    "sha256": "c9ce39dd7a23fbf4f10368519fa23bd4a34f32d6015dde5c4042ba477410133a",
+    "upstream": "https://codeload.github.com/espressif/mbedtls/tar.gz/ffb280bb63c78bfec1e1ab55040671768c85c923",
+    "byteIdenticalToUpstream": true
+  },
+  {
+    "path": "sdk-source/mbedtls/framework/data_files/test-int-ca2.key",
+    "sha256": "97ae364e686400105ed7ce07168ba7d64b7797e27b577ce6e1952e01f3ebcb0d",
+    "upstream": "https://codeload.github.com/espressif/mbedtls/tar.gz/ffb280bb63c78bfec1e1ab55040671768c85c923",
+    "byteIdenticalToUpstream": true
+  },
+  {
+    "path": "sdk-source/mbedtls/framework/data_files/test-int-ca3.key",
+    "sha256": "8f54c3d71e1669ec7f3f2a1fa835a96b215ff69fae9a7e7081780569ba8e10a9",
+    "upstream": "https://codeload.github.com/espressif/mbedtls/tar.gz/ffb280bb63c78bfec1e1ab55040671768c85c923",
+    "byteIdenticalToUpstream": true
+  },
+  {
+    "path": "sdk-source/mbedtls/library/pk_internal.h",
+    "sha256": "822b38a1c868521808896340e15134e04f980ba8117e7b14a193a44d229c0492",
+    "upstream": "https://codeload.github.com/espressif/mbedtls/tar.gz/ffb280bb63c78bfec1e1ab55040671768c85c923",
+    "byteIdenticalToUpstream": true
+  },
+  {
+    "path": "sdk-source/mbedtls/tests/include/test/test_certs.h",
+    "sha256": "b9ef007f21b82dfaa255e5597a15c9be51a567be0715e193adc9f95b38442343",
+    "upstream": "https://codeload.github.com/espressif/mbedtls/tar.gz/ffb280bb63c78bfec1e1ab55040671768c85c923",
+    "byteIdenticalToUpstream": true
+  },
+  {
+    "path": "sdk-source/mbedtls/tests/suites/test_suite_pem.data",
+    "sha256": "b90e7dbd02bf9d1696aa92a4f8fd6881af9bb94c60e17aaa8b751d92b4e42af5",
+    "upstream": "https://codeload.github.com/espressif/mbedtls/tar.gz/ffb280bb63c78bfec1e1ab55040671768c85c923",
+    "byteIdenticalToUpstream": true
+  }
+]

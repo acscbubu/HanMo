@@ -1,0 +1,12 @@
+{
+  "version": "1.5.8-hanmo-bold-status-20261010",
+  "visuallyReviewed": true,
+  "readerFlows": ["both-right", "right-progress", "split", "wifi-hidden", "battery-hidden", "both-left", "wifi-center"],
+  "readerCapturedFrames": 21,
+  "readerStatusFramesReviewed": 7,
+  "uiFlows": ["5-ZH_TW-0-flow", "5-ZH_TW-1-flow", "5-EN-0-flow", "5-ZH_CN-0-flow"],
+  "uiCapturedAndReviewedFrames": 20,
+  "uiFlow": "INX Home → Settings → Reader expanded → Back → Apps",
+  "findings": "Wi-Fi appears before the percent+battery group when both on the right, including when page progress is shown. Left/hidden/center configurations remain functional; title truncates when center Wi-Fi takes its lane. Bold normal/large UI and three languages show no observed clipping or overlapping in these frames.",
+  "scope": "Synthetic SD and actual desktop simulator, not physical SD, wireless connectivity, device e-ink appearance or hardware latency. Prior pilot-old-reader is baseline only and excluded from totals. Other themes, all games and all Japanese lessons not rerun."
+}

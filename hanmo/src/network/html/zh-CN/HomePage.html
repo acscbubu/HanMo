@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>设备概览 - 翰墨</title>
+    <style>
+      :root {
+        --font-color: #333;
+        --bg: #f5f5f5;
+        --title-color: #2c3e50;
+        --card-bg: #FFF;
+        --label-color: #7f8c8d;
+        --border-color: #eee;
+        --accent-color: rgb(110, 154, 130);
+        --accent-hover-color: #5a8c73;
+      }
+      @media (prefers-color-scheme: dark) {
+        :root {
+          --font-color: #f5f5f5;
+          --bg: #333;
+          --title-color: #ecf0f1;
+          --card-bg: #444;
+          --label-color: #bdc3c7;
+          --border-color: #555;
+          color-scheme: dark;
+        }
+      }
+      body {
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+          Oxygen, Ubuntu, sans-serif;
+        max-width: 1100px;
+        margin: 0 auto;
+        padding: 20px;
+        background-color: var(--bg);
+        color: var(--font-color);
+      }
+          h1 {
+            color: var(--title-color);
+            border-bottom: 2px solid var(--accent-color);
+            padding-bottom: 10px;
+          }
+          /* The name sits in the middle and is the user's to change; nav.js fetches
+             it and hangs the rename control off it. */
+          h1.brand { display: flex; align-items: center; justify-content: center; gap: 10px; }
+      h2 {
+        color: var(--title-color);
+        margin-top: 0;
+      }
+      .card {
+        background: var(--card-bg);
+        border-radius: 8px;
+        padding: 20px;
+        margin: 15px 0;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      }
+      .info-row {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 8px 0;
+        border-bottom: 1px solid var(--border-color);
+      }
+      .info-row:last-child {
+        border-bottom: none;
+      }
+      .label {
+        font-weight: 600;
+        color: var(--label-color);
+      }
+      .value {
+        color: var(--title-color);
+      }
+      .status {
+        display: inline-block;
+        padding: 4px 12px;
+        border-radius: 12px;
+        background-color: #27ae60;
+        color: white;
+        font-size: 0.9em;
+      }
+      .nav-links {
+        margin: 20px 0;
+        display: flex;
+        gap: 10px;
+      }
+
+      /* Sidebar shell: the nav is a column on the left, the page is the
+         column beside it. min-width:0 on the content matters -- the file
+         manager has wide rows and a flex child will not shrink below its
+         content without it. */
+      .shell {
+        display: flex;
+        gap: 20px;
+        align-items: flex-start;
+      }
+      .shell > .nav-links {
+        flex: 0 0 170px;
+        flex-direction: column;
+        position: sticky;
+        top: 20px;
+        margin: 0;
+      }
+      .shell > .content {
+        flex: 1;
+        min-width: 0;
+      }
+      .shell > .content > *:first-child {
+        margin-top: 0;
+      }
+      /* A 170px column on a phone leaves nothing for the page, so below this
+         the nav goes back to a row above the content. */
+      @media (max-width: 720px) {
+        .shell {
+          display: block;
+        }
+        .shell > .nav-links {
+          position: static;
+          flex-direction: row;
+          flex-wrap: wrap;
+          margin-bottom: 15px;
+        }
+      }
+      .nav-links a {
+        padding: 10px 20px;
+        color: var(--font-color);
+        text-decoration: none;
+        border-radius: 4px;
+      }
+      .nav-links a.active {
+        background-color: var(--accent-color);
+        color: white;
+      }
+      .nav-links a:not(.active):hover {
+        background-color: var(--accent-hover-color);
+        color: white;
+      }
+      /* Sidebar links can be dragged into a different order; nav.js keeps it. */
+      [data-nav-group] [data-nav-key] { cursor: grab; touch-action: none; }
+      [data-nav-group].nav-reordering [data-nav-key] { cursor: grabbing; }
+      [data-nav-key].nav-dragging { opacity: 0.5; pointer-events: none; }
+    </style>
+    <script src="/js/nav.js" defer></script>
+  </head>
+  <body>
+    <h1 class="brand"><span aria-hidden="true">📚</span><span data-brand="title">翰墨</span></h1>
+
+    <div class="shell">
+<div class="nav-links" data-nav-group="pages">
+    <a href="/" class="active" aria-current="page" data-nav-key="home">主页</a>
+    <a href="/files" data-nav-key="files">文件管理</a>
+    <a href="/device" data-nav-key="device">设备</a>
+    <a href="/fonts" data-nav-key="fonts">字体</a>
+    <a href="/settings" data-nav-key="settings">设置</a>
+</div>
+<div class="content">
+
+    <div class="card">
+      <h2>设备状态</h2>
+      <div class="info-row">
+        <span class="label">序列号</span>
+        <span class="value" id="serial"></span>
+      </div>
+      <div class="info-row">
+        <span class="label">固件版本</span>
+        <span class="value" id="version" data-brand="version"></span>
+      </div>
+      <div class="info-row">
+        <span class="label">WiFi 状态</span>
+        <span class="status">已连接</span>
+      </div>
+      <div class="info-row">
+        <span class="label">IP 地址</span>
+        <span class="value" id="ip-address"></span>
+      </div>
+      <div class="info-row">
+        <span class="label">可用内存</span>
+        <span class="value" id="free-heap"></span>
+      </div>
+    </div>
+
+    <div class="card">
+      <p style="text-align: center; color: #95a5a6; margin: 0">
+        CrossPoint 电子阅读器 • 开源
+      </p>
+    </div>
+  </div>
+</div>
+<script>
+      async function fetchStatus() {
+        const fallback = '不可用';
+        try {
+          const response = await fetch('/api/status');
+          if (!response.ok) throw new Error(response.status + ' ' + response.statusText);
+          const data = await response.json();
+          // The version line can carry a label of the user's own choosing; the
+          // build string is only what shows when they have not set one.
+          document.getElementById('version').setAttribute('data-brand-default', data.version || fallback);
+          // nav.js paints a user-defined label; without it, still show the build version.
+          if (!window.crossmuxNav) document.getElementById('version').textContent = data.version || fallback;
+          if (window.crossmuxNav) window.crossmuxNav.refreshBranding();
+          document.getElementById('serial').textContent = data.serial || fallback;
+          document.getElementById('ip-address').textContent = data.ip || fallback;
+          document.getElementById('free-heap').textContent = data.freeHeap
+            ? data.freeHeap.toLocaleString('zh-CN') + ' 字节'
+            : fallback;
+          const statusNote = document.querySelector('.status');
+          statusNote.textContent = '已连接';
+          statusNote.style.backgroundColor = '';
+          statusNote.style.maxWidth = '';
+          statusNote.style.overflowWrap = '';
+        } catch (error) {
+          document.getElementById('version').setAttribute('data-brand-default', fallback);
+          if (!window.crossmuxNav) document.getElementById('version').textContent = fallback;
+          if (window.crossmuxNav) window.crossmuxNav.refreshBranding();
+          document.getElementById('serial').textContent = fallback;
+          document.getElementById('ip-address').textContent = fallback;
+          document.getElementById('free-heap').textContent = fallback;
+          const statusNote = document.querySelector('.status');
+          statusNote.textContent = '暂时无法读取设备状态：' + error.message;
+          statusNote.style.backgroundColor = '#e74c3c';
+          // Keep a long network error inside the English mobile card width.
+          statusNote.style.maxWidth = '65%';
+          statusNote.style.overflowWrap = 'anywhere';
+        }
+      }
+      fetchStatus();
+    </script>
+  </body>
+</html>

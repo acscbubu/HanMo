@@ -1,0 +1,10 @@
+# X4 Pro video simulator
+
+Build env simulator_x4pro_video (native, SDL; never a flash target). After PlatformIO fetches simulator dependency, run python3 tools/video_simulator/prepare.py, then build again. Patches only this simulator dependency, not firmware HAL/SDK. Upstream simulator is MIT at pinned dacbbbcd; its LICENSE is retained with dependency.
+
+Record only from a dedicated cwd with synthetic fs_ data. Use Xvfb for headless recording, CROSSPOINT_SIM_INPUT_SCRIPT and CROSSPOINT_SIM_SCREENSHOTS for repeatability. Multi-touch settings are shown, but physical pinch/rotation sensitivity is not simulated. Generated video must label simulator/demo data and must not claim hardware validation. XTEINK_VIDEO_LANGUAGE=en selects English demo labels; device UI language is separately set in synthetic settings.
+
+
+Reproduce each language: python3 tools/video_simulator/record.py zh (or en), then python3 tools/video_simulator/compose.py zh (or en). Requires Xvfb, xdotool, SDL2 and ffmpeg. Composition uses Windows Microsoft JhengHei at /mnt/c/Windows/Fonts/msjh.ttc; use a locally licensed CJK font if rebuilding elsewhere. Font binaries are not redistributed. Exported MP4/H.264 (1440x900, 12 fps), JPEG poster, VTT captions and chapter JSON are under build/video/exports. The public builder includes only these eight named assets plus tour.js.
+
+Coverage: 18 chapters across Home, Files, AirNote list/checklist/check/reorder/text, Apps, Display/screen choices/home shortcuts/home text/app visibility, Reader/gestures, Controls/screen shortcuts, System and Standby. This is a main-interface walkthrough, not an exhaustive recording of every setting value, every game or network service. No hardware flashing, real LAN control, real user content or credentials. Native SDK gaps are isolated to the video environment, including gesture stubs and non-operative OTA switching. Actual settings and UI rendering come from the current firmware source. Synthetic notes follow AirNote's title + blank line + body + newline storage envelope.

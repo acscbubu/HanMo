@@ -1,0 +1,68 @@
+{
+  "edition": 1,
+  "provenance": {
+    "authoredForHanMo": true,
+    "isOriginalJpfText": false,
+    "claim": "Six simple sentences, readings, Traditional Chinese meanings and notes authored for HanMo; not original JPF lesson text, translation or exercises. No JPF layout, images or audio are reproduced.",
+    "referenceUrls": [
+      "https://www.irodori.jpf.go.jp/assets/data/starter/pdf/X_L03.pdf",
+      "https://www.irodori.jpf.go.jp/assets/data/starter/pdf/X_L05.pdf"
+    ]
+  },
+  "cards": [
+    {
+      "id": "sentence-01",
+      "japanese": "これはほんです。",
+      "kanaReading": "これはほんです。",
+      "romaji": "kore wa hon desu.",
+      "meaning": "這是書。",
+      "grammarNotes": ["は表示主題，此時讀 wa。", "です是客氣的說法。"],
+      "vocabularyCardId": 45
+    },
+    {
+      "id": "sentence-02",
+      "japanese": "これはかさです。",
+      "kanaReading": "これはかさです。",
+      "romaji": "kore wa kasa desu.",
+      "meaning": "這是傘。",
+      "grammarNotes": ["は表示主題，此時讀 wa。", "です是客氣的說法。"],
+      "vocabularyCardId": 5
+    },
+    {
+      "id": "sentence-03",
+      "japanese": "これはちずです。",
+      "kanaReading": "これはちずです。",
+      "romaji": "kore wa chizu desu.",
+      "meaning": "這是地圖。",
+      "grammarNotes": ["は表示主題，此時讀 wa。", "です是客氣的說法。"],
+      "vocabularyCardId": 16
+    },
+    {
+      "id": "sentence-04",
+      "japanese": "みずをのみます。",
+      "kanaReading": "みずをのみます。",
+      "romaji": "mizu o nomimasu.",
+      "meaning": "喝水。",
+      "grammarNotes": ["を表示動作對象，讀 o。", "ます是客氣的說法。"],
+      "vocabularyCardId": -1
+    },
+    {
+      "id": "sentence-05",
+      "japanese": "すしをたべます。",
+      "kanaReading": "すしをたべます。",
+      "romaji": "sushi o tabemasu.",
+      "meaning": "吃壽司。",
+      "grammarNotes": ["を表示動作對象，讀 o。", "ます是客氣的說法。"],
+      "vocabularyCardId": 12
+    },
+    {
+      "id": "sentence-06",
+      "japanese": "ほんをよみます。",
+      "kanaReading": "ほんをよみます。",
+      "romaji": "hon o yomimasu.",
+      "meaning": "讀書。",
+      "grammarNotes": ["を表示動作對象，讀 o。", "ます是客氣的說法。"],
+      "vocabularyCardId": 45
+    }
+  ]
+}

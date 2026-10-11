@@ -1,0 +1,20 @@
+{
+  "result": "passed",
+  "translation_roundtrips": 4428,
+  "native_categories": 7,
+  "covered": [
+    "folder/child titles",
+    "touch Back row",
+    "logical Back handler",
+    "invalid row/category bounds",
+    "allocation failure stays in folder",
+    "pending lessons noninteractive",
+    "explicit Traditional Chinese without global language mutation",
+    "all generated strings unchanged after English dedup",
+    "new Chinese glyph interval coverage"
+  ],
+  "limits": [
+    "UI host harness; no hardware input/rendering",
+    "Glyph interval presence only; actual on-device glyph appearance needs review"
+  ]
+}

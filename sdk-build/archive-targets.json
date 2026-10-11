@@ -1,0 +1,332 @@
+[
+  {
+    "archive": "libbootloader_support.a",
+    "target": "esp-idf/bootloader_support/libbootloader_support.a",
+    "source": "sdk-source/esp-idf/components/bootloader_support"
+  },
+  {
+    "archive": "libesp_hw_support.a",
+    "target": "esp-idf/esp_hw_support/libesp_hw_support.a",
+    "source": "sdk-source/esp-idf/components/esp_hw_support"
+  },
+  {
+    "archive": "libesp_psram.a",
+    "target": "esp-idf/esp_psram/libesp_psram.a",
+    "source": "sdk-source/esp-idf/components/esp_psram"
+  },
+  {
+    "archive": "libesp_system.a",
+    "target": "esp-idf/esp_system/libesp_system.a",
+    "source": "sdk-source/esp-idf/components/esp_system"
+  },
+  {
+    "archive": "libfreertos.a",
+    "target": "esp-idf/freertos/libfreertos.a",
+    "source": "sdk-source/esp-idf/components/freertos"
+  },
+  {
+    "archive": "libspi_flash.a",
+    "target": "esp-idf/spi_flash/libspi_flash.a",
+    "source": "sdk-source/esp-idf/components/spi_flash"
+  },
+  {
+    "archive": "libapp_update.a",
+    "target": "esp-idf/app_update/libapp_update.a",
+    "source": "sdk-source/esp-idf/components/app_update"
+  },
+  {
+    "archive": "libarduino_tinyusb.a",
+    "target": "esp-idf/arduino_tinyusb/libarduino_tinyusb.a",
+    "source": "sdk-source/tinyusb"
+  },
+  {
+    "archive": "libbt.a",
+    "target": "esp-idf/bt/libbt.a",
+    "source": "sdk-source/esp-idf/components/bt"
+  },
+  {
+    "archive": "libcxx.a",
+    "target": "esp-idf/cxx/libcxx.a",
+    "source": "sdk-source/esp-idf/components/cxx"
+  },
+  {
+    "archive": "libefuse.a",
+    "target": "esp-idf/efuse/libefuse.a",
+    "source": "sdk-source/esp-idf/components/efuse"
+  },
+  {
+    "archive": "libesp-tls.a",
+    "target": "esp-idf/esp-tls/libesp-tls.a",
+    "source": "sdk-source/esp-idf/components/esp-tls"
+  },
+  {
+    "archive": "libesp_adc.a",
+    "target": "esp-idf/esp_adc/libesp_adc.a",
+    "source": "sdk-source/esp-idf/components/esp_adc"
+  },
+  {
+    "archive": "libesp_app_format.a",
+    "target": "esp-idf/esp_app_format/libesp_app_format.a",
+    "source": "sdk-source/esp-idf/components/esp_app_format"
+  },
+  {
+    "archive": "libesp_coex.a",
+    "target": "esp-idf/esp_coex/libesp_coex.a",
+    "source": "sdk-source/esp-idf/components/esp_coex"
+  },
+  {
+    "archive": "libesp_common.a",
+    "target": "esp-idf/esp_common/libesp_common.a",
+    "source": "sdk-source/esp-idf/components/esp_common"
+  },
+  {
+    "archive": "libesp_driver_gpio.a",
+    "target": "esp-idf/esp_driver_gpio/libesp_driver_gpio.a",
+    "source": "sdk-source/esp-idf/components/esp_driver_gpio"
+  },
+  {
+    "archive": "libesp_driver_i2c.a",
+    "target": "esp-idf/esp_driver_i2c/libesp_driver_i2c.a",
+    "source": "sdk-source/esp-idf/components/esp_driver_i2c"
+  },
+  {
+    "archive": "libesp_driver_ledc.a",
+    "target": "esp-idf/esp_driver_ledc/libesp_driver_ledc.a",
+    "source": "sdk-source/esp-idf/components/esp_driver_ledc"
+  },
+  {
+    "archive": "libesp_driver_rmt.a",
+    "target": "esp-idf/esp_driver_rmt/libesp_driver_rmt.a",
+    "source": "sdk-source/esp-idf/components/esp_driver_rmt"
+  },
+  {
+    "archive": "libesp_driver_sdmmc.a",
+    "target": "esp-idf/esp_driver_sdmmc/libesp_driver_sdmmc.a",
+    "source": "sdk-source/esp-idf/components/esp_driver_sdmmc"
+  },
+  {
+    "archive": "libesp_driver_spi.a",
+    "target": "esp-idf/esp_driver_spi/libesp_driver_spi.a",
+    "source": "sdk-source/esp-idf/components/esp_driver_spi"
+  },
+  {
+    "archive": "libesp_driver_tsens.a",
+    "target": "esp-idf/esp_driver_tsens/libesp_driver_tsens.a",
+    "source": "sdk-source/esp-idf/components/esp_driver_tsens"
+  },
+  {
+    "archive": "libesp_driver_uart.a",
+    "target": "esp-idf/esp_driver_uart/libesp_driver_uart.a",
+    "source": "sdk-source/esp-idf/components/esp_driver_uart"
+  },
+  {
+    "archive": "libesp_driver_usb_serial_jtag.a",
+    "target": "esp-idf/esp_driver_usb_serial_jtag/libesp_driver_usb_serial_jtag.a",
+    "source": "sdk-source/esp-idf/components/esp_driver_usb_serial_jtag"
+  },
+  {
+    "archive": "libesp_eth.a",
+    "target": "esp-idf/esp_eth/libesp_eth.a",
+    "source": "sdk-source/esp-idf/components/esp_eth"
+  },
+  {
+    "archive": "libesp_event.a",
+    "target": "esp-idf/esp_event/libesp_event.a",
+    "source": "sdk-source/esp-idf/components/esp_event"
+  },
+  {
+    "archive": "libesp_http_client.a",
+    "target": "esp-idf/esp_http_client/libesp_http_client.a",
+    "source": "sdk-source/esp-idf/components/esp_http_client"
+  },
+  {
+    "archive": "libesp_mm.a",
+    "target": "esp-idf/esp_mm/libesp_mm.a",
+    "source": "sdk-source/esp-idf/components/esp_mm"
+  },
+  {
+    "archive": "libesp_netif.a",
+    "target": "esp-idf/esp_netif/libesp_netif.a",
+    "source": "sdk-source/esp-idf/components/esp_netif"
+  },
+  {
+    "archive": "libesp_partition.a",
+    "target": "esp-idf/esp_partition/libesp_partition.a",
+    "source": "sdk-source/esp-idf/components/esp_partition"
+  },
+  {
+    "archive": "libesp_phy.a",
+    "target": "esp-idf/esp_phy/libesp_phy.a",
+    "source": "sdk-source/esp-idf/components/esp_phy"
+  },
+  {
+    "archive": "libesp_pm.a",
+    "target": "esp-idf/esp_pm/libesp_pm.a",
+    "source": "sdk-source/esp-idf/components/esp_pm"
+  },
+  {
+    "archive": "libesp_ringbuf.a",
+    "target": "esp-idf/esp_ringbuf/libesp_ringbuf.a",
+    "source": "sdk-source/esp-idf/components/esp_ringbuf"
+  },
+  {
+    "archive": "libesp_rom.a",
+    "target": "esp-idf/esp_rom/libesp_rom.a",
+    "source": "sdk-source/esp-idf/components/esp_rom"
+  },
+  {
+    "archive": "libesp_security.a",
+    "target": "esp-idf/esp_security/libesp_security.a",
+    "source": "sdk-source/esp-idf/components/esp_security"
+  },
+  {
+    "archive": "libesp_timer.a",
+    "target": "esp-idf/esp_timer/libesp_timer.a",
+    "source": "sdk-source/esp-idf/components/esp_timer"
+  },
+  {
+    "archive": "libesp_vfs_console.a",
+    "target": "esp-idf/esp_vfs_console/libesp_vfs_console.a",
+    "source": "sdk-source/esp-idf/components/esp_vfs_console"
+  },
+  {
+    "archive": "libesp_wifi.a",
+    "target": "esp-idf/esp_wifi/libesp_wifi.a",
+    "source": "sdk-source/esp-idf/components/esp_wifi"
+  },
+  {
+    "archive": "libespcoredump.a",
+    "target": "esp-idf/espcoredump/libespcoredump.a",
+    "source": "sdk-source/esp-idf/components/espcoredump"
+  },
+  {
+    "archive": "libespressif__esp_diagnostics.a",
+    "target": "esp-idf/espressif__esp_diagnostics/libespressif__esp_diagnostics.a",
+    "source": "sdk-source/managed/esp_diagnostics"
+  },
+  {
+    "archive": "libespressif__mdns.a",
+    "target": "esp-idf/espressif__mdns/libespressif__mdns.a",
+    "source": "sdk-source/managed/mdns"
+  },
+  {
+    "archive": "libespressif__network_provisioning.a",
+    "target": "esp-idf/espressif__network_provisioning/libespressif__network_provisioning.a",
+    "source": "sdk-source/managed/network_provisioning"
+  },
+  {
+    "archive": "libhal.a",
+    "target": "esp-idf/hal/libhal.a",
+    "source": "sdk-source/esp-idf/components/hal"
+  },
+  {
+    "archive": "libheap.a",
+    "target": "esp-idf/heap/libheap.a",
+    "source": "sdk-source/esp-idf/components/heap"
+  },
+  {
+    "archive": "libhttp_parser.a",
+    "target": "esp-idf/http_parser/libhttp_parser.a",
+    "source": "sdk-source/esp-idf/components/http_parser"
+  },
+  {
+    "archive": "libjson.a",
+    "target": "esp-idf/json/libjson.a",
+    "source": "sdk-source/esp-idf/components/json"
+  },
+  {
+    "archive": "liblog.a",
+    "target": "esp-idf/log/liblog.a",
+    "source": "sdk-source/esp-idf/components/log"
+  },
+  {
+    "archive": "liblwip.a",
+    "target": "esp-idf/lwip/liblwip.a",
+    "source": "sdk-source/esp-idf/components/lwip"
+  },
+  {
+    "archive": "libmbedcrypto.a",
+    "target": "esp-idf/mbedtls/mbedtls/library/libmbedcrypto.a",
+    "source": "sdk-source/esp-idf/components/mbedtls"
+  },
+  {
+    "archive": "libmbedtls.a",
+    "target": "esp-idf/mbedtls/libmbedtls.a",
+    "source": "sdk-source/esp-idf/components/mbedtls"
+  },
+  {
+    "archive": "libmbedtls_2.a",
+    "target": "esp-idf/mbedtls/mbedtls/library/libmbedtls.a",
+    "source": "sdk-source/esp-idf/components/mbedtls"
+  },
+  {
+    "archive": "libmbedx509.a",
+    "target": "esp-idf/mbedtls/mbedtls/library/libmbedx509.a",
+    "source": "sdk-source/esp-idf/components/mbedtls"
+  },
+  {
+    "archive": "libnewlib.a",
+    "target": "esp-idf/newlib/libnewlib.a",
+    "source": "sdk-source/esp-idf/components/newlib"
+  },
+  {
+    "archive": "libnvs_flash.a",
+    "target": "esp-idf/nvs_flash/libnvs_flash.a",
+    "source": "sdk-source/esp-idf/components/nvs_flash"
+  },
+  {
+    "archive": "libnvs_sec_provider.a",
+    "target": "esp-idf/nvs_sec_provider/libnvs_sec_provider.a",
+    "source": "sdk-source/esp-idf/components/nvs_sec_provider"
+  },
+  {
+    "archive": "libprotobuf-c.a",
+    "target": "esp-idf/protobuf-c/libprotobuf-c.a",
+    "source": "sdk-source/esp-idf/components/protobuf-c"
+  },
+  {
+    "archive": "libprotocomm.a",
+    "target": "esp-idf/protocomm/libprotocomm.a",
+    "source": "sdk-source/esp-idf/components/protocomm"
+  },
+  {
+    "archive": "libpthread.a",
+    "target": "esp-idf/pthread/libpthread.a",
+    "source": "sdk-source/esp-idf/components/pthread"
+  },
+  {
+    "archive": "libsdmmc.a",
+    "target": "esp-idf/sdmmc/libsdmmc.a",
+    "source": "sdk-source/esp-idf/components/sdmmc"
+  },
+  {
+    "archive": "libsoc.a",
+    "target": "esp-idf/soc/libsoc.a",
+    "source": "sdk-source/esp-idf/components/soc"
+  },
+  {
+    "archive": "libtcp_transport.a",
+    "target": "esp-idf/tcp_transport/libtcp_transport.a",
+    "source": "sdk-source/esp-idf/components/tcp_transport"
+  },
+  {
+    "archive": "libusb.a",
+    "target": "esp-idf/usb/libusb.a",
+    "source": "sdk-source/esp-idf/components/usb"
+  },
+  {
+    "archive": "libvfs.a",
+    "target": "esp-idf/vfs/libvfs.a",
+    "source": "sdk-source/esp-idf/components/vfs"
+  },
+  {
+    "archive": "libwpa_supplicant.a",
+    "target": "esp-idf/wpa_supplicant/libwpa_supplicant.a",
+    "source": "sdk-source/esp-idf/components/wpa_supplicant"
+  },
+  {
+    "archive": "libxtensa.a",
+    "target": "esp-idf/xtensa/libxtensa.a",
+    "source": "sdk-source/esp-idf/components/xtensa"
+  }
+]

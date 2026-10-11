@@ -1,0 +1,109 @@
+[
+  {
+    "repo": "esp32-wifi-lib",
+    "commit": "66a31b2e1161e20fb3cede2255b7e84586f47f63",
+    "sha256": "858c8b217befe5ed93cbd485d16849060a29399907ab9cb81353fc8e3379f4bc",
+    "gitBlob": "5e703f727ed4daeb564ee0baa077b38cd2bffe09",
+    "inLinkerMap": true,
+    "archive": "libcore.a",
+    "bytes": 4848,
+    "upstream": "https://github.com/espressif/esp32-wifi-lib/tree/66a31b2e1161e20fb3cede2255b7e84586f47f63"
+  },
+  {
+    "repo": "esp32-wifi-lib",
+    "commit": "66a31b2e1161e20fb3cede2255b7e84586f47f63",
+    "sha256": "cf07bc6d095215f4b29673c34d61956f198c1415f732ece645904c448457a0ed",
+    "gitBlob": "e1697090f4c54addc0047fc2bb77cb6dab653f25",
+    "inLinkerMap": true,
+    "archive": "libnet80211.a",
+    "bytes": 1401562,
+    "upstream": "https://github.com/espressif/esp32-wifi-lib/tree/66a31b2e1161e20fb3cede2255b7e84586f47f63"
+  },
+  {
+    "repo": "esp32-wifi-lib",
+    "commit": "66a31b2e1161e20fb3cede2255b7e84586f47f63",
+    "sha256": "3d7c337588f2e8ffe0fc54e5a7ae58c0565e917163257bd56883b925609dcdc6",
+    "gitBlob": "2be7b17fc64fd89f3243d10a27c4b6a876dbc4af",
+    "inLinkerMap": true,
+    "archive": "libpp.a",
+    "bytes": 709150,
+    "upstream": "https://github.com/espressif/esp32-wifi-lib/tree/66a31b2e1161e20fb3cede2255b7e84586f47f63"
+  },
+  {
+    "repo": "esp-coex-lib",
+    "commit": "ee5cd79583c02f23e43e62931ffb55f5a4992d0f",
+    "sha256": "fc370f917302c0da9437063ba76113e9102bc8af4a6985aa9ba2d2c09231dfbd",
+    "gitBlob": "21fb35634fbdd421519bc985072fdc0ab54dd1df",
+    "inLinkerMap": true,
+    "archive": "libcoexist.a",
+    "bytes": 108708,
+    "upstream": "https://github.com/espressif/esp-coex-lib/tree/ee5cd79583c02f23e43e62931ffb55f5a4992d0f"
+  },
+  {
+    "repo": "esp32-wifi-lib",
+    "commit": "66a31b2e1161e20fb3cede2255b7e84586f47f63",
+    "sha256": "da84ddf8fd7dbbc0d1d75b1400004bf1bdefa2e2c083ccb08d36bea3d9d428c0",
+    "gitBlob": "60a34677a1796f6fd76abaa4ece18c2d4ed723a8",
+    "inLinkerMap": true,
+    "archive": "libespnow.a",
+    "bytes": 65300,
+    "upstream": "https://github.com/espressif/esp32-wifi-lib/tree/66a31b2e1161e20fb3cede2255b7e84586f47f63"
+  },
+  {
+    "repo": "esp32-wifi-lib",
+    "commit": "66a31b2e1161e20fb3cede2255b7e84586f47f63",
+    "sha256": "05f75a2003b306b955a5fcd760f284a70f08de60e9565d36207f476ba3af3f36",
+    "gitBlob": "8ea5dc63dce264c836e2233d49f1853d9b575401",
+    "inLinkerMap": true,
+    "archive": "libmesh.a",
+    "bytes": 995432,
+    "upstream": "https://github.com/espressif/esp32-wifi-lib/tree/66a31b2e1161e20fb3cede2255b7e84586f47f63"
+  },
+  {
+    "repo": "esp32-wifi-lib",
+    "commit": "66a31b2e1161e20fb3cede2255b7e84586f47f63",
+    "sha256": "b68547acbfc823d0410e8550ae403f9b4ef7bf0e052dbd09a915c105ba7d84fd",
+    "gitBlob": "f7f50b859d88bd9a843fb38642ef2e92e206116b",
+    "inLinkerMap": true,
+    "archive": "libsmartconfig.a",
+    "bytes": 196506,
+    "upstream": "https://github.com/espressif/esp32-wifi-lib/tree/66a31b2e1161e20fb3cede2255b7e84586f47f63"
+  },
+  {
+    "repo": "esp-phy-lib",
+    "commit": "3d57415af6e4c92eff2c4c3463e20a51d7340aba",
+    "sha256": "29dcc18a035801bd41486d5d59f3caeb62f8ed153533c488828bffef1abb99fd",
+    "gitBlob": "75d3c8756c8e0310066fa9a1e5c24df50e6c04e3",
+    "inLinkerMap": true,
+    "archive": "libphy.a",
+    "bytes": 255594,
+    "upstream": "https://github.com/espressif/esp-phy-lib/tree/3d57415af6e4c92eff2c4c3463e20a51d7340aba"
+  },
+  {
+    "repo": "esp-phy-lib",
+    "commit": "3d57415af6e4c92eff2c4c3463e20a51d7340aba",
+    "sha256": "80d9976d6347be8b974e963d1a6b6a2f58bb4cff08cb5b0bbbb78e9841e8a018",
+    "gitBlob": "e94e3c2b476d8abb2757bcb53519ebcfba92b213",
+    "inLinkerMap": true,
+    "archive": "libbtbb.a",
+    "bytes": 22244,
+    "upstream": "https://github.com/espressif/esp-phy-lib/tree/3d57415af6e4c92eff2c4c3463e20a51d7340aba"
+  },
+  {
+    "repo": "esp32c3-bt-lib",
+    "commit": "16cda80aab0a008093592b7e304c77dcb3ac9ea4",
+    "sha256": "41516c52a86c389488f30c3ba6da9727dfbb9316580209c5cac861ef73f9e00a",
+    "gitBlob": "928df9995aee7dc133939f165d77a31dba120549",
+    "inLinkerMap": true,
+    "archive": "libbtdm_app.a",
+    "bytes": 1520258,
+    "upstream": "https://github.com/espressif/esp32c3-bt-lib/tree/16cda80aab0a008093592b7e304c77dcb3ac9ea4"
+  },
+  {
+    "archive": "libxt_hal.a",
+    "source": "sdk-source/esp-idf/components/xtensa/esp32s3/libxt_hal.a",
+    "sha256": "4823e6c657199a6726f3163f15e1222edb85a8a33eeaafd2aad0cc06150cc4ec",
+    "bytes": 240506,
+    "classification": "precompiled Xtensa HAL; not source-rebuilt; GPL System Libraries classification pending"
+  }
+]

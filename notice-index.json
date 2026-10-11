@@ -1,0 +1,402 @@
+[
+  {
+    "path": "hanmo/LICENSE",
+    "sha256": "3747d86af0bca4ed15f9eda1eede67a7b50e2121b981d4b6692fbeb0c090b837"
+  },
+  {
+    "path": "hanmo/freeink-sdk/LICENSE",
+    "sha256": "17dea5079d9905fbbc8323cde7bfffd0f24185949c43a5daad5177022b796588"
+  },
+  {
+    "path": "hanmo/freeink-sdk/NOTICE",
+    "sha256": "be0e4cdb3d985aac9d8517b4b5e922f96cef018fe02e7fc52029bd09edf5be5d"
+  },
+  {
+    "path": "hanmo/freeink-sdk/NOTICE.md",
+    "sha256": "7d5fe2daf4af785742aa5ab21a514f6be90f701b861bc8525d92243004aaa6e4"
+  },
+  {
+    "path": "hanmo/freeink-sdk/libs/assets/Icons/lucide/LICENSE",
+    "sha256": "b495047bd93a9b06913511076f504daba17d5bbeb3e0650f3bb53a4220329c57"
+  },
+  {
+    "path": "hanmo/freeink-sdk/libs/assets/Icons/lucide/docs/license.md",
+    "sha256": "3fb5a3a5ff34b0bde4ae31401f6c66b7db3b3e74337a79d7f4cb75c4e1a122a0"
+  },
+  {
+    "path": "hanmo/freeink-sdk/libs/assets/Icons/lucide/packages/svelte/scripts/license.mts",
+    "sha256": "ecebded12b97ce56e9c9aa78e41af61e9bdefcd3e384ff18685a28723c0c23a5"
+  },
+  {
+    "path": "hanmo/freeink-sdk/libs/book/ContentProtection/third_party/miniz/LICENSE",
+    "sha256": "6f20fa7672b00e2e975c291df737cf227addf3ad32e36fef3fe0f416e4664d3d"
+  },
+  {
+    "path": "hanmo/freeink-sdk/libs/book/FreeInkBook/third_party/expat/COPYING",
+    "sha256": "31b15de82aa19a845156169a17a5488bf597e561b2c318d159ed583139b25e87"
+  },
+  {
+    "path": "hanmo/freeink-sdk/libs/book/FreeInkBook/third_party/hyphen-patterns/LICENSE",
+    "sha256": "6838a8f0527a1d944e73a4d2a4d3fc4117c40da5f0eed0c489738fc391a5cd77"
+  },
+  {
+    "path": "hanmo/freeink-sdk/libs/book/FreeInkBook/third_party/miniz/LICENSE",
+    "sha256": "6f20fa7672b00e2e975c291df737cf227addf3ad32e36fef3fe0f416e4664d3d"
+  },
+  {
+    "path": "hanmo/freeink-sdk/libs/book/FreeInkBook/third_party/pngle/LICENSE",
+    "sha256": "f965b67dece0b41367e5b66ba8b6787a93381e61d81121dbb5d87f6b2f330b39"
+  },
+  {
+    "path": "hanmo/lib/EpdFont/builtinFonts/source/HanMoKana/LICENSE.txt",
+    "sha256": "e564f06d018e7b95bc3594c96a17f1d41865af4038c375e7aa974dd69df38602"
+  },
+  {
+    "path": "hanmo/lib/EpdFont/builtinFonts/source/NotoSans/OFL.txt",
+    "sha256": "be2f3f8727ac2e18b714ad1c4336d4ddb3f3adbeb9a7f70bfab74d21f4d2b3fb"
+  },
+  {
+    "path": "hanmo/lib/EpdFont/builtinFonts/source/NotoSansArabic/OFL.txt",
+    "sha256": "a783ea143e23dc0374b472b79d3b76a369e57a28eb599d19535073c0a4b3aa4d"
+  },
+  {
+    "path": "hanmo/lib/EpdFont/builtinFonts/source/NotoSansHebrew/OFL.txt",
+    "sha256": "a2643c6400107f5be499025f0cafc96492be5cf1733d8e4222c15b98302d895a"
+  },
+  {
+    "path": "hanmo/lib/EpdFont/builtinFonts/source/NotoSansSC/OFL.txt",
+    "sha256": "6a73f9541c2de74158c0e7cf6b0a58ef774f5a780bf191f2d7ec9cc53efe2bf2"
+  },
+  {
+    "path": "hanmo/lib/EpdFont/builtinFonts/source/NotoSerif/OFL.txt",
+    "sha256": "be2f3f8727ac2e18b714ad1c4336d4ddb3f3adbeb9a7f70bfab74d21f4d2b3fb"
+  },
+  {
+    "path": "hanmo/lib/EpdFont/builtinFonts/source/OpenDyslexic/OFL.txt",
+    "sha256": "797cb441b593b3326a69fcf83d84264301d89e8871a75b38bae1d101e922e10c"
+  },
+  {
+    "path": "hanmo/src/apps_local/solitaire/art/OFL.txt",
+    "sha256": "2b7a8556373819083f3de9aa31dc35c57d06394930ccd1c97ce262103f830589"
+  },
+  {
+    "path": "hanmo/src/components/icons/LICENSE.tabler-icons",
+    "sha256": "b740a1d46122672da62833e97f7e7c8a13fa85cbc7445b584b297cc00dde93db"
+  },
+  {
+    "path": "hanmo/third_party/kanjivg/LICENSE",
+    "sha256": "d255e07978fd16ddfec38bc59dc9d857b885dd44ddbf4e79baf207d30746bdcc"
+  },
+  {
+    "path": "dependencies/ArduinoJson/LICENSE.txt",
+    "sha256": "ebba0906d6c8b3daa8a1b59acb2d3a416485dd77fc10f6dd4c9ed2cbe467ee2d"
+  },
+  {
+    "path": "dependencies/JPEGDEC/LICENSE",
+    "sha256": "16b742c2110129c89df82164a28dbecb7ca1fe100c75c30e5c506f050c0c6de5"
+  },
+  {
+    "path": "dependencies/NimBLE-Arduino/LICENSE",
+    "sha256": "1352de53fbef2f779adefaafb5568854c9532d1475955d1331f9f5427f9db713"
+  },
+  {
+    "path": "dependencies/NimBLE-Arduino/NOTICE",
+    "sha256": "3f5b3600d59a04cc1d5bf6712438c02a4e8be44dea6a1d87701557f899be0418"
+  },
+  {
+    "path": "dependencies/NimBLE-Arduino/src/nimble/LICENSE",
+    "sha256": "0deb15bc7df50b1d009c644b008f92e1062909e9521328d337c5fad3a5d4921c"
+  },
+  {
+    "path": "dependencies/NimBLE-Arduino/src/nimble/NOTICE",
+    "sha256": "b838c4733a5020cd8e2bafbe70842acd8c8dc7816012965b77d10c1f4c0727f6"
+  },
+  {
+    "path": "dependencies/NimBLE-Arduino/src/nimble/ext/tinycrypt/LICENSE",
+    "sha256": "b2d451fcba3577b118741d733d37ebd15bdd0b6b381e554a7345bdbfa3743108"
+  },
+  {
+    "path": "dependencies/PNGdec/LICENSE",
+    "sha256": "63fefff6dd199d109389e0f413579387e9ca9cfdeeae961ecdbcb120d08432e0"
+  },
+  {
+    "path": "dependencies/PubSubClient/LICENSE.txt",
+    "sha256": "b416abfc7294f9279480389e4825463ac71b2b064b892aa7d95abd5d4b6edc63"
+  },
+  {
+    "path": "dependencies/QRCode/LICENSE.txt",
+    "sha256": "688f46ca70f1bc811ecf711cbb22ea984cee10590c17584118b5e13cf38d049f"
+  },
+  {
+    "path": "dependencies/SdFat/LICENSE.md",
+    "sha256": "f07af78e816ae273bcdba2ba7878892d9192202a0214f10850635ff37daeba4a"
+  },
+  {
+    "path": "dependencies/WebSockets/LICENSE",
+    "sha256": "a1a33180d02960ab1c5de36cf20b1a2f0fe9888d83826ad263da5db52f1b183b"
+  },
+  {
+    "path": "dependencies/WebSockets/src/libb64/LICENSE",
+    "sha256": "834b7afa1b3c40289a3be775d3625016be1c0d7ea7a4a26c1eb207f53dc961d8"
+  },
+  {
+    "path": "dependencies/arduino-core-3.3.7/LICENSE.md",
+    "sha256": "62e54861b30e953735dc187f036917c588665dbe3c5dd88449e34317608bbf5e"
+  },
+  {
+    "path": "dependencies/arduino-core-3.3.7/cores/esp32/libb64/LICENSE",
+    "sha256": "cb317b147c23304c28b75da0acd1e425473853b1417faa652e1031231e05eeb1"
+  },
+  {
+    "path": "dependencies/arduino-core-3.3.7/libraries/BLE/LICENSE",
+    "sha256": "7d8319b3fa758be565e482754bc39b191853d68b030ff6e5fbc0c0b4cd18db6c"
+  },
+  {
+    "path": "sdk-source/arduino-sdk/LICENSE.md",
+    "sha256": "62e54861b30e953735dc187f036917c588665dbe3c5dd88449e34317608bbf5e"
+  },
+  {
+    "path": "sdk-source/arduino-sdk/cores/esp32/libb64/LICENSE",
+    "sha256": "cb317b147c23304c28b75da0acd1e425473853b1417faa652e1031231e05eeb1"
+  },
+  {
+    "path": "sdk-source/arduino-sdk/libraries/BLE/LICENSE",
+    "sha256": "7d8319b3fa758be565e482754bc39b191853d68b030ff6e5fbc0c0b4cd18db6c"
+  },
+  {
+    "path": "sdk-source/cJSON/LICENSE",
+    "sha256": "a36dda207c36db5818729c54e7ad4e8b0c6fba847491ba64f372c1a2037b6d5c"
+  },
+  {
+    "path": "sdk-source/cJSON/tests/unity/docs/license.txt",
+    "sha256": "3ed9b51da86f52c729c96cc99fdde6444b2297c788a9cf4ad1d3649dc34c4985"
+  },
+  {
+    "path": "sdk-source/esp-idf/LICENSE",
+    "sha256": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30"
+  },
+  {
+    "path": "sdk-source/esp-idf/components/bootloader/subproject/components/micro-ecc/micro-ecc/LICENSE.txt",
+    "sha256": "ffd8b033d2df7568c25a98866bd92b1656f7da82d7f813c0b2eb85ec36611193"
+  },
+  {
+    "path": "sdk-source/esp-idf/components/bt/common/tinycrypt/LICENSE",
+    "sha256": "270e0b63ce74421f1ccaaf03f9c7daa430cdb16c9856259ca4c2e3c74880d589"
+  },
+  {
+    "path": "sdk-source/esp-idf/components/bt/controller/lib_esp32c3_family/LICENSE",
+    "sha256": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30"
+  },
+  {
+    "path": "sdk-source/esp-idf/components/bt/host/nimble/nimble/LICENSE",
+    "sha256": "0deb15bc7df50b1d009c644b008f92e1062909e9521328d337c5fad3a5d4921c"
+  },
+  {
+    "path": "sdk-source/esp-idf/components/bt/host/nimble/nimble/NOTICE",
+    "sha256": "b838c4733a5020cd8e2bafbe70842acd8c8dc7816012965b77d10c1f4c0727f6"
+  },
+  {
+    "path": "sdk-source/esp-idf/components/bt/host/nimble/nimble/ext/tinycrypt/LICENSE",
+    "sha256": "b2d451fcba3577b118741d733d37ebd15bdd0b6b381e554a7345bdbfa3743108"
+  },
+  {
+    "path": "sdk-source/esp-idf/components/console/argtable3/LICENSE",
+    "sha256": "a97df648b7db77f9f6f5e1ef5fe44eb6b154ecb8ae26ad39c92ea44201cce45c"
+  },
+  {
+    "path": "sdk-source/esp-idf/components/console/linenoise/LICENSE",
+    "sha256": "efe1692aa5b869edaa0ac88f95eb0276c1125304ffc636a299db3ebbab47f62b"
+  },
+  {
+    "path": "sdk-source/esp-idf/components/driver/test_apps/components/esp_serial_slave_link/LICENSE",
+    "sha256": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30"
+  },
+  {
+    "path": "sdk-source/esp-idf/components/esp_coex/lib/LICENSE",
+    "sha256": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30"
+  },
+  {
+    "path": "sdk-source/esp-idf/components/esp_phy/lib/LICENSE",
+    "sha256": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30"
+  },
+  {
+    "path": "sdk-source/esp-idf/components/esp_wifi/lib/LICENSE",
+    "sha256": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30"
+  },
+  {
+    "path": "sdk-source/esp-idf/components/esptool_py/LICENSE",
+    "sha256": "8177f97513213526df2cf6184d8ff986c675afb514d4e68a404010521b880643"
+  },
+  {
+    "path": "sdk-source/esp-idf/components/freertos/FreeRTOS-Kernel/LICENSE.md",
+    "sha256": "508a77d2e7b51d98adeed32648ad124b7b30241a8e70b2e72c99f92d8e5874d1"
+  },
+  {
+    "path": "sdk-source/esp-idf/components/http_parser/LICENSE.txt",
+    "sha256": "3aced2d086d3f59cafb6589770c30c1e45a5bdf50c1d4375060b81a615db604c"
+  },
+  {
+    "path": "sdk-source/esp-idf/components/json/cJSON/LICENSE",
+    "sha256": "a36dda207c36db5818729c54e7ad4e8b0c6fba847491ba64f372c1a2037b6d5c"
+  },
+  {
+    "path": "sdk-source/esp-idf/components/json/cJSON/tests/unity/docs/license.txt",
+    "sha256": "3ed9b51da86f52c729c96cc99fdde6444b2297c788a9cf4ad1d3649dc34c4985"
+  },
+  {
+    "path": "sdk-source/esp-idf/components/lwip/lwip/COPYING",
+    "sha256": "ef4aac92e05e87cd1cdc140870ed52206ba03d4a7fe46c1e11d7ffa6c87d252b"
+  },
+  {
+    "path": "sdk-source/esp-idf/components/lwip/lwip/contrib/apps/LwipMibCompiler/SharpSnmpLib/license.txt",
+    "sha256": "ef1f7505cfdff240e72602bc50ef1cdba37c681c84611cdf30e4371320c70942"
+  },
+  {
+    "path": "sdk-source/esp-idf/components/mbedtls/mbedtls/LICENSE",
+    "sha256": "9b405ef4c89342f5eae1dd828882f931747f71001cfba7d114801039b52ad09b"
+  },
+  {
+    "path": "sdk-source/esp-idf/components/mbedtls/mbedtls/framework/LICENSE",
+    "sha256": "11402351e38392230bb8934ba1095c0c0049a296c0f8821f76e4672dff54b490"
+  },
+  {
+    "path": "sdk-source/esp-idf/components/mqtt/esp-mqtt/LICENSE",
+    "sha256": "20ed622a5f1a273258b415097609f6a236fb2f23f8c593c63e29e6cc77de0032"
+  },
+  {
+    "path": "sdk-source/esp-idf/components/newlib/COPYING.NEWLIB",
+    "sha256": "0681089a556e93791da82718d68011ba452de245f7f59c3846936304756ac0c0"
+  },
+  {
+    "path": "sdk-source/esp-idf/components/newlib/COPYING.picolibc",
+    "sha256": "fa72ebf6e3c9b3d674f89da06648b0c17d3bcb1ce05ed5956cc102fba1e6964d"
+  },
+  {
+    "path": "sdk-source/esp-idf/components/openthread/openthread/LICENSE",
+    "sha256": "e164182fc3e6378533ba706800087469a14dcd5913ee55e2e8ae3fb14f3cdbbb"
+  },
+  {
+    "path": "sdk-source/esp-idf/components/openthread/openthread/NOTICE",
+    "sha256": "1b37f4fbb95506a0529a15c007aa53053e0e2bf03b1547fb244fdebacf49374f"
+  },
+  {
+    "path": "sdk-source/esp-idf/components/openthread/openthread/third_party/jlink/SEGGER_RTT_V640/License.txt",
+    "sha256": "9a160ebc4406ed363f5fb397cc8cd201613ab29e67a2439474f7bafd77e3ce07"
+  },
+  {
+    "path": "sdk-source/esp-idf/components/openthread/openthread/tools/otci/LICENSE",
+    "sha256": "d29b8f5c1c666698dfe7717c53e10f82981e0889a06f8a3ebc093d9dccc35aa4"
+  },
+  {
+    "path": "sdk-source/esp-idf/components/protobuf-c/protobuf-c/LICENSE",
+    "sha256": "b8999cb392cc5bbe8cd679de59584ad8d2f26033123e76f1d662fa14b9d4f287"
+  },
+  {
+    "path": "sdk-source/esp-idf/components/spiffs/spiffs/LICENSE",
+    "sha256": "d19257540156a51ed50c2378e7159066415d8bbbe147779f8deb0d3e73f1b0a7"
+  },
+  {
+    "path": "sdk-source/esp-idf/components/unity/unity/LICENSE.txt",
+    "sha256": "7d710553eaf7174f383699ed4eebac67fe7cda7971cbe892f700cd0e087f860f"
+  },
+  {
+    "path": "sdk-source/esp-idf/components/wpa_supplicant/COPYING",
+    "sha256": "a87ac4e333d0f120408a9d814e40c3672cd27f365af89b4f2f6631f7a9338953"
+  },
+  {
+    "path": "sdk-source/esp-idf/tools/catch/LICENSE.txt",
+    "sha256": "c9bff75738922193e67fa726fa225535870d2aa1059f91452c411736284ad566"
+  },
+  {
+    "path": "sdk-source/lwip/COPYING",
+    "sha256": "ef4aac92e05e87cd1cdc140870ed52206ba03d4a7fe46c1e11d7ffa6c87d252b"
+  },
+  {
+    "path": "sdk-source/lwip/contrib/apps/LwipMibCompiler/SharpSnmpLib/license.txt",
+    "sha256": "ef1f7505cfdff240e72602bc50ef1cdba37c681c84611cdf30e4371320c70942"
+  },
+  {
+    "path": "sdk-source/managed/esp_diagnostics/esp_diagnostics/LICENSE",
+    "sha256": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30"
+  },
+  {
+    "path": "sdk-source/managed/mdns/mdns/LICENSE",
+    "sha256": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30"
+  },
+  {
+    "path": "sdk-source/managed/network_provisioning/network_provisioning/LICENSE",
+    "sha256": "f0f612d1627194ddd07c8b5b238a514ae9794632e5470c00f16237def7dc2246"
+  },
+  {
+    "path": "sdk-source/managed/rmaker_common/rmaker_common/LICENSE",
+    "sha256": "c71d239df91726fc519c6eb72d318ec65820627232b2f796219e87dcf35d0ab4"
+  },
+  {
+    "path": "sdk-source/mbedtls/LICENSE",
+    "sha256": "9b405ef4c89342f5eae1dd828882f931747f71001cfba7d114801039b52ad09b"
+  },
+  {
+    "path": "sdk-source/mbedtls/framework/LICENSE",
+    "sha256": "11402351e38392230bb8934ba1095c0c0049a296c0f8821f76e4672dff54b490"
+  },
+  {
+    "path": "sdk-source/micro-ecc/LICENSE.txt",
+    "sha256": "ffd8b033d2df7568c25a98866bd92b1656f7da82d7f813c0b2eb85ec36611193"
+  },
+  {
+    "path": "sdk-source/protobuf-c/LICENSE",
+    "sha256": "b8999cb392cc5bbe8cd679de59584ad8d2f26033123e76f1d662fa14b9d4f287"
+  },
+  {
+    "path": "sdk-source/tinyusb/LICENSE",
+    "sha256": "b171720e8a442e7a3957d83c62cd3299dbb29da3db534cc626f9dded0de2ca44"
+  },
+  {
+    "path": "sdk-source/tinyusb/hw/bsp/espressif/components/led_strip/LICENSE",
+    "sha256": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30"
+  },
+  {
+    "path": "sdk-source/tinyusb/lib/SEGGER_RTT/LICENSE.md",
+    "sha256": "4fe88073436555f5b8403316c2c78e06a20ac591bc4a612926544ace0f26aff8"
+  },
+  {
+    "path": "sdk-source/tinyusb/lib/fatfs/LICENSE.txt",
+    "sha256": "b896e32fb2cdb3fc8b3b6fd854706fca4ac55619fbb6d5eb2429cb05ee338966"
+  },
+  {
+    "path": "sdk-build/components/arduino_tinyusb/tinyusb/LICENSE",
+    "sha256": "b171720e8a442e7a3957d83c62cd3299dbb29da3db534cc626f9dded0de2ca44"
+  },
+  {
+    "path": "sdk-build/components/arduino_tinyusb/tinyusb/hw/bsp/espressif/components/led_strip/LICENSE",
+    "sha256": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30"
+  },
+  {
+    "path": "sdk-build/components/arduino_tinyusb/tinyusb/lib/SEGGER_RTT/LICENSE.md",
+    "sha256": "4fe88073436555f5b8403316c2c78e06a20ac591bc4a612926544ace0f26aff8"
+  },
+  {
+    "path": "sdk-build/components/arduino_tinyusb/tinyusb/lib/fatfs/LICENSE.txt",
+    "sha256": "b896e32fb2cdb3fc8b3b6fd854706fca4ac55619fbb6d5eb2429cb05ee338966"
+  },
+  {
+    "path": "sdk-build/components/espressif__esp_diagnostics/LICENSE",
+    "sha256": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30"
+  },
+  {
+    "path": "sdk-build/components/espressif__mdns/LICENSE",
+    "sha256": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30"
+  },
+  {
+    "path": "sdk-build/components/espressif__network_provisioning/LICENSE",
+    "sha256": "f0f612d1627194ddd07c8b5b238a514ae9794632e5470c00f16237def7dc2246"
+  },
+  {
+    "path": "sdk-build/components/rmaker_common/LICENSE",
+    "sha256": "c71d239df91726fc519c6eb72d318ec65820627232b2f796219e87dcf35d0ab4"
+  },
+  {
+    "path": "hanmo/lib/EpdFont/builtinFonts/source/HanMoKana/Maruko-Bold-OFL.txt",
+    "sha256": "e564f06d018e7b95bc3594c96a17f1d41865af4038c375e7aa974dd69df38602"
+  }
+]

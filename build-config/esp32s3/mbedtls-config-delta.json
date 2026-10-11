@@ -1,0 +1,30 @@
+{
+  "CONFIG_MBEDTLS_HAVE_TIME_DATE": [
+    null,
+    "1"
+  ],
+  "CONFIG_MBEDTLS_SSL_CID_PADDING_GRANULARITY": [
+    null,
+    "16"
+  ],
+  "CONFIG_MBEDTLS_SSL_PROTO_TLS1_3": [
+    null,
+    "1"
+  ],
+  "CONFIG_MBEDTLS_SSL_TLS1_3_COMPATIBILITY_MODE": [
+    null,
+    "1"
+  ],
+  "CONFIG_MBEDTLS_SSL_TLS1_3_KEXM_EPHEMERAL": [
+    null,
+    "1"
+  ],
+  "CONFIG_MBEDTLS_SSL_TLS1_3_KEXM_PSK": [
+    null,
+    "1"
+  ],
+  "CONFIG_MBEDTLS_SSL_TLS1_3_KEXM_PSK_EPHEMERAL": [
+    null,
+    "1"
+  ]
+}

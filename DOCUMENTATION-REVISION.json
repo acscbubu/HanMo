@@ -1,0 +1,12 @@
+{
+  "revision": "20261011-docs",
+  "firmwareVersion": "1.5.8-hanmo-bold-status-20261010",
+  "firmwareUnchanged": true,
+  "sealedSourceUnchanged": true,
+  "sealedSource": {
+    "name": "HanMo-X4Pro-1.5.8-hanmo-bold-status-20261010-SOURCE.tar.gz",
+    "bytes": 263092770,
+    "sha256": "9aedac04f101989a48912af3adc698981165ae8c92724b3c74d582f86a0be85b"
+  },
+  "scope": "2026-10-11 publication documentation merged with unchanged 2026-10-10 firmware sources. SOURCE-MANIFEST.json regenerated for this Git tree; BUILD-VERIFICATION.json retains build-time evidence. Sealed original SOURCE and DOCS assets remain unchanged."
+}

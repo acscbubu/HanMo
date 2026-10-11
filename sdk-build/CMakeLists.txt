@@ -1,0 +1,6 @@
+cmake_minimum_required(VERSION 3.16)
+set(COMPONENTS arduino bootloader_support esp_hw_support esp_psram esp_system freertos spi_flash app_update arduino_tinyusb bt cxx efuse esp-tls esp_adc esp_app_format esp_coex esp_common esp_driver_gpio esp_driver_i2c esp_driver_ledc esp_driver_rmt esp_driver_sdmmc esp_driver_spi esp_driver_tsens esp_driver_uart esp_driver_usb_serial_jtag esp_eth esp_event esp_http_client esp_mm esp_netif esp_partition esp_phy esp_pm esp_ringbuf esp_rom esp_security esp_timer esp_vfs_console esp_wifi espcoredump espressif__esp_diagnostics espressif__mdns espressif__network_provisioning hal heap http_parser json log lwip mbedtls newlib nvs_flash nvs_sec_provider protobuf-c protocomm pthread sdmmc soc tcp_transport usb vfs wpa_supplicant xtensa main)
+include($ENV{IDF_PATH}/tools/cmake/project.cmake)
+project(hanmo_sdk)
+idf_build_set_property(COMPILE_OPTIONS "-DESP32_ARDUINO_LIB_BUILDER" APPEND)
+idf_build_set_property(CXX_COMPILE_OPTIONS "-std=gnu++2a" APPEND)

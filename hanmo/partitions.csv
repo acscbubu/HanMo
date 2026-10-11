@@ -1,0 +1,15 @@
+# Name,   Type, SubType, Offset,  Size, Flags
+#
+# Dual-slot layout. The stock 3.375 MB spiffs partition is never mounted by this
+# firmware (no SPIFFS.begin, no esp_vfs_spiffs_register, no LittleFS.begin in
+# src/, lib/ or freeink-sdk/ — books, fonts and saves all live on the SD card),
+# so that space goes to the app slots instead. Both slots are 7.94 MB, which
+# matches CrossPlay's table so either firmware can live in either slot and the
+# active one is chosen by rewriting otadata.
+#
+# Both app offsets stay 64 KB aligned and the last region ends at 0x1000000.
+nvs,      data, nvs,     0x9000,  0x5000,
+otadata,  data, ota,     0xe000,  0x2000,
+app0,     app,  ota_0,   0x10000, 0x7F0000,
+app1,     app,  ota_1,   0x800000,0x7F0000,
+coredump, data, coredump,0xFF0000,0x10000,

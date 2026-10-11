@@ -1,0 +1,16 @@
+{
+  "name": "SecureNet",
+  "version": "1.0.0",
+  "description": "HanMo verified TLS 1.2/1.3 over the source-built ESP-IDF mbedTLS and Arduino NetworkClientSecure",
+  "keywords": "tls, tls13, mbedtls, https, network",
+  "authors": [
+    {
+      "name": "FreeInk SDK Contributors"
+    }
+  ],
+  "dependencies": {},
+  "platforms": "espressif32",
+  "frameworks": [
+    "arduino"
+  ]
+}
